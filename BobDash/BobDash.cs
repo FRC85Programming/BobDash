@@ -45,6 +45,7 @@ namespace BobDash
             else
             {
                 lblAutoModeValue.Text = autoMode;
+                lblAutoDescription.Text = Enum.GetName(typeof(AutoDescriptions), Convert.ToInt32(autoMode));
             }
         }
 
