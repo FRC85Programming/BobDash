@@ -1,5 +1,4 @@
 ﻿using GlobalHotKey;
-using MjpegProcessor;
 using NetworkTables;
 using NetworkTables.Tables;
 using System;
@@ -11,7 +10,7 @@ namespace BobDash
 {
     public partial class BobDash : Form
     {
-        private const string CAMERA_URI = "http://roboRIO-85-FRC.local:1183/?action=stream";
+        private const string CAMERA_URI = "http://mm-hp-xw8400-workstation.local:8080/?action=stream";
 
         private System.Timers.Timer _timer;
         private HotKeyManager _hotKeyManager = new HotKeyManager();
@@ -88,6 +87,14 @@ namespace BobDash
             _timer.Elapsed += _timer_Elapsed;
             _timer.Start();
             SetupCamera();
+            try
+            {
+                StartCamera();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Error starting camera: {0}", ex.ToString()));
+            }
         }
 
         private void OnConnectionChanged(bool connected)
@@ -165,7 +172,20 @@ namespace BobDash
 
         private void Decoder_FrameReady(object sender, FrameReadyEventArgs e)
         {
-            cameraPictureBox.Image = e.Bitmap;
+            Image oldImage = cameraPictureBox.Image;
+
+            var dest = new Bitmap(cameraPictureBox.Width, cameraPictureBox.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            using (var gr = Graphics.FromImage(dest))
+            {
+                gr.DrawImage(e.Bitmap, new Rectangle(Point.Empty, dest.Size));
+            }
+
+            cameraPictureBox.Image = dest;
+
+            if (oldImage != null)
+            {
+                oldImage.Dispose();
+            }
         }
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
