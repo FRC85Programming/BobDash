@@ -3,29 +3,25 @@ using MjpegProcessor;
 using NetworkTables;
 using NetworkTables.Tables;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace BobDash
 {
-    public partial class BobDash : Form
+    public partial class BobDashContext
     {
-        private const string CAMERA_URI = "http://roboRIO-85-FRC.local:1183/?action=stream";
-
         private System.Timers.Timer _timer;
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MjpegDecoder _cameraDecoder;
         private bool _cameraStarted;
         private double? _autoMode = null;
 
-        public BobDash()
-        {
-            InitializeComponent();
-            DoubleBuffered = true;
-        }
+        public event EventHandler<ConnectionChangedEventArgs> ConnectionChanged;
+        public event EventHandler<FrameReadyEventArgs> FrameReady;
+        public event EventHandler<AutoModeChangedEventArgs> AutoModeChanged;
 
-        private ITable SmartDashboard
+        
+        public ITable SmartDashboard
         {
             get
             {                
@@ -33,35 +29,7 @@ namespace BobDash
             }
         }
 
-        private void UpdateAutoModeText(string autoMode)
-        {
-            if (lblAutoModeValue.InvokeRequired)
-            {
-                if (lblAutoModeValue.Text != autoMode)
-                {
-                    lblAutoModeValue.Invoke(new Action(() => { UpdateAutoModeText(autoMode); }));
-                }
-            }
-            else
-            {
-                lblAutoModeValue.Text = autoMode;
-                lblAutoDescription.Text = Enum.GetName(typeof(AutoDescriptions), Convert.ToInt32(autoMode));
-            }
-        }
-
-        private void SetBackColor(Color color)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new Action(() => BackColor = color));
-            }
-            else
-            {
-                BackColor = color;
-            }
-        }
-
-        private void BobDash_Load(object sender, EventArgs e)
+        public BobDashContext()
         {
             _hotKeyManager.Register(Key.D0, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
             _hotKeyManager.Register(Key.D1, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
@@ -92,16 +60,7 @@ namespace BobDash
 
         private void OnConnectionChanged(bool connected)
         {
-            if (connected)
-            {
-                SetBackColor(Color.LimeGreen);
-                StartCamera();
-            }
-            else
-            {
-                SetBackColor(Color.Red);
-                StopCamera();
-            }
+            ConnectionChanged?.Invoke(this, new ConnectionChangedEventArgs { Connected = connected });
         }
 
         private void _hotKeyManager_KeyPressed(object sender, KeyPressedEventArgs e)
@@ -126,7 +85,7 @@ namespace BobDash
             }
         }
 
-        private void StartCamera()
+        public void StartCamera(string cameraUri)
         {
             if (_cameraStarted)
             {
@@ -138,12 +97,12 @@ namespace BobDash
                 SetupCamera();
             }
 
-            _cameraDecoder.ParseStream(new Uri(CAMERA_URI));
+            _cameraDecoder.ParseStream(new Uri(cameraUri));
 
             _cameraStarted = true;
         }
 
-        private void StopCamera()
+        public void StopCamera()
         {
             if (!_cameraStarted)
             {
@@ -165,7 +124,7 @@ namespace BobDash
 
         private void Decoder_FrameReady(object sender, FrameReadyEventArgs e)
         {
-            cameraPictureBox.Image = e.Bitmap;
+            FrameReady?.Invoke(this, e);
         }
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -177,7 +136,6 @@ namespace BobDash
             }
             catch
             {
-                SetBackColor(Color.Yellow);
                 if (_autoMode.HasValue)
                 {
                     currentValue = _autoMode.Value;
@@ -194,7 +152,7 @@ namespace BobDash
                     }
                 }
 
-                UpdateAutoModeText(currentValue.ToString());
+                AutoModeChanged?.Invoke(this, new AutoModeChangedEventArgs { AutoMode = _autoMode.Value }); 
             }
             catch (Exception ex)
             {
