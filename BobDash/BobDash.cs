@@ -11,12 +11,15 @@ namespace BobDash
 {
     public partial class BobDash : Form
     {
-        private const string CAMERA_URI = "http://roboRIO-85-FRC.local:1183/?action=stream";
+        private const string ROBORIO_IP = "10.0.85.2";
+        private const string CAMERA1_URI = "http://10.0.85.48:1181/?action=stream";
+        private const string CAMERA2_URI = "http://10.0.85.48:1182/?action=stream";
 
         private System.Timers.Timer _timer;
         private HotKeyManager _hotKeyManager = new HotKeyManager();
-        private MjpegDecoder _cameraDecoder;
-        private bool _cameraStarted;
+        private MjpegDecoder _camera1Decoder;
+        private MjpegDecoder _camera2Decoder;
+        private bool _camerasStarted;
         private double? _autoMode = null;
 
         public BobDash()
@@ -81,13 +84,13 @@ namespace BobDash
             }, true);
 
             NetworkTable.SetClientMode();
-            NetworkTable.SetIPAddress("roborio-85-frc.local");
+            NetworkTable.SetIPAddress(ROBORIO_IP);
             NetworkTable.Initialize();
 
             _timer = new System.Timers.Timer(200);
             _timer.Elapsed += _timer_Elapsed;
             _timer.Start();
-            SetupCamera();
+            SetupCameras();
         }
 
         private void OnConnectionChanged(bool connected)
@@ -116,46 +119,59 @@ namespace BobDash
             }
         }
 
-        private void SetupCamera()
+        private void SetupCameras()
         {
-            if (_cameraDecoder == null)
+            if (_camera1Decoder == null)
             {
-                _cameraDecoder = new MjpegDecoder();
-                _cameraDecoder.FrameReady += Decoder_FrameReady;
-                _cameraDecoder.Error += _cameraDecoder_Error;
+                _camera1Decoder = new MjpegDecoder();
+                _camera1Decoder.FrameReady += Decoder1_FrameReady;
+                _camera1Decoder.Error += _cameraDecoder_Error;
+            }
+
+            if (_camera2Decoder == null)
+            {
+                _camera2Decoder = new MjpegDecoder();
+                _camera2Decoder.FrameReady += Decoder2_FrameReady;
+                _camera2Decoder.Error += _cameraDecoder_Error;
             }
         }
 
         private void StartCamera()
         {
-            if (_cameraStarted)
+            if (_camerasStarted)
             {
                 return;
             }
 
-            if (_cameraDecoder == null)
+            if (_camera1Decoder == null)
             {
-                SetupCamera();
+                SetupCameras();
             }
 
-            _cameraDecoder.ParseStream(new Uri(CAMERA_URI));
+            _camera1Decoder.ParseStream(new Uri(CAMERA1_URI));
+            _camera2Decoder.ParseStream(new Uri(CAMERA2_URI));
 
-            _cameraStarted = true;
+            _camerasStarted = true;
         }
 
         private void StopCamera()
         {
-            if (!_cameraStarted)
+            if (!_camerasStarted)
             {
                 return;
             }
 
-            if (_cameraDecoder != null)
+            if (_camera1Decoder != null)
             {
-                _cameraDecoder.StopStream();
+                _camera1Decoder.StopStream();
             }
 
-            _cameraStarted = false;
+            if (_camera2Decoder != null)
+            {
+                _camera2Decoder.StopStream();
+            }
+
+            _camerasStarted = false;
         }
 
         private void _cameraDecoder_Error(object sender, ErrorEventArgs e)
@@ -163,9 +179,14 @@ namespace BobDash
             Console.WriteLine(e.Message);
         }
 
-        private void Decoder_FrameReady(object sender, FrameReadyEventArgs e)
+        private void Decoder1_FrameReady(object sender, FrameReadyEventArgs e)
         {
-            cameraPictureBox.Image = e.Bitmap;
+            camera1PictureBox.Image = e.Bitmap;
+        }
+
+        private void Decoder2_FrameReady(object sender, FrameReadyEventArgs e)
+        {
+            camera2PictureBox.Image = e.Bitmap;
         }
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

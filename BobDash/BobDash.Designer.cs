@@ -38,15 +38,19 @@
             this.lblAutoModeLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblAutoModeValue = new System.Windows.Forms.Label();
-            this.cameraPictureBox = new System.Windows.Forms.PictureBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lblAutoDescription = new System.Windows.Forms.Label();
+            this.camera1PictureBox = new System.Windows.Forms.PictureBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.camera2PictureBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cameraPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camera1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.CameraTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAutoModeLabel
@@ -87,33 +91,6 @@
             this.lblAutoModeValue.TabIndex = 1;
             this.lblAutoModeValue.Text = "X";
             // 
-            // cameraPictureBox
-            // 
-            this.cameraPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cameraPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.cameraPictureBox.Name = "cameraPictureBox";
-            this.cameraPictureBox.Size = new System.Drawing.Size(1198, 611);
-            this.cameraPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.cameraPictureBox.TabIndex = 2;
-            this.cameraPictureBox.TabStop = false;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.cameraPictureBox);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1350, 611);
-            this.splitContainer1.SplitterDistance = 1198;
-            this.splitContainer1.TabIndex = 4;
-            // 
             // lblAutoDescription
             // 
             this.lblAutoDescription.AutoSize = true;
@@ -123,6 +100,58 @@
             this.lblAutoDescription.Size = new System.Drawing.Size(100, 20);
             this.lblAutoDescription.TabIndex = 2;
             this.lblAutoDescription.Text = "Description";
+            // 
+            // camera1PictureBox
+            // 
+            this.camera1PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.camera1PictureBox.Location = new System.Drawing.Point(3, 3);
+            this.camera1PictureBox.Name = "camera1PictureBox";
+            this.camera1PictureBox.Size = new System.Drawing.Size(1192, 299);
+            this.camera1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.camera1PictureBox.TabIndex = 2;
+            this.camera1PictureBox.TabStop = false;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.CameraTableLayoutPanel);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Size = new System.Drawing.Size(1350, 611);
+            this.splitContainer1.SplitterDistance = 1198;
+            this.splitContainer1.TabIndex = 4;
+            // 
+            // CameraTableLayoutPanel
+            // 
+            this.CameraTableLayoutPanel.ColumnCount = 1;
+            this.CameraTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.CameraTableLayoutPanel.Controls.Add(this.camera2PictureBox, 0, 1);
+            this.CameraTableLayoutPanel.Controls.Add(this.camera1PictureBox, 0, 0);
+            this.CameraTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CameraTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.CameraTableLayoutPanel.Name = "CameraTableLayoutPanel";
+            this.CameraTableLayoutPanel.RowCount = 2;
+            this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.CameraTableLayoutPanel.Size = new System.Drawing.Size(1198, 611);
+            this.CameraTableLayoutPanel.TabIndex = 3;
+            // 
+            // camera2PictureBox
+            // 
+            this.camera2PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.camera2PictureBox.Location = new System.Drawing.Point(3, 308);
+            this.camera2PictureBox.Name = "camera2PictureBox";
+            this.camera2PictureBox.Size = new System.Drawing.Size(1192, 300);
+            this.camera2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.camera2PictureBox.TabIndex = 3;
+            this.camera2PictureBox.TabStop = false;
             // 
             // BobDash
             // 
@@ -137,11 +166,13 @@
             this.Load += new System.EventHandler(this.BobDash_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cameraPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camera1PictureBox)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.CameraTableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -151,9 +182,11 @@
         private System.Windows.Forms.Label lblAutoModeLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblAutoModeValue;
-        private System.Windows.Forms.PictureBox cameraPictureBox;
+        private System.Windows.Forms.PictureBox camera1PictureBox;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label lblAutoDescription;
+        private System.Windows.Forms.TableLayoutPanel CameraTableLayoutPanel;
+        private System.Windows.Forms.PictureBox camera2PictureBox;
     }
 }
 
