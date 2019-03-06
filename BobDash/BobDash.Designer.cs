@@ -35,15 +35,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblAutoModeLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblAutoModeValue = new System.Windows.Forms.Label();
-            this.lblAutoDescription = new System.Windows.Forms.Label();
+            this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.camera1PictureBox = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.camera2PictureBox = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.indicator1 = new BobDash.Indicator();
+            this.RightSideTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.camera1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -53,60 +51,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblAutoModeLabel
+            // RightSideTableLayoutPanel
             // 
-            this.lblAutoModeLabel.AutoSize = true;
-            this.lblAutoModeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutoModeLabel.Location = new System.Drawing.Point(3, 0);
-            this.lblAutoModeLabel.Name = "lblAutoModeLabel";
-            this.lblAutoModeLabel.Size = new System.Drawing.Size(119, 78);
-            this.lblAutoModeLabel.TabIndex = 0;
-            this.lblAutoModeLabel.Text = "Auto mode:";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.lblAutoModeValue, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblAutoModeLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblAutoDescription, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(148, 611);
-            this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // lblAutoModeValue
-            // 
-            this.lblAutoModeValue.AutoSize = true;
-            this.lblAutoModeValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAutoModeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutoModeValue.Location = new System.Drawing.Point(3, 78);
-            this.lblAutoModeValue.Name = "lblAutoModeValue";
-            this.lblAutoModeValue.Size = new System.Drawing.Size(142, 73);
-            this.lblAutoModeValue.TabIndex = 1;
-            this.lblAutoModeValue.Text = "X";
-            // 
-            // lblAutoDescription
-            // 
-            this.lblAutoDescription.AutoSize = true;
-            this.lblAutoDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutoDescription.Location = new System.Drawing.Point(3, 151);
-            this.lblAutoDescription.Name = "lblAutoDescription";
-            this.lblAutoDescription.Size = new System.Drawing.Size(100, 20);
-            this.lblAutoDescription.TabIndex = 2;
-            this.lblAutoDescription.Text = "Description";
+            this.RightSideTableLayoutPanel.ColumnCount = 4;
+            this.RightSideTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.RightSideTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.RightSideTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.RightSideTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.RightSideTableLayoutPanel.Controls.Add(this.indicator1, 0, 0);
+            this.RightSideTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RightSideTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.RightSideTableLayoutPanel.Name = "RightSideTableLayoutPanel";
+            this.RightSideTableLayoutPanel.RowCount = 4;
+            this.RightSideTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.RightSideTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.RightSideTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.RightSideTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.RightSideTableLayoutPanel.Size = new System.Drawing.Size(593, 611);
+            this.RightSideTableLayoutPanel.TabIndex = 1;
             // 
             // camera1PictureBox
             // 
             this.camera1PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camera1PictureBox.Location = new System.Drawing.Point(3, 3);
             this.camera1PictureBox.Name = "camera1PictureBox";
-            this.camera1PictureBox.Size = new System.Drawing.Size(1192, 299);
+            this.camera1PictureBox.Size = new System.Drawing.Size(747, 299);
             this.camera1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.camera1PictureBox.TabIndex = 2;
             this.camera1PictureBox.TabStop = false;
@@ -123,9 +92,9 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Panel2.Controls.Add(this.RightSideTableLayoutPanel);
             this.splitContainer1.Size = new System.Drawing.Size(1350, 611);
-            this.splitContainer1.SplitterDistance = 1198;
+            this.splitContainer1.SplitterDistance = 753;
             this.splitContainer1.TabIndex = 4;
             // 
             // CameraTableLayoutPanel
@@ -140,7 +109,7 @@
             this.CameraTableLayoutPanel.RowCount = 2;
             this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CameraTableLayoutPanel.Size = new System.Drawing.Size(1198, 611);
+            this.CameraTableLayoutPanel.Size = new System.Drawing.Size(753, 611);
             this.CameraTableLayoutPanel.TabIndex = 3;
             // 
             // camera2PictureBox
@@ -148,10 +117,18 @@
             this.camera2PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camera2PictureBox.Location = new System.Drawing.Point(3, 308);
             this.camera2PictureBox.Name = "camera2PictureBox";
-            this.camera2PictureBox.Size = new System.Drawing.Size(1192, 300);
+            this.camera2PictureBox.Size = new System.Drawing.Size(747, 300);
             this.camera2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.camera2PictureBox.TabIndex = 3;
             this.camera2PictureBox.TabStop = false;
+            // 
+            // indicator1
+            // 
+            this.indicator1.Location = new System.Drawing.Point(3, 3);
+            this.indicator1.Name = "indicator1";
+            this.indicator1.Size = new System.Drawing.Size(142, 146);
+            this.indicator1.TabIndex = 0;
+            this.indicator1.VariableName = "";
             // 
             // BobDash
             // 
@@ -164,8 +141,7 @@
             this.Text = "BobDash";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BobDash_FormClosing);
             this.Load += new System.EventHandler(this.BobDash_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.RightSideTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.camera1PictureBox)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -178,15 +154,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblAutoModeLabel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblAutoModeValue;
+        private System.Windows.Forms.TableLayoutPanel RightSideTableLayoutPanel;
         private System.Windows.Forms.PictureBox camera1PictureBox;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label lblAutoDescription;
         private System.Windows.Forms.TableLayoutPanel CameraTableLayoutPanel;
         private System.Windows.Forms.PictureBox camera2PictureBox;
+        private BobDash.Indicator indicator1;
     }
 }
 

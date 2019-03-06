@@ -15,7 +15,7 @@ namespace BobDash
         private const string CAMERA1_URI = "http://10.0.85.48:1181/?action=stream";
         private const string CAMERA2_URI = "http://10.0.85.48:1182/?action=stream";
 
-        private System.Timers.Timer _timer;
+        internal static System.Timers.Timer GlobalTimer = new System.Timers.Timer(200);
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MjpegDecoder _camera1Decoder;
         private MjpegDecoder _camera2Decoder;
@@ -33,22 +33,6 @@ namespace BobDash
             get
             {                
                 return NetworkTable.GetTable("SmartDashboard");
-            }
-        }
-
-        private void UpdateAutoModeText(string autoMode)
-        {
-            if (lblAutoModeValue.InvokeRequired)
-            {
-                if (lblAutoModeValue.Text != autoMode)
-                {
-                    lblAutoModeValue.Invoke(new Action(() => { UpdateAutoModeText(autoMode); }));
-                }
-            }
-            else
-            {
-                lblAutoModeValue.Text = autoMode;
-                lblAutoDescription.Text = Enum.GetName(typeof(AutoDescriptions), Convert.ToInt32(autoMode));
             }
         }
 
@@ -87,9 +71,8 @@ namespace BobDash
             NetworkTable.SetIPAddress(ROBORIO_IP);
             NetworkTable.Initialize();
 
-            _timer = new System.Timers.Timer(200);
-            _timer.Elapsed += _timer_Elapsed;
-            _timer.Start();
+            GlobalTimer.Elapsed += _timer_Elapsed;
+            GlobalTimer.Start();
             SetupCameras();
         }
 
@@ -214,8 +197,6 @@ namespace BobDash
                         SmartDashboard.PutNumber("AUTO MODE", _autoMode.Value);
                     }
                 }
-
-                UpdateAutoModeText(currentValue.ToString());
             }
             catch (Exception ex)
             {
@@ -225,7 +206,7 @@ namespace BobDash
 
         private void BobDash_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _timer.Stop();
+            GlobalTimer.Stop();
         }
     }
 }
