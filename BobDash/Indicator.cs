@@ -8,7 +8,19 @@ namespace BobDashControls
 {
     public partial class Indicator : UserControl
     {
-        public string VariableName { get; set; }
+        private string _variableName;
+        public string VariableName
+        {
+            get
+            {
+                return _variableName;
+            }
+            set
+            {
+                _variableName = value;
+                SetText(_variableName);
+            }
+        }
 
         public Indicator()
         {
@@ -43,20 +55,41 @@ namespace BobDashControls
         {
             try
             {
-                if(SmartDashboard.GetBoolean(VariableName))
+                var value = SmartDashboard.GetValue(VariableName);
+                if (value.IsBoolean())
                 {
-                    SetColor(Color.LimeGreen);
+                    SetText(VariableName);
+                    if (value.GetBoolean())
+                    {
+                        SetColor(Color.LimeGreen);
+                    }
+                    else
+                    {
+                        SetColor(Color.Red);
+                    }
                 }
                 else
                 {
-                    SetColor(Color.Red);
+                    SetColor(Color.LimeGreen);
+                    SetText($"{VariableName}{Environment.NewLine}{value.ToString()}");
                 }
-
             }
             catch (Exception ex)
             {
                 SetColor(Color.Yellow);
-                //TODO: log or something
+                SetText($"{VariableName}{Environment.NewLine}{ex.Message}");
+            }
+        }
+
+        private void SetText(string text)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => MainLabel.Text = text));
+            }
+            else
+            {
+                MainLabel.Text = text;
             }
         }
 

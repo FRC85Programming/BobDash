@@ -38,7 +38,6 @@
             this.MainLabel.Location = new System.Drawing.Point(0, 0);
             this.MainLabel.Margin = new System.Windows.Forms.Padding(5);
             this.MainLabel.Name = "MainLabel";
-            this.MainLabel.Padding = new System.Windows.Forms.Padding(5);
             this.MainLabel.Size = new System.Drawing.Size(150, 150);
             this.MainLabel.TabIndex = 0;
             this.MainLabel.Text = "Indicator";

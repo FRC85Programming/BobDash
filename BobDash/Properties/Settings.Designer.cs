@@ -61,7 +61,7 @@ namespace BobDash.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Safe?")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lift Top")]
         public string NetworkTablesConnectionCheckVariableName {
             get {
                 return ((string)(this["NetworkTablesConnectionCheckVariableName"]));
@@ -80,6 +80,18 @@ namespace BobDash.Properties {
             }
             set {
                 this["DriverAssistCameraUri"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UpgradeRequired {
+            get {
+                return ((bool)(this["UpgradeRequired"]));
+            }
+            set {
+                this["UpgradeRequired"] = value;
             }
         }
     }

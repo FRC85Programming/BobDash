@@ -4,7 +4,6 @@ using NetworkTables;
 using NetworkTables.Tables;
 using System;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -18,12 +17,15 @@ namespace BobDash
         private MJPEGStream _camera2Stream;
         private MJPEGStream _driverAssistCameraStream;
         private bool _camerasStarted;
-        private bool _processingImage = false;
 
         public BobDash()
         {
-            InitializeComponent();
-            DoubleBuffered = true;
+            if (Properties.Settings.Default.UpgradeRequired)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeRequired = false;
+                Properties.Settings.Default.Save();
+            }
 
             NetworkTable.AddGlobalConnectionListener((remote, info, connected) =>
             {
@@ -32,6 +34,9 @@ namespace BobDash
 
             NetworkTable.SetClientMode();
             NetworkTable.Initialize();
+
+            InitializeComponent();
+            DoubleBuffered = true;
         }
 
         private ITable SmartDashboard
