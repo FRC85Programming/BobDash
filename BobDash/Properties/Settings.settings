@@ -14,5 +14,8 @@
     <Setting Name="NetworkTablesConnectionCheckVariableName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Safe?</Value>
     </Setting>
+    <Setting Name="DriverAssistCameraUri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://frcvision.local:1183/?action=stream</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

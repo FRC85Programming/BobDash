@@ -36,12 +36,16 @@
         private void InitializeComponent()
         {
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.indicator1 = new BobDashControls.Indicator();
+            this.SettingsButton = new System.Windows.Forms.Button();
             this.camera1PictureBox = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.camera2PictureBox = new System.Windows.Forms.PictureBox();
-            this.SettingsButton = new System.Windows.Forms.Button();
+            this.CameraTabControl = new System.Windows.Forms.TabControl();
+            this.DriverAssistTabPage = new System.Windows.Forms.TabPage();
+            this.VisionTabPage = new System.Windows.Forms.TabPage();
+            this.DriverAssistCameraPictureBox = new System.Windows.Forms.PictureBox();
+            this.indicator1 = new BobDashControls.Indicator();
             this.RightSideTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.camera1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -50,6 +54,10 @@
             this.splitContainer1.SuspendLayout();
             this.CameraTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).BeginInit();
+            this.CameraTabControl.SuspendLayout();
+            this.DriverAssistTabPage.SuspendLayout();
+            this.VisionTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DriverAssistCameraPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // RightSideTableLayoutPanel
@@ -72,20 +80,22 @@
             this.RightSideTableLayoutPanel.Size = new System.Drawing.Size(593, 611);
             this.RightSideTableLayoutPanel.TabIndex = 1;
             // 
-            // indicator1
+            // SettingsButton
             // 
-            this.indicator1.Location = new System.Drawing.Point(3, 3);
-            this.indicator1.Name = "indicator1";
-            this.indicator1.Size = new System.Drawing.Size(142, 146);
-            this.indicator1.TabIndex = 0;
-            this.indicator1.VariableName = "";
+            this.SettingsButton.Location = new System.Drawing.Point(447, 459);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(75, 23);
+            this.SettingsButton.TabIndex = 1;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // camera1PictureBox
             // 
             this.camera1PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camera1PictureBox.Location = new System.Drawing.Point(3, 3);
             this.camera1PictureBox.Name = "camera1PictureBox";
-            this.camera1PictureBox.Size = new System.Drawing.Size(747, 299);
+            this.camera1PictureBox.Size = new System.Drawing.Size(733, 283);
             this.camera1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.camera1PictureBox.TabIndex = 2;
             this.camera1PictureBox.TabStop = false;
@@ -98,7 +108,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.CameraTableLayoutPanel);
+            this.splitContainer1.Panel1.Controls.Add(this.CameraTabControl);
             // 
             // splitContainer1.Panel2
             // 
@@ -114,33 +124,74 @@
             this.CameraTableLayoutPanel.Controls.Add(this.camera2PictureBox, 0, 1);
             this.CameraTableLayoutPanel.Controls.Add(this.camera1PictureBox, 0, 0);
             this.CameraTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CameraTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.CameraTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.CameraTableLayoutPanel.Name = "CameraTableLayoutPanel";
             this.CameraTableLayoutPanel.RowCount = 2;
             this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CameraTableLayoutPanel.Size = new System.Drawing.Size(753, 611);
+            this.CameraTableLayoutPanel.Size = new System.Drawing.Size(739, 579);
             this.CameraTableLayoutPanel.TabIndex = 3;
             // 
             // camera2PictureBox
             // 
             this.camera2PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.camera2PictureBox.Location = new System.Drawing.Point(3, 308);
+            this.camera2PictureBox.Location = new System.Drawing.Point(3, 292);
             this.camera2PictureBox.Name = "camera2PictureBox";
-            this.camera2PictureBox.Size = new System.Drawing.Size(747, 300);
+            this.camera2PictureBox.Size = new System.Drawing.Size(733, 284);
             this.camera2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.camera2PictureBox.TabIndex = 3;
             this.camera2PictureBox.TabStop = false;
             // 
-            // SettingsButton
+            // CameraTabControl
             // 
-            this.SettingsButton.Location = new System.Drawing.Point(447, 459);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(75, 23);
-            this.SettingsButton.TabIndex = 1;
-            this.SettingsButton.Text = "Settings";
-            this.SettingsButton.UseVisualStyleBackColor = true;
-            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            this.CameraTabControl.Controls.Add(this.DriverAssistTabPage);
+            this.CameraTabControl.Controls.Add(this.VisionTabPage);
+            this.CameraTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CameraTabControl.Location = new System.Drawing.Point(0, 0);
+            this.CameraTabControl.Name = "CameraTabControl";
+            this.CameraTabControl.SelectedIndex = 0;
+            this.CameraTabControl.Size = new System.Drawing.Size(753, 611);
+            this.CameraTabControl.TabIndex = 4;
+            this.CameraTabControl.SelectedIndexChanged += new System.EventHandler(this.CameraTabControl_SelectedIndexChanged);
+            // 
+            // DriverAssistTabPage
+            // 
+            this.DriverAssistTabPage.Controls.Add(this.DriverAssistCameraPictureBox);
+            this.DriverAssistTabPage.Location = new System.Drawing.Point(4, 22);
+            this.DriverAssistTabPage.Name = "DriverAssistTabPage";
+            this.DriverAssistTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.DriverAssistTabPage.Size = new System.Drawing.Size(745, 585);
+            this.DriverAssistTabPage.TabIndex = 0;
+            this.DriverAssistTabPage.Text = "Driver Assist";
+            this.DriverAssistTabPage.UseVisualStyleBackColor = true;
+            // 
+            // VisionTabPage
+            // 
+            this.VisionTabPage.Controls.Add(this.CameraTableLayoutPanel);
+            this.VisionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.VisionTabPage.Name = "VisionTabPage";
+            this.VisionTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.VisionTabPage.Size = new System.Drawing.Size(745, 585);
+            this.VisionTabPage.TabIndex = 1;
+            this.VisionTabPage.Text = "Vision";
+            this.VisionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // DriverAssistCameraPictureBox
+            // 
+            this.DriverAssistCameraPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DriverAssistCameraPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.DriverAssistCameraPictureBox.Name = "DriverAssistCameraPictureBox";
+            this.DriverAssistCameraPictureBox.Size = new System.Drawing.Size(739, 579);
+            this.DriverAssistCameraPictureBox.TabIndex = 0;
+            this.DriverAssistCameraPictureBox.TabStop = false;
+            // 
+            // indicator1
+            // 
+            this.indicator1.Location = new System.Drawing.Point(3, 3);
+            this.indicator1.Name = "indicator1";
+            this.indicator1.Size = new System.Drawing.Size(142, 146);
+            this.indicator1.TabIndex = 0;
+            this.indicator1.VariableName = "";
             // 
             // BobDash
             // 
@@ -161,6 +212,10 @@
             this.splitContainer1.ResumeLayout(false);
             this.CameraTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).EndInit();
+            this.CameraTabControl.ResumeLayout(false);
+            this.DriverAssistTabPage.ResumeLayout(false);
+            this.VisionTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DriverAssistCameraPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,6 +228,10 @@
         private System.Windows.Forms.PictureBox camera2PictureBox;
         private BobDashControls.Indicator indicator1;
         private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.TabControl CameraTabControl;
+        private System.Windows.Forms.TabPage DriverAssistTabPage;
+        private System.Windows.Forms.TabPage VisionTabPage;
+        private System.Windows.Forms.PictureBox DriverAssistCameraPictureBox;
     }
 }
 

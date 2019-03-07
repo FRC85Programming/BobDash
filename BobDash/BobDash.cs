@@ -15,6 +15,7 @@ namespace BobDash
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MjpegDecoder _camera1Decoder;
         private MjpegDecoder _camera2Decoder;
+        private MjpegDecoder _driverAssistCameraDecoder;
         private bool _camerasStarted;
 
         public BobDash()
@@ -100,7 +101,7 @@ namespace BobDash
 
         private void SetupCameras()
         {
-            if (_camera1Decoder == null)
+            if (_camera1Decoder == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera1Uri))
             {
                 _camera1Decoder = new MjpegDecoder();
                 _camera1Decoder.FrameReady += Decoder1_FrameReady;
@@ -113,6 +114,13 @@ namespace BobDash
                 _camera2Decoder.FrameReady += Decoder2_FrameReady;
                 _camera2Decoder.Error += _cameraDecoder_Error;
             }
+
+            if (_driverAssistCameraDecoder == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.DriverAssistCameraUri))
+            {
+                _driverAssistCameraDecoder = new MjpegDecoder();
+                _driverAssistCameraDecoder.FrameReady += DriverAssistDecoder_FrameReady;
+                _driverAssistCameraDecoder.Error += _cameraDecoder_Error;
+            }
         }
 
         private void StartCamera()
@@ -122,13 +130,24 @@ namespace BobDash
                 return;
             }
 
-            if (_camera1Decoder == null)
-            {
-                SetupCameras();
-            }
+            SetupCameras();
 
-            _camera1Decoder.ParseStream(new Uri(Properties.Settings.Default.Camera1Uri));
-            _camera2Decoder.ParseStream(new Uri(Properties.Settings.Default.Camera2Uri));
+            if (CameraTabControl.SelectedTab.Name == "DriverAssistTabPage" && _driverAssistCameraDecoder != null)
+            {
+                _driverAssistCameraDecoder.ParseStream(new Uri(Properties.Settings.Default.DriverAssistCameraUri));
+            }
+            if (CameraTabControl.SelectedTab.Name == "VisionTabPage")
+            {
+                if (_camera1Decoder != null)
+                {
+                    _camera1Decoder.ParseStream(new Uri(Properties.Settings.Default.Camera1Uri));
+                }
+
+                if (_camera2Decoder != null)
+                {
+                    _camera2Decoder.ParseStream(new Uri(Properties.Settings.Default.Camera2Uri));
+                }
+            }
 
             _camerasStarted = true;
         }
@@ -143,11 +162,19 @@ namespace BobDash
             if (_camera1Decoder != null)
             {
                 _camera1Decoder.StopStream();
+                _camera1Decoder = null;
             }
 
             if (_camera2Decoder != null)
             {
                 _camera2Decoder.StopStream();
+                _camera2Decoder = null;
+            }
+
+            if (_driverAssistCameraDecoder != null)
+            {
+                _driverAssistCameraDecoder.StopStream();
+                _driverAssistCameraDecoder = null;
             }
 
             _camerasStarted = false;
@@ -166,6 +193,11 @@ namespace BobDash
         private void Decoder2_FrameReady(object sender, FrameReadyEventArgs e)
         {
             camera2PictureBox.Image = e.Bitmap;
+        }
+
+        private void DriverAssistDecoder_FrameReady(object sender, FrameReadyEventArgs e)
+        {
+            DriverAssistCameraPictureBox.Image = e.Bitmap;
         }
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -197,6 +229,12 @@ namespace BobDash
                     StartCamera();
                 }
             }
+        }
+
+        private void CameraTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StopCamera();
+            StartCamera();
         }
     }
 }
