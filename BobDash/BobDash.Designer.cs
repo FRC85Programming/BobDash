@@ -36,11 +36,12 @@
         private void InitializeComponent()
         {
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.indicator1 = new BobDashControls.Indicator();
             this.camera1PictureBox = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.camera2PictureBox = new System.Windows.Forms.PictureBox();
-            this.indicator1 = new BobDash.Indicator();
+            this.SettingsButton = new System.Windows.Forms.Button();
             this.RightSideTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.camera1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -59,6 +60,7 @@
             this.RightSideTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.RightSideTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.RightSideTableLayoutPanel.Controls.Add(this.indicator1, 0, 0);
+            this.RightSideTableLayoutPanel.Controls.Add(this.SettingsButton, 3, 3);
             this.RightSideTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RightSideTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.RightSideTableLayoutPanel.Name = "RightSideTableLayoutPanel";
@@ -69,6 +71,14 @@
             this.RightSideTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.RightSideTableLayoutPanel.Size = new System.Drawing.Size(593, 611);
             this.RightSideTableLayoutPanel.TabIndex = 1;
+            // 
+            // indicator1
+            // 
+            this.indicator1.Location = new System.Drawing.Point(3, 3);
+            this.indicator1.Name = "indicator1";
+            this.indicator1.Size = new System.Drawing.Size(142, 146);
+            this.indicator1.TabIndex = 0;
+            this.indicator1.VariableName = "";
             // 
             // camera1PictureBox
             // 
@@ -122,13 +132,15 @@
             this.camera2PictureBox.TabIndex = 3;
             this.camera2PictureBox.TabStop = false;
             // 
-            // indicator1
+            // SettingsButton
             // 
-            this.indicator1.Location = new System.Drawing.Point(3, 3);
-            this.indicator1.Name = "indicator1";
-            this.indicator1.Size = new System.Drawing.Size(142, 146);
-            this.indicator1.TabIndex = 0;
-            this.indicator1.VariableName = "";
+            this.SettingsButton.Location = new System.Drawing.Point(447, 459);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(75, 23);
+            this.SettingsButton.TabIndex = 1;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // BobDash
             // 
@@ -159,7 +171,8 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel CameraTableLayoutPanel;
         private System.Windows.Forms.PictureBox camera2PictureBox;
-        private BobDash.Indicator indicator1;
+        private BobDashControls.Indicator indicator1;
+        private System.Windows.Forms.Button SettingsButton;
     }
 }
 

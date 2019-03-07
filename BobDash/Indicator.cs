@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BobDash
+namespace BobDashControls
 {
     public partial class Indicator : UserControl
     {
@@ -31,7 +31,7 @@ namespace BobDash
             }
 
             UpdateValue();
-            BobDash.GlobalTimer.Elapsed += GlobalTimer_Elapsed;
+            BobDash.BobDash.GlobalTimer.Elapsed += GlobalTimer_Elapsed;
         }
 
         private void GlobalTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

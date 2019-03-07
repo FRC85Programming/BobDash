@@ -11,21 +11,24 @@ namespace BobDash
 {
     public partial class BobDash : Form
     {
-        private const string ROBORIO_IP = "10.0.85.2";
-        private const string CAMERA1_URI = "http://10.0.85.48:1181/?action=stream";
-        private const string CAMERA2_URI = "http://10.0.85.48:1182/?action=stream";
-
         internal static System.Timers.Timer GlobalTimer = new System.Timers.Timer(200);
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MjpegDecoder _camera1Decoder;
         private MjpegDecoder _camera2Decoder;
         private bool _camerasStarted;
-        private double? _autoMode = null;
 
         public BobDash()
         {
             InitializeComponent();
             DoubleBuffered = true;
+
+            NetworkTable.AddGlobalConnectionListener((remote, info, connected) =>
+            {
+                OnConnectionChanged(connected);
+            }, true);
+
+            NetworkTable.SetClientMode();
+            NetworkTable.Initialize();
         }
 
         private ITable SmartDashboard
@@ -62,14 +65,7 @@ namespace BobDash
             _hotKeyManager.Register(Key.D9, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
             _hotKeyManager.KeyPressed += _hotKeyManager_KeyPressed;
 
-            NetworkTable.AddGlobalConnectionListener((remote, info, connected) =>
-            {
-                OnConnectionChanged(connected);
-            }, true);
-
-            NetworkTable.SetClientMode();
-            NetworkTable.SetIPAddress(ROBORIO_IP);
-            NetworkTable.Initialize();
+            NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
 
             GlobalTimer.Elapsed += _timer_Elapsed;
             GlobalTimer.Start();
@@ -94,7 +90,7 @@ namespace BobDash
         {
             try
             {
-                _autoMode = Convert.ToDouble(e.HotKey.Key.ToString().TrimStart('D'));
+                var autoMode = Convert.ToDouble(e.HotKey.Key.ToString().TrimStart('D'));
             }
             catch (Exception ex)
             {
@@ -111,7 +107,7 @@ namespace BobDash
                 _camera1Decoder.Error += _cameraDecoder_Error;
             }
 
-            if (_camera2Decoder == null)
+            if (_camera2Decoder == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera2Uri))
             {
                 _camera2Decoder = new MjpegDecoder();
                 _camera2Decoder.FrameReady += Decoder2_FrameReady;
@@ -131,8 +127,8 @@ namespace BobDash
                 SetupCameras();
             }
 
-            _camera1Decoder.ParseStream(new Uri(CAMERA1_URI));
-            _camera2Decoder.ParseStream(new Uri(CAMERA2_URI));
+            _camera1Decoder.ParseStream(new Uri(Properties.Settings.Default.Camera1Uri));
+            _camera2Decoder.ParseStream(new Uri(Properties.Settings.Default.Camera2Uri));
 
             _camerasStarted = true;
         }
@@ -174,39 +170,33 @@ namespace BobDash
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            double currentValue = 0;
             try
             {
-                currentValue = SmartDashboard.GetNumber("AUTO MODE");
+                var value = SmartDashboard.GetValue(Properties.Settings.Default.NetworkTablesConnectionCheckVariableName);
+                SetBackColor(Color.Green);
             }
             catch
             {
                 SetBackColor(Color.Yellow);
-                if (_autoMode.HasValue)
-                {
-                    currentValue = _autoMode.Value;
-                }
-            }
-
-            try
-            { 
-                if (_autoMode.HasValue)
-                {
-                    if (_autoMode.Value != currentValue)
-                    {
-                        SmartDashboard.PutNumber("AUTO MODE", _autoMode.Value);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
             }
         }
 
         private void BobDash_FormClosing(object sender, FormClosingEventArgs e)
         {
             GlobalTimer.Stop();
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            using (var settingsForm = new SettingsForm())
+            {
+                if (settingsForm.ShowDialog() == DialogResult.OK)
+                {
+                    NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
+                    StopCamera();
+                    StartCamera();
+                }
+            }
         }
     }
 }
