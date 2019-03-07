@@ -209,6 +209,7 @@ namespace BobDash
             {
                 if (settingsForm.ShowDialog() == DialogResult.OK)
                 {
+                    NetworkTable.Shutdown();
                     NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
                     StopCamera();
                     StartCamera();
