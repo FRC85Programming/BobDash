@@ -10,13 +10,12 @@ namespace BobDash
 {
     public partial class BobDash : Form
     {
-        private const string CAMERA_URI = "http://mm-hp-xw8400-workstation.local:8080/?action=stream";
+        private const string CAMERA_URI = "http://10.0.85.48:1181/?action=stream";
 
         private System.Timers.Timer _timer;
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MjpegDecoder _cameraDecoder;
         private bool _cameraStarted;
-        private double? _autoMode = null;
 
         public BobDash()
         {
@@ -29,22 +28,6 @@ namespace BobDash
             get
             {                
                 return NetworkTable.GetTable("SmartDashboard");
-            }
-        }
-
-        private void UpdateAutoModeText(string autoMode)
-        {
-            if (lblAutoModeValue.InvokeRequired)
-            {
-                if (lblAutoModeValue.Text != autoMode)
-                {
-                    lblAutoModeValue.Invoke(new Action(() => { UpdateAutoModeText(autoMode); }));
-                }
-            }
-            else
-            {
-                lblAutoModeValue.Text = autoMode;
-                lblAutoDescription.Text = Enum.GetName(typeof(AutoDescriptions), Convert.ToInt32(autoMode));
             }
         }
 
@@ -115,7 +98,7 @@ namespace BobDash
         {
             try
             {
-                _autoMode = Convert.ToDouble(e.HotKey.Key.ToString().TrimStart('D'));
+                var autoMode = Convert.ToDouble(e.HotKey.Key.ToString().TrimStart('D'));
             }
             catch (Exception ex)
             {
@@ -198,27 +181,6 @@ namespace BobDash
             catch
             {
                 SetBackColor(Color.Yellow);
-                if (_autoMode.HasValue)
-                {
-                    currentValue = _autoMode.Value;
-                }
-            }
-
-            try
-            { 
-                if (_autoMode.HasValue)
-                {
-                    if (_autoMode.Value != currentValue)
-                    {
-                        SmartDashboard.PutNumber("AUTO MODE", _autoMode.Value);
-                    }
-                }
-
-                UpdateAutoModeText(currentValue.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
             }
         }
 
