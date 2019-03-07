@@ -36,7 +36,7 @@ namespace BobDash
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dashboard.StartCamera("http://mm-hp-xw8400-workstation.local:8080/?action=stream");
+            dashboard.StartCamera("http://10.0.85.48:1181/?action=stream");
         }
     }
 }
