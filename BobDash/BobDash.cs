@@ -1,5 +1,5 @@
-﻿using GlobalHotKey;
-using MjpegProcessor;
+﻿using AForge.Video;
+using GlobalHotKey;
 using NetworkTables;
 using NetworkTables.Tables;
 using System;
@@ -14,9 +14,9 @@ namespace BobDash
     {
         internal static System.Timers.Timer GlobalTimer = new System.Timers.Timer(200);
         private HotKeyManager _hotKeyManager = new HotKeyManager();
-        private MjpegDecoder _camera1Decoder;
-        private MjpegDecoder _camera2Decoder;
-        private MjpegDecoder _driverAssistCameraDecoder;
+        private MJPEGStream _camera1Stream;
+        private MJPEGStream _camera2Stream;
+        private MJPEGStream _driverAssistCameraStream;
         private bool _camerasStarted;
         private bool _processingImage = false;
 
@@ -101,27 +101,21 @@ namespace BobDash
             }
         }
 
-        private void SetupCameras()
+        private void SetupStreams()
         {
-            if (_camera1Decoder == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera1Uri))
+            if (_camera1Stream == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera1Uri))
             {
-                _camera1Decoder = new MjpegDecoder();
-                _camera1Decoder.FrameReady += Decoder1_FrameReady;
-                _camera1Decoder.Error += _cameraDecoder_Error;
+                _camera1Stream = new MJPEGStream(Properties.Settings.Default.Camera1Uri);
             }
 
-            if (_camera2Decoder == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera2Uri))
+            if (_camera2Stream == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera2Uri))
             {
-                _camera2Decoder = new MjpegDecoder();
-                _camera2Decoder.FrameReady += Decoder2_FrameReady;
-                _camera2Decoder.Error += _cameraDecoder_Error;
+                _camera2Stream = new MJPEGStream(Properties.Settings.Default.Camera2Uri);
             }
 
-            if (_driverAssistCameraDecoder == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.DriverAssistCameraUri))
+            if (_driverAssistCameraStream == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.DriverAssistCameraUri))
             {
-                _driverAssistCameraDecoder = new MjpegDecoder();
-                _driverAssistCameraDecoder.FrameReady += DriverAssistDecoder_FrameReady;
-                _driverAssistCameraDecoder.Error += _cameraDecoder_Error;
+                _driverAssistCameraStream = new MJPEGStream(Properties.Settings.Default.DriverAssistCameraUri);
             }
         }
 
@@ -132,22 +126,25 @@ namespace BobDash
                 return;
             }
 
-            SetupCameras();
+            SetupStreams();
 
-            if (CameraTabControl.SelectedTab.Name == "DriverAssistTabPage" && _driverAssistCameraDecoder != null)
+            if (CameraTabControl.SelectedTab.Name == "DriverAssistTabPage" && _driverAssistCameraStream != null)
             {
-                _driverAssistCameraDecoder.ParseStream(new Uri(Properties.Settings.Default.DriverAssistCameraUri));
+                DriverAssistCameraVideoSourcePlayer.VideoSource = _driverAssistCameraStream;
+                _driverAssistCameraStream.Start(); 
             }
             if (CameraTabControl.SelectedTab.Name == "VisionTabPage")
             {
-                if (_camera1Decoder != null)
+                if (_camera1Stream != null)
                 {
-                    _camera1Decoder.ParseStream(new Uri(Properties.Settings.Default.Camera1Uri));
+                    Camera1VideoSourcePlayer.VideoSource = _camera1Stream;
+                    _camera1Stream.Start();
                 }
 
-                if (_camera2Decoder != null)
+                if (_camera2Stream != null)
                 {
-                    _camera2Decoder.ParseStream(new Uri(Properties.Settings.Default.Camera2Uri));
+                    Camera2VideoSourcePlayer.VideoSource = _camera2Stream;
+                    _camera2Stream.Start();
                 }
             }
 
@@ -161,83 +158,25 @@ namespace BobDash
                 return;
             }
 
-            if (_camera1Decoder != null)
+            if (_camera1Stream != null)
             {
-                _camera1Decoder.StopStream();
-                _camera1Decoder = null;
+                _camera1Stream.Stop();
+                _camera1Stream = null;
             }
 
-            if (_camera2Decoder != null)
+            if (_camera2Stream != null)
             {
-                _camera2Decoder.StopStream();
-                _camera2Decoder = null;
+                _camera2Stream.Stop();
+                _camera2Stream = null;
             }
 
-            if (_driverAssistCameraDecoder != null)
+            if (_driverAssistCameraStream != null)
             {
-                _driverAssistCameraDecoder.StopStream();
-                _driverAssistCameraDecoder = null;
+                _driverAssistCameraStream.Stop();
+                _driverAssistCameraStream = null;
             }
 
             _camerasStarted = false;
-        }
-
-        private void _cameraDecoder_Error(object sender, ErrorEventArgs e)
-        {
-            Console.WriteLine(e.Message);
-        }
-               
-        private void UpdatePictureBox(PictureBox box, Image image, bool invoke = false)
-        {
-            if (_processingImage)
-            {
-                return;
-            }
-
-            _processingImage = true;
-
-            if (invoke)
-            {
-                var invokeEvent = new ManualResetEvent(false);
-                var result = box.BeginInvoke(new Action<ManualResetEvent>((e) =>
-                {
-                    e.Set();
-
-                    var oldImage = box.Image;
-                    box.Image = image;
-
-                    if (oldImage != null)
-                    {
-                        oldImage.Dispose();
-                    }
-                }), invokeEvent);
-
-                if (invokeEvent.WaitOne(20))
-                {
-                    box.EndInvoke(result);
-                }
-            }
-            else
-            {
-                box.Image = image;
-            }
-
-            _processingImage = false;
-        }
-
-        private void Decoder1_FrameReady(object sender, FrameReadyEventArgs e)
-        {
-            UpdatePictureBox(camera1PictureBox, e.Bitmap);
-        }
-
-        private void Decoder2_FrameReady(object sender, FrameReadyEventArgs e)
-        {
-            UpdatePictureBox(camera2PictureBox, e.Bitmap);
-        }
-
-        private void DriverAssistDecoder_FrameReady(object sender, FrameReadyEventArgs e)
-        {
-            UpdatePictureBox(DriverAssistCameraPictureBox, e.Bitmap);
         }
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
