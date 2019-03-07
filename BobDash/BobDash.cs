@@ -4,6 +4,7 @@ using NetworkTables;
 using NetworkTables.Tables;
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -185,19 +186,34 @@ namespace BobDash
             Console.WriteLine(e.Message);
         }
 
+        private void UpdatePictureBox(PictureBox box, Image image)
+        {
+            var invokeEvent = new ManualResetEvent(false);
+            var result = box.BeginInvoke(new Action<ManualResetEvent>((e) =>
+            {
+                e.Set();
+                box.Image = image; 
+            }), invokeEvent);
+
+            if (invokeEvent.WaitOne(20))
+            {
+                box.EndInvoke(result);
+            }
+        }
+
         private void Decoder1_FrameReady(object sender, FrameReadyEventArgs e)
         {
-            camera1PictureBox.Image = e.Bitmap;
+            UpdatePictureBox(camera1PictureBox, e.Bitmap);
         }
 
         private void Decoder2_FrameReady(object sender, FrameReadyEventArgs e)
         {
-            camera2PictureBox.Image = e.Bitmap;
+            UpdatePictureBox(camera2PictureBox, e.Bitmap);
         }
 
         private void DriverAssistDecoder_FrameReady(object sender, FrameReadyEventArgs e)
         {
-            DriverAssistCameraPictureBox.Image = e.Bitmap;
+            UpdatePictureBox(DriverAssistCameraPictureBox, e.Bitmap);
         }
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
