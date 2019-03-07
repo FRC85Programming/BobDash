@@ -36,28 +36,28 @@
         private void InitializeComponent()
         {
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.indicator1 = new BobDashControls.Indicator();
             this.SettingsButton = new System.Windows.Forms.Button();
-            this.camera1PictureBox = new System.Windows.Forms.PictureBox();
+            this.camera1PictureBox = new BobDashControls.DoubleBufferedPictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.camera2PictureBox = new System.Windows.Forms.PictureBox();
             this.CameraTabControl = new System.Windows.Forms.TabControl();
             this.DriverAssistTabPage = new System.Windows.Forms.TabPage();
+            this.DriverAssistCameraPictureBox = new BobDashControls.DoubleBufferedPictureBox();
             this.VisionTabPage = new System.Windows.Forms.TabPage();
-            this.DriverAssistCameraPictureBox = new System.Windows.Forms.PictureBox();
-            this.indicator1 = new BobDashControls.Indicator();
+            this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.camera2PictureBox = new BobDashControls.DoubleBufferedPictureBox();
             this.RightSideTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.camera1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.CameraTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).BeginInit();
             this.CameraTabControl.SuspendLayout();
             this.DriverAssistTabPage.SuspendLayout();
-            this.VisionTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DriverAssistCameraPictureBox)).BeginInit();
+            this.VisionTabPage.SuspendLayout();
+            this.CameraTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // RightSideTableLayoutPanel
@@ -79,6 +79,14 @@
             this.RightSideTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.RightSideTableLayoutPanel.Size = new System.Drawing.Size(593, 611);
             this.RightSideTableLayoutPanel.TabIndex = 1;
+            // 
+            // indicator1
+            // 
+            this.indicator1.Location = new System.Drawing.Point(3, 3);
+            this.indicator1.Name = "indicator1";
+            this.indicator1.Size = new System.Drawing.Size(142, 146);
+            this.indicator1.TabIndex = 0;
+            this.indicator1.VariableName = "";
             // 
             // SettingsButton
             // 
@@ -117,6 +125,50 @@
             this.splitContainer1.SplitterDistance = 753;
             this.splitContainer1.TabIndex = 4;
             // 
+            // CameraTabControl
+            // 
+            this.CameraTabControl.Controls.Add(this.DriverAssistTabPage);
+            this.CameraTabControl.Controls.Add(this.VisionTabPage);
+            this.CameraTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CameraTabControl.Location = new System.Drawing.Point(0, 0);
+            this.CameraTabControl.Name = "CameraTabControl";
+            this.CameraTabControl.SelectedIndex = 0;
+            this.CameraTabControl.Size = new System.Drawing.Size(753, 611);
+            this.CameraTabControl.TabIndex = 4;
+            this.CameraTabControl.SelectedIndexChanged += new System.EventHandler(this.CameraTabControl_SelectedIndexChanged);
+            // 
+            // DriverAssistTabPage
+            // 
+            this.DriverAssistTabPage.Controls.Add(this.DriverAssistCameraPictureBox);
+            this.DriverAssistTabPage.Location = new System.Drawing.Point(4, 22);
+            this.DriverAssistTabPage.Name = "DriverAssistTabPage";
+            this.DriverAssistTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.DriverAssistTabPage.Size = new System.Drawing.Size(745, 585);
+            this.DriverAssistTabPage.TabIndex = 0;
+            this.DriverAssistTabPage.Text = "Driver Assist";
+            this.DriverAssistTabPage.UseVisualStyleBackColor = true;
+            // 
+            // DriverAssistCameraPictureBox
+            // 
+            this.DriverAssistCameraPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DriverAssistCameraPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.DriverAssistCameraPictureBox.Name = "DriverAssistCameraPictureBox";
+            this.DriverAssistCameraPictureBox.Size = new System.Drawing.Size(739, 579);
+            this.DriverAssistCameraPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DriverAssistCameraPictureBox.TabIndex = 0;
+            this.DriverAssistCameraPictureBox.TabStop = false;
+            // 
+            // VisionTabPage
+            // 
+            this.VisionTabPage.Controls.Add(this.CameraTableLayoutPanel);
+            this.VisionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.VisionTabPage.Name = "VisionTabPage";
+            this.VisionTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.VisionTabPage.Size = new System.Drawing.Size(745, 585);
+            this.VisionTabPage.TabIndex = 1;
+            this.VisionTabPage.Text = "Vision";
+            this.VisionTabPage.UseVisualStyleBackColor = true;
+            // 
             // CameraTableLayoutPanel
             // 
             this.CameraTableLayoutPanel.ColumnCount = 1;
@@ -142,57 +194,6 @@
             this.camera2PictureBox.TabIndex = 3;
             this.camera2PictureBox.TabStop = false;
             // 
-            // CameraTabControl
-            // 
-            this.CameraTabControl.Controls.Add(this.DriverAssistTabPage);
-            this.CameraTabControl.Controls.Add(this.VisionTabPage);
-            this.CameraTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CameraTabControl.Location = new System.Drawing.Point(0, 0);
-            this.CameraTabControl.Name = "CameraTabControl";
-            this.CameraTabControl.SelectedIndex = 0;
-            this.CameraTabControl.Size = new System.Drawing.Size(753, 611);
-            this.CameraTabControl.TabIndex = 4;
-            this.CameraTabControl.SelectedIndexChanged += new System.EventHandler(this.CameraTabControl_SelectedIndexChanged);
-            // 
-            // DriverAssistTabPage
-            // 
-            this.DriverAssistTabPage.Controls.Add(this.DriverAssistCameraPictureBox);
-            this.DriverAssistTabPage.Location = new System.Drawing.Point(4, 22);
-            this.DriverAssistTabPage.Name = "DriverAssistTabPage";
-            this.DriverAssistTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.DriverAssistTabPage.Size = new System.Drawing.Size(745, 585);
-            this.DriverAssistTabPage.TabIndex = 0;
-            this.DriverAssistTabPage.Text = "Driver Assist";
-            this.DriverAssistTabPage.UseVisualStyleBackColor = true;
-            // 
-            // VisionTabPage
-            // 
-            this.VisionTabPage.Controls.Add(this.CameraTableLayoutPanel);
-            this.VisionTabPage.Location = new System.Drawing.Point(4, 22);
-            this.VisionTabPage.Name = "VisionTabPage";
-            this.VisionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.VisionTabPage.Size = new System.Drawing.Size(745, 585);
-            this.VisionTabPage.TabIndex = 1;
-            this.VisionTabPage.Text = "Vision";
-            this.VisionTabPage.UseVisualStyleBackColor = true;
-            // 
-            // DriverAssistCameraPictureBox
-            // 
-            this.DriverAssistCameraPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DriverAssistCameraPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.DriverAssistCameraPictureBox.Name = "DriverAssistCameraPictureBox";
-            this.DriverAssistCameraPictureBox.Size = new System.Drawing.Size(739, 579);
-            this.DriverAssistCameraPictureBox.TabIndex = 0;
-            this.DriverAssistCameraPictureBox.TabStop = false;
-            // 
-            // indicator1
-            // 
-            this.indicator1.Location = new System.Drawing.Point(3, 3);
-            this.indicator1.Name = "indicator1";
-            this.indicator1.Size = new System.Drawing.Size(142, 146);
-            this.indicator1.TabIndex = 0;
-            this.indicator1.VariableName = "";
-            // 
             // BobDash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,28 +211,28 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.CameraTableLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).EndInit();
             this.CameraTabControl.ResumeLayout(false);
             this.DriverAssistTabPage.ResumeLayout(false);
-            this.VisionTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DriverAssistCameraPictureBox)).EndInit();
+            this.VisionTabPage.ResumeLayout(false);
+            this.CameraTableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.camera2PictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel RightSideTableLayoutPanel;
-        private System.Windows.Forms.PictureBox camera1PictureBox;
+        private BobDashControls.DoubleBufferedPictureBox camera1PictureBox;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel CameraTableLayoutPanel;
-        private System.Windows.Forms.PictureBox camera2PictureBox;
+        private BobDashControls.DoubleBufferedPictureBox camera2PictureBox;
         private BobDashControls.Indicator indicator1;
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.TabControl CameraTabControl;
         private System.Windows.Forms.TabPage DriverAssistTabPage;
         private System.Windows.Forms.TabPage VisionTabPage;
-        private System.Windows.Forms.PictureBox DriverAssistCameraPictureBox;
+        private BobDashControls.DoubleBufferedPictureBox DriverAssistCameraPictureBox;
     }
 }
 

@@ -18,6 +18,7 @@ namespace BobDash
         private MjpegDecoder _camera2Decoder;
         private MjpegDecoder _driverAssistCameraDecoder;
         private bool _camerasStarted;
+        private bool _processingImage = false;
 
         public BobDash()
         {
@@ -71,7 +72,7 @@ namespace BobDash
 
             GlobalTimer.Elapsed += _timer_Elapsed;
             GlobalTimer.Start();
-            SetupCameras();
+            StartCamera();
         }
 
         private void OnConnectionChanged(bool connected)
@@ -185,20 +186,43 @@ namespace BobDash
         {
             Console.WriteLine(e.Message);
         }
-
-        private void UpdatePictureBox(PictureBox box, Image image)
+               
+        private void UpdatePictureBox(PictureBox box, Image image, bool invoke = false)
         {
-            var invokeEvent = new ManualResetEvent(false);
-            var result = box.BeginInvoke(new Action<ManualResetEvent>((e) =>
+            if (_processingImage)
             {
-                e.Set();
-                box.Image = image; 
-            }), invokeEvent);
-
-            if (invokeEvent.WaitOne(20))
-            {
-                box.EndInvoke(result);
+                return;
             }
+
+            _processingImage = true;
+
+            if (invoke)
+            {
+                var invokeEvent = new ManualResetEvent(false);
+                var result = box.BeginInvoke(new Action<ManualResetEvent>((e) =>
+                {
+                    e.Set();
+
+                    var oldImage = box.Image;
+                    box.Image = image;
+
+                    if (oldImage != null)
+                    {
+                        oldImage.Dispose();
+                    }
+                }), invokeEvent);
+
+                if (invokeEvent.WaitOne(20))
+                {
+                    box.EndInvoke(result);
+                }
+            }
+            else
+            {
+                box.Image = image;
+            }
+
+            _processingImage = false;
         }
 
         private void Decoder1_FrameReady(object sender, FrameReadyEventArgs e)
@@ -231,6 +255,7 @@ namespace BobDash
 
         private void BobDash_FormClosing(object sender, FormClosingEventArgs e)
         {
+            StopCamera();
             GlobalTimer.Stop();
         }
 

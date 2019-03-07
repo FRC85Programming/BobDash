@@ -115,6 +115,9 @@
     <Compile Include="BobDash.Designer.cs">
       <DependentUpon>BobDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="DoubleBufferedPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Indicator.cs">
       <SubType>UserControl</SubType>
     </Compile>
