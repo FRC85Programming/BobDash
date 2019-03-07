@@ -3,6 +3,7 @@ using NetworkTables;
 using NetworkTables.Tables;
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -16,6 +17,7 @@ namespace BobDash
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MjpegDecoder _cameraDecoder;
         private bool _cameraStarted;
+        private bool _processingImage = false;
 
         public BobDash()
         {
@@ -153,8 +155,29 @@ namespace BobDash
             Console.WriteLine(e.Message);
         }
 
+        private void UpdatePictureBox(PictureBox box, Image image)
+        {
+            var invokeEvent = new ManualResetEvent(false);
+            var result = box.BeginInvoke(new Action<ManualResetEvent>((e) =>
+            {
+                e.Set();
+                box.Image = image;
+            }), invokeEvent);
+
+            if (invokeEvent.WaitOne(20))
+            {
+                box.EndInvoke(result);
+            }
+        }
+
         private void Decoder_FrameReady(object sender, FrameReadyEventArgs e)
         {
+            if (_processingImage)
+            {
+                return;
+            }
+
+            _processingImage = true;
             Image oldImage = cameraPictureBox.Image;
 
             var dest = new Bitmap(cameraPictureBox.Width, cameraPictureBox.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
@@ -163,12 +186,14 @@ namespace BobDash
                 gr.DrawImage(e.Bitmap, new Rectangle(Point.Empty, dest.Size));
             }
 
-            cameraPictureBox.Image = dest;
+            UpdatePictureBox(cameraPictureBox, dest);
 
             if (oldImage != null)
             {
                 oldImage.Dispose();
             }
+
+            _processingImage = false;
         }
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
