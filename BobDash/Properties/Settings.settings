@@ -1,7 +1,24 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BobDash.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Camera1Uri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://frcvision.local:1181/?action=stream</Value>
+    </Setting>
+    <Setting Name="Camera2Uri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://frcvision.local:1182/?action=stream</Value>
+    </Setting>
+    <Setting Name="NetworkTablesServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.0.85.2</Value>
+    </Setting>
+    <Setting Name="NetworkTablesConnectionCheckVariableName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Lift Top</Value>
+    </Setting>
+    <Setting Name="DriverAssistCameraUri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://frcvision.local:1183/?action=stream</Value>
+    </Setting>
+    <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
