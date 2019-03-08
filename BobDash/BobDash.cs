@@ -175,22 +175,16 @@ namespace BobDash
 
             if (DriverAssistCameraVideoSourcePlayer.VideoSource != null && DriverAssistCameraVideoSourcePlayer.VideoSource.IsRunning)
             {
-                DriverAssistCameraVideoSourcePlayer.Stop();
-                DriverAssistCameraVideoSourcePlayer.WaitForStop();
                 DriverAssistCameraVideoSourcePlayer.VideoSource = null;
             }
 
             if (Camera1VideoSourcePlayer.VideoSource != null && Camera1VideoSourcePlayer.VideoSource.IsRunning)
             {
-                Camera1VideoSourcePlayer.Stop();
-                Camera1VideoSourcePlayer.WaitForStop();
                 Camera1VideoSourcePlayer.VideoSource = null;
             }
 
             if (Camera2VideoSourcePlayer.VideoSource != null && Camera2VideoSourcePlayer.VideoSource.IsRunning)
             {
-                Camera2VideoSourcePlayer.Stop();
-                Camera2VideoSourcePlayer.WaitForStop();
                 Camera2VideoSourcePlayer.VideoSource = null;
             }
 
