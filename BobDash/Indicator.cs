@@ -18,21 +18,13 @@ namespace BobDashControls
             set
             {
                 _variableName = value;
-                SetText(_variableName);
+                SetTextAndColor(_variableName, BackColor);
             }
         }
 
         public Indicator()
         {
             InitializeComponent();
-        }
-
-        private ITable SmartDashboard
-        {
-            get
-            {
-                return NetworkTable.GetTable("SmartDashboard");
-            }
         }
 
         private void Indicator_Load(object sender, EventArgs e)
@@ -53,54 +45,50 @@ namespace BobDashControls
 
         private void UpdateValue()
         {
+            if (BobDash.BobDash.SmartDashboard == null)
+            {
+                SetTextAndColor($"{VariableName}{Environment.NewLine}Disconnected", Color.Yellow);
+                return;
+            }
+
             try
             {
-                var value = SmartDashboard.GetValue(VariableName);
+                var value = BobDash.BobDash.SmartDashboard.GetValue(VariableName);
                 if (value.IsBoolean())
                 {
-                    SetText(VariableName);
                     if (value.GetBoolean())
                     {
-                        SetColor(Color.LimeGreen);
+                        SetTextAndColor(VariableName, Color.LimeGreen);
                     }
                     else
                     {
-                        SetColor(Color.Red);
+                        SetTextAndColor(VariableName, Color.Red);
                     }
                 }
                 else
                 {
-                    SetColor(Color.LimeGreen);
-                    SetText($"{VariableName}{Environment.NewLine}{value.ToString()}");
+                    SetTextAndColor($"{VariableName}{Environment.NewLine}{value.ToString()}", Color.LimeGreen);
                 }
             }
             catch (Exception ex)
             {
-                SetColor(Color.Yellow);
-                SetText($"{VariableName}{Environment.NewLine}{ex.Message}");
+                SetTextAndColor($"{VariableName}{Environment.NewLine}{ex.Message}", Color.Yellow);
             }
         }
 
-        private void SetText(string text)
+        private void SetTextAndColor(string text, Color color)
         {
             if (InvokeRequired)
             {
-                Invoke(new Action(() => MainLabel.Text = text));
+                Invoke(new Action(() =>
+                {
+                    MainLabel.Text = text;
+                    MainLabel.BackColor = color;
+                }));
             }
             else
             {
                 MainLabel.Text = text;
-            }
-        }
-
-        private void SetColor(Color color)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new Action(() => MainLabel.BackColor = color));
-            }
-            else
-            {
                 MainLabel.BackColor = color;
             }
         }

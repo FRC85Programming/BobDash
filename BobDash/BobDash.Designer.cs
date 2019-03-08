@@ -37,14 +37,6 @@
         {
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.SettingsButton = new System.Windows.Forms.Button();
-            this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.CameraTabControl = new System.Windows.Forms.TabControl();
-            this.DriverAssistTabPage = new System.Windows.Forms.TabPage();
-            this.DriverAssistCameraVideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
-            this.VisionTabPage = new System.Windows.Forms.TabPage();
-            this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.indicator2 = new BobDashControls.Indicator();
             this.indicator1 = new BobDashControls.Indicator();
             this.indicator3 = new BobDashControls.Indicator();
@@ -53,6 +45,14 @@
             this.indicator6 = new BobDashControls.Indicator();
             this.indicator7 = new BobDashControls.Indicator();
             this.indicator8 = new BobDashControls.Indicator();
+            this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.CameraTabControl = new System.Windows.Forms.TabControl();
+            this.DriverAssistTabPage = new System.Windows.Forms.TabPage();
+            this.DriverAssistCameraVideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
+            this.VisionTabPage = new System.Windows.Forms.TabPage();
+            this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.RightSideTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -102,6 +102,70 @@
             this.SettingsButton.Text = "Settings";
             this.SettingsButton.UseVisualStyleBackColor = true;
             this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            // 
+            // indicator2
+            // 
+            this.indicator2.Location = new System.Drawing.Point(151, 293);
+            this.indicator2.Name = "indicator2";
+            this.indicator2.Size = new System.Drawing.Size(142, 139);
+            this.indicator2.TabIndex = 2;
+            this.indicator2.VariableName = "Lift Bottom";
+            // 
+            // indicator1
+            // 
+            this.indicator1.Location = new System.Drawing.Point(151, 3);
+            this.indicator1.Name = "indicator1";
+            this.indicator1.Size = new System.Drawing.Size(142, 139);
+            this.indicator1.TabIndex = 0;
+            this.indicator1.VariableName = "Lift Top";
+            // 
+            // indicator3
+            // 
+            this.indicator3.Location = new System.Drawing.Point(3, 148);
+            this.indicator3.Name = "indicator3";
+            this.indicator3.Size = new System.Drawing.Size(142, 139);
+            this.indicator3.TabIndex = 3;
+            this.indicator3.VariableName = "Front Prox Sensor";
+            // 
+            // indicator4
+            // 
+            this.indicator4.Location = new System.Drawing.Point(299, 148);
+            this.indicator4.Name = "indicator4";
+            this.indicator4.Size = new System.Drawing.Size(142, 139);
+            this.indicator4.TabIndex = 4;
+            this.indicator4.VariableName = "Rear Prox Sensor";
+            // 
+            // indicator5
+            // 
+            this.indicator5.Location = new System.Drawing.Point(151, 148);
+            this.indicator5.Name = "indicator5";
+            this.indicator5.Size = new System.Drawing.Size(142, 139);
+            this.indicator5.TabIndex = 5;
+            this.indicator5.VariableName = "Lift Center";
+            // 
+            // indicator6
+            // 
+            this.indicator6.Location = new System.Drawing.Point(3, 438);
+            this.indicator6.Name = "indicator6";
+            this.indicator6.Size = new System.Drawing.Size(142, 139);
+            this.indicator6.TabIndex = 6;
+            this.indicator6.VariableName = "Horizontal Lift";
+            // 
+            // indicator7
+            // 
+            this.indicator7.Location = new System.Drawing.Point(151, 438);
+            this.indicator7.Name = "indicator7";
+            this.indicator7.Size = new System.Drawing.Size(142, 139);
+            this.indicator7.TabIndex = 7;
+            this.indicator7.VariableName = "Vertical Lift";
+            // 
+            // indicator8
+            // 
+            this.indicator8.Location = new System.Drawing.Point(299, 438);
+            this.indicator8.Name = "indicator8";
+            this.indicator8.Size = new System.Drawing.Size(142, 139);
+            this.indicator8.TabIndex = 8;
+            this.indicator8.VariableName = "Intake Encoder";
             // 
             // Camera1VideoSourcePlayer
             // 
@@ -198,70 +262,6 @@
             this.Camera2VideoSourcePlayer.TabIndex = 3;
             this.Camera2VideoSourcePlayer.TabStop = false;
             this.Camera2VideoSourcePlayer.VideoSource = null;
-            // 
-            // indicator2
-            // 
-            this.indicator2.Location = new System.Drawing.Point(151, 293);
-            this.indicator2.Name = "indicator2";
-            this.indicator2.Size = new System.Drawing.Size(142, 139);
-            this.indicator2.TabIndex = 2;
-            this.indicator2.VariableName = "Lift Bottom";
-            // 
-            // indicator1
-            // 
-            this.indicator1.Location = new System.Drawing.Point(151, 3);
-            this.indicator1.Name = "indicator1";
-            this.indicator1.Size = new System.Drawing.Size(142, 139);
-            this.indicator1.TabIndex = 0;
-            this.indicator1.VariableName = "Lift Top";
-            // 
-            // indicator3
-            // 
-            this.indicator3.Location = new System.Drawing.Point(3, 148);
-            this.indicator3.Name = "indicator3";
-            this.indicator3.Size = new System.Drawing.Size(142, 139);
-            this.indicator3.TabIndex = 3;
-            this.indicator3.VariableName = "Front Prox Sensor";
-            // 
-            // indicator4
-            // 
-            this.indicator4.Location = new System.Drawing.Point(299, 148);
-            this.indicator4.Name = "indicator4";
-            this.indicator4.Size = new System.Drawing.Size(142, 139);
-            this.indicator4.TabIndex = 4;
-            this.indicator4.VariableName = "Rear Prox Sensor";
-            // 
-            // indicator5
-            // 
-            this.indicator5.Location = new System.Drawing.Point(151, 148);
-            this.indicator5.Name = "indicator5";
-            this.indicator5.Size = new System.Drawing.Size(142, 139);
-            this.indicator5.TabIndex = 5;
-            this.indicator5.VariableName = "Lift Center";
-            // 
-            // indicator6
-            // 
-            this.indicator6.Location = new System.Drawing.Point(3, 438);
-            this.indicator6.Name = "indicator6";
-            this.indicator6.Size = new System.Drawing.Size(142, 139);
-            this.indicator6.TabIndex = 6;
-            this.indicator6.VariableName = "Horizontal Lift";
-            // 
-            // indicator7
-            // 
-            this.indicator7.Location = new System.Drawing.Point(151, 438);
-            this.indicator7.Name = "indicator7";
-            this.indicator7.Size = new System.Drawing.Size(142, 139);
-            this.indicator7.TabIndex = 7;
-            this.indicator7.VariableName = "Vertical Lift";
-            // 
-            // indicator8
-            // 
-            this.indicator8.Location = new System.Drawing.Point(299, 438);
-            this.indicator8.Name = "indicator8";
-            this.indicator8.Size = new System.Drawing.Size(142, 139);
-            this.indicator8.TabIndex = 8;
-            this.indicator8.VariableName = "Intake Encoder";
             // 
             // BobDash
             // 

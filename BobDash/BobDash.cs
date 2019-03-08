@@ -13,7 +13,8 @@ namespace BobDash
     public partial class BobDash : Form
     {
         internal static System.Timers.Timer GlobalTimer = new System.Timers.Timer(200);
-        private System.Windows.Forms.Timer _cameraReconnectTimer = new System.Windows.Forms.Timer();
+        private static bool NetworkTablesConnected = false;
+
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MJPEGStream _camera1Stream;
         private MJPEGStream _camera2Stream;
@@ -41,11 +42,18 @@ namespace BobDash
             DoubleBuffered = true;
         }
 
-        private ITable SmartDashboard
+        internal static ITable SmartDashboard
         {
             get
-            {                
-                return NetworkTable.GetTable("SmartDashboard");
+            {
+                if (NetworkTablesConnected)
+                {
+                    return NetworkTable.GetTable("SmartDashboard");
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -80,46 +88,19 @@ namespace BobDash
             GlobalTimer.Elapsed += _timer_Elapsed;
             GlobalTimer.Start();
 
-            _cameraReconnectTimer.Tick += _cameraReconnectTimer_Tick;
             StartCamera();
-        }
-
-        private void _cameraReconnectTimer_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DriverAssistCameraVideoSourcePlayer.VideoSource != null && !DriverAssistCameraVideoSourcePlayer.IsRunning)
-                {
-                    DriverAssistCameraVideoSourcePlayer.Start();
-                }
-
-                if (Camera1VideoSourcePlayer.VideoSource != null && !Camera1VideoSourcePlayer.IsRunning)
-                {
-                    Camera1VideoSourcePlayer.Start();
-                }
-
-                if (Camera2VideoSourcePlayer.VideoSource != null && !Camera2VideoSourcePlayer.IsRunning)
-                {
-                    Camera2VideoSourcePlayer.Start();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
         }
 
         private void OnConnectionChanged(bool connected)
         {
+            NetworkTablesConnected = connected;
             if (connected)
             {
                 SetBackColor(Color.LimeGreen);
-                StartCamera();
             }
             else
             {
                 SetBackColor(Color.Red);
-                StopCamera();
             }
         }
 
@@ -183,12 +164,10 @@ namespace BobDash
             }
 
             _camerasStarted = true;
-            //_cameraReconnectTimer.Start();
         }
 
         private void StopCamera()
         {
-            //_cameraReconnectTimer.Stop();
             if (!_camerasStarted)
             {
                 return;
@@ -238,6 +217,11 @@ namespace BobDash
 
         private void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
+            if (SmartDashboard == null)
+            {
+                return;
+            }
+
             try
             {
                 var value = SmartDashboard.GetValue(Properties.Settings.Default.NetworkTablesConnectionCheckVariableName);
@@ -259,10 +243,18 @@ namespace BobDash
         {
             using (var settingsForm = new SettingsForm())
             {
+                var oldNetworkTablesServer = Properties.Settings.Default.NetworkTablesServer;
                 if (settingsForm.ShowDialog() == DialogResult.OK)
                 {
-                    NetworkTable.Shutdown();
-                    NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
+                    if (Properties.Settings.Default.NetworkTablesServer != oldNetworkTablesServer)
+                    {
+                        GlobalTimer.Stop();
+                        NetworkTable.Shutdown();
+                        NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
+                        Thread.Sleep(200);
+                        GlobalTimer.Start();
+                    }
+
                     StopCamera();
                     StartCamera();
                 }
