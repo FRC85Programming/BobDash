@@ -4,6 +4,7 @@ using NetworkTables;
 using NetworkTables.Tables;
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -12,6 +13,7 @@ namespace BobDash
     public partial class BobDash : Form
     {
         internal static System.Timers.Timer GlobalTimer = new System.Timers.Timer(200);
+        private System.Windows.Forms.Timer _cameraReconnectTimer = new System.Windows.Forms.Timer();
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MJPEGStream _camera1Stream;
         private MJPEGStream _camera2Stream;
@@ -77,7 +79,34 @@ namespace BobDash
 
             GlobalTimer.Elapsed += _timer_Elapsed;
             GlobalTimer.Start();
+
+            _cameraReconnectTimer.Tick += _cameraReconnectTimer_Tick;
             StartCamera();
+        }
+
+        private void _cameraReconnectTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DriverAssistCameraVideoSourcePlayer.VideoSource != null && !DriverAssistCameraVideoSourcePlayer.IsRunning)
+                {
+                    DriverAssistCameraVideoSourcePlayer.Start();
+                }
+
+                if (Camera1VideoSourcePlayer.VideoSource != null && !Camera1VideoSourcePlayer.IsRunning)
+                {
+                    Camera1VideoSourcePlayer.Start();
+                }
+
+                if (Camera2VideoSourcePlayer.VideoSource != null && !Camera2VideoSourcePlayer.IsRunning)
+                {
+                    Camera2VideoSourcePlayer.Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void OnConnectionChanged(bool connected)
@@ -154,13 +183,36 @@ namespace BobDash
             }
 
             _camerasStarted = true;
+            //_cameraReconnectTimer.Start();
         }
 
         private void StopCamera()
         {
+            //_cameraReconnectTimer.Stop();
             if (!_camerasStarted)
             {
                 return;
+            }
+
+            if (DriverAssistCameraVideoSourcePlayer.VideoSource != null && DriverAssistCameraVideoSourcePlayer.VideoSource.IsRunning)
+            {
+                DriverAssistCameraVideoSourcePlayer.Stop();
+                DriverAssistCameraVideoSourcePlayer.WaitForStop();
+                DriverAssistCameraVideoSourcePlayer.VideoSource = null;
+            }
+
+            if (Camera1VideoSourcePlayer.VideoSource != null && Camera1VideoSourcePlayer.VideoSource.IsRunning)
+            {
+                Camera1VideoSourcePlayer.Stop();
+                Camera1VideoSourcePlayer.WaitForStop();
+                Camera1VideoSourcePlayer.VideoSource = null;
+            }
+
+            if (Camera2VideoSourcePlayer.VideoSource != null && Camera2VideoSourcePlayer.VideoSource.IsRunning)
+            {
+                Camera2VideoSourcePlayer.Stop();
+                Camera2VideoSourcePlayer.WaitForStop();
+                Camera2VideoSourcePlayer.VideoSource = null;
             }
 
             if (_camera1Stream != null)
@@ -220,6 +272,7 @@ namespace BobDash
         private void CameraTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             StopCamera();
+            Thread.Sleep(100);
             StartCamera();
         }
     }
