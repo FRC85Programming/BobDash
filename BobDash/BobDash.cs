@@ -15,6 +15,7 @@ namespace BobDash
         internal static System.Timers.Timer GlobalTimer = new System.Timers.Timer(200);
         private static bool NetworkTablesConnected = false;
 
+        private VariablesList VariablesList = new VariablesList();
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MJPEGStream _camera1Stream;
         private MJPEGStream _camera2Stream;
@@ -39,6 +40,8 @@ namespace BobDash
             NetworkTable.Initialize();
 
             InitializeComponent();
+
+            VariablesListElementHost.Child = VariablesList;
             DoubleBuffered = true;
         }
 
@@ -59,6 +62,11 @@ namespace BobDash
 
         private void SetBackColor(Color color)
         {
+            if (BackColor == color)
+            {
+                return;
+            }
+
             if (InvokeRequired)
             {
                 Invoke(new Action(() => BackColor = color));
@@ -96,6 +104,7 @@ namespace BobDash
             NetworkTablesConnected = connected;
             if (connected)
             {
+                SmartDashboard.PutBoolean("BobDashWasHere", true);
                 SetBackColor(Color.LimeGreen);
             }
             else
@@ -218,8 +227,14 @@ namespace BobDash
 
             try
             {
-                var value = SmartDashboard.GetValue(Properties.Settings.Default.NetworkTablesConnectionCheckVariableName);
-                SetBackColor(Color.Green);
+                if (SmartDashboard != null)
+                {
+                    SetBackColor(Color.Green);
+                }
+                else
+                {
+                    SetBackColor(Color.Yellow);
+                }
             }
             catch
             {
