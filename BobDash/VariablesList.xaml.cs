@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkTables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,9 @@ namespace BobDash
     /// </summary>
     public partial class VariablesList : UserControl
     {
+        private int _listener;
+        private List<SmartDashboardVariable> _variables;
+
         public VariablesList()
         {
             InitializeComponent();
@@ -29,14 +33,19 @@ namespace BobDash
         {
             if (BobDash.SmartDashboard != null)
             {
-                var list = new List<SmartDashboardVariable>();
+                _variables = new List<SmartDashboardVariable>();
                 foreach (var key in BobDash.SmartDashboard.GetKeys())
                 {
                     var value = BobDash.SmartDashboard.GetValue(key);
-                    list.Add(new SmartDashboardVariable(key, value));
+                    _variables.Add(new SmartDashboardVariable(key, value));
                 }
 
-                VariablesListView.ItemsSource = list;
+                _listener = NtCore.AddEntryListener($"/SmartDashboard", (uid, key, newValue, flags) => {
+                    //_variables.Add(new SmartDashboardVariable(key, newValue));
+                    //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Value"));
+                }, NotifyFlags.NotifyNew | NotifyFlags.NotifyImmediate);
+
+                VariablesListView.ItemsSource = _variables;
             }
         }
     }

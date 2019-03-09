@@ -1,37 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NetworkTables;
+using System.ComponentModel;
 
 namespace BobDash
 {
-    public class SmartDashboardVariable
+    public class SmartDashboardVariable : INotifyPropertyChanged
     {
+        int _listener;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string Name
         {
             get;
             private set;
         }
 
-        public NetworkTables.Value Value
+        public Value Value
         {
             get;
             private set;
         }
 
-        public NetworkTables.NtType Type
+        public NtType Type
         {
             get
             {
-                return Value?.Type ?? NetworkTables.NtType.Unassigned;
+                return Value?.Type ?? NtType.Unassigned;
             }
         }
 
-        public SmartDashboardVariable(string name, NetworkTables.Value value)
+        public SmartDashboardVariable(string name, Value value)
         {
             Name = name;
             Value = value;
+            
+            _listener = NtCore.AddEntryListener($"/SmartDashboard/{name}", (uid, key, newValue, flags) => {
+                Value = newValue;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Value"));
+            }, NotifyFlags.NotifyUpdate | NotifyFlags.NotifyImmediate);           
         }
     }
 }
