@@ -104,7 +104,7 @@ namespace BobDash
             NetworkTablesConnected = connected;
             if (connected)
             {
-                SmartDashboard.PutBoolean("BobDashWasHere", true);
+                SmartDashboard.PutBoolean("BobDashConnected", true);
                 SetBackColor(Color.LimeGreen);
             }
             else
@@ -244,6 +244,12 @@ namespace BobDash
 
         private void BobDash_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (NetworkTablesConnected)
+            {
+                SmartDashboard.PutBoolean("BobDashConnected", false);
+                NetworkTable.Shutdown();
+            }
+
             StopCamera();
             GlobalTimer.Stop();
         }
@@ -259,6 +265,7 @@ namespace BobDash
                     {
                         GlobalTimer.Stop();
                         NetworkTable.Shutdown();
+                        Thread.Sleep(200);
                         NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
                         Thread.Sleep(200);
                         GlobalTimer.Start();

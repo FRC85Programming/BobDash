@@ -8,8 +8,6 @@ namespace BobDash
 {
     public class SmartDashboardVariable
     {
-
-
         public string Name
         {
             get;
