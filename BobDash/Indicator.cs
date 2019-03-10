@@ -1,4 +1,5 @@
-﻿using NetworkTables;
+﻿using BobDash;
+using NetworkTables;
 using NetworkTables.Tables;
 using System;
 using System.Drawing;
@@ -8,6 +9,8 @@ namespace BobDashControls
 {
     public partial class Indicator : UserControl
     {
+        private SmartDashboardVariable _variable;
+
         private string _variableName;
         public string VariableName
         {
@@ -40,7 +43,7 @@ namespace BobDashControls
 
         private void GlobalTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            UpdateValue();
+            //UpdateValue();
         }
 
         private void UpdateValue()
@@ -53,27 +56,48 @@ namespace BobDashControls
 
             try
             {
-                var value = BobDash.BobDash.SmartDashboard.GetValue(VariableName);
-                if (value.IsBoolean())
+                if (_variable == null || _variable.Name != VariableName)
                 {
-                    if (value.GetBoolean())
+                    if (_variable != null)
                     {
-                        SetTextAndColor(VariableName, Color.LimeGreen);
+                        _variable.PropertyChanged -= _variable_PropertyChanged;
+                    }
+
+                    _variable = new SmartDashboardVariable(VariableName, BobDash.BobDash.SmartDashboard.GetValue(VariableName));
+                    _variable.PropertyChanged += _variable_PropertyChanged;
+                }
+
+                if (_variable == null || _variable.Value == null)
+                {
+                    SetTextAndColor($"{VariableName}{Environment.NewLine}Null returned", Color.Red);
+                    return;
+                }
+                
+                if (_variable.Value.IsBoolean())
+                {
+                    if (_variable.Value.GetBoolean())
+                    {
+                        SetTextAndColor($"{VariableName}{Environment.NewLine}TRUE", Color.LimeGreen);
                     }
                     else
                     {
-                        SetTextAndColor(VariableName, Color.Red);
+                        SetTextAndColor($"{VariableName}{Environment.NewLine}FALSE", Color.Red);
                     }
                 }
                 else
                 {
-                    SetTextAndColor($"{VariableName}{Environment.NewLine}{value.ToString()}", Color.LimeGreen);
+                    SetTextAndColor($"{VariableName}{Environment.NewLine}{_variable.Value.ToString()}", Color.LimeGreen);
                 }
             }
             catch (Exception ex)
             {
                 SetTextAndColor($"{VariableName}{Environment.NewLine}{ex.Message}", Color.Yellow);
             }
+        }
+
+        private void _variable_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            UpdateValue();
         }
 
         private void SetTextAndColor(string text, Color color)

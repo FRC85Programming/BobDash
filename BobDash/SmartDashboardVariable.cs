@@ -5,7 +5,7 @@ namespace BobDash
 {
     public class SmartDashboardVariable : INotifyPropertyChanged
     {
-        int _listener;
+        readonly int _listener;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
