@@ -43,6 +43,11 @@ namespace BobDash
 
             VariablesListElementHost.Child = VariablesList;
             DoubleBuffered = true;
+
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                ConnectButton.Visible = true;
+            }
         }
 
         internal static ITable SmartDashboard
@@ -104,11 +109,21 @@ namespace BobDash
             NetworkTablesConnected = connected;
             if (connected)
             {
+                if (ConnectButton.Visible)
+                {
+                    ConnectButton.Invoke((Action)(() => { ConnectButton.Text = "Disconnect"; }));
+                }
+
                 SmartDashboard.PutBoolean("BobDashConnected", true);
                 SetBackColor(Color.LimeGreen);
             }
             else
             {
+                if (ConnectButton.Visible)
+                {
+                    ConnectButton.Invoke((Action)(() => { ConnectButton.Text = "Connect"; }));
+                }
+
                 SetBackColor(Color.Red);
             }
         }
@@ -282,6 +297,18 @@ namespace BobDash
             StopCamera();
             Thread.Sleep(100);
             StartCamera();
+        }
+
+        private void ConnectButton_Click(object sender, EventArgs e)
+        {
+            if (NetworkTablesConnected)
+            {
+                NetworkTable.Shutdown();
+            }
+            else
+            {
+                NetworkTable.Initialize();
+            }
         }
     }
 }

@@ -37,7 +37,7 @@ namespace BobDash
             _listener = NtCore.AddEntryListener($"/SmartDashboard/{name}", (uid, key, newValue, flags) => {
                 Value = newValue;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Value"));
-            }, NotifyFlags.NotifyUpdate | NotifyFlags.NotifyImmediate);           
+            }, NotifyFlags.NotifyNew | NotifyFlags.NotifyUpdate | NotifyFlags.NotifyImmediate);           
         }
     }
 }

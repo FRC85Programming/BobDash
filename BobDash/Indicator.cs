@@ -1,8 +1,7 @@
 ﻿using BobDash;
-using NetworkTables;
-using NetworkTables.Tables;
 using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BobDashControls
@@ -30,20 +29,15 @@ namespace BobDashControls
             InitializeComponent();
         }
 
-        private void Indicator_Load(object sender, EventArgs e)
+        private async void Indicator_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(VariableName))
             {
                 MainLabel.Text = VariableName;
             }
 
+            await Task.Delay(200);
             UpdateValue();
-            BobDash.BobDash.GlobalTimer.Elapsed += GlobalTimer_Elapsed;
-        }
-
-        private void GlobalTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            //UpdateValue();
         }
 
         private void UpdateValue()
@@ -115,6 +109,11 @@ namespace BobDashControls
                 MainLabel.Text = text;
                 MainLabel.BackColor = color;
             }
+        }
+
+        private void MainLabel_DoubleClick(object sender, EventArgs e)
+        {
+            UpdateValue();
         }
     }
 }
