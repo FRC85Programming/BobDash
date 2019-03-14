@@ -37,14 +37,11 @@
         {
             this.IndicatorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.SettingsButton = new System.Windows.Forms.Button();
-            this.Camera1VideoSourcePlayer = new System.Windows.Forms.WebBrowser();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.CameraTabControl = new System.Windows.Forms.TabControl();
             this.DriverAssistTabPage = new System.Windows.Forms.TabPage();
-            this.DriverAssistCameraVideoSourcePlayer = new System.Windows.Forms.WebBrowser();
             this.VisionTabPage = new System.Windows.Forms.TabPage();
             this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.Camera2VideoSourcePlayer = new System.Windows.Forms.WebBrowser();
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RightSideTabControl = new System.Windows.Forms.TabControl();
             this.IndicatorsTabPage = new System.Windows.Forms.TabPage();
@@ -114,15 +111,6 @@
             this.SettingsButton.UseVisualStyleBackColor = true;
             this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
-            // Camera1VideoSourcePlayer
-            // 
-            this.Camera1VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Camera1VideoSourcePlayer.Location = new System.Drawing.Point(3, 3);
-            this.Camera1VideoSourcePlayer.Name = "Camera1VideoSourcePlayer";
-            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(733, 283);
-            this.Camera1VideoSourcePlayer.TabIndex = 2;
-            this.Camera1VideoSourcePlayer.TabStop = false;
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -154,7 +142,6 @@
             // 
             // DriverAssistTabPage
             // 
-            this.DriverAssistTabPage.Controls.Add(this.DriverAssistCameraVideoSourcePlayer);
             this.DriverAssistTabPage.Location = new System.Drawing.Point(4, 22);
             this.DriverAssistTabPage.Name = "DriverAssistTabPage";
             this.DriverAssistTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -162,15 +149,6 @@
             this.DriverAssistTabPage.TabIndex = 0;
             this.DriverAssistTabPage.Text = "Driver Assist";
             this.DriverAssistTabPage.UseVisualStyleBackColor = true;
-            // 
-            // DriverAssistCameraVideoSourcePlayer
-            // 
-            this.DriverAssistCameraVideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DriverAssistCameraVideoSourcePlayer.Location = new System.Drawing.Point(3, 3);
-            this.DriverAssistCameraVideoSourcePlayer.Name = "DriverAssistCameraVideoSourcePlayer";
-            this.DriverAssistCameraVideoSourcePlayer.Size = new System.Drawing.Size(739, 579);
-            this.DriverAssistCameraVideoSourcePlayer.TabIndex = 0;
-            this.DriverAssistCameraVideoSourcePlayer.TabStop = false;
             // 
             // VisionTabPage
             // 
@@ -187,8 +165,6 @@
             // 
             this.CameraTableLayoutPanel.ColumnCount = 1;
             this.CameraTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CameraTableLayoutPanel.Controls.Add(this.Camera2VideoSourcePlayer, 0, 1);
-            this.CameraTableLayoutPanel.Controls.Add(this.Camera1VideoSourcePlayer, 0, 0);
             this.CameraTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CameraTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.CameraTableLayoutPanel.Name = "CameraTableLayoutPanel";
@@ -197,15 +173,6 @@
             this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.CameraTableLayoutPanel.Size = new System.Drawing.Size(739, 579);
             this.CameraTableLayoutPanel.TabIndex = 3;
-            // 
-            // Camera2VideoSourcePlayer
-            // 
-            this.Camera2VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(3, 292);
-            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
-            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(733, 284);
-            this.Camera2VideoSourcePlayer.TabIndex = 3;
-            this.Camera2VideoSourcePlayer.TabStop = false;
             // 
             // RightSideTableLayoutPanel
             // 
@@ -386,16 +353,13 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel IndicatorTableLayoutPanel;
-        private System.Windows.Forms.WebBrowser Camera1VideoSourcePlayer;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel CameraTableLayoutPanel;
-        private System.Windows.Forms.WebBrowser Camera2VideoSourcePlayer;
         private BobDashControls.Indicator indicator1;
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.TabControl CameraTabControl;
         private System.Windows.Forms.TabPage DriverAssistTabPage;
         private System.Windows.Forms.TabPage VisionTabPage;
-        private System.Windows.Forms.WebBrowser DriverAssistCameraVideoSourcePlayer;
         private BobDashControls.Indicator indicator2;
         private BobDashControls.Indicator indicator3;
         private BobDashControls.Indicator indicator4;

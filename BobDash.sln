@@ -1,22 +1,37 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BobDash", "BobDash\BobDash.csproj", "{D51F692D-1544-45FB-9B73-A5C9760B3148}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Debug|x64.ActiveCfg = Debug|x64
+		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Debug|x64.Build.0 = Debug|x64
+		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Debug|x86.ActiveCfg = Debug|x86
+		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Debug|x86.Build.0 = Debug|x86
 		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Release|x64.ActiveCfg = Release|x64
+		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Release|x64.Build.0 = Release|x64
+		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Release|x86.ActiveCfg = Release|x86
+		{D51F692D-1544-45FB-9B73-A5C9760B3148}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE1E742B-11ED-4DD4-A44A-5895D6036F7A}
 	EndGlobalSection
 EndGlobal

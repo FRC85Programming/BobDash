@@ -3,16 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="Camera1Uri" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://frcvision.local:1181/?action=stream</Value>
+      <Value Profile="(Default)">http://10.0.85.99:1181/?action=stream</Value>
     </Setting>
     <Setting Name="Camera2Uri" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://frcvision.local:1182/?action=stream</Value>
+      <Value Profile="(Default)">http://10.0.85.99:1182/?action=stream</Value>
     </Setting>
     <Setting Name="NetworkTablesServer" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.0.85.2</Value>
     </Setting>
     <Setting Name="DriverAssistCameraUri" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://frcvision.local:1183/?action=stream</Value>
+      <Value Profile="(Default)">http://10.0.85.99:1183/?action=stream</Value>
     </Setting>
     <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

@@ -25,7 +25,7 @@ namespace BobDash.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://frcvision.local:1181/?action=stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.0.85.99:1181/?action=stream")]
         public string Camera1Uri {
             get {
                 return ((string)(this["Camera1Uri"]));
@@ -37,7 +37,7 @@ namespace BobDash.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://frcvision.local:1182/?action=stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.0.85.99:1182/?action=stream")]
         public string Camera2Uri {
             get {
                 return ((string)(this["Camera2Uri"]));
@@ -61,7 +61,7 @@ namespace BobDash.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://frcvision.local:1183/?action=stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.0.85.99:1183/?action=stream")]
         public string DriverAssistCameraUri {
             get {
                 return ((string)(this["DriverAssistCameraUri"]));

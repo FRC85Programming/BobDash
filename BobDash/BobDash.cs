@@ -1,4 +1,6 @@
-﻿using GlobalHotKey;
+﻿using CefSharp;
+using CefSharp.WinForms;
+using GlobalHotKey;
 using NetworkTables;
 using NetworkTables.Tables;
 using System;
@@ -80,6 +82,9 @@ namespace BobDash
 
         private void BobDash_Load(object sender, EventArgs e)
         {
+            CefSettings settings = new CefSettings();
+            Cef.Initialize(settings);
+
             _hotKeyManager.Register(Key.D0, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
             _hotKeyManager.Register(Key.D1, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
             _hotKeyManager.Register(Key.D2, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
@@ -145,18 +150,24 @@ namespace BobDash
 
             if (CameraTabControl.SelectedTab.Name == "DriverAssistTabPage" && !string.IsNullOrWhiteSpace(Properties.Settings.Default.DriverAssistCameraUri))
             {
-                DriverAssistCameraVideoSourcePlayer.Navigate(Properties.Settings.Default.DriverAssistCameraUri);
+                var chromeBrowser = new ChromiumWebBrowser(Properties.Settings.Default.DriverAssistCameraUri);
+                DriverAssistTabPage.Controls.Add(chromeBrowser);
+                chromeBrowser.Dock = DockStyle.Fill;
             }
             if (CameraTabControl.SelectedTab.Name == "VisionTabPage")
             {
                 if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera1Uri))
                 {
-                    Camera1VideoSourcePlayer.Navigate(Properties.Settings.Default.Camera1Uri);
+                    var chromeBrowser = new ChromiumWebBrowser(Properties.Settings.Default.Camera1Uri);
+                    CameraTableLayoutPanel.Controls.Add(chromeBrowser, 0, 0);
+                    chromeBrowser.Dock = DockStyle.Fill;
                 }
 
                 if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera2Uri))
                 {
-                    Camera2VideoSourcePlayer.Navigate(Properties.Settings.Default.Camera2Uri);
+                    var chromeBrowser = new ChromiumWebBrowser(Properties.Settings.Default.Camera2Uri);
+                    CameraTableLayoutPanel.Controls.Add(chromeBrowser, 0, 1);
+                    chromeBrowser.Dock = DockStyle.Fill;
                 }
             }
 
@@ -170,9 +181,8 @@ namespace BobDash
                 return;
             }
 
-            DriverAssistCameraVideoSourcePlayer.Navigate("about:blank");
-            Camera1VideoSourcePlayer.Navigate("about:blank");
-            Camera2VideoSourcePlayer.Navigate("about:blank");
+            DriverAssistTabPage.Controls.Clear();
+            CameraTableLayoutPanel.Controls.Clear();
 
             _camerasStarted = false;
         }
@@ -211,6 +221,7 @@ namespace BobDash
 
             StopCamera();
             GlobalTimer.Stop();
+            Cef.Shutdown();
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
