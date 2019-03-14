@@ -1,5 +1,4 @@
-﻿using AForge.Video;
-using GlobalHotKey;
+﻿using GlobalHotKey;
 using NetworkTables;
 using NetworkTables.Tables;
 using System;
@@ -17,9 +16,6 @@ namespace BobDash
 
         private VariablesList VariablesList = new VariablesList();
         private HotKeyManager _hotKeyManager = new HotKeyManager();
-        private MJPEGStream _camera1Stream;
-        private MJPEGStream _camera2Stream;
-        private MJPEGStream _driverAssistCameraStream;
         private bool _camerasStarted;
 
         public BobDash()
@@ -140,24 +136,6 @@ namespace BobDash
             }
         }
 
-        private void SetupStreams()
-        {
-            if (_camera1Stream == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera1Uri))
-            {
-                _camera1Stream = new MJPEGStream(Properties.Settings.Default.Camera1Uri);
-            }
-
-            if (_camera2Stream == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera2Uri))
-            {
-                _camera2Stream = new MJPEGStream(Properties.Settings.Default.Camera2Uri);
-            }
-
-            if (_driverAssistCameraStream == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.DriverAssistCameraUri))
-            {
-                _driverAssistCameraStream = new MJPEGStream(Properties.Settings.Default.DriverAssistCameraUri);
-            }
-        }
-
         private void StartCamera()
         {
             if (_camerasStarted)
@@ -165,25 +143,20 @@ namespace BobDash
                 return;
             }
 
-            SetupStreams();
-
-            if (CameraTabControl.SelectedTab.Name == "DriverAssistTabPage" && _driverAssistCameraStream != null)
+            if (CameraTabControl.SelectedTab.Name == "DriverAssistTabPage" && !string.IsNullOrWhiteSpace(Properties.Settings.Default.DriverAssistCameraUri))
             {
-                DriverAssistCameraVideoSourcePlayer.VideoSource = _driverAssistCameraStream;
-                _driverAssistCameraStream.Start(); 
+                DriverAssistCameraVideoSourcePlayer.Navigate(Properties.Settings.Default.DriverAssistCameraUri);
             }
             if (CameraTabControl.SelectedTab.Name == "VisionTabPage")
             {
-                if (_camera1Stream != null)
+                if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera1Uri))
                 {
-                    Camera1VideoSourcePlayer.VideoSource = _camera1Stream;
-                    _camera1Stream.Start();
+                    Camera1VideoSourcePlayer.Navigate(Properties.Settings.Default.Camera1Uri);
                 }
 
-                if (_camera2Stream != null)
+                if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.Camera2Uri))
                 {
-                    Camera2VideoSourcePlayer.VideoSource = _camera2Stream;
-                    _camera2Stream.Start();
+                    Camera2VideoSourcePlayer.Navigate(Properties.Settings.Default.Camera2Uri);
                 }
             }
 
@@ -197,38 +170,9 @@ namespace BobDash
                 return;
             }
 
-            if (DriverAssistCameraVideoSourcePlayer.VideoSource != null && DriverAssistCameraVideoSourcePlayer.VideoSource.IsRunning)
-            {
-                DriverAssistCameraVideoSourcePlayer.VideoSource = null;
-            }
-
-            if (Camera1VideoSourcePlayer.VideoSource != null && Camera1VideoSourcePlayer.VideoSource.IsRunning)
-            {
-                Camera1VideoSourcePlayer.VideoSource = null;
-            }
-
-            if (Camera2VideoSourcePlayer.VideoSource != null && Camera2VideoSourcePlayer.VideoSource.IsRunning)
-            {
-                Camera2VideoSourcePlayer.VideoSource = null;
-            }
-
-            if (_camera1Stream != null)
-            {
-                _camera1Stream.Stop();
-                _camera1Stream = null;
-            }
-
-            if (_camera2Stream != null)
-            {
-                _camera2Stream.Stop();
-                _camera2Stream = null;
-            }
-
-            if (_driverAssistCameraStream != null)
-            {
-                _driverAssistCameraStream.Stop();
-                _driverAssistCameraStream = null;
-            }
+            DriverAssistCameraVideoSourcePlayer.Navigate("about:blank");
+            Camera1VideoSourcePlayer.Navigate("about:blank");
+            Camera2VideoSourcePlayer.Navigate("about:blank");
 
             _camerasStarted = false;
         }
