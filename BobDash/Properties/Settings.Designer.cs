@@ -82,5 +82,29 @@ namespace BobDash.Properties {
                 this["UpgradeRequired"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.0.85.99:1183/?action=stream")]
+        public string RightSideCameraUri {
+            get {
+                return ((string)(this["RightSideCameraUri"]));
+            }
+            set {
+                this["RightSideCameraUri"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public decimal CameraZoom {
+            get {
+                return ((decimal)(this["CameraZoom"]));
+            }
+            set {
+                this["CameraZoom"] = value;
+            }
+        }
     }
 }

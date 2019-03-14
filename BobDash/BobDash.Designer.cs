@@ -49,6 +49,8 @@
             this.VariablesListElementHost = new System.Windows.Forms.Integration.ElementHost();
             this.BottomButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ConnectButton = new System.Windows.Forms.Button();
+            this.RightSideCameraTabPage = new System.Windows.Forms.TabPage();
+            this.CameraZoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.indicator2 = new BobDashControls.Indicator();
             this.indicator1 = new BobDashControls.Indicator();
             this.indicator3 = new BobDashControls.Indicator();
@@ -63,14 +65,13 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.CameraTabControl.SuspendLayout();
-            this.DriverAssistTabPage.SuspendLayout();
             this.VisionTabPage.SuspendLayout();
-            this.CameraTableLayoutPanel.SuspendLayout();
             this.RightSideTableLayoutPanel.SuspendLayout();
             this.RightSideTabControl.SuspendLayout();
             this.IndicatorsTabPage.SuspendLayout();
             this.VariablesTabPage.SuspendLayout();
             this.BottomButtonsTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraZoomNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // IndicatorTableLayoutPanel
@@ -103,9 +104,9 @@
             // SettingsButton
             // 
             this.SettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SettingsButton.Location = new System.Drawing.Point(296, 3);
+            this.SettingsButton.Location = new System.Drawing.Point(393, 3);
             this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(288, 28);
+            this.SettingsButton.Size = new System.Drawing.Size(191, 28);
             this.SettingsButton.TabIndex = 1;
             this.SettingsButton.Text = "Settings";
             this.SettingsButton.UseVisualStyleBackColor = true;
@@ -191,6 +192,7 @@
             // 
             // RightSideTabControl
             // 
+            this.RightSideTabControl.Controls.Add(this.RightSideCameraTabPage);
             this.RightSideTabControl.Controls.Add(this.IndicatorsTabPage);
             this.RightSideTabControl.Controls.Add(this.VariablesTabPage);
             this.RightSideTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -233,16 +235,18 @@
             // 
             // BottomButtonsTableLayoutPanel
             // 
-            this.BottomButtonsTableLayoutPanel.ColumnCount = 2;
-            this.BottomButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.BottomButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.BottomButtonsTableLayoutPanel.ColumnCount = 3;
+            this.BottomButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.BottomButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.BottomButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.BottomButtonsTableLayoutPanel.Controls.Add(this.ConnectButton, 0, 0);
-            this.BottomButtonsTableLayoutPanel.Controls.Add(this.SettingsButton, 1, 0);
+            this.BottomButtonsTableLayoutPanel.Controls.Add(this.SettingsButton, 2, 0);
+            this.BottomButtonsTableLayoutPanel.Controls.Add(this.CameraZoomNumericUpDown, 1, 0);
             this.BottomButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 574);
             this.BottomButtonsTableLayoutPanel.Name = "BottomButtonsTableLayoutPanel";
             this.BottomButtonsTableLayoutPanel.RowCount = 1;
-            this.BottomButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.BottomButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.BottomButtonsTableLayoutPanel.Size = new System.Drawing.Size(587, 34);
             this.BottomButtonsTableLayoutPanel.TabIndex = 3;
             // 
@@ -251,12 +255,42 @@
             this.ConnectButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConnectButton.Location = new System.Drawing.Point(3, 3);
             this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(287, 28);
+            this.ConnectButton.Size = new System.Drawing.Size(189, 28);
             this.ConnectButton.TabIndex = 2;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
             this.ConnectButton.Visible = false;
             this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+            // 
+            // RightSideCameraTabPage
+            // 
+            this.RightSideCameraTabPage.Location = new System.Drawing.Point(4, 22);
+            this.RightSideCameraTabPage.Name = "RightSideCameraTabPage";
+            this.RightSideCameraTabPage.Size = new System.Drawing.Size(579, 539);
+            this.RightSideCameraTabPage.TabIndex = 2;
+            this.RightSideCameraTabPage.Text = "Camera";
+            this.RightSideCameraTabPage.UseVisualStyleBackColor = true;
+            // 
+            // CameraZoomNumericUpDown
+            // 
+            this.CameraZoomNumericUpDown.DecimalPlaces = 2;
+            this.CameraZoomNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CameraZoomNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CameraZoomNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            131072});
+            this.CameraZoomNumericUpDown.Location = new System.Drawing.Point(198, 3);
+            this.CameraZoomNumericUpDown.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.CameraZoomNumericUpDown.Name = "CameraZoomNumericUpDown";
+            this.CameraZoomNumericUpDown.Size = new System.Drawing.Size(189, 26);
+            this.CameraZoomNumericUpDown.TabIndex = 3;
+            this.CameraZoomNumericUpDown.ValueChanged += new System.EventHandler(this.CameraZoomNumericUpDown_ValueChanged);
             // 
             // indicator2
             // 
@@ -339,14 +373,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.CameraTabControl.ResumeLayout(false);
-            this.DriverAssistTabPage.ResumeLayout(false);
             this.VisionTabPage.ResumeLayout(false);
-            this.CameraTableLayoutPanel.ResumeLayout(false);
             this.RightSideTableLayoutPanel.ResumeLayout(false);
             this.RightSideTabControl.ResumeLayout(false);
             this.IndicatorsTabPage.ResumeLayout(false);
             this.VariablesTabPage.ResumeLayout(false);
             this.BottomButtonsTableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CameraZoomNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -374,6 +407,8 @@
         private System.Windows.Forms.Integration.ElementHost VariablesListElementHost;
         private System.Windows.Forms.TableLayoutPanel BottomButtonsTableLayoutPanel;
         private System.Windows.Forms.Button ConnectButton;
+        private System.Windows.Forms.TabPage RightSideCameraTabPage;
+        private System.Windows.Forms.NumericUpDown CameraZoomNumericUpDown;
     }
 }
 
