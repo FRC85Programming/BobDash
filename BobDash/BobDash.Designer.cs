@@ -13,6 +13,15 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+            _driverAssistBrowser.IsBrowserInitializedChanged -= Browser_IsBrowserInitializedChanged;
+            _driverAssistBrowser.LoadingStateChanged -= Browser_LoadingStateChanged;
+            _camera1Browser.IsBrowserInitializedChanged -= Browser_IsBrowserInitializedChanged;
+            _camera1Browser.LoadingStateChanged -= Browser_LoadingStateChanged;
+            _camera2Browser.IsBrowserInitializedChanged -= Browser_IsBrowserInitializedChanged;
+            _camera2Browser.LoadingStateChanged -= Browser_LoadingStateChanged;
+            _rightSideCameraBrowser.IsBrowserInitializedChanged -= Browser_IsBrowserInitializedChanged;
+            _rightSideCameraBrowser.LoadingStateChanged -= Browser_LoadingStateChanged;
+
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -44,12 +53,12 @@
             this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RightSideTabControl = new System.Windows.Forms.TabControl();
+            this.RightSideCameraTabPage = new System.Windows.Forms.TabPage();
             this.IndicatorsTabPage = new System.Windows.Forms.TabPage();
             this.VariablesTabPage = new System.Windows.Forms.TabPage();
             this.VariablesListElementHost = new System.Windows.Forms.Integration.ElementHost();
             this.BottomButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ConnectButton = new System.Windows.Forms.Button();
-            this.RightSideCameraTabPage = new System.Windows.Forms.TabPage();
             this.CameraZoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.indicator2 = new BobDashControls.Indicator();
             this.indicator1 = new BobDashControls.Indicator();
@@ -98,15 +107,15 @@
             this.IndicatorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IndicatorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IndicatorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.IndicatorTableLayoutPanel.Size = new System.Drawing.Size(573, 533);
+            this.IndicatorTableLayoutPanel.Size = new System.Drawing.Size(641, 533);
             this.IndicatorTableLayoutPanel.TabIndex = 1;
             // 
             // SettingsButton
             // 
             this.SettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SettingsButton.Location = new System.Drawing.Point(393, 3);
+            this.SettingsButton.Location = new System.Drawing.Point(439, 3);
             this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(191, 28);
+            this.SettingsButton.Size = new System.Drawing.Size(213, 28);
             this.SettingsButton.TabIndex = 1;
             this.SettingsButton.Text = "Settings";
             this.SettingsButton.UseVisualStyleBackColor = true;
@@ -126,8 +135,10 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.RightSideTableLayoutPanel);
             this.splitContainer1.Size = new System.Drawing.Size(1350, 611);
-            this.splitContainer1.SplitterDistance = 753;
+            this.splitContainer1.SplitterDistance = 683;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 4;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // CameraTabControl
             // 
@@ -137,7 +148,7 @@
             this.CameraTabControl.Location = new System.Drawing.Point(0, 0);
             this.CameraTabControl.Name = "CameraTabControl";
             this.CameraTabControl.SelectedIndex = 0;
-            this.CameraTabControl.Size = new System.Drawing.Size(753, 611);
+            this.CameraTabControl.Size = new System.Drawing.Size(683, 611);
             this.CameraTabControl.TabIndex = 4;
             this.CameraTabControl.SelectedIndexChanged += new System.EventHandler(this.CameraTabControl_SelectedIndexChanged);
             // 
@@ -146,7 +157,7 @@
             this.DriverAssistTabPage.Location = new System.Drawing.Point(4, 22);
             this.DriverAssistTabPage.Name = "DriverAssistTabPage";
             this.DriverAssistTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.DriverAssistTabPage.Size = new System.Drawing.Size(745, 585);
+            this.DriverAssistTabPage.Size = new System.Drawing.Size(675, 585);
             this.DriverAssistTabPage.TabIndex = 0;
             this.DriverAssistTabPage.Text = "Driver Assist";
             this.DriverAssistTabPage.UseVisualStyleBackColor = true;
@@ -157,7 +168,7 @@
             this.VisionTabPage.Location = new System.Drawing.Point(4, 22);
             this.VisionTabPage.Name = "VisionTabPage";
             this.VisionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.VisionTabPage.Size = new System.Drawing.Size(745, 585);
+            this.VisionTabPage.Size = new System.Drawing.Size(675, 585);
             this.VisionTabPage.TabIndex = 1;
             this.VisionTabPage.Text = "Vision";
             this.VisionTabPage.UseVisualStyleBackColor = true;
@@ -172,7 +183,7 @@
             this.CameraTableLayoutPanel.RowCount = 2;
             this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CameraTableLayoutPanel.Size = new System.Drawing.Size(739, 579);
+            this.CameraTableLayoutPanel.Size = new System.Drawing.Size(669, 579);
             this.CameraTableLayoutPanel.TabIndex = 3;
             // 
             // RightSideTableLayoutPanel
@@ -187,7 +198,7 @@
             this.RightSideTableLayoutPanel.RowCount = 2;
             this.RightSideTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.61702F));
             this.RightSideTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.382979F));
-            this.RightSideTableLayoutPanel.Size = new System.Drawing.Size(593, 611);
+            this.RightSideTableLayoutPanel.Size = new System.Drawing.Size(661, 611);
             this.RightSideTableLayoutPanel.TabIndex = 3;
             // 
             // RightSideTabControl
@@ -199,8 +210,17 @@
             this.RightSideTabControl.Location = new System.Drawing.Point(3, 3);
             this.RightSideTabControl.Name = "RightSideTabControl";
             this.RightSideTabControl.SelectedIndex = 0;
-            this.RightSideTabControl.Size = new System.Drawing.Size(587, 565);
+            this.RightSideTabControl.Size = new System.Drawing.Size(655, 565);
             this.RightSideTabControl.TabIndex = 2;
+            // 
+            // RightSideCameraTabPage
+            // 
+            this.RightSideCameraTabPage.Location = new System.Drawing.Point(4, 22);
+            this.RightSideCameraTabPage.Name = "RightSideCameraTabPage";
+            this.RightSideCameraTabPage.Size = new System.Drawing.Size(647, 539);
+            this.RightSideCameraTabPage.TabIndex = 2;
+            this.RightSideCameraTabPage.Text = "Camera";
+            this.RightSideCameraTabPage.UseVisualStyleBackColor = true;
             // 
             // IndicatorsTabPage
             // 
@@ -208,7 +228,7 @@
             this.IndicatorsTabPage.Location = new System.Drawing.Point(4, 22);
             this.IndicatorsTabPage.Name = "IndicatorsTabPage";
             this.IndicatorsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.IndicatorsTabPage.Size = new System.Drawing.Size(579, 539);
+            this.IndicatorsTabPage.Size = new System.Drawing.Size(647, 539);
             this.IndicatorsTabPage.TabIndex = 0;
             this.IndicatorsTabPage.Text = "Indicators";
             this.IndicatorsTabPage.UseVisualStyleBackColor = true;
@@ -219,7 +239,7 @@
             this.VariablesTabPage.Location = new System.Drawing.Point(4, 22);
             this.VariablesTabPage.Name = "VariablesTabPage";
             this.VariablesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.VariablesTabPage.Size = new System.Drawing.Size(579, 539);
+            this.VariablesTabPage.Size = new System.Drawing.Size(647, 539);
             this.VariablesTabPage.TabIndex = 1;
             this.VariablesTabPage.Text = "Variables";
             this.VariablesTabPage.UseVisualStyleBackColor = true;
@@ -229,7 +249,7 @@
             this.VariablesListElementHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.VariablesListElementHost.Location = new System.Drawing.Point(3, 3);
             this.VariablesListElementHost.Name = "VariablesListElementHost";
-            this.VariablesListElementHost.Size = new System.Drawing.Size(573, 533);
+            this.VariablesListElementHost.Size = new System.Drawing.Size(641, 533);
             this.VariablesListElementHost.TabIndex = 0;
             this.VariablesListElementHost.Child = null;
             // 
@@ -247,7 +267,7 @@
             this.BottomButtonsTableLayoutPanel.Name = "BottomButtonsTableLayoutPanel";
             this.BottomButtonsTableLayoutPanel.RowCount = 1;
             this.BottomButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.BottomButtonsTableLayoutPanel.Size = new System.Drawing.Size(587, 34);
+            this.BottomButtonsTableLayoutPanel.Size = new System.Drawing.Size(655, 34);
             this.BottomButtonsTableLayoutPanel.TabIndex = 3;
             // 
             // ConnectButton
@@ -255,21 +275,11 @@
             this.ConnectButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConnectButton.Location = new System.Drawing.Point(3, 3);
             this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(189, 28);
+            this.ConnectButton.Size = new System.Drawing.Size(212, 28);
             this.ConnectButton.TabIndex = 2;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
-            this.ConnectButton.Visible = false;
             this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
-            // 
-            // RightSideCameraTabPage
-            // 
-            this.RightSideCameraTabPage.Location = new System.Drawing.Point(4, 22);
-            this.RightSideCameraTabPage.Name = "RightSideCameraTabPage";
-            this.RightSideCameraTabPage.Size = new System.Drawing.Size(579, 539);
-            this.RightSideCameraTabPage.TabIndex = 2;
-            this.RightSideCameraTabPage.Text = "Camera";
-            this.RightSideCameraTabPage.UseVisualStyleBackColor = true;
             // 
             // CameraZoomNumericUpDown
             // 
@@ -281,20 +291,20 @@
             0,
             0,
             131072});
-            this.CameraZoomNumericUpDown.Location = new System.Drawing.Point(198, 3);
+            this.CameraZoomNumericUpDown.Location = new System.Drawing.Point(221, 3);
             this.CameraZoomNumericUpDown.Maximum = new decimal(new int[] {
             50,
             0,
             0,
             0});
             this.CameraZoomNumericUpDown.Name = "CameraZoomNumericUpDown";
-            this.CameraZoomNumericUpDown.Size = new System.Drawing.Size(189, 26);
+            this.CameraZoomNumericUpDown.Size = new System.Drawing.Size(212, 26);
             this.CameraZoomNumericUpDown.TabIndex = 3;
             this.CameraZoomNumericUpDown.ValueChanged += new System.EventHandler(this.CameraZoomNumericUpDown_ValueChanged);
             // 
             // indicator2
             // 
-            this.indicator2.Location = new System.Drawing.Point(146, 269);
+            this.indicator2.Location = new System.Drawing.Point(163, 269);
             this.indicator2.Name = "indicator2";
             this.indicator2.Size = new System.Drawing.Size(137, 127);
             this.indicator2.TabIndex = 2;
@@ -302,7 +312,7 @@
             // 
             // indicator1
             // 
-            this.indicator1.Location = new System.Drawing.Point(146, 3);
+            this.indicator1.Location = new System.Drawing.Point(163, 3);
             this.indicator1.Name = "indicator1";
             this.indicator1.Size = new System.Drawing.Size(137, 127);
             this.indicator1.TabIndex = 0;
@@ -318,7 +328,7 @@
             // 
             // indicator4
             // 
-            this.indicator4.Location = new System.Drawing.Point(289, 136);
+            this.indicator4.Location = new System.Drawing.Point(323, 136);
             this.indicator4.Name = "indicator4";
             this.indicator4.Size = new System.Drawing.Size(137, 127);
             this.indicator4.TabIndex = 4;
@@ -326,7 +336,7 @@
             // 
             // indicator5
             // 
-            this.indicator5.Location = new System.Drawing.Point(146, 136);
+            this.indicator5.Location = new System.Drawing.Point(163, 136);
             this.indicator5.Name = "indicator5";
             this.indicator5.Size = new System.Drawing.Size(137, 127);
             this.indicator5.TabIndex = 5;
@@ -342,7 +352,7 @@
             // 
             // indicator7
             // 
-            this.indicator7.Location = new System.Drawing.Point(146, 402);
+            this.indicator7.Location = new System.Drawing.Point(163, 402);
             this.indicator7.Name = "indicator7";
             this.indicator7.Size = new System.Drawing.Size(137, 128);
             this.indicator7.TabIndex = 7;
@@ -350,7 +360,7 @@
             // 
             // indicator8
             // 
-            this.indicator8.Location = new System.Drawing.Point(289, 402);
+            this.indicator8.Location = new System.Drawing.Point(323, 402);
             this.indicator8.Name = "indicator8";
             this.indicator8.Size = new System.Drawing.Size(137, 128);
             this.indicator8.TabIndex = 8;
@@ -364,9 +374,12 @@
             this.ClientSize = new System.Drawing.Size(1350, 611);
             this.Controls.Add(this.splitContainer1);
             this.Name = "BobDash";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "BobDash";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BobDash_FormClosing);
             this.Load += new System.EventHandler(this.BobDash_Load);
+            this.ResizeEnd += new System.EventHandler(this.BobDash_ResizeEnd);
+            this.Move += new System.EventHandler(this.BobDash_Move);
             this.IndicatorTableLayoutPanel.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

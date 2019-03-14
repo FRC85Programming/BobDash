@@ -23,5 +23,14 @@
     <Setting Name="CameraZoom" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
+    <Setting Name="LeftRightSplitPosition" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">683</Value>
+    </Setting>
+    <Setting Name="Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="Size" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1366, 650</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
