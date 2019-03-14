@@ -42,6 +42,7 @@
             this.MainLabel.TabIndex = 0;
             this.MainLabel.Text = "Indicator";
             this.MainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MainLabel.DoubleClick += new System.EventHandler(this.MainLabel_DoubleClick);
             // 
             // Indicator
             // 

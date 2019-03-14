@@ -1,13 +1,15 @@
-﻿using NetworkTables;
-using NetworkTables.Tables;
+﻿using BobDash;
 using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BobDashControls
 {
     public partial class Indicator : UserControl
     {
+        private SmartDashboardVariable _variable;
+
         private string _variableName;
         public string VariableName
         {
@@ -27,19 +29,14 @@ namespace BobDashControls
             InitializeComponent();
         }
 
-        private void Indicator_Load(object sender, EventArgs e)
+        private async void Indicator_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(VariableName))
             {
                 MainLabel.Text = VariableName;
             }
 
-            UpdateValue();
-            BobDash.BobDash.GlobalTimer.Elapsed += GlobalTimer_Elapsed;
-        }
-
-        private void GlobalTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
+            await Task.Delay(200);
             UpdateValue();
         }
 
@@ -53,27 +50,48 @@ namespace BobDashControls
 
             try
             {
-                var value = BobDash.BobDash.SmartDashboard.GetValue(VariableName);
-                if (value.IsBoolean())
+                if (_variable == null || _variable.Name != VariableName)
                 {
-                    if (value.GetBoolean())
+                    if (_variable != null)
                     {
-                        SetTextAndColor(VariableName, Color.LimeGreen);
+                        _variable.PropertyChanged -= _variable_PropertyChanged;
+                    }
+
+                    _variable = new SmartDashboardVariable(VariableName, BobDash.BobDash.SmartDashboard.GetValue(VariableName));
+                    _variable.PropertyChanged += _variable_PropertyChanged;
+                }
+
+                if (_variable == null || _variable.Value == null)
+                {
+                    SetTextAndColor($"{VariableName}{Environment.NewLine}Null returned", Color.Red);
+                    return;
+                }
+                
+                if (_variable.Value.IsBoolean())
+                {
+                    if (_variable.Value.GetBoolean())
+                    {
+                        SetTextAndColor($"{VariableName}{Environment.NewLine}TRUE", Color.LimeGreen);
                     }
                     else
                     {
-                        SetTextAndColor(VariableName, Color.Red);
+                        SetTextAndColor($"{VariableName}{Environment.NewLine}FALSE", Color.Red);
                     }
                 }
                 else
                 {
-                    SetTextAndColor($"{VariableName}{Environment.NewLine}{value.ToString()}", Color.LimeGreen);
+                    SetTextAndColor($"{VariableName}{Environment.NewLine}{_variable.Value.ToString()}", Color.LimeGreen);
                 }
             }
             catch (Exception ex)
             {
                 SetTextAndColor($"{VariableName}{Environment.NewLine}{ex.Message}", Color.Yellow);
             }
+        }
+
+        private void _variable_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            UpdateValue();
         }
 
         private void SetTextAndColor(string text, Color color)
@@ -91,6 +109,11 @@ namespace BobDashControls
                 MainLabel.Text = text;
                 MainLabel.BackColor = color;
             }
+        }
+
+        private void MainLabel_DoubleClick(object sender, EventArgs e)
+        {
+            UpdateValue();
         }
     }
 }

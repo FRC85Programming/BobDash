@@ -11,9 +11,6 @@
     <Setting Name="NetworkTablesServer" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.0.85.2</Value>
     </Setting>
-    <Setting Name="NetworkTablesConnectionCheckVariableName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Lift Top</Value>
-    </Setting>
     <Setting Name="DriverAssistCameraUri" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://frcvision.local:1183/?action=stream</Value>
     </Setting>

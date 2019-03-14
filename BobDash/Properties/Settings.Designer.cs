@@ -61,18 +61,6 @@ namespace BobDash.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Lift Top")]
-        public string NetworkTablesConnectionCheckVariableName {
-            get {
-                return ((string)(this["NetworkTablesConnectionCheckVariableName"]));
-            }
-            set {
-                this["NetworkTablesConnectionCheckVariableName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://frcvision.local:1183/?action=stream")]
         public string DriverAssistCameraUri {
             get {

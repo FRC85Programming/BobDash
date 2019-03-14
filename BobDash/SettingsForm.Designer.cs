@@ -30,7 +30,7 @@
         {
             this.SettingsPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SettingsPropertyGrid
@@ -54,23 +54,23 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // CancelButton
+            // CancelationButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CancelButton.Location = new System.Drawing.Point(12, 376);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(113, 62);
-            this.CancelButton.TabIndex = 2;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CancelationButton.Location = new System.Drawing.Point(12, 376);
+            this.CancelationButton.Name = "CancelationButton";
+            this.CancelationButton.Size = new System.Drawing.Size(113, 62);
+            this.CancelationButton.TabIndex = 2;
+            this.CancelationButton.Text = "Cancel";
+            this.CancelationButton.UseVisualStyleBackColor = true;
+            this.CancelationButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 450);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelationButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.SettingsPropertyGrid);
             this.MaximizeBox = false;
@@ -87,6 +87,6 @@
 
         private System.Windows.Forms.PropertyGrid SettingsPropertyGrid;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelationButton;
     }
 }
