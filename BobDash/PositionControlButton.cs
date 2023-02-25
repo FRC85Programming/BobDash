@@ -20,6 +20,11 @@ namespace BobDashControls
 
         private void PositionControlButton_PositionListUpdated(object sender, EventArgs e)
         {
+            UpdatePositions();
+        }
+
+        private void UpdatePositions()
+        {
             PositionNameComboBox.Items.Clear();
             if (BobDash.BobDash.SavedPositions != null)
             {
@@ -65,11 +70,8 @@ namespace BobDashControls
             {
                 try
                 {
-                    var pos = new SavedPosition();
-                    pos.PivotPosition = BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentPivotPositionVariableName);
-                    pos.ExtendPosition = BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentExtendPositionVariableName);
-                    pos.WristPosition = BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentWristPositionVariableName);
-                    BobDash.BobDash.SavedPositions.PutString(PositionNameComboBox.Text, Newtonsoft.Json.JsonConvert.SerializeObject(pos));
+                    var pos = new SavedPosition(BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentPivotPositionVariableName), BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentExtendPositionVariableName), BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentWristPositionVariableName));
+                    BobDash.BobDash.SavedPositions.PutNumberArray(PositionNameComboBox.Text, pos.ToDoubleArray());
                     BobDash.BobDash.SavedPositions.SetPersistent(PositionNameComboBox.Text);
                     PositionListUpdated?.Invoke(this, new EventArgs());
                 }
@@ -80,15 +82,17 @@ namespace BobDashControls
             }
             else
             {
-                var saved = BobDash.BobDash.SavedPositions.GetString(PositionNameComboBox.Text);
-                if (!string.IsNullOrWhiteSpace(saved))
-                {
-                    var pos = Newtonsoft.Json.JsonConvert.DeserializeObject<SavedPosition>(saved);
-                    BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredPivotPositionVariableName, pos.PivotPosition);
-                    BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredExtendPositionVariableName, pos.ExtendPosition);
-                    BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredWristPositionVariableName, pos.WristPosition);
-                }
+                var saved = BobDash.BobDash.SavedPositions.GetNumberArray(PositionNameComboBox.Text);
+                var pos = new SavedPosition(saved);
+                BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredPivotPositionVariableName, pos.PivotPosition);
+                BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredExtendPositionVariableName, pos.ExtendPosition);
+                BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredWristPositionVariableName, pos.WristPosition);
             }
+        }
+
+        private void PositionControlButton_Load(object sender, EventArgs e)
+        {
+            UpdatePositions();
         }
     }
 }

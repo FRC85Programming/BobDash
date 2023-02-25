@@ -58,6 +58,7 @@ namespace BobDashControls
             this.Controls.Add(this.PositionNameComboBox);
             this.Controls.Add(this.SetButton);
             this.Name = "PositionControlButton";
+            this.Load += new System.EventHandler(this.PositionControlButton_Load);
             this.ResumeLayout(false);
 
         }
