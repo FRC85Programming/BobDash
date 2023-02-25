@@ -12,7 +12,7 @@ namespace BobDash.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -80,6 +80,78 @@ namespace BobDash.Properties {
             }
             set {
                 this["UpgradeRequired"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DesiredPivotPosition")]
+        public string DesiredPivotPositionVariableName {
+            get {
+                return ((string)(this["DesiredPivotPositionVariableName"]));
+            }
+            set {
+                this["DesiredPivotPositionVariableName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DesiredExtendPosition")]
+        public string DesiredExtendPositionVariableName {
+            get {
+                return ((string)(this["DesiredExtendPositionVariableName"]));
+            }
+            set {
+                this["DesiredExtendPositionVariableName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DesiredWristPosition")]
+        public string DesiredWristPositionVariableName {
+            get {
+                return ((string)(this["DesiredWristPositionVariableName"]));
+            }
+            set {
+                this["DesiredWristPositionVariableName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Extendo pivot position")]
+        public string CurrentPivotPositionVariableName {
+            get {
+                return ((string)(this["CurrentPivotPositionVariableName"]));
+            }
+            set {
+                this["CurrentPivotPositionVariableName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Extendo extend position")]
+        public string CurrentExtendPositionVariableName {
+            get {
+                return ((string)(this["CurrentExtendPositionVariableName"]));
+            }
+            set {
+                this["CurrentExtendPositionVariableName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Intake wrist position")]
+        public string CurrentWristPositionVariableName {
+            get {
+                return ((string)(this["CurrentWristPositionVariableName"]));
+            }
+            set {
+                this["CurrentWristPositionVariableName"] = value;
             }
         }
     }

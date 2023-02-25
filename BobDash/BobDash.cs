@@ -65,6 +65,21 @@ namespace BobDash
             }
         }
 
+        internal static ITable SavedPositions
+        {
+            get
+            {
+                if (NetworkTablesConnected)
+                {
+                    return NetworkTable.GetTable("SavedPositions");
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         private void SetBackColor(Color color)
         {
             if (BackColor == color)

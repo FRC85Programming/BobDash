@@ -60,6 +60,8 @@
             this.indicator6 = new BobDashControls.Indicator();
             this.indicator7 = new BobDashControls.Indicator();
             this.indicator8 = new BobDashControls.Indicator();
+            this.GoButton = new BobDash.PositionControlButton();
+            this.TeachButton = new BobDash.PositionControlButton();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -91,6 +93,8 @@
             this.IndicatorTableLayoutPanel.Controls.Add(this.indicator6, 0, 3);
             this.IndicatorTableLayoutPanel.Controls.Add(this.indicator7, 1, 3);
             this.IndicatorTableLayoutPanel.Controls.Add(this.indicator8, 2, 3);
+            this.IndicatorTableLayoutPanel.Controls.Add(this.GoButton, 3, 2);
+            this.IndicatorTableLayoutPanel.Controls.Add(this.TeachButton, 3, 1);
             this.IndicatorTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IndicatorTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.IndicatorTableLayoutPanel.Name = "IndicatorTableLayoutPanel";
@@ -358,6 +362,20 @@
             this.indicator8.TabIndex = 8;
             this.indicator8.VariableName = "Intake Encoder";
             // 
+            // GoButton
+            // 
+            this.GoButton.Location = new System.Drawing.Point(432, 269);
+            this.GoButton.Name = "GoButton";
+            this.GoButton.Size = new System.Drawing.Size(138, 127);
+            this.GoButton.TabIndex = 9;
+            // 
+            // TeachButton
+            // 
+            this.TeachButton.Location = new System.Drawing.Point(432, 136);
+            this.TeachButton.Name = "TeachButton";
+            this.TeachButton.Size = new System.Drawing.Size(138, 127);
+            this.TeachButton.TabIndex = 10;
+            // 
             // BobDash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,6 +431,8 @@
         private System.Windows.Forms.Integration.ElementHost VariablesListElementHost;
         private System.Windows.Forms.TableLayoutPanel BottomButtonsTableLayoutPanel;
         private System.Windows.Forms.Button ConnectButton;
+        private BobDash.PositionControlButton GoButton;
+        private BobDash.PositionControlButton TeachButton;
     }
 }
 
