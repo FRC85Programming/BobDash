@@ -1,5 +1,5 @@
 ﻿
-namespace BobDash
+namespace BobDashControls
 {
     partial class PositionControlButton
     {

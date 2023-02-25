@@ -36,6 +36,16 @@
         private void InitializeComponent()
         {
             this.IndicatorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.indicator2 = new BobDashControls.Indicator();
+            this.ExtendPositionIndicator = new BobDashControls.Indicator();
+            this.PivotPositionIndicator = new BobDashControls.Indicator();
+            this.WristPositionIndicator = new BobDashControls.Indicator();
+            this.indicator5 = new BobDashControls.Indicator();
+            this.indicator6 = new BobDashControls.Indicator();
+            this.indicator7 = new BobDashControls.Indicator();
+            this.indicator8 = new BobDashControls.Indicator();
+            this.GoButton = new BobDashControls.PositionControlButton();
+            this.TeachButton = new BobDashControls.PositionControlButton();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -52,16 +62,6 @@
             this.VariablesListElementHost = new System.Windows.Forms.Integration.ElementHost();
             this.BottomButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ConnectButton = new System.Windows.Forms.Button();
-            this.indicator2 = new BobDashControls.Indicator();
-            this.indicator1 = new BobDashControls.Indicator();
-            this.indicator3 = new BobDashControls.Indicator();
-            this.indicator4 = new BobDashControls.Indicator();
-            this.indicator5 = new BobDashControls.Indicator();
-            this.indicator6 = new BobDashControls.Indicator();
-            this.indicator7 = new BobDashControls.Indicator();
-            this.indicator8 = new BobDashControls.Indicator();
-            this.GoButton = new BobDash.PositionControlButton();
-            this.TeachButton = new BobDash.PositionControlButton();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -86,15 +86,15 @@
             this.IndicatorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IndicatorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IndicatorTableLayoutPanel.Controls.Add(this.indicator2, 1, 2);
-            this.IndicatorTableLayoutPanel.Controls.Add(this.indicator1, 1, 0);
-            this.IndicatorTableLayoutPanel.Controls.Add(this.indicator3, 0, 1);
-            this.IndicatorTableLayoutPanel.Controls.Add(this.indicator4, 2, 1);
+            this.IndicatorTableLayoutPanel.Controls.Add(this.ExtendPositionIndicator, 1, 0);
             this.IndicatorTableLayoutPanel.Controls.Add(this.indicator5, 1, 1);
             this.IndicatorTableLayoutPanel.Controls.Add(this.indicator6, 0, 3);
             this.IndicatorTableLayoutPanel.Controls.Add(this.indicator7, 1, 3);
             this.IndicatorTableLayoutPanel.Controls.Add(this.indicator8, 2, 3);
             this.IndicatorTableLayoutPanel.Controls.Add(this.GoButton, 3, 2);
             this.IndicatorTableLayoutPanel.Controls.Add(this.TeachButton, 3, 1);
+            this.IndicatorTableLayoutPanel.Controls.Add(this.PivotPositionIndicator, 0, 0);
+            this.IndicatorTableLayoutPanel.Controls.Add(this.WristPositionIndicator, 2, 0);
             this.IndicatorTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IndicatorTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.IndicatorTableLayoutPanel.Name = "IndicatorTableLayoutPanel";
@@ -104,15 +104,95 @@
             this.IndicatorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IndicatorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IndicatorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.IndicatorTableLayoutPanel.Size = new System.Drawing.Size(573, 533);
+            this.IndicatorTableLayoutPanel.Size = new System.Drawing.Size(573, 534);
             this.IndicatorTableLayoutPanel.TabIndex = 1;
+            // 
+            // indicator2
+            // 
+            this.indicator2.Location = new System.Drawing.Point(146, 269);
+            this.indicator2.Name = "indicator2";
+            this.indicator2.Size = new System.Drawing.Size(137, 127);
+            this.indicator2.TabIndex = 2;
+            this.indicator2.VariableName = "Lift Bottom";
+            // 
+            // ExtendPositionIndicator
+            // 
+            this.ExtendPositionIndicator.Location = new System.Drawing.Point(146, 3);
+            this.ExtendPositionIndicator.Name = "ExtendPositionIndicator";
+            this.ExtendPositionIndicator.Size = new System.Drawing.Size(137, 127);
+            this.ExtendPositionIndicator.TabIndex = 0;
+            this.ExtendPositionIndicator.VariableName = "Extendo extend position";
+            // 
+            // PivotPositionIndicator
+            // 
+            this.PivotPositionIndicator.Location = new System.Drawing.Point(3, 3);
+            this.PivotPositionIndicator.Name = "PivotPositionIndicator";
+            this.PivotPositionIndicator.Size = new System.Drawing.Size(137, 127);
+            this.PivotPositionIndicator.TabIndex = 3;
+            this.PivotPositionIndicator.VariableName = "Extendo pivot position";
+            // 
+            // WristPositionIndicator
+            // 
+            this.WristPositionIndicator.Location = new System.Drawing.Point(289, 3);
+            this.WristPositionIndicator.Name = "WristPositionIndicator";
+            this.WristPositionIndicator.Size = new System.Drawing.Size(137, 127);
+            this.WristPositionIndicator.TabIndex = 4;
+            this.WristPositionIndicator.VariableName = "Intake wrist position";
+            // 
+            // indicator5
+            // 
+            this.indicator5.Location = new System.Drawing.Point(146, 136);
+            this.indicator5.Name = "indicator5";
+            this.indicator5.Size = new System.Drawing.Size(137, 127);
+            this.indicator5.TabIndex = 5;
+            this.indicator5.VariableName = "Lift Center";
+            // 
+            // indicator6
+            // 
+            this.indicator6.Location = new System.Drawing.Point(3, 402);
+            this.indicator6.Name = "indicator6";
+            this.indicator6.Size = new System.Drawing.Size(137, 128);
+            this.indicator6.TabIndex = 6;
+            this.indicator6.VariableName = "Horizontal Lift";
+            // 
+            // indicator7
+            // 
+            this.indicator7.Location = new System.Drawing.Point(146, 402);
+            this.indicator7.Name = "indicator7";
+            this.indicator7.Size = new System.Drawing.Size(137, 128);
+            this.indicator7.TabIndex = 7;
+            this.indicator7.VariableName = "Vertical Lift";
+            // 
+            // indicator8
+            // 
+            this.indicator8.Location = new System.Drawing.Point(289, 402);
+            this.indicator8.Name = "indicator8";
+            this.indicator8.Size = new System.Drawing.Size(137, 128);
+            this.indicator8.TabIndex = 8;
+            this.indicator8.VariableName = "Intake Encoder";
+            // 
+            // GoButton
+            // 
+            this.GoButton.Location = new System.Drawing.Point(432, 269);
+            this.GoButton.Name = "GoButton";
+            this.GoButton.Size = new System.Drawing.Size(138, 127);
+            this.GoButton.TabIndex = 9;
+            this.GoButton.TeachMode = false;
+            // 
+            // TeachButton
+            // 
+            this.TeachButton.Location = new System.Drawing.Point(432, 136);
+            this.TeachButton.Name = "TeachButton";
+            this.TeachButton.Size = new System.Drawing.Size(138, 127);
+            this.TeachButton.TabIndex = 10;
+            this.TeachButton.TeachMode = true;
             // 
             // SettingsButton
             // 
             this.SettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SettingsButton.Location = new System.Drawing.Point(296, 3);
             this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(288, 28);
+            this.SettingsButton.Size = new System.Drawing.Size(288, 27);
             this.SettingsButton.TabIndex = 1;
             this.SettingsButton.Text = "Settings";
             this.SettingsButton.UseVisualStyleBackColor = true;
@@ -237,7 +317,7 @@
             this.RightSideTabControl.Location = new System.Drawing.Point(3, 3);
             this.RightSideTabControl.Name = "RightSideTabControl";
             this.RightSideTabControl.SelectedIndex = 0;
-            this.RightSideTabControl.Size = new System.Drawing.Size(587, 565);
+            this.RightSideTabControl.Size = new System.Drawing.Size(587, 566);
             this.RightSideTabControl.TabIndex = 2;
             // 
             // IndicatorsTabPage
@@ -246,7 +326,7 @@
             this.IndicatorsTabPage.Location = new System.Drawing.Point(4, 22);
             this.IndicatorsTabPage.Name = "IndicatorsTabPage";
             this.IndicatorsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.IndicatorsTabPage.Size = new System.Drawing.Size(579, 539);
+            this.IndicatorsTabPage.Size = new System.Drawing.Size(579, 540);
             this.IndicatorsTabPage.TabIndex = 0;
             this.IndicatorsTabPage.Text = "Indicators";
             this.IndicatorsTabPage.UseVisualStyleBackColor = true;
@@ -279,11 +359,11 @@
             this.BottomButtonsTableLayoutPanel.Controls.Add(this.ConnectButton, 0, 0);
             this.BottomButtonsTableLayoutPanel.Controls.Add(this.SettingsButton, 1, 0);
             this.BottomButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 574);
+            this.BottomButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 575);
             this.BottomButtonsTableLayoutPanel.Name = "BottomButtonsTableLayoutPanel";
             this.BottomButtonsTableLayoutPanel.RowCount = 1;
             this.BottomButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.BottomButtonsTableLayoutPanel.Size = new System.Drawing.Size(587, 34);
+            this.BottomButtonsTableLayoutPanel.Size = new System.Drawing.Size(587, 33);
             this.BottomButtonsTableLayoutPanel.TabIndex = 3;
             // 
             // ConnectButton
@@ -291,90 +371,12 @@
             this.ConnectButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConnectButton.Location = new System.Drawing.Point(3, 3);
             this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(287, 28);
+            this.ConnectButton.Size = new System.Drawing.Size(287, 27);
             this.ConnectButton.TabIndex = 2;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
             this.ConnectButton.Visible = false;
             this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
-            // 
-            // indicator2
-            // 
-            this.indicator2.Location = new System.Drawing.Point(146, 269);
-            this.indicator2.Name = "indicator2";
-            this.indicator2.Size = new System.Drawing.Size(137, 127);
-            this.indicator2.TabIndex = 2;
-            this.indicator2.VariableName = "Lift Bottom";
-            // 
-            // indicator1
-            // 
-            this.indicator1.Location = new System.Drawing.Point(146, 3);
-            this.indicator1.Name = "indicator1";
-            this.indicator1.Size = new System.Drawing.Size(137, 127);
-            this.indicator1.TabIndex = 0;
-            this.indicator1.VariableName = "Lift Top";
-            // 
-            // indicator3
-            // 
-            this.indicator3.Location = new System.Drawing.Point(3, 136);
-            this.indicator3.Name = "indicator3";
-            this.indicator3.Size = new System.Drawing.Size(137, 127);
-            this.indicator3.TabIndex = 3;
-            this.indicator3.VariableName = "Front Prox Sensor";
-            // 
-            // indicator4
-            // 
-            this.indicator4.Location = new System.Drawing.Point(289, 136);
-            this.indicator4.Name = "indicator4";
-            this.indicator4.Size = new System.Drawing.Size(137, 127);
-            this.indicator4.TabIndex = 4;
-            this.indicator4.VariableName = "Rear Prox Sensor";
-            // 
-            // indicator5
-            // 
-            this.indicator5.Location = new System.Drawing.Point(146, 136);
-            this.indicator5.Name = "indicator5";
-            this.indicator5.Size = new System.Drawing.Size(137, 127);
-            this.indicator5.TabIndex = 5;
-            this.indicator5.VariableName = "Lift Center";
-            // 
-            // indicator6
-            // 
-            this.indicator6.Location = new System.Drawing.Point(3, 402);
-            this.indicator6.Name = "indicator6";
-            this.indicator6.Size = new System.Drawing.Size(137, 128);
-            this.indicator6.TabIndex = 6;
-            this.indicator6.VariableName = "Horizontal Lift";
-            // 
-            // indicator7
-            // 
-            this.indicator7.Location = new System.Drawing.Point(146, 402);
-            this.indicator7.Name = "indicator7";
-            this.indicator7.Size = new System.Drawing.Size(137, 128);
-            this.indicator7.TabIndex = 7;
-            this.indicator7.VariableName = "Vertical Lift";
-            // 
-            // indicator8
-            // 
-            this.indicator8.Location = new System.Drawing.Point(289, 402);
-            this.indicator8.Name = "indicator8";
-            this.indicator8.Size = new System.Drawing.Size(137, 128);
-            this.indicator8.TabIndex = 8;
-            this.indicator8.VariableName = "Intake Encoder";
-            // 
-            // GoButton
-            // 
-            this.GoButton.Location = new System.Drawing.Point(432, 269);
-            this.GoButton.Name = "GoButton";
-            this.GoButton.Size = new System.Drawing.Size(138, 127);
-            this.GoButton.TabIndex = 9;
-            // 
-            // TeachButton
-            // 
-            this.TeachButton.Location = new System.Drawing.Point(432, 136);
-            this.TeachButton.Name = "TeachButton";
-            this.TeachButton.Size = new System.Drawing.Size(138, 127);
-            this.TeachButton.TabIndex = 10;
             // 
             // BobDash
             // 
@@ -411,15 +413,15 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel CameraTableLayoutPanel;
         private AForge.Controls.VideoSourcePlayer Camera2VideoSourcePlayer;
-        private BobDashControls.Indicator indicator1;
+        private BobDashControls.Indicator ExtendPositionIndicator;
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.TabControl CameraTabControl;
         private System.Windows.Forms.TabPage DriverAssistTabPage;
         private System.Windows.Forms.TabPage VisionTabPage;
         private AForge.Controls.VideoSourcePlayer DriverAssistCameraVideoSourcePlayer;
         private BobDashControls.Indicator indicator2;
-        private BobDashControls.Indicator indicator3;
-        private BobDashControls.Indicator indicator4;
+        private BobDashControls.Indicator PivotPositionIndicator;
+        private BobDashControls.Indicator WristPositionIndicator;
         private BobDashControls.Indicator indicator5;
         private BobDashControls.Indicator indicator6;
         private BobDashControls.Indicator indicator7;
@@ -431,8 +433,8 @@
         private System.Windows.Forms.Integration.ElementHost VariablesListElementHost;
         private System.Windows.Forms.TableLayoutPanel BottomButtonsTableLayoutPanel;
         private System.Windows.Forms.Button ConnectButton;
-        private BobDash.PositionControlButton GoButton;
-        private BobDash.PositionControlButton TeachButton;
+        private BobDashControls.PositionControlButton GoButton;
+        private BobDashControls.PositionControlButton TeachButton;
     }
 }
 
