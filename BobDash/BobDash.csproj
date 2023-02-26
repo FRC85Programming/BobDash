@@ -113,6 +113,12 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SmartDashboardVariable.cs" />
+    <Compile Include="ToggleButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ToggleButton.Designer.cs">
+      <DependentUpon>ToggleButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="VariablesList.xaml.cs">
       <DependentUpon>VariablesList.xaml</DependentUpon>
     </Compile>
@@ -137,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToggleButton.resx">
+      <DependentUpon>ToggleButton.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -183,6 +192,15 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cone.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cube.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Either.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
