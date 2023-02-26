@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using BobDash;
+using NetworkTables;
 
 namespace BobDashControls
 {
@@ -16,6 +17,19 @@ namespace BobDashControls
             InitializeComponent();
             UpdateButton();
             PositionListUpdated += PositionControlButton_PositionListUpdated;
+
+            NetworkTable.AddGlobalConnectionListener((remote, info, connected) =>
+            {
+                OnConnectionChanged(connected);
+            }, true);
+        }
+
+        private void OnConnectionChanged(bool connected)
+        {
+            if (connected)
+            {
+                UpdatePositions();
+            }
         }
 
         private void PositionControlButton_PositionListUpdated(object sender, EventArgs e)
@@ -25,6 +39,12 @@ namespace BobDashControls
 
         private void UpdatePositions()
         {
+            if (PositionNameComboBox.InvokeRequired)
+            {
+                PositionNameComboBox.Invoke(new Action(() => UpdatePositions()));
+                return;
+            }
+
             PositionNameComboBox.Items.Clear();
             if (BobDash.BobDash.SavedPositions != null)
             {
@@ -88,11 +108,6 @@ namespace BobDashControls
                 BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredExtendPositionVariableName, pos.ExtendPosition);
                 BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredWristPositionVariableName, pos.WristPosition);
             }
-        }
-
-        private void PositionControlButton_Load(object sender, EventArgs e)
-        {
-            UpdatePositions();
         }
     }
 }
