@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BobDash;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -7,9 +8,22 @@ namespace BobDashControls
 {
     public partial class ToggleButton : UserControl
     {
+        private static event EventHandler<ToggleButtonClickedEventArgs> ToggleButtonClicked;
+
         public ToggleButton()
         {
             InitializeComponent();
+            ToggleButtonClicked += ToggleButton_ToggleButtonClicked;
+        }
+
+        public string GroupName { get; set; }
+
+        private void ToggleButton_ToggleButtonClicked(object sender, ToggleButtonClickedEventArgs e)
+        {
+            if (sender != this && !string.IsNullOrWhiteSpace(GroupName) && !string.IsNullOrWhiteSpace(e.GroupName) && GroupName.Equals(e.GroupName))
+            {
+                Checked = false;
+            }
         }
 
         public Image Image
@@ -25,7 +39,7 @@ namespace BobDashControls
         }
 
         [Browsable(true)]
-        public override string Text
+        public string ButtonText
         {
             get
             {
@@ -37,6 +51,18 @@ namespace BobDashControls
             }
         }
 
+        public bool Checked
+        {
+            get
+            {
+                return ToggledCheckBox.Checked;
+            }
+            set
+            {
+                ToggledCheckBox.Checked = value;
+            }
+        }
+
         [Browsable(true)]
         public string PositionName { get; set; }
 
@@ -44,9 +70,20 @@ namespace BobDashControls
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(PositionName))
+                if (ToggledCheckBox.Checked)
                 {
-                    BobDash.BobDash.LoadPosition(PositionName);
+                    ToggleButtonClicked?.Invoke(this, new ToggleButtonClickedEventArgs() { GroupName = GroupName });
+
+                    if (!string.IsNullOrWhiteSpace(PositionName))
+                    {
+                        BobDash.BobDash.LoadPosition(PositionName);
+                    }
+
+                    ToggledCheckBox.BackColor = Color.Green;
+                }
+                else
+                {
+                    ToggledCheckBox.BackColor = SystemColors.Control;
                 }
             }
             catch (Exception ex)

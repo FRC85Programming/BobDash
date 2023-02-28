@@ -665,7 +665,10 @@
             // 
             // toggleButton1
             // 
+            this.toggleButton1.ButtonText = "";
+            this.toggleButton1.Checked = false;
             this.toggleButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton1.GroupName = null;
             this.toggleButton1.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton1.Image")));
             this.toggleButton1.Location = new System.Drawing.Point(191, 3);
             this.toggleButton1.Name = "toggleButton1";
@@ -675,7 +678,10 @@
             // 
             // toggleButton2
             // 
+            this.toggleButton2.ButtonText = "";
+            this.toggleButton2.Checked = false;
             this.toggleButton2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton2.GroupName = null;
             this.toggleButton2.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton2.Image")));
             this.toggleButton2.Location = new System.Drawing.Point(191, 88);
             this.toggleButton2.Name = "toggleButton2";
@@ -685,7 +691,10 @@
             // 
             // toggleButton3
             // 
+            this.toggleButton3.ButtonText = "";
+            this.toggleButton3.Checked = false;
             this.toggleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton3.GroupName = null;
             this.toggleButton3.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton3.Image")));
             this.toggleButton3.Location = new System.Drawing.Point(297, 3);
             this.toggleButton3.Name = "toggleButton3";
@@ -695,7 +704,10 @@
             // 
             // toggleButton5
             // 
+            this.toggleButton5.ButtonText = "";
+            this.toggleButton5.Checked = false;
             this.toggleButton5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton5.GroupName = null;
             this.toggleButton5.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton5.Image")));
             this.toggleButton5.Location = new System.Drawing.Point(297, 88);
             this.toggleButton5.Name = "toggleButton5";
@@ -705,7 +717,10 @@
             // 
             // toggleButton6
             // 
+            this.toggleButton6.ButtonText = "";
+            this.toggleButton6.Checked = false;
             this.toggleButton6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton6.GroupName = null;
             this.toggleButton6.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton6.Image")));
             this.toggleButton6.Location = new System.Drawing.Point(403, 3);
             this.toggleButton6.Name = "toggleButton6";
@@ -715,7 +730,10 @@
             // 
             // toggleButton7
             // 
+            this.toggleButton7.ButtonText = "";
+            this.toggleButton7.Checked = false;
             this.toggleButton7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton7.GroupName = null;
             this.toggleButton7.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton7.Image")));
             this.toggleButton7.Location = new System.Drawing.Point(403, 88);
             this.toggleButton7.Name = "toggleButton7";
@@ -725,7 +743,10 @@
             // 
             // toggleButton8
             // 
+            this.toggleButton8.ButtonText = "";
+            this.toggleButton8.Checked = false;
             this.toggleButton8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton8.GroupName = null;
             this.toggleButton8.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton8.Image")));
             this.toggleButton8.Location = new System.Drawing.Point(671, 3);
             this.toggleButton8.Name = "toggleButton8";
@@ -735,7 +756,10 @@
             // 
             // toggleButton9
             // 
+            this.toggleButton9.ButtonText = "";
+            this.toggleButton9.Checked = false;
             this.toggleButton9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton9.GroupName = null;
             this.toggleButton9.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton9.Image")));
             this.toggleButton9.Location = new System.Drawing.Point(777, 3);
             this.toggleButton9.Name = "toggleButton9";
@@ -745,7 +769,10 @@
             // 
             // toggleButton11
             // 
+            this.toggleButton11.ButtonText = "";
+            this.toggleButton11.Checked = false;
             this.toggleButton11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton11.GroupName = null;
             this.toggleButton11.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton11.Image")));
             this.toggleButton11.Location = new System.Drawing.Point(671, 88);
             this.toggleButton11.Name = "toggleButton11";
@@ -755,7 +782,10 @@
             // 
             // toggleButton12
             // 
+            this.toggleButton12.ButtonText = "";
+            this.toggleButton12.Checked = false;
             this.toggleButton12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton12.GroupName = null;
             this.toggleButton12.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton12.Image")));
             this.toggleButton12.Location = new System.Drawing.Point(671, 173);
             this.toggleButton12.Name = "toggleButton12";
@@ -765,7 +795,10 @@
             // 
             // toggleButton13
             // 
+            this.toggleButton13.ButtonText = "";
+            this.toggleButton13.Checked = false;
             this.toggleButton13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton13.GroupName = null;
             this.toggleButton13.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton13.Image")));
             this.toggleButton13.Location = new System.Drawing.Point(777, 88);
             this.toggleButton13.Name = "toggleButton13";
@@ -775,7 +808,10 @@
             // 
             // toggleButton14
             // 
+            this.toggleButton14.ButtonText = "";
+            this.toggleButton14.Checked = false;
             this.toggleButton14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton14.GroupName = null;
             this.toggleButton14.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton14.Image")));
             this.toggleButton14.Location = new System.Drawing.Point(883, 3);
             this.toggleButton14.Name = "toggleButton14";
@@ -785,7 +821,10 @@
             // 
             // toggleButton15
             // 
+            this.toggleButton15.ButtonText = "";
+            this.toggleButton15.Checked = false;
             this.toggleButton15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton15.GroupName = null;
             this.toggleButton15.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton15.Image")));
             this.toggleButton15.Location = new System.Drawing.Point(883, 88);
             this.toggleButton15.Name = "toggleButton15";
@@ -795,7 +834,10 @@
             // 
             // toggleButton10
             // 
+            this.toggleButton10.ButtonText = "";
+            this.toggleButton10.Checked = false;
             this.toggleButton10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton10.GroupName = null;
             this.toggleButton10.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton10.Image")));
             this.toggleButton10.Location = new System.Drawing.Point(777, 173);
             this.toggleButton10.Name = "toggleButton10";
@@ -805,7 +847,10 @@
             // 
             // toggleButton4
             // 
+            this.toggleButton4.ButtonText = "";
+            this.toggleButton4.Checked = false;
             this.toggleButton4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton4.GroupName = null;
             this.toggleButton4.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton4.Image")));
             this.toggleButton4.Location = new System.Drawing.Point(883, 173);
             this.toggleButton4.Name = "toggleButton4";
@@ -815,7 +860,10 @@
             // 
             // toggleButton19
             // 
+            this.toggleButton19.ButtonText = "";
+            this.toggleButton19.Checked = false;
             this.toggleButton19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton19.GroupName = null;
             this.toggleButton19.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton19.Image")));
             this.toggleButton19.Location = new System.Drawing.Point(1151, 3);
             this.toggleButton19.Name = "toggleButton19";
@@ -825,7 +873,10 @@
             // 
             // toggleButton18
             // 
+            this.toggleButton18.ButtonText = "";
+            this.toggleButton18.Checked = false;
             this.toggleButton18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton18.GroupName = null;
             this.toggleButton18.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton18.Image")));
             this.toggleButton18.Location = new System.Drawing.Point(1257, 3);
             this.toggleButton18.Name = "toggleButton18";
@@ -835,7 +886,10 @@
             // 
             // toggleButton17
             // 
+            this.toggleButton17.ButtonText = "";
+            this.toggleButton17.Checked = false;
             this.toggleButton17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton17.GroupName = null;
             this.toggleButton17.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton17.Image")));
             this.toggleButton17.Location = new System.Drawing.Point(1363, 3);
             this.toggleButton17.Name = "toggleButton17";
@@ -845,7 +899,10 @@
             // 
             // toggleButton21
             // 
+            this.toggleButton21.ButtonText = "";
+            this.toggleButton21.Checked = false;
             this.toggleButton21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton21.GroupName = null;
             this.toggleButton21.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton21.Image")));
             this.toggleButton21.Location = new System.Drawing.Point(1257, 88);
             this.toggleButton21.Name = "toggleButton21";
@@ -855,7 +912,10 @@
             // 
             // toggleButton16
             // 
+            this.toggleButton16.ButtonText = "";
+            this.toggleButton16.Checked = false;
             this.toggleButton16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton16.GroupName = null;
             this.toggleButton16.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton16.Image")));
             this.toggleButton16.Location = new System.Drawing.Point(1151, 88);
             this.toggleButton16.Name = "toggleButton16";
@@ -865,7 +925,10 @@
             // 
             // toggleButton20
             // 
+            this.toggleButton20.ButtonText = "";
+            this.toggleButton20.Checked = false;
             this.toggleButton20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton20.GroupName = null;
             this.toggleButton20.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton20.Image")));
             this.toggleButton20.Location = new System.Drawing.Point(1363, 88);
             this.toggleButton20.Name = "toggleButton20";
@@ -875,7 +938,10 @@
             // 
             // toggleButton24
             // 
+            this.toggleButton24.ButtonText = "";
+            this.toggleButton24.Checked = false;
             this.toggleButton24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton24.GroupName = null;
             this.toggleButton24.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton24.Image")));
             this.toggleButton24.Location = new System.Drawing.Point(1151, 173);
             this.toggleButton24.Name = "toggleButton24";
@@ -885,7 +951,10 @@
             // 
             // toggleButton26
             // 
+            this.toggleButton26.ButtonText = "";
+            this.toggleButton26.Checked = false;
             this.toggleButton26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton26.GroupName = null;
             this.toggleButton26.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton26.Image")));
             this.toggleButton26.Location = new System.Drawing.Point(1257, 173);
             this.toggleButton26.Name = "toggleButton26";
@@ -895,7 +964,10 @@
             // 
             // toggleButton23
             // 
+            this.toggleButton23.ButtonText = "";
+            this.toggleButton23.Checked = false;
             this.toggleButton23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton23.GroupName = null;
             this.toggleButton23.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton23.Image")));
             this.toggleButton23.Location = new System.Drawing.Point(1363, 173);
             this.toggleButton23.Name = "toggleButton23";
@@ -905,7 +977,10 @@
             // 
             // toggleButton25
             // 
+            this.toggleButton25.ButtonText = "";
+            this.toggleButton25.Checked = false;
             this.toggleButton25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton25.GroupName = null;
             this.toggleButton25.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton25.Image")));
             this.toggleButton25.Location = new System.Drawing.Point(403, 173);
             this.toggleButton25.Name = "toggleButton25";
@@ -915,7 +990,10 @@
             // 
             // toggleButton22
             // 
+            this.toggleButton22.ButtonText = "";
+            this.toggleButton22.Checked = false;
             this.toggleButton22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton22.GroupName = null;
             this.toggleButton22.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton22.Image")));
             this.toggleButton22.Location = new System.Drawing.Point(297, 173);
             this.toggleButton22.Name = "toggleButton22";
@@ -925,7 +1003,10 @@
             // 
             // toggleButton27
             // 
+            this.toggleButton27.ButtonText = "";
+            this.toggleButton27.Checked = false;
             this.toggleButton27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleButton27.GroupName = null;
             this.toggleButton27.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton27.Image")));
             this.toggleButton27.Location = new System.Drawing.Point(191, 173);
             this.toggleButton27.Name = "toggleButton27";
@@ -935,137 +1016,175 @@
             // 
             // BottomCubeScoringPositionToggleButton
             // 
+            this.BottomCubeScoringPositionToggleButton.ButtonText = "";
+            this.BottomCubeScoringPositionToggleButton.Checked = false;
             this.BottomCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BottomCubeScoringPositionToggleButton.GroupName = "Positions";
             this.BottomCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
             this.BottomCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 173);
             this.BottomCubeScoringPositionToggleButton.Name = "BottomCubeScoringPositionToggleButton";
             this.BottomCubeScoringPositionToggleButton.PositionName = null;
             this.BottomCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
             this.BottomCubeScoringPositionToggleButton.TabIndex = 8;
-            this.BottomCubeScoringPositionToggleButton.Tag = "Positions";
+            this.BottomCubeScoringPositionToggleButton.Tag = "";
             // 
             // BottomConeScoringPositionToggleButton
             // 
+            this.BottomConeScoringPositionToggleButton.ButtonText = "";
+            this.BottomConeScoringPositionToggleButton.Checked = false;
             this.BottomConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BottomConeScoringPositionToggleButton.GroupName = "Positions";
             this.BottomConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
             this.BottomConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 173);
             this.BottomConeScoringPositionToggleButton.Name = "BottomConeScoringPositionToggleButton";
             this.BottomConeScoringPositionToggleButton.PositionName = null;
             this.BottomConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
             this.BottomConeScoringPositionToggleButton.TabIndex = 7;
-            this.BottomConeScoringPositionToggleButton.Tag = "Positions";
+            this.BottomConeScoringPositionToggleButton.Tag = "";
             // 
             // MiddleCubeScoringPositionToggleButton
             // 
+            this.MiddleCubeScoringPositionToggleButton.ButtonText = "";
+            this.MiddleCubeScoringPositionToggleButton.Checked = false;
             this.MiddleCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MiddleCubeScoringPositionToggleButton.GroupName = "Positions";
             this.MiddleCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
             this.MiddleCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 88);
             this.MiddleCubeScoringPositionToggleButton.Name = "MiddleCubeScoringPositionToggleButton";
             this.MiddleCubeScoringPositionToggleButton.PositionName = null;
             this.MiddleCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
             this.MiddleCubeScoringPositionToggleButton.TabIndex = 6;
-            this.MiddleCubeScoringPositionToggleButton.Tag = "Positions";
+            this.MiddleCubeScoringPositionToggleButton.Tag = "";
             // 
             // MiddleConeScoringPositionToggleButton
             // 
+            this.MiddleConeScoringPositionToggleButton.ButtonText = "";
+            this.MiddleConeScoringPositionToggleButton.Checked = false;
             this.MiddleConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MiddleConeScoringPositionToggleButton.GroupName = "Positions";
             this.MiddleConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
             this.MiddleConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 88);
             this.MiddleConeScoringPositionToggleButton.Name = "MiddleConeScoringPositionToggleButton";
             this.MiddleConeScoringPositionToggleButton.PositionName = null;
             this.MiddleConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
             this.MiddleConeScoringPositionToggleButton.TabIndex = 5;
-            this.MiddleConeScoringPositionToggleButton.Tag = "Positions";
+            this.MiddleConeScoringPositionToggleButton.Tag = "";
             // 
             // TopCubeScoringPositionToggleButton
             // 
+            this.TopCubeScoringPositionToggleButton.ButtonText = "";
+            this.TopCubeScoringPositionToggleButton.Checked = false;
             this.TopCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopCubeScoringPositionToggleButton.GroupName = "Positions";
             this.TopCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
             this.TopCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 3);
             this.TopCubeScoringPositionToggleButton.Name = "TopCubeScoringPositionToggleButton";
             this.TopCubeScoringPositionToggleButton.PositionName = null;
             this.TopCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
             this.TopCubeScoringPositionToggleButton.TabIndex = 4;
-            this.TopCubeScoringPositionToggleButton.Tag = "Positions";
+            this.TopCubeScoringPositionToggleButton.Tag = "";
             // 
             // TopConeScoringPositionToggleButton
             // 
+            this.TopConeScoringPositionToggleButton.ButtonText = "";
+            this.TopConeScoringPositionToggleButton.Checked = false;
             this.TopConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopConeScoringPositionToggleButton.GroupName = "Positions";
             this.TopConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
             this.TopConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 3);
             this.TopConeScoringPositionToggleButton.Name = "TopConeScoringPositionToggleButton";
             this.TopConeScoringPositionToggleButton.PositionName = null;
             this.TopConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
             this.TopConeScoringPositionToggleButton.TabIndex = 0;
-            this.TopConeScoringPositionToggleButton.Tag = "Positions";
+            this.TopConeScoringPositionToggleButton.Tag = "";
             // 
             // ConeChutePickupPositionToggleButton
             // 
+            this.ConeChutePickupPositionToggleButton.ButtonText = "";
+            this.ConeChutePickupPositionToggleButton.Checked = false;
             this.ConeChutePickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConeChutePickupPositionToggleButton.GroupName = "Positions";
             this.ConeChutePickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
             this.ConeChutePickupPositionToggleButton.Location = new System.Drawing.Point(264, 96);
             this.ConeChutePickupPositionToggleButton.Name = "ConeChutePickupPositionToggleButton";
             this.ConeChutePickupPositionToggleButton.PositionName = null;
             this.ConeChutePickupPositionToggleButton.Size = new System.Drawing.Size(255, 87);
             this.ConeChutePickupPositionToggleButton.TabIndex = 8;
-            this.ConeChutePickupPositionToggleButton.Tag = "Positions";
+            this.ConeChutePickupPositionToggleButton.Tag = "";
             // 
             // ConePlatterPickupPositionToggleButton
             // 
+            this.ConePlatterPickupPositionToggleButton.ButtonText = "";
+            this.ConePlatterPickupPositionToggleButton.Checked = false;
             this.ConePlatterPickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConePlatterPickupPositionToggleButton.GroupName = "Positions";
             this.ConePlatterPickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
             this.ConePlatterPickupPositionToggleButton.Location = new System.Drawing.Point(264, 3);
             this.ConePlatterPickupPositionToggleButton.Name = "ConePlatterPickupPositionToggleButton";
             this.ConePlatterPickupPositionToggleButton.PositionName = null;
             this.ConePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(255, 87);
             this.ConePlatterPickupPositionToggleButton.TabIndex = 5;
-            this.ConePlatterPickupPositionToggleButton.Tag = "Positions";
+            this.ConePlatterPickupPositionToggleButton.Tag = "";
             // 
             // CubePlatterPickupPositionToggleButton
             // 
+            this.CubePlatterPickupPositionToggleButton.ButtonText = "";
+            this.CubePlatterPickupPositionToggleButton.Checked = false;
             this.CubePlatterPickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CubePlatterPickupPositionToggleButton.GroupName = "Positions";
             this.CubePlatterPickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
             this.CubePlatterPickupPositionToggleButton.Location = new System.Drawing.Point(525, 3);
             this.CubePlatterPickupPositionToggleButton.Name = "CubePlatterPickupPositionToggleButton";
             this.CubePlatterPickupPositionToggleButton.PositionName = null;
             this.CubePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(255, 87);
             this.CubePlatterPickupPositionToggleButton.TabIndex = 6;
-            this.CubePlatterPickupPositionToggleButton.Tag = "Positions";
+            this.CubePlatterPickupPositionToggleButton.Tag = "";
             // 
             // CubeChutePickupPositionToggleButton
             // 
+            this.CubeChutePickupPositionToggleButton.ButtonText = "";
+            this.CubeChutePickupPositionToggleButton.Checked = false;
             this.CubeChutePickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CubeChutePickupPositionToggleButton.GroupName = "Positions";
             this.CubeChutePickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
             this.CubeChutePickupPositionToggleButton.Location = new System.Drawing.Point(525, 96);
             this.CubeChutePickupPositionToggleButton.Name = "CubeChutePickupPositionToggleButton";
             this.CubeChutePickupPositionToggleButton.PositionName = null;
             this.CubeChutePickupPositionToggleButton.Size = new System.Drawing.Size(255, 87);
             this.CubeChutePickupPositionToggleButton.TabIndex = 7;
-            this.CubeChutePickupPositionToggleButton.Tag = "Positions";
+            this.CubeChutePickupPositionToggleButton.Tag = "";
             // 
             // HomeToggleButton
             // 
+            this.HomeToggleButton.ButtonText = "Home";
+            this.HomeToggleButton.Checked = false;
             this.HomeToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HomeToggleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeToggleButton.GroupName = "Positions";
             this.HomeToggleButton.Image = null;
-            this.HomeToggleButton.Location = new System.Drawing.Point(3, 3);
+            this.HomeToggleButton.Location = new System.Drawing.Point(11, 10);
+            this.HomeToggleButton.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.HomeToggleButton.Name = "HomeToggleButton";
             this.HomeToggleButton.PositionName = "Home2";
-            this.HomeToggleButton.Size = new System.Drawing.Size(388, 57);
+            this.HomeToggleButton.Size = new System.Drawing.Size(372, 43);
             this.HomeToggleButton.TabIndex = 0;
-            this.HomeToggleButton.Tag = "Positions";
+            this.HomeToggleButton.Tag = "";
             // 
             // ClearToggleButton
             // 
+            this.ClearToggleButton.ButtonText = "Clear";
+            this.ClearToggleButton.Checked = false;
             this.ClearToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ClearToggleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearToggleButton.GroupName = "Positions";
             this.ClearToggleButton.Image = null;
-            this.ClearToggleButton.Location = new System.Drawing.Point(397, 3);
+            this.ClearToggleButton.Location = new System.Drawing.Point(405, 10);
+            this.ClearToggleButton.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.ClearToggleButton.Name = "ClearToggleButton";
             this.ClearToggleButton.PositionName = null;
-            this.ClearToggleButton.Size = new System.Drawing.Size(389, 57);
+            this.ClearToggleButton.Size = new System.Drawing.Size(373, 43);
             this.ClearToggleButton.TabIndex = 1;
-            this.ClearToggleButton.Tag = "Positions";
+            this.ClearToggleButton.Tag = "";
             // 
             // indicator2
             // 

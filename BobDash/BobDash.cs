@@ -84,8 +84,7 @@ namespace BobDash
         {
             if (SavedPositions == null)
             {
-                MessageBox.Show("Not connected.");
-                return;
+                throw new InvalidOperationException("Not connected.");
             }
 
             var saved = SavedPositions.GetNumberArray(positionName);

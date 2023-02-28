@@ -119,6 +119,7 @@
     <Compile Include="ToggleButton.Designer.cs">
       <DependentUpon>ToggleButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToggleButtonClickedEventArgs.cs" />
     <Compile Include="VariablesList.xaml.cs">
       <DependentUpon>VariablesList.xaml</DependentUpon>
     </Compile>

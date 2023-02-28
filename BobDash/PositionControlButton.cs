@@ -102,7 +102,14 @@ namespace BobDashControls
             }
             else
             {
-                BobDash.BobDash.LoadPosition(PositionNameComboBox.Text);
+                try
+                {
+                    BobDash.BobDash.LoadPosition(PositionNameComboBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
