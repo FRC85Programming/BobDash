@@ -41,6 +41,7 @@
             this.ToggledCheckBox.TabIndex = 0;
             this.ToggledCheckBox.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ToggledCheckBox.UseVisualStyleBackColor = true;
+            this.ToggledCheckBox.CheckedChanged += new System.EventHandler(this.ToggledCheckBox_CheckedChanged);
             // 
             // ToggleButton
             // 

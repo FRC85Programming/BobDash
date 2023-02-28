@@ -127,4 +127,10 @@
   <data name="Either" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Either.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SelectedCone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SelectedCone.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SelectedCube" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SelectedCube.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -80,6 +80,21 @@ namespace BobDash
             }
         }
 
+        internal static void LoadPosition(string positionName)
+        {
+            if (SavedPositions == null)
+            {
+                MessageBox.Show("Not connected.");
+                return;
+            }
+
+            var saved = SavedPositions.GetNumberArray(positionName);
+            var pos = new SavedPosition(saved);
+            SmartDashboard.PutNumber(Properties.Settings.Default.DesiredPivotPositionVariableName, pos.PivotPosition);
+            SmartDashboard.PutNumber(Properties.Settings.Default.DesiredExtendPositionVariableName, pos.ExtendPosition);
+            SmartDashboard.PutNumber(Properties.Settings.Default.DesiredWristPositionVariableName, pos.WristPosition);
+        }
+
         private void SetBackColor(Color color)
         {
             if (BackColor == color)

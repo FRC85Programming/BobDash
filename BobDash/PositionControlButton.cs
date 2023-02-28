@@ -102,11 +102,7 @@ namespace BobDashControls
             }
             else
             {
-                var saved = BobDash.BobDash.SavedPositions.GetNumberArray(PositionNameComboBox.Text);
-                var pos = new SavedPosition(saved);
-                BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredPivotPositionVariableName, pos.PivotPosition);
-                BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredExtendPositionVariableName, pos.ExtendPosition);
-                BobDash.BobDash.SmartDashboard.PutNumber(BobDash.Properties.Settings.Default.DesiredWristPositionVariableName, pos.WristPosition);
+                BobDash.BobDash.LoadPosition(PositionNameComboBox.Text);
             }
         }
     }
