@@ -3,6 +3,7 @@ using GlobalHotKey;
 using NetworkTables;
 using NetworkTables.Tables;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -337,6 +338,30 @@ namespace BobDash
             else
             {
                 NetworkTable.Initialize();
+            }
+        }
+
+        private void BackupPositionsButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var d = new SaveFileDialog())
+                {
+                    if (d.ShowDialog() == DialogResult.OK)
+                    {
+                        var positions = new List<SavedPosition>();
+                        foreach (var key in SavedPositions.GetKeys())
+                        {
+                            positions.Add(new SavedPosition(SavedPositions.GetNumberArray(key)));
+                        }
+
+                        System.IO.File.WriteAllText(d.FileName, Newtonsoft.Json.JsonConvert.SerializeObject(positions, Newtonsoft.Json.Formatting.Indented));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error backing up positions to file: {ex}");
             }
         }
     }

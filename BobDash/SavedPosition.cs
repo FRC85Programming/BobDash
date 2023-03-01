@@ -1,6 +1,4 @@
-﻿using AForge;
-using System;
-using System.Threading;
+﻿using System;
 
 namespace BobDash
 {
