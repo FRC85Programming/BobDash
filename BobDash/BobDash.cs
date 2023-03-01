@@ -349,10 +349,10 @@ namespace BobDash
                 {
                     if (d.ShowDialog() == DialogResult.OK)
                     {
-                        var positions = new List<SavedPosition>();
+                        var positions = new Dictionary<string, SavedPosition>();
                         foreach (var key in SavedPositions.GetKeys())
                         {
-                            positions.Add(new SavedPosition(SavedPositions.GetNumberArray(key)));
+                            positions.Add(key, new SavedPosition(SavedPositions.GetNumberArray(key)));
                         }
 
                         System.IO.File.WriteAllText(d.FileName, Newtonsoft.Json.JsonConvert.SerializeObject(positions, Newtonsoft.Json.Formatting.Indented));
