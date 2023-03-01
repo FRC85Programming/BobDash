@@ -8,7 +8,7 @@ namespace BobDashControls
 {
     public partial class ToggleButton : UserControl
     {
-        private static event EventHandler<ToggleButtonClickedEventArgs> ToggleButtonClicked;
+        internal static event EventHandler<ToggleButtonClickedEventArgs> ToggleButtonClicked;
 
         public ToggleButton()
         {
@@ -72,7 +72,7 @@ namespace BobDashControls
             {
                 if (ToggledCheckBox.Checked)
                 {
-                    ToggleButtonClicked?.Invoke(this, new ToggleButtonClickedEventArgs() { GroupName = GroupName });
+                    ToggleButtonClicked?.Invoke(this, new ToggleButtonClickedEventArgs() { GroupName = GroupName, PositionName = PositionName });
 
                     if (!string.IsNullOrWhiteSpace(PositionName))
                     {

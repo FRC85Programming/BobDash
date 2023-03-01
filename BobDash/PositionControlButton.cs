@@ -17,11 +17,20 @@ namespace BobDashControls
             InitializeComponent();
             UpdateButton();
             PositionListUpdated += PositionControlButton_PositionListUpdated;
+            ToggleButton.ToggleButtonClicked += ToggleButton_ToggleButtonClicked;
 
             NetworkTable.AddGlobalConnectionListener((remote, info, connected) =>
             {
                 OnConnectionChanged(connected);
             }, true);
+        }
+
+        private void ToggleButton_ToggleButtonClicked(object sender, ToggleButtonClickedEventArgs e)
+        {
+            if (TeachMode && !string.IsNullOrWhiteSpace(e.GroupName) && !string.IsNullOrWhiteSpace(e.PositionName) && e.GroupName.Equals("Positions"))
+            {
+                PositionNameComboBox.Text = e.PositionName;
+            }
         }
 
         private void OnConnectionChanged(bool connected)
