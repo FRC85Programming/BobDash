@@ -8,6 +8,7 @@ namespace BobDashControls
 {
     public partial class ToggleButton : UserControl
     {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         internal static event EventHandler<ToggleButtonClickedEventArgs> ToggleButtonClicked;
 
         public ToggleButton()
@@ -88,7 +89,8 @@ namespace BobDashControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading position '{PositionName}': {ex}");
+                logger.Error(ex, $"Error loading position '{PositionName}': {ex}");
+                ToggledCheckBox.BackColor = Color.Red;
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using BobDash;
 using NetworkTables;
@@ -8,6 +9,8 @@ namespace BobDashControls
 {
     public partial class PositionControlButton : UserControl
     {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         private bool _teachMode;
 
         private static event EventHandler PositionListUpdated;
@@ -99,14 +102,19 @@ namespace BobDashControls
             {
                 try
                 {
+                    var previous = BobDash.BobDash.GetSavedPosition(PositionNameComboBox.Text);
                     var pos = new SavedPosition(BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentPivotPositionVariableName), BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentExtendPositionVariableName), BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentWristPositionVariableName));
                     BobDash.BobDash.SavedPositions.PutNumberArray(PositionNameComboBox.Text, pos.ToDoubleArray());
                     BobDash.BobDash.SavedPositions.SetPersistent(PositionNameComboBox.Text);
                     PositionListUpdated?.Invoke(this, new EventArgs());
+                    logger.Info($"Position '{PositionNameComboBox.Text} updated from {previous} to {pos}.");
+                    BobDash.BobDash.LoadPosition(PositionNameComboBox.Text);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error teaching position '{PositionNameComboBox.Text}': {ex}");
+                    var message = $"Error teaching position '{PositionNameComboBox.Text}': {ex}";
+                    logger.Error(ex, message);
+                    MessageBox.Show(message);
                 }
             }
             else
@@ -117,6 +125,7 @@ namespace BobDashControls
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(ex, ex.ToString());
                     MessageBox.Show(ex.Message);
                 }
             }

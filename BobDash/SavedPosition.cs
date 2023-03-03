@@ -31,5 +31,10 @@ namespace BobDash
         {
             return new double[] { PivotPosition, ExtendPosition, WristPosition };
         }
+
+        public override string ToString()
+        {
+            return $"({PivotPosition}, {ExtendPosition}, {WristPosition})";
+        }
     }
 }

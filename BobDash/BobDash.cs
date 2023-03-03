@@ -2,6 +2,9 @@
 using GlobalHotKey;
 using NetworkTables;
 using NetworkTables.Tables;
+using NLog.Config;
+using NLog.Targets;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,6 +16,7 @@ namespace BobDash
 {
     public partial class BobDash : Form
     {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         internal static System.Timers.Timer GlobalTimer = new System.Timers.Timer(200);
         private static bool NetworkTablesConnected = false;
 
@@ -39,6 +43,15 @@ namespace BobDash
 
             NetworkTable.SetClientMode();
             NetworkTable.Initialize();
+
+            var config = new LoggingConfiguration();
+            var fileTarget = new FileTarget();
+            config.AddTarget("file", fileTarget);
+            fileTarget.FileName = "${basedir}/BobDashLogs/${shortdate}.log";
+            fileTarget.Layout = "${longdate} ${uppercase:${level}} ${message}";
+            var rule = new LoggingRule("*", NLog.LogLevel.Trace, fileTarget);
+            config.LoggingRules.Add(rule);
+            LogManager.Configuration = config;
 
             InitializeComponent();
 
@@ -81,15 +94,33 @@ namespace BobDash
             }
         }
 
-        internal static void LoadPosition(string positionName)
+        internal static SavedPosition GetSavedPosition(string positionName)
         {
             if (SavedPositions == null)
             {
                 throw new InvalidOperationException("Not connected.");
             }
 
-            var saved = SavedPositions.GetNumberArray(positionName);
-            var pos = new SavedPosition(saved);
+            try
+            {
+                var saved = SavedPositions.GetNumberArray(positionName);
+                return new SavedPosition(saved);
+            }
+            catch (NetworkTables.Exceptions.TableKeyNotDefinedException ex)
+            {
+                logger.Warn(ex, $"Position '{positionName}' not found: {ex}");
+                return null;
+            }
+        }
+
+        internal static void LoadPosition(string positionName)
+        {
+            var pos = GetSavedPosition(positionName);
+            if (pos == null)
+            {
+                throw new InvalidOperationException($"Position '{positionName}' doesn't exist.");
+            }
+
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredPivotPositionVariableName, pos.PivotPosition);
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredExtendPositionVariableName, pos.ExtendPosition);
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredWristPositionVariableName, pos.WristPosition);

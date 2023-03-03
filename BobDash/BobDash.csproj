@@ -193,6 +193,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.2</Version>
     </PackageReference>
+    <PackageReference Include="NLog">
+      <Version>5.1.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cone.bmp" />
