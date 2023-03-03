@@ -159,6 +159,8 @@ namespace BobDash
 
             NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
 
+            LoadAutoModes();
+
             GlobalTimer.Elapsed += _timer_Elapsed;
             GlobalTimer.Start();
 
@@ -351,7 +353,17 @@ namespace BobDash
 
                     StopCamera();
                     StartCamera();
+                    LoadAutoModes();
                 }
+            }
+        }
+
+        private void LoadAutoModes()
+        {
+            AutoModeCheckedListBox.Items.Clear();
+            foreach (var mode in Properties.Settings.Default.AutoModes)
+            {
+                AutoModeCheckedListBox.Items.Add(mode);
             }
         }
 
@@ -395,6 +407,27 @@ namespace BobDash
             catch (Exception ex)
             {
                 MessageBox.Show($"Error backing up positions to file: {ex}");
+            }
+        }
+
+        private void AutoModeCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (NetworkTablesConnected)
+                {
+                    SmartDashboard.PutString("BobDashAutoMode", AutoModeCheckedListBox.SelectedItem.ToString());
+                    AutoModeCheckedListBox.BackColor = Color.Green;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Not connected.");
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, $"Error setting auto mode: {ex}");
+                AutoModeCheckedListBox.BackColor = Color.Red;
             }
         }
     }

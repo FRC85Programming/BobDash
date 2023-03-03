@@ -100,7 +100,6 @@
             this.toggleButton22 = new BobDashControls.ToggleButton();
             this.toggleButton27 = new BobDashControls.ToggleButton();
             this.positionControlButton1 = new BobDashControls.PositionControlButton();
-            this.AutoModeSendableChooserControl = new Controls.SendableChooserControl();
             this.ScoringPositionsGroupBox = new System.Windows.Forms.GroupBox();
             this.ScoringPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BottomCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
@@ -129,6 +128,7 @@
             this.HomeToggleButton = new BobDashControls.ToggleButton();
             this.ClearToggleButton = new BobDashControls.ToggleButton();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
+            this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -571,7 +571,7 @@
             this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton22, 2, 2);
             this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton27, 1, 2);
             this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.positionControlButton1, 13, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.AutoModeSendableChooserControl, 13, 0);
+            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.AutoModeCheckedListBox, 13, 0);
             this.FilledScoringLocationsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FilledScoringLocationsTableLayoutPanel.Location = new System.Drawing.Point(3, 25);
             this.FilledScoringLocationsTableLayoutPanel.Name = "FilledScoringLocationsTableLayoutPanel";
@@ -1003,17 +1003,6 @@
             this.positionControlButton1.TabIndex = 35;
             this.positionControlButton1.TeachMode = true;
             // 
-            // AutoModeSendableChooserControl
-            // 
-            this.AutoModeSendableChooserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoModeSendableChooserControl.Location = new System.Drawing.Point(1549, 6);
-            this.AutoModeSendableChooserControl.Margin = new System.Windows.Forms.Padding(6);
-            this.AutoModeSendableChooserControl.Name = "AutoModeSendableChooserControl";
-            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.AutoModeSendableChooserControl, 2);
-            this.AutoModeSendableChooserControl.SendableChooserVariableName = "m_chooser";
-            this.AutoModeSendableChooserControl.Size = new System.Drawing.Size(29, 158);
-            this.AutoModeSendableChooserControl.TabIndex = 36;
-            // 
             // ScoringPositionsGroupBox
             // 
             this.ScoringPositionsGroupBox.Controls.Add(this.ScoringPositionsTableLayoutPanel);
@@ -1419,6 +1408,17 @@
             this.OtherStuffTabPage.Text = "Other stuff";
             this.OtherStuffTabPage.UseVisualStyleBackColor = true;
             // 
+            // AutoModeCheckedListBox
+            // 
+            this.AutoModeCheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoModeCheckedListBox.FormattingEnabled = true;
+            this.AutoModeCheckedListBox.Location = new System.Drawing.Point(1546, 3);
+            this.AutoModeCheckedListBox.Name = "AutoModeCheckedListBox";
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.AutoModeCheckedListBox, 2);
+            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(35, 164);
+            this.AutoModeCheckedListBox.TabIndex = 36;
+            this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
+            // 
             // BobDash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1553,7 +1553,7 @@
         private BobDashControls.ToggleButton CubePickupFloorPositionToggleButton;
         private BobDashControls.ToggleButton ConePickupFloorPositionTippedToggleButton;
         private BobDashControls.ToggleButton ConePickupFloorPositionToggleButton;
-        private Controls.SendableChooserControl AutoModeSendableChooserControl;
+        private System.Windows.Forms.CheckedListBox AutoModeCheckedListBox;
     }
 }
 

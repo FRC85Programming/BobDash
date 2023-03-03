@@ -12,7 +12,7 @@ namespace BobDash.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -152,6 +152,28 @@ namespace BobDash.Properties {
             }
             set {
                 this["CurrentWristPositionVariableName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <string>None</string>
+  <string>Manual OnePlace</string>
+  <string>Balance Auto</string>
+  <string>Score and Engage</string>
+  <string>Manual Mobility</string>
+  <string>CS</string>
+  <string>Manual OnePlace</string>
+  <string>Normal Follow</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection AutoModes {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["AutoModes"]));
+            }
+            set {
+                this["AutoModes"] = value;
             }
         }
     }
