@@ -175,6 +175,8 @@ namespace BobDash
                     ConnectButton.Invoke((Action)(() => { ConnectButton.Text = "Disconnect"; }));
                 }
 
+                VariablesList.RefreshList();
+
                 SmartDashboard.PutBoolean("BobDashConnected", true);
                 SetBackColor(Color.LimeGreen);
             }

@@ -30,7 +30,7 @@ namespace BobDash
             RefreshList();
         }
 
-        private void RefreshList()
+        internal void RefreshList()
         {
             if (BobDash.SmartDashboard != null)
             {
