@@ -161,11 +161,10 @@ namespace BobDash.Properties {
 <ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
   <string>None</string>
   <string>Manual OnePlace</string>
-  <string>Balance Auto</string>
+  <string>Balance</string>
   <string>Score and Engage</string>
   <string>Manual Mobility</string>
   <string>CS</string>
-  <string>Manual OnePlace</string>
   <string>Normal Follow</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection AutoModes {

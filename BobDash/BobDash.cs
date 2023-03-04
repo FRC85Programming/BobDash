@@ -410,8 +410,18 @@ namespace BobDash
             }
         }
 
+        private int _lastAutoModeIndex = -1;
+
         private void AutoModeCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int toUncheck = _lastAutoModeIndex;
+            if (toUncheck != -1)
+            {
+                AutoModeCheckedListBox.SetItemChecked(toUncheck, false);
+            }
+
+            _lastAutoModeIndex = AutoModeCheckedListBox.SelectedIndex;
+
             try
             {
                 if (NetworkTablesConnected)

@@ -40,11 +40,10 @@
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
   &lt;string&gt;None&lt;/string&gt;
   &lt;string&gt;Manual OnePlace&lt;/string&gt;
-  &lt;string&gt;Balance Auto&lt;/string&gt;
+  &lt;string&gt;Balance&lt;/string&gt;
   &lt;string&gt;Score and Engage&lt;/string&gt;
   &lt;string&gt;Manual Mobility&lt;/string&gt;
   &lt;string&gt;CS&lt;/string&gt;
-  &lt;string&gt;Manual OnePlace&lt;/string&gt;
   &lt;string&gt;Normal Follow&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
