@@ -26,6 +26,7 @@ namespace BobDash
         private MJPEGStream _camera2Stream;
         private MJPEGStream _driverAssistCameraStream;
         private bool _camerasStarted;
+        private bool _autoSelectOnly = false;
 
         public BobDash()
         {
@@ -61,6 +62,31 @@ namespace BobDash
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 ConnectButton.Visible = true;
+            }
+        }
+
+        public bool AutoSelectOnly
+        {
+            get
+            {
+                return _autoSelectOnly;
+            }
+            set
+            {
+                _autoSelectOnly = value;
+                if (_autoSelectOnly)
+                {
+                    AutoModeCheckedListBox.Parent = this;
+                    MainTabControl.Visible = false;
+                    WindowState = FormWindowState.Normal;
+                    Size = new Size(350, 700);
+                }
+                else
+                {
+                    AutoModeCheckedListBox.Parent = AutoModeSelectPanel;
+                    MainTabControl.Visible = true;
+                    WindowState = FormWindowState.Maximized;
+                }
             }
         }
 
