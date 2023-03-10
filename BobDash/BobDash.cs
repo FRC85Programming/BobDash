@@ -120,6 +120,21 @@ namespace BobDash
             }
         }
 
+        internal static ITable SwerveCalibration
+        {
+            get
+            {
+                if (NetworkTablesConnected)
+                {
+                    return NetworkTable.GetTable(nameof(SwerveCalibration));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         internal static SavedPosition GetSavedPosition(string positionName)
         {
             if (SavedPositions == null)
@@ -464,6 +479,94 @@ namespace BobDash
             {
                 logger.Error(ex, $"Error setting auto mode: {ex}");
                 AutoModeCheckedListBox.BackColor = Color.Red;
+            }
+        }
+
+        private void RestorePositionsButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("This will overwrite saved positions! Are you sure?", "Restore positions", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                using (var d = new OpenFileDialog())
+                {
+                    if (d.ShowDialog() == DialogResult.OK)
+                    {
+                        var text = System.IO.File.ReadAllText(d.FileName);
+                        if (!string.IsNullOrWhiteSpace(text))
+                        {
+                            var positions = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, SavedPosition>>(text);
+                            foreach (var position in positions)
+                            {
+                                SavedPositions.PutNumberArray(position.Key, position.Value.ToDoubleArray());
+                                SavedPositions.SetPersistent(position.Key);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error restoring positions from file: {ex}");
+            }
+        }
+
+        private void BackupSwerveCalibrationButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var d = new SaveFileDialog())
+                {
+                    if (d.ShowDialog() == DialogResult.OK)
+                    {
+                        var calibrations = new Dictionary<string, double>();
+                        foreach (var key in SwerveCalibration.GetKeys())
+                        {
+                            calibrations.Add(key, SwerveCalibration.GetNumber(key));
+                        }
+
+                        System.IO.File.WriteAllText(d.FileName, Newtonsoft.Json.JsonConvert.SerializeObject(calibrations, Newtonsoft.Json.Formatting.Indented));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error backing up swerve calibration to file: {ex}");
+            }
+        }
+
+        private void RestoreSwerveCalibrationButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("This will overwrite swerve calibration! Are you sure?", "Restore swerve calibration", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                using (var d = new OpenFileDialog())
+                {
+                    if (d.ShowDialog() == DialogResult.OK)
+                    {
+                        var text = System.IO.File.ReadAllText(d.FileName);
+                        if (!string.IsNullOrWhiteSpace(text))
+                        {
+                            var calibrations = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, double>>(text);
+                            foreach (var position in calibrations)
+                            {
+                                SwerveCalibration.PutNumber(position.Key, position.Value);
+                                SwerveCalibration.SetPersistent(position.Key);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error restoring swerve calibration from file: {ex}");
             }
         }
     }

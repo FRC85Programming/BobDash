@@ -4,6 +4,10 @@ namespace BobDash
 {
     public class SavedPosition
     {
+        public SavedPosition()
+        {
+        }
+
         public SavedPosition(double pivot, double extend, double wrist)
         {
             PivotPosition = pivot;
