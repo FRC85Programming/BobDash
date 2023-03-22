@@ -27,13 +27,13 @@
       <Value Profile="(Default)">DesiredWristPosition</Value>
     </Setting>
     <Setting Name="CurrentPivotPositionVariableName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Extendo pivot position</Value>
+      <Value Profile="(Default)">Pivot position</Value>
     </Setting>
     <Setting Name="CurrentExtendPositionVariableName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Extendo extend position</Value>
+      <Value Profile="(Default)">Extend position</Value>
     </Setting>
     <Setting Name="CurrentWristPositionVariableName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Intake wrist position</Value>
+      <Value Profile="(Default)">Wrist position</Value>
     </Setting>
     <Setting Name="AutoModes" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;

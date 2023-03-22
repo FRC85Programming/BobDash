@@ -121,7 +121,7 @@ namespace BobDash.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Extendo pivot position")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pivot position")]
         public string CurrentPivotPositionVariableName {
             get {
                 return ((string)(this["CurrentPivotPositionVariableName"]));
@@ -133,7 +133,7 @@ namespace BobDash.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Extendo extend position")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Extend position")]
         public string CurrentExtendPositionVariableName {
             get {
                 return ((string)(this["CurrentExtendPositionVariableName"]));
@@ -145,7 +145,7 @@ namespace BobDash.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Intake wrist position")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Wrist position")]
         public string CurrentWristPositionVariableName {
             get {
                 return ((string)(this["CurrentWristPositionVariableName"]));

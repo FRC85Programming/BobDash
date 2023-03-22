@@ -569,5 +569,27 @@ namespace BobDash
                 MessageBox.Show($"Error restoring swerve calibration from file: {ex}");
             }
         }
+
+        private void AddAutoButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var newAutoName = Microsoft.VisualBasic.Interaction.InputBox("New auto mode name?");
+                if (Properties.Settings.Default.AutoModes.Contains(newAutoName))
+                {
+                    throw new InvalidOperationException($"Auto '{newAutoName}' already exists.");
+                }
+
+                Properties.Settings.Default.AutoModes.Add(newAutoName);
+                Properties.Settings.Default.Save();
+                LoadAutoModes();
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error adding auto mode: {ex}";
+                logger.Error(ex, message);
+                MessageBox.Show(message);
+            }
+        }
     }
 }
