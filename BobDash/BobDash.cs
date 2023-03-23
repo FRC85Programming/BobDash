@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Linq;
 
 namespace BobDash
 {
@@ -219,6 +220,7 @@ namespace BobDash
                 }
 
                 VariablesList.RefreshList();
+                LoadAutoModes();
 
                 SmartDashboard.PutBoolean("BobDashConnected", true);
                 SetBackColor(Color.LimeGreen);
@@ -402,6 +404,27 @@ namespace BobDash
         private void LoadAutoModes()
         {
             AutoModeCheckedListBox.Items.Clear();
+            try
+            {
+                var fromSmartDashboard = SmartDashboard.GetStringArray("AutoModes", null);
+                if (fromSmartDashboard != null && fromSmartDashboard.Any())
+                {
+                    foreach (var mode in fromSmartDashboard)
+                    {
+                        AutoModeCheckedListBox.Items.Add(mode);
+                    }
+
+                    AddAutoButton.Enabled = false;
+
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Warn(ex, $"Error getting auto modes from SmartDashboard: {ex}");
+            }
+
+            AddAutoButton.Enabled = true;
             foreach (var mode in Properties.Settings.Default.AutoModes)
             {
                 AutoModeCheckedListBox.Items.Add(mode);
