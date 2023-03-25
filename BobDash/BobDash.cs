@@ -12,6 +12,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Linq;
+using System.Security.AccessControl;
 
 namespace BobDash
 {
@@ -353,6 +354,7 @@ namespace BobDash
                 if (SmartDashboard != null)
                 {
                     SetBackColor(Color.Green);
+                    SetAutoMode();
                 }
                 else
                 {
@@ -490,8 +492,7 @@ namespace BobDash
             {
                 if (NetworkTablesConnected)
                 {
-                    SmartDashboard.PutString("BobDashAutoMode", AutoModeCheckedListBox.SelectedItem.ToString());
-                    AutoModeCheckedListBox.BackColor = Color.Green;
+                    SetAutoMode();
                 }
                 else
                 {
@@ -502,6 +503,15 @@ namespace BobDash
             {
                 logger.Error(ex, $"Error setting auto mode: {ex}");
                 AutoModeCheckedListBox.BackColor = Color.Red;
+            }
+        }
+
+        private void SetAutoMode()
+        {
+            if (NetworkTablesConnected && AutoModeCheckedListBox.SelectedIndex > -1)
+            {
+                SmartDashboard.PutString("BobDashAutoMode", AutoModeCheckedListBox.SelectedItem.ToString());
+                AutoModeCheckedListBox.BackColor = Color.Green;
             }
         }
 

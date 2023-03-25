@@ -1,11 +1,13 @@
 ﻿using NetworkTables;
+using System;
 using System.ComponentModel;
 
 namespace BobDash
 {
-    public class SmartDashboardVariable : INotifyPropertyChanged
+    public class SmartDashboardVariable : INotifyPropertyChanged, IDisposable
     {
         readonly int _listener;
+        private bool disposedValue;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -38,6 +40,29 @@ namespace BobDash
                 Value = newValue;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Value"));
             }, NotifyFlags.NotifyNew | NotifyFlags.NotifyUpdate | NotifyFlags.NotifyImmediate);           
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (_listener > 0)
+                    {
+                        NtCore.RemoveEntryListener(_listener);
+                    }
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }
