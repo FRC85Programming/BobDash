@@ -164,6 +164,7 @@ namespace BobDash
                 throw new InvalidOperationException($"Position '{positionName}' doesn't exist.");
             }
 
+            SmartDashboard.PutString("DesiredPositionName", positionName);
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredPivotPositionVariableName, pos.PivotPosition);
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredExtendPositionVariableName, pos.ExtendPosition);
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredWristPositionVariableName, pos.WristPosition);

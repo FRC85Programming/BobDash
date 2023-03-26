@@ -37,11 +37,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BobDash));
             this.IndicatorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.ExtendPositionIndicator = new BobDashControls.Indicator();
-            this.GoButton = new BobDashControls.PositionControlButton();
-            this.TeachButton = new BobDashControls.PositionControlButton();
-            this.PivotPositionIndicator = new BobDashControls.Indicator();
-            this.WristPositionIndicator = new BobDashControls.Indicator();
             this.BackupPositionsButton = new System.Windows.Forms.Button();
             this.RestorePositionsButton = new System.Windows.Forms.Button();
             this.BackupSwerveCalibrationButton = new System.Windows.Forms.Button();
@@ -70,6 +65,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.AutoModeSelectPanel = new System.Windows.Forms.Panel();
+            this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.ScoringPositionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.ScoringPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.TopScoringPositionLabel = new System.Windows.Forms.Label();
+            this.MiddleScoringPositionLabel = new System.Windows.Forms.Label();
+            this.BottomScoringPositionLabel = new System.Windows.Forms.Label();
+            this.PickupPositionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.PickupPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.FloorPickupPositionLabel = new System.Windows.Forms.Label();
+            this.PlatterPickupPositionLabel = new System.Windows.Forms.Label();
+            this.FloorPickupButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ChutePickupPositionLabel = new System.Windows.Forms.Label();
+            this.TopRightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
+            this.AutoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.AddAutoButton = new System.Windows.Forms.Button();
             this.toggleButton1 = new BobDashControls.ToggleButton();
             this.toggleButton2 = new BobDashControls.ToggleButton();
             this.toggleButton3 = new BobDashControls.ToggleButton();
@@ -98,38 +110,29 @@
             this.toggleButton22 = new BobDashControls.ToggleButton();
             this.toggleButton27 = new BobDashControls.ToggleButton();
             this.positionControlButton1 = new BobDashControls.PositionControlButton();
-            this.AutoModeSelectPanel = new System.Windows.Forms.Panel();
-            this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.ScoringPositionsGroupBox = new System.Windows.Forms.GroupBox();
-            this.ScoringPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BottomCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
             this.BottomConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
             this.MiddleCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
             this.MiddleConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
             this.TopCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
             this.TopConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
-            this.TopScoringPositionLabel = new System.Windows.Forms.Label();
-            this.MiddleScoringPositionLabel = new System.Windows.Forms.Label();
-            this.BottomScoringPositionLabel = new System.Windows.Forms.Label();
-            this.PickupPositionsGroupBox = new System.Windows.Forms.GroupBox();
-            this.PickupPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.FloorPickupPositionLabel = new System.Windows.Forms.Label();
-            this.PlatterPickupPositionLabel = new System.Windows.Forms.Label();
             this.ConePlatterPickupPositionToggleButton = new BobDashControls.ToggleButton();
             this.CubePlatterPickupPositionToggleButton = new BobDashControls.ToggleButton();
             this.CubeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
-            this.FloorPickupButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CubePickupFloorPositionToggleButton = new BobDashControls.ToggleButton();
             this.ConePickupFloorPositionTippedToggleButton = new BobDashControls.ToggleButton();
             this.ConePickupFloorPositionToggleButton = new BobDashControls.ToggleButton();
             this.ConeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
-            this.ChutePickupPositionLabel = new System.Windows.Forms.Label();
-            this.TopRightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.HomeToggleButton = new BobDashControls.ToggleButton();
             this.ClearToggleButton = new BobDashControls.ToggleButton();
-            this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
-            this.AutoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.AddAutoButton = new System.Windows.Forms.Button();
+            this.ExtendPositionIndicator = new BobDashControls.Indicator();
+            this.GoButton = new BobDashControls.PositionControlButton();
+            this.TeachButton = new BobDashControls.PositionControlButton();
+            this.PivotPositionIndicator = new BobDashControls.Indicator();
+            this.WristPositionIndicator = new BobDashControls.Indicator();
+            this.DesiredPivotIndicator = new BobDashControls.Indicator();
+            this.DesiredExtendIndicator = new BobDashControls.Indicator();
+            this.DesiredWristIndicator = new BobDashControls.Indicator();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -176,6 +179,9 @@
             this.IndicatorTableLayoutPanel.Controls.Add(this.RestorePositionsButton, 0, 2);
             this.IndicatorTableLayoutPanel.Controls.Add(this.BackupSwerveCalibrationButton, 2, 3);
             this.IndicatorTableLayoutPanel.Controls.Add(this.RestoreSwerveCalibrationButton, 0, 3);
+            this.IndicatorTableLayoutPanel.Controls.Add(this.DesiredPivotIndicator, 0, 1);
+            this.IndicatorTableLayoutPanel.Controls.Add(this.DesiredExtendIndicator, 1, 1);
+            this.IndicatorTableLayoutPanel.Controls.Add(this.DesiredWristIndicator, 2, 1);
             this.IndicatorTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IndicatorTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.IndicatorTableLayoutPanel.Name = "IndicatorTableLayoutPanel";
@@ -187,46 +193,6 @@
             this.IndicatorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.IndicatorTableLayoutPanel.Size = new System.Drawing.Size(681, 504);
             this.IndicatorTableLayoutPanel.TabIndex = 1;
-            // 
-            // ExtendPositionIndicator
-            // 
-            this.ExtendPositionIndicator.Location = new System.Drawing.Point(173, 3);
-            this.ExtendPositionIndicator.Name = "ExtendPositionIndicator";
-            this.ExtendPositionIndicator.Size = new System.Drawing.Size(135, 120);
-            this.ExtendPositionIndicator.TabIndex = 0;
-            this.ExtendPositionIndicator.VariableName = "Extend position";
-            // 
-            // GoButton
-            // 
-            this.GoButton.Location = new System.Drawing.Point(513, 255);
-            this.GoButton.Name = "GoButton";
-            this.GoButton.Size = new System.Drawing.Size(138, 120);
-            this.GoButton.TabIndex = 9;
-            this.GoButton.TeachMode = false;
-            // 
-            // TeachButton
-            // 
-            this.TeachButton.Location = new System.Drawing.Point(513, 129);
-            this.TeachButton.Name = "TeachButton";
-            this.TeachButton.Size = new System.Drawing.Size(138, 120);
-            this.TeachButton.TabIndex = 10;
-            this.TeachButton.TeachMode = true;
-            // 
-            // PivotPositionIndicator
-            // 
-            this.PivotPositionIndicator.Location = new System.Drawing.Point(3, 3);
-            this.PivotPositionIndicator.Name = "PivotPositionIndicator";
-            this.PivotPositionIndicator.Size = new System.Drawing.Size(135, 120);
-            this.PivotPositionIndicator.TabIndex = 3;
-            this.PivotPositionIndicator.VariableName = "Pivot position";
-            // 
-            // WristPositionIndicator
-            // 
-            this.WristPositionIndicator.Location = new System.Drawing.Point(343, 3);
-            this.WristPositionIndicator.Name = "WristPositionIndicator";
-            this.WristPositionIndicator.Size = new System.Drawing.Size(135, 120);
-            this.WristPositionIndicator.TabIndex = 4;
-            this.WristPositionIndicator.VariableName = "Wrist position";
             // 
             // BackupPositionsButton
             // 
@@ -606,6 +572,238 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Middle";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // AutoModeSelectPanel
+            // 
+            this.AutoModeSelectPanel.Controls.Add(this.AutoTableLayoutPanel);
+            this.AutoModeSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoModeSelectPanel.Location = new System.Drawing.Point(1485, 3);
+            this.AutoModeSelectPanel.Name = "AutoModeSelectPanel";
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.AutoModeSelectPanel, 2);
+            this.AutoModeSelectPanel.Size = new System.Drawing.Size(96, 164);
+            this.AutoModeSelectPanel.TabIndex = 37;
+            // 
+            // AutoModeCheckedListBox
+            // 
+            this.AutoModeCheckedListBox.CheckOnClick = true;
+            this.AutoModeCheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoModeCheckedListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoModeCheckedListBox.FormattingEnabled = true;
+            this.AutoModeCheckedListBox.Location = new System.Drawing.Point(3, 3);
+            this.AutoModeCheckedListBox.Name = "AutoModeCheckedListBox";
+            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(90, 118);
+            this.AutoModeCheckedListBox.TabIndex = 36;
+            this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
+            // 
+            // ScoringPositionsGroupBox
+            // 
+            this.ScoringPositionsGroupBox.Controls.Add(this.ScoringPositionsTableLayoutPanel);
+            this.ScoringPositionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScoringPositionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScoringPositionsGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.ScoringPositionsGroupBox.Name = "ScoringPositionsGroupBox";
+            this.PositionsTableLayoutPanel.SetRowSpan(this.ScoringPositionsGroupBox, 2);
+            this.ScoringPositionsGroupBox.Size = new System.Drawing.Size(789, 283);
+            this.ScoringPositionsGroupBox.TabIndex = 0;
+            this.ScoringPositionsGroupBox.TabStop = false;
+            this.ScoringPositionsGroupBox.Text = "Scoring Positions";
+            // 
+            // ScoringPositionsTableLayoutPanel
+            // 
+            this.ScoringPositionsTableLayoutPanel.ColumnCount = 3;
+            this.ScoringPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ScoringPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ScoringPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.BottomCubeScoringPositionToggleButton, 2, 2);
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.BottomConeScoringPositionToggleButton, 1, 2);
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.MiddleCubeScoringPositionToggleButton, 2, 1);
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.MiddleConeScoringPositionToggleButton, 1, 1);
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.TopCubeScoringPositionToggleButton, 2, 0);
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.TopConeScoringPositionToggleButton, 1, 0);
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.TopScoringPositionLabel, 0, 0);
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.MiddleScoringPositionLabel, 0, 1);
+            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.BottomScoringPositionLabel, 0, 2);
+            this.ScoringPositionsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScoringPositionsTableLayoutPanel.Location = new System.Drawing.Point(3, 25);
+            this.ScoringPositionsTableLayoutPanel.Name = "ScoringPositionsTableLayoutPanel";
+            this.ScoringPositionsTableLayoutPanel.RowCount = 3;
+            this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ScoringPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 255);
+            this.ScoringPositionsTableLayoutPanel.TabIndex = 0;
+            // 
+            // TopScoringPositionLabel
+            // 
+            this.TopScoringPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TopScoringPositionLabel.Location = new System.Drawing.Point(3, 0);
+            this.TopScoringPositionLabel.Name = "TopScoringPositionLabel";
+            this.TopScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
+            this.TopScoringPositionLabel.TabIndex = 1;
+            this.TopScoringPositionLabel.Text = "Top";
+            this.TopScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // MiddleScoringPositionLabel
+            // 
+            this.MiddleScoringPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MiddleScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MiddleScoringPositionLabel.Location = new System.Drawing.Point(3, 85);
+            this.MiddleScoringPositionLabel.Name = "MiddleScoringPositionLabel";
+            this.MiddleScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
+            this.MiddleScoringPositionLabel.TabIndex = 2;
+            this.MiddleScoringPositionLabel.Text = "Middle";
+            this.MiddleScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // BottomScoringPositionLabel
+            // 
+            this.BottomScoringPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BottomScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BottomScoringPositionLabel.Location = new System.Drawing.Point(3, 170);
+            this.BottomScoringPositionLabel.Name = "BottomScoringPositionLabel";
+            this.BottomScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
+            this.BottomScoringPositionLabel.TabIndex = 3;
+            this.BottomScoringPositionLabel.Text = "Bottom";
+            this.BottomScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // PickupPositionsGroupBox
+            // 
+            this.PickupPositionsGroupBox.Controls.Add(this.PickupPositionsTableLayoutPanel);
+            this.PickupPositionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PickupPositionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PickupPositionsGroupBox.Location = new System.Drawing.Point(798, 72);
+            this.PickupPositionsGroupBox.Name = "PickupPositionsGroupBox";
+            this.PickupPositionsGroupBox.Size = new System.Drawing.Size(789, 214);
+            this.PickupPositionsGroupBox.TabIndex = 2;
+            this.PickupPositionsGroupBox.TabStop = false;
+            this.PickupPositionsGroupBox.Text = "Pickup Positions";
+            // 
+            // PickupPositionsTableLayoutPanel
+            // 
+            this.PickupPositionsTableLayoutPanel.ColumnCount = 3;
+            this.PickupPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PickupPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PickupPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PickupPositionsTableLayoutPanel.Controls.Add(this.FloorPickupPositionLabel, 0, 2);
+            this.PickupPositionsTableLayoutPanel.Controls.Add(this.PlatterPickupPositionLabel, 0, 0);
+            this.PickupPositionsTableLayoutPanel.Controls.Add(this.ConePlatterPickupPositionToggleButton, 1, 0);
+            this.PickupPositionsTableLayoutPanel.Controls.Add(this.CubePlatterPickupPositionToggleButton, 2, 0);
+            this.PickupPositionsTableLayoutPanel.Controls.Add(this.CubeChutePickupPositionToggleButton, 2, 1);
+            this.PickupPositionsTableLayoutPanel.Controls.Add(this.FloorPickupButtonsTableLayoutPanel, 1, 2);
+            this.PickupPositionsTableLayoutPanel.Controls.Add(this.ConeChutePickupPositionToggleButton, 1, 1);
+            this.PickupPositionsTableLayoutPanel.Controls.Add(this.ChutePickupPositionLabel, 0, 1);
+            this.PickupPositionsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PickupPositionsTableLayoutPanel.Location = new System.Drawing.Point(3, 25);
+            this.PickupPositionsTableLayoutPanel.Name = "PickupPositionsTableLayoutPanel";
+            this.PickupPositionsTableLayoutPanel.RowCount = 3;
+            this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.PickupPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 186);
+            this.PickupPositionsTableLayoutPanel.TabIndex = 0;
+            // 
+            // FloorPickupPositionLabel
+            // 
+            this.FloorPickupPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FloorPickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FloorPickupPositionLabel.Location = new System.Drawing.Point(3, 124);
+            this.FloorPickupPositionLabel.Name = "FloorPickupPositionLabel";
+            this.FloorPickupPositionLabel.Size = new System.Drawing.Size(255, 62);
+            this.FloorPickupPositionLabel.TabIndex = 10;
+            this.FloorPickupPositionLabel.Text = "Floor";
+            this.FloorPickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // PlatterPickupPositionLabel
+            // 
+            this.PlatterPickupPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PlatterPickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlatterPickupPositionLabel.Location = new System.Drawing.Point(3, 0);
+            this.PlatterPickupPositionLabel.Name = "PlatterPickupPositionLabel";
+            this.PlatterPickupPositionLabel.Size = new System.Drawing.Size(255, 62);
+            this.PlatterPickupPositionLabel.TabIndex = 3;
+            this.PlatterPickupPositionLabel.Text = "Platter";
+            this.PlatterPickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // FloorPickupButtonsTableLayoutPanel
+            // 
+            this.FloorPickupButtonsTableLayoutPanel.ColumnCount = 3;
+            this.PickupPositionsTableLayoutPanel.SetColumnSpan(this.FloorPickupButtonsTableLayoutPanel, 2);
+            this.FloorPickupButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.FloorPickupButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.FloorPickupButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.FloorPickupButtonsTableLayoutPanel.Controls.Add(this.CubePickupFloorPositionToggleButton, 0, 0);
+            this.FloorPickupButtonsTableLayoutPanel.Controls.Add(this.ConePickupFloorPositionTippedToggleButton, 0, 0);
+            this.FloorPickupButtonsTableLayoutPanel.Controls.Add(this.ConePickupFloorPositionToggleButton, 0, 0);
+            this.FloorPickupButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FloorPickupButtonsTableLayoutPanel.Location = new System.Drawing.Point(264, 127);
+            this.FloorPickupButtonsTableLayoutPanel.Name = "FloorPickupButtonsTableLayoutPanel";
+            this.FloorPickupButtonsTableLayoutPanel.RowCount = 1;
+            this.FloorPickupButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.FloorPickupButtonsTableLayoutPanel.Size = new System.Drawing.Size(516, 56);
+            this.FloorPickupButtonsTableLayoutPanel.TabIndex = 9;
+            // 
+            // ChutePickupPositionLabel
+            // 
+            this.ChutePickupPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ChutePickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChutePickupPositionLabel.Location = new System.Drawing.Point(3, 62);
+            this.ChutePickupPositionLabel.Name = "ChutePickupPositionLabel";
+            this.ChutePickupPositionLabel.Size = new System.Drawing.Size(255, 62);
+            this.ChutePickupPositionLabel.TabIndex = 4;
+            this.ChutePickupPositionLabel.Text = "Chute";
+            this.ChutePickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // TopRightTableLayoutPanel
+            // 
+            this.TopRightTableLayoutPanel.ColumnCount = 2;
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TopRightTableLayoutPanel.Controls.Add(this.HomeToggleButton, 0, 0);
+            this.TopRightTableLayoutPanel.Controls.Add(this.ClearToggleButton, 1, 0);
+            this.TopRightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopRightTableLayoutPanel.Location = new System.Drawing.Point(798, 3);
+            this.TopRightTableLayoutPanel.Name = "TopRightTableLayoutPanel";
+            this.TopRightTableLayoutPanel.RowCount = 1;
+            this.TopRightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TopRightTableLayoutPanel.Size = new System.Drawing.Size(789, 63);
+            this.TopRightTableLayoutPanel.TabIndex = 3;
+            // 
+            // OtherStuffTabPage
+            // 
+            this.OtherStuffTabPage.Controls.Add(this.splitContainer1);
+            this.OtherStuffTabPage.Location = new System.Drawing.Point(4, 22);
+            this.OtherStuffTabPage.Name = "OtherStuffTabPage";
+            this.OtherStuffTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.OtherStuffTabPage.Size = new System.Drawing.Size(1596, 585);
+            this.OtherStuffTabPage.TabIndex = 1;
+            this.OtherStuffTabPage.Text = "Other stuff";
+            this.OtherStuffTabPage.UseVisualStyleBackColor = true;
+            // 
+            // AutoTableLayoutPanel
+            // 
+            this.AutoTableLayoutPanel.ColumnCount = 1;
+            this.AutoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AutoTableLayoutPanel.Controls.Add(this.AutoModeCheckedListBox, 0, 0);
+            this.AutoTableLayoutPanel.Controls.Add(this.AddAutoButton, 0, 1);
+            this.AutoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.AutoTableLayoutPanel.Name = "AutoTableLayoutPanel";
+            this.AutoTableLayoutPanel.RowCount = 2;
+            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.AutoTableLayoutPanel.Size = new System.Drawing.Size(96, 164);
+            this.AutoTableLayoutPanel.TabIndex = 37;
+            // 
+            // AddAutoButton
+            // 
+            this.AddAutoButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddAutoButton.Location = new System.Drawing.Point(3, 127);
+            this.AddAutoButton.Name = "AddAutoButton";
+            this.AddAutoButton.Size = new System.Drawing.Size(90, 34);
+            this.AddAutoButton.TabIndex = 37;
+            this.AddAutoButton.Text = "Add Auto";
+            this.AddAutoButton.UseVisualStyleBackColor = true;
+            this.AddAutoButton.Click += new System.EventHandler(this.AddAutoButton_Click);
             // 
             // toggleButton1
             // 
@@ -995,66 +1193,6 @@
             this.positionControlButton1.TabIndex = 35;
             this.positionControlButton1.TeachMode = true;
             // 
-            // AutoModeSelectPanel
-            // 
-            this.AutoModeSelectPanel.Controls.Add(this.AutoTableLayoutPanel);
-            this.AutoModeSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoModeSelectPanel.Location = new System.Drawing.Point(1485, 3);
-            this.AutoModeSelectPanel.Name = "AutoModeSelectPanel";
-            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.AutoModeSelectPanel, 2);
-            this.AutoModeSelectPanel.Size = new System.Drawing.Size(96, 164);
-            this.AutoModeSelectPanel.TabIndex = 37;
-            // 
-            // AutoModeCheckedListBox
-            // 
-            this.AutoModeCheckedListBox.CheckOnClick = true;
-            this.AutoModeCheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoModeCheckedListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoModeCheckedListBox.FormattingEnabled = true;
-            this.AutoModeCheckedListBox.Location = new System.Drawing.Point(3, 3);
-            this.AutoModeCheckedListBox.Name = "AutoModeCheckedListBox";
-            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(90, 118);
-            this.AutoModeCheckedListBox.TabIndex = 36;
-            this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
-            // 
-            // ScoringPositionsGroupBox
-            // 
-            this.ScoringPositionsGroupBox.Controls.Add(this.ScoringPositionsTableLayoutPanel);
-            this.ScoringPositionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ScoringPositionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScoringPositionsGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.ScoringPositionsGroupBox.Name = "ScoringPositionsGroupBox";
-            this.PositionsTableLayoutPanel.SetRowSpan(this.ScoringPositionsGroupBox, 2);
-            this.ScoringPositionsGroupBox.Size = new System.Drawing.Size(789, 283);
-            this.ScoringPositionsGroupBox.TabIndex = 0;
-            this.ScoringPositionsGroupBox.TabStop = false;
-            this.ScoringPositionsGroupBox.Text = "Scoring Positions";
-            // 
-            // ScoringPositionsTableLayoutPanel
-            // 
-            this.ScoringPositionsTableLayoutPanel.ColumnCount = 3;
-            this.ScoringPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.ScoringPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.ScoringPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.BottomCubeScoringPositionToggleButton, 2, 2);
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.BottomConeScoringPositionToggleButton, 1, 2);
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.MiddleCubeScoringPositionToggleButton, 2, 1);
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.MiddleConeScoringPositionToggleButton, 1, 1);
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.TopCubeScoringPositionToggleButton, 2, 0);
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.TopConeScoringPositionToggleButton, 1, 0);
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.TopScoringPositionLabel, 0, 0);
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.MiddleScoringPositionLabel, 0, 1);
-            this.ScoringPositionsTableLayoutPanel.Controls.Add(this.BottomScoringPositionLabel, 0, 2);
-            this.ScoringPositionsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ScoringPositionsTableLayoutPanel.Location = new System.Drawing.Point(3, 25);
-            this.ScoringPositionsTableLayoutPanel.Name = "ScoringPositionsTableLayoutPanel";
-            this.ScoringPositionsTableLayoutPanel.RowCount = 3;
-            this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ScoringPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 255);
-            this.ScoringPositionsTableLayoutPanel.TabIndex = 0;
-            // 
             // BottomCubeScoringPositionToggleButton
             // 
             this.BottomCubeScoringPositionToggleButton.ButtonText = "";
@@ -1139,97 +1277,6 @@
             this.TopConeScoringPositionToggleButton.TabIndex = 0;
             this.TopConeScoringPositionToggleButton.Tag = "";
             // 
-            // TopScoringPositionLabel
-            // 
-            this.TopScoringPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TopScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TopScoringPositionLabel.Location = new System.Drawing.Point(3, 0);
-            this.TopScoringPositionLabel.Name = "TopScoringPositionLabel";
-            this.TopScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
-            this.TopScoringPositionLabel.TabIndex = 1;
-            this.TopScoringPositionLabel.Text = "Top";
-            this.TopScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // MiddleScoringPositionLabel
-            // 
-            this.MiddleScoringPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MiddleScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MiddleScoringPositionLabel.Location = new System.Drawing.Point(3, 85);
-            this.MiddleScoringPositionLabel.Name = "MiddleScoringPositionLabel";
-            this.MiddleScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
-            this.MiddleScoringPositionLabel.TabIndex = 2;
-            this.MiddleScoringPositionLabel.Text = "Middle";
-            this.MiddleScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // BottomScoringPositionLabel
-            // 
-            this.BottomScoringPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BottomScoringPositionLabel.Location = new System.Drawing.Point(3, 170);
-            this.BottomScoringPositionLabel.Name = "BottomScoringPositionLabel";
-            this.BottomScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
-            this.BottomScoringPositionLabel.TabIndex = 3;
-            this.BottomScoringPositionLabel.Text = "Bottom";
-            this.BottomScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // PickupPositionsGroupBox
-            // 
-            this.PickupPositionsGroupBox.Controls.Add(this.PickupPositionsTableLayoutPanel);
-            this.PickupPositionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PickupPositionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PickupPositionsGroupBox.Location = new System.Drawing.Point(798, 72);
-            this.PickupPositionsGroupBox.Name = "PickupPositionsGroupBox";
-            this.PickupPositionsGroupBox.Size = new System.Drawing.Size(789, 214);
-            this.PickupPositionsGroupBox.TabIndex = 2;
-            this.PickupPositionsGroupBox.TabStop = false;
-            this.PickupPositionsGroupBox.Text = "Pickup Positions";
-            // 
-            // PickupPositionsTableLayoutPanel
-            // 
-            this.PickupPositionsTableLayoutPanel.ColumnCount = 3;
-            this.PickupPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.PickupPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.PickupPositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.PickupPositionsTableLayoutPanel.Controls.Add(this.FloorPickupPositionLabel, 0, 2);
-            this.PickupPositionsTableLayoutPanel.Controls.Add(this.PlatterPickupPositionLabel, 0, 0);
-            this.PickupPositionsTableLayoutPanel.Controls.Add(this.ConePlatterPickupPositionToggleButton, 1, 0);
-            this.PickupPositionsTableLayoutPanel.Controls.Add(this.CubePlatterPickupPositionToggleButton, 2, 0);
-            this.PickupPositionsTableLayoutPanel.Controls.Add(this.CubeChutePickupPositionToggleButton, 2, 1);
-            this.PickupPositionsTableLayoutPanel.Controls.Add(this.FloorPickupButtonsTableLayoutPanel, 1, 2);
-            this.PickupPositionsTableLayoutPanel.Controls.Add(this.ConeChutePickupPositionToggleButton, 1, 1);
-            this.PickupPositionsTableLayoutPanel.Controls.Add(this.ChutePickupPositionLabel, 0, 1);
-            this.PickupPositionsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PickupPositionsTableLayoutPanel.Location = new System.Drawing.Point(3, 25);
-            this.PickupPositionsTableLayoutPanel.Name = "PickupPositionsTableLayoutPanel";
-            this.PickupPositionsTableLayoutPanel.RowCount = 3;
-            this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.PickupPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 186);
-            this.PickupPositionsTableLayoutPanel.TabIndex = 0;
-            // 
-            // FloorPickupPositionLabel
-            // 
-            this.FloorPickupPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FloorPickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FloorPickupPositionLabel.Location = new System.Drawing.Point(3, 124);
-            this.FloorPickupPositionLabel.Name = "FloorPickupPositionLabel";
-            this.FloorPickupPositionLabel.Size = new System.Drawing.Size(255, 62);
-            this.FloorPickupPositionLabel.TabIndex = 10;
-            this.FloorPickupPositionLabel.Text = "Floor";
-            this.FloorPickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // PlatterPickupPositionLabel
-            // 
-            this.PlatterPickupPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlatterPickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlatterPickupPositionLabel.Location = new System.Drawing.Point(3, 0);
-            this.PlatterPickupPositionLabel.Name = "PlatterPickupPositionLabel";
-            this.PlatterPickupPositionLabel.Size = new System.Drawing.Size(255, 62);
-            this.PlatterPickupPositionLabel.TabIndex = 3;
-            this.PlatterPickupPositionLabel.Text = "Platter";
-            this.PlatterPickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // ConePlatterPickupPositionToggleButton
             // 
             this.ConePlatterPickupPositionToggleButton.ButtonText = "";
@@ -1274,24 +1321,6 @@
             this.CubeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 54);
             this.CubeChutePickupPositionToggleButton.TabIndex = 7;
             this.CubeChutePickupPositionToggleButton.Tag = "";
-            // 
-            // FloorPickupButtonsTableLayoutPanel
-            // 
-            this.FloorPickupButtonsTableLayoutPanel.ColumnCount = 3;
-            this.PickupPositionsTableLayoutPanel.SetColumnSpan(this.FloorPickupButtonsTableLayoutPanel, 2);
-            this.FloorPickupButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.FloorPickupButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.FloorPickupButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.FloorPickupButtonsTableLayoutPanel.Controls.Add(this.CubePickupFloorPositionToggleButton, 0, 0);
-            this.FloorPickupButtonsTableLayoutPanel.Controls.Add(this.ConePickupFloorPositionTippedToggleButton, 0, 0);
-            this.FloorPickupButtonsTableLayoutPanel.Controls.Add(this.ConePickupFloorPositionToggleButton, 0, 0);
-            this.FloorPickupButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FloorPickupButtonsTableLayoutPanel.Location = new System.Drawing.Point(264, 127);
-            this.FloorPickupButtonsTableLayoutPanel.Name = "FloorPickupButtonsTableLayoutPanel";
-            this.FloorPickupButtonsTableLayoutPanel.RowCount = 1;
-            this.FloorPickupButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.FloorPickupButtonsTableLayoutPanel.Size = new System.Drawing.Size(516, 56);
-            this.FloorPickupButtonsTableLayoutPanel.TabIndex = 9;
             // 
             // CubePickupFloorPositionToggleButton
             // 
@@ -1353,32 +1382,6 @@
             this.ConeChutePickupPositionToggleButton.TabIndex = 8;
             this.ConeChutePickupPositionToggleButton.Tag = "";
             // 
-            // ChutePickupPositionLabel
-            // 
-            this.ChutePickupPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChutePickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChutePickupPositionLabel.Location = new System.Drawing.Point(3, 62);
-            this.ChutePickupPositionLabel.Name = "ChutePickupPositionLabel";
-            this.ChutePickupPositionLabel.Size = new System.Drawing.Size(255, 62);
-            this.ChutePickupPositionLabel.TabIndex = 4;
-            this.ChutePickupPositionLabel.Text = "Chute";
-            this.ChutePickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TopRightTableLayoutPanel
-            // 
-            this.TopRightTableLayoutPanel.ColumnCount = 2;
-            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TopRightTableLayoutPanel.Controls.Add(this.HomeToggleButton, 0, 0);
-            this.TopRightTableLayoutPanel.Controls.Add(this.ClearToggleButton, 1, 0);
-            this.TopRightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TopRightTableLayoutPanel.Location = new System.Drawing.Point(798, 3);
-            this.TopRightTableLayoutPanel.Name = "TopRightTableLayoutPanel";
-            this.TopRightTableLayoutPanel.RowCount = 1;
-            this.TopRightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TopRightTableLayoutPanel.Size = new System.Drawing.Size(789, 63);
-            this.TopRightTableLayoutPanel.TabIndex = 3;
-            // 
             // HomeToggleButton
             // 
             this.HomeToggleButton.ButtonText = "Home";
@@ -1411,42 +1414,75 @@
             this.ClearToggleButton.TabIndex = 1;
             this.ClearToggleButton.Tag = "";
             // 
-            // OtherStuffTabPage
+            // ExtendPositionIndicator
             // 
-            this.OtherStuffTabPage.Controls.Add(this.splitContainer1);
-            this.OtherStuffTabPage.Location = new System.Drawing.Point(4, 22);
-            this.OtherStuffTabPage.Name = "OtherStuffTabPage";
-            this.OtherStuffTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.OtherStuffTabPage.Size = new System.Drawing.Size(1596, 585);
-            this.OtherStuffTabPage.TabIndex = 1;
-            this.OtherStuffTabPage.Text = "Other stuff";
-            this.OtherStuffTabPage.UseVisualStyleBackColor = true;
+            this.ExtendPositionIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExtendPositionIndicator.Location = new System.Drawing.Point(173, 3);
+            this.ExtendPositionIndicator.Name = "ExtendPositionIndicator";
+            this.ExtendPositionIndicator.Size = new System.Drawing.Size(164, 120);
+            this.ExtendPositionIndicator.TabIndex = 0;
+            this.ExtendPositionIndicator.VariableName = "Extend position";
             // 
-            // AutoTableLayoutPanel
+            // GoButton
             // 
-            this.AutoTableLayoutPanel.ColumnCount = 1;
-            this.AutoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AutoTableLayoutPanel.Controls.Add(this.AutoModeCheckedListBox, 0, 0);
-            this.AutoTableLayoutPanel.Controls.Add(this.AddAutoButton, 0, 1);
-            this.AutoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.AutoTableLayoutPanel.Name = "AutoTableLayoutPanel";
-            this.AutoTableLayoutPanel.RowCount = 2;
-            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.AutoTableLayoutPanel.Size = new System.Drawing.Size(96, 164);
-            this.AutoTableLayoutPanel.TabIndex = 37;
+            this.GoButton.Location = new System.Drawing.Point(513, 255);
+            this.GoButton.Name = "GoButton";
+            this.GoButton.Size = new System.Drawing.Size(138, 120);
+            this.GoButton.TabIndex = 9;
+            this.GoButton.TeachMode = false;
             // 
-            // AddAutoButton
+            // TeachButton
             // 
-            this.AddAutoButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddAutoButton.Location = new System.Drawing.Point(3, 127);
-            this.AddAutoButton.Name = "AddAutoButton";
-            this.AddAutoButton.Size = new System.Drawing.Size(90, 34);
-            this.AddAutoButton.TabIndex = 37;
-            this.AddAutoButton.Text = "Add Auto";
-            this.AddAutoButton.UseVisualStyleBackColor = true;
-            this.AddAutoButton.Click += new System.EventHandler(this.AddAutoButton_Click);
+            this.TeachButton.Location = new System.Drawing.Point(513, 129);
+            this.TeachButton.Name = "TeachButton";
+            this.TeachButton.Size = new System.Drawing.Size(138, 120);
+            this.TeachButton.TabIndex = 10;
+            this.TeachButton.TeachMode = true;
+            // 
+            // PivotPositionIndicator
+            // 
+            this.PivotPositionIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PivotPositionIndicator.Location = new System.Drawing.Point(3, 3);
+            this.PivotPositionIndicator.Name = "PivotPositionIndicator";
+            this.PivotPositionIndicator.Size = new System.Drawing.Size(164, 120);
+            this.PivotPositionIndicator.TabIndex = 3;
+            this.PivotPositionIndicator.VariableName = "Pivot position";
+            // 
+            // WristPositionIndicator
+            // 
+            this.WristPositionIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WristPositionIndicator.Location = new System.Drawing.Point(343, 3);
+            this.WristPositionIndicator.Name = "WristPositionIndicator";
+            this.WristPositionIndicator.Size = new System.Drawing.Size(164, 120);
+            this.WristPositionIndicator.TabIndex = 4;
+            this.WristPositionIndicator.VariableName = "Wrist position";
+            // 
+            // DesiredPivotIndicator
+            // 
+            this.DesiredPivotIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DesiredPivotIndicator.Location = new System.Drawing.Point(3, 129);
+            this.DesiredPivotIndicator.Name = "DesiredPivotIndicator";
+            this.DesiredPivotIndicator.Size = new System.Drawing.Size(164, 120);
+            this.DesiredPivotIndicator.TabIndex = 15;
+            this.DesiredPivotIndicator.VariableName = "DesiredPivotPosition";
+            // 
+            // DesiredExtendIndicator
+            // 
+            this.DesiredExtendIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DesiredExtendIndicator.Location = new System.Drawing.Point(173, 129);
+            this.DesiredExtendIndicator.Name = "DesiredExtendIndicator";
+            this.DesiredExtendIndicator.Size = new System.Drawing.Size(164, 120);
+            this.DesiredExtendIndicator.TabIndex = 16;
+            this.DesiredExtendIndicator.VariableName = "DesiredExtendPosition";
+            // 
+            // DesiredWristIndicator
+            // 
+            this.DesiredWristIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DesiredWristIndicator.Location = new System.Drawing.Point(343, 129);
+            this.DesiredWristIndicator.Name = "DesiredWristIndicator";
+            this.DesiredWristIndicator.Size = new System.Drawing.Size(164, 120);
+            this.DesiredWristIndicator.TabIndex = 17;
+            this.DesiredWristIndicator.VariableName = "DesiredWristPosition";
             // 
             // BobDash
             // 
@@ -1586,6 +1622,9 @@
         private System.Windows.Forms.Button RestoreSwerveCalibrationButton;
         private System.Windows.Forms.TableLayoutPanel AutoTableLayoutPanel;
         private System.Windows.Forms.Button AddAutoButton;
+        private BobDashControls.Indicator DesiredPivotIndicator;
+        private BobDashControls.Indicator DesiredExtendIndicator;
+        private BobDashControls.Indicator DesiredWristIndicator;
     }
 }
 
