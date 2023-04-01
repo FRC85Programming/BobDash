@@ -66,7 +66,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.AutoModeSelectPanel = new System.Windows.Forms.Panel();
+            this.AutoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.AddAutoButton = new System.Windows.Forms.Button();
             this.ScoringPositionsGroupBox = new System.Windows.Forms.GroupBox();
             this.ScoringPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.TopScoringPositionLabel = new System.Windows.Forms.Label();
@@ -80,8 +82,6 @@
             this.ChutePickupPositionLabel = new System.Windows.Forms.Label();
             this.TopRightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
-            this.AutoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.AddAutoButton = new System.Windows.Forms.Button();
             this.toggleButton1 = new BobDashControls.ToggleButton();
             this.toggleButton2 = new BobDashControls.ToggleButton();
             this.toggleButton3 = new BobDashControls.ToggleButton();
@@ -124,7 +124,7 @@
             this.ConePickupFloorPositionToggleButton = new BobDashControls.ToggleButton();
             this.ConeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
             this.HomeToggleButton = new BobDashControls.ToggleButton();
-            this.ClearToggleButton = new BobDashControls.ToggleButton();
+            this.BobDashAutoModeIndicator = new BobDashControls.Indicator();
             this.ExtendPositionIndicator = new BobDashControls.Indicator();
             this.GoButton = new BobDashControls.PositionControlButton();
             this.TeachButton = new BobDashControls.PositionControlButton();
@@ -133,6 +133,7 @@
             this.DesiredPivotIndicator = new BobDashControls.Indicator();
             this.DesiredExtendIndicator = new BobDashControls.Indicator();
             this.DesiredWristIndicator = new BobDashControls.Indicator();
+            this.BobDashMatchTimeIndicator = new BobDashControls.Indicator();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -153,6 +154,7 @@
             this.FilledScoringLocationsGroupBox.SuspendLayout();
             this.FilledScoringLocationsTableLayoutPanel.SuspendLayout();
             this.AutoModeSelectPanel.SuspendLayout();
+            this.AutoTableLayoutPanel.SuspendLayout();
             this.ScoringPositionsGroupBox.SuspendLayout();
             this.ScoringPositionsTableLayoutPanel.SuspendLayout();
             this.PickupPositionsGroupBox.SuspendLayout();
@@ -160,7 +162,6 @@
             this.FloorPickupButtonsTableLayoutPanel.SuspendLayout();
             this.TopRightTableLayoutPanel.SuspendLayout();
             this.OtherStuffTabPage.SuspendLayout();
-            this.AutoTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // IndicatorTableLayoutPanel
@@ -583,6 +584,21 @@
             this.AutoModeSelectPanel.Size = new System.Drawing.Size(96, 164);
             this.AutoModeSelectPanel.TabIndex = 37;
             // 
+            // AutoTableLayoutPanel
+            // 
+            this.AutoTableLayoutPanel.ColumnCount = 1;
+            this.AutoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AutoTableLayoutPanel.Controls.Add(this.AutoModeCheckedListBox, 0, 0);
+            this.AutoTableLayoutPanel.Controls.Add(this.AddAutoButton, 0, 1);
+            this.AutoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.AutoTableLayoutPanel.Name = "AutoTableLayoutPanel";
+            this.AutoTableLayoutPanel.RowCount = 2;
+            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.AutoTableLayoutPanel.Size = new System.Drawing.Size(96, 164);
+            this.AutoTableLayoutPanel.TabIndex = 37;
+            // 
             // AutoModeCheckedListBox
             // 
             this.AutoModeCheckedListBox.CheckOnClick = true;
@@ -594,6 +610,17 @@
             this.AutoModeCheckedListBox.Size = new System.Drawing.Size(90, 118);
             this.AutoModeCheckedListBox.TabIndex = 36;
             this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
+            // 
+            // AddAutoButton
+            // 
+            this.AddAutoButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddAutoButton.Location = new System.Drawing.Point(3, 127);
+            this.AddAutoButton.Name = "AddAutoButton";
+            this.AddAutoButton.Size = new System.Drawing.Size(90, 34);
+            this.AddAutoButton.TabIndex = 37;
+            this.AddAutoButton.Text = "Add Auto";
+            this.AddAutoButton.UseVisualStyleBackColor = true;
+            this.AddAutoButton.Click += new System.EventHandler(this.AddAutoButton_Click);
             // 
             // ScoringPositionsGroupBox
             // 
@@ -755,16 +782,18 @@
             // 
             // TopRightTableLayoutPanel
             // 
-            this.TopRightTableLayoutPanel.ColumnCount = 2;
-            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TopRightTableLayoutPanel.ColumnCount = 3;
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TopRightTableLayoutPanel.Controls.Add(this.HomeToggleButton, 0, 0);
-            this.TopRightTableLayoutPanel.Controls.Add(this.ClearToggleButton, 1, 0);
+            this.TopRightTableLayoutPanel.Controls.Add(this.BobDashAutoModeIndicator, 1, 0);
+            this.TopRightTableLayoutPanel.Controls.Add(this.BobDashMatchTimeIndicator, 2, 0);
             this.TopRightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TopRightTableLayoutPanel.Location = new System.Drawing.Point(798, 3);
             this.TopRightTableLayoutPanel.Name = "TopRightTableLayoutPanel";
             this.TopRightTableLayoutPanel.RowCount = 1;
-            this.TopRightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TopRightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TopRightTableLayoutPanel.Size = new System.Drawing.Size(789, 63);
             this.TopRightTableLayoutPanel.TabIndex = 3;
             // 
@@ -778,32 +807,6 @@
             this.OtherStuffTabPage.TabIndex = 1;
             this.OtherStuffTabPage.Text = "Other stuff";
             this.OtherStuffTabPage.UseVisualStyleBackColor = true;
-            // 
-            // AutoTableLayoutPanel
-            // 
-            this.AutoTableLayoutPanel.ColumnCount = 1;
-            this.AutoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AutoTableLayoutPanel.Controls.Add(this.AutoModeCheckedListBox, 0, 0);
-            this.AutoTableLayoutPanel.Controls.Add(this.AddAutoButton, 0, 1);
-            this.AutoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.AutoTableLayoutPanel.Name = "AutoTableLayoutPanel";
-            this.AutoTableLayoutPanel.RowCount = 2;
-            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.AutoTableLayoutPanel.Size = new System.Drawing.Size(96, 164);
-            this.AutoTableLayoutPanel.TabIndex = 37;
-            // 
-            // AddAutoButton
-            // 
-            this.AddAutoButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddAutoButton.Location = new System.Drawing.Point(3, 127);
-            this.AddAutoButton.Name = "AddAutoButton";
-            this.AddAutoButton.Size = new System.Drawing.Size(90, 34);
-            this.AddAutoButton.TabIndex = 37;
-            this.AddAutoButton.Text = "Add Auto";
-            this.AddAutoButton.UseVisualStyleBackColor = true;
-            this.AddAutoButton.Click += new System.EventHandler(this.AddAutoButton_Click);
             // 
             // toggleButton1
             // 
@@ -1394,25 +1397,19 @@
             this.HomeToggleButton.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.HomeToggleButton.Name = "HomeToggleButton";
             this.HomeToggleButton.PositionName = "Home";
-            this.HomeToggleButton.Size = new System.Drawing.Size(372, 43);
+            this.HomeToggleButton.Size = new System.Drawing.Size(240, 43);
             this.HomeToggleButton.TabIndex = 0;
             this.HomeToggleButton.Tag = "";
             // 
-            // ClearToggleButton
+            // BobDashAutoModeIndicator
             // 
-            this.ClearToggleButton.ButtonText = "Clear";
-            this.ClearToggleButton.Checked = false;
-            this.ClearToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ClearToggleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearToggleButton.GroupName = "Positions";
-            this.ClearToggleButton.Image = null;
-            this.ClearToggleButton.Location = new System.Drawing.Point(405, 10);
-            this.ClearToggleButton.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
-            this.ClearToggleButton.Name = "ClearToggleButton";
-            this.ClearToggleButton.PositionName = null;
-            this.ClearToggleButton.Size = new System.Drawing.Size(373, 43);
-            this.ClearToggleButton.TabIndex = 1;
-            this.ClearToggleButton.Tag = "";
+            this.BobDashAutoModeIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BobDashAutoModeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BobDashAutoModeIndicator.Location = new System.Drawing.Point(265, 3);
+            this.BobDashAutoModeIndicator.Name = "BobDashAutoModeIndicator";
+            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(256, 57);
+            this.BobDashAutoModeIndicator.TabIndex = 1;
+            this.BobDashAutoModeIndicator.VariableName = "BobDashAutoMode";
             // 
             // ExtendPositionIndicator
             // 
@@ -1484,6 +1481,17 @@
             this.DesiredWristIndicator.TabIndex = 17;
             this.DesiredWristIndicator.VariableName = "DesiredWristPosition";
             // 
+            // BobDashMatchTimeIndicator
+            // 
+            this.BobDashMatchTimeIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BobDashMatchTimeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BobDashMatchTimeIndicator.Location = new System.Drawing.Point(530, 6);
+            this.BobDashMatchTimeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.BobDashMatchTimeIndicator.Name = "BobDashMatchTimeIndicator";
+            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(253, 51);
+            this.BobDashMatchTimeIndicator.TabIndex = 2;
+            this.BobDashMatchTimeIndicator.VariableName = "BobDashMatchTime";
+            // 
             // BobDash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1515,6 +1523,7 @@
             this.FilledScoringLocationsGroupBox.ResumeLayout(false);
             this.FilledScoringLocationsTableLayoutPanel.ResumeLayout(false);
             this.AutoModeSelectPanel.ResumeLayout(false);
+            this.AutoTableLayoutPanel.ResumeLayout(false);
             this.ScoringPositionsGroupBox.ResumeLayout(false);
             this.ScoringPositionsTableLayoutPanel.ResumeLayout(false);
             this.PickupPositionsGroupBox.ResumeLayout(false);
@@ -1522,7 +1531,6 @@
             this.FloorPickupButtonsTableLayoutPanel.ResumeLayout(false);
             this.TopRightTableLayoutPanel.ResumeLayout(false);
             this.OtherStuffTabPage.ResumeLayout(false);
-            this.AutoTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1607,7 +1615,6 @@
         private BobDashControls.ToggleButton CubeChutePickupPositionToggleButton;
         private System.Windows.Forms.TableLayoutPanel TopRightTableLayoutPanel;
         private BobDashControls.ToggleButton HomeToggleButton;
-        private BobDashControls.ToggleButton ClearToggleButton;
         private System.Windows.Forms.Button BackupPositionsButton;
         private BobDashControls.PositionControlButton positionControlButton1;
         private System.Windows.Forms.Label FloorPickupPositionLabel;
@@ -1625,6 +1632,8 @@
         private BobDashControls.Indicator DesiredPivotIndicator;
         private BobDashControls.Indicator DesiredExtendIndicator;
         private BobDashControls.Indicator DesiredWristIndicator;
+        private BobDashControls.Indicator BobDashAutoModeIndicator;
+        private BobDashControls.Indicator BobDashMatchTimeIndicator;
     }
 }
 

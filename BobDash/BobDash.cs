@@ -2,17 +2,16 @@
 using GlobalHotKey;
 using NetworkTables;
 using NetworkTables.Tables;
+using NLog;
 using NLog.Config;
 using NLog.Targets;
-using NLog;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Linq;
-using System.Security.AccessControl;
 
 namespace BobDash
 {
@@ -354,7 +353,7 @@ namespace BobDash
             {
                 if (SmartDashboard != null)
                 {
-                    SetBackColor(Color.Green);
+                    SetBackColor(Color.LimeGreen);
                     SetAutoMode();
                 }
                 else
@@ -512,7 +511,7 @@ namespace BobDash
             if (NetworkTablesConnected && AutoModeCheckedListBox.SelectedIndex > -1)
             {
                 SmartDashboard.PutString("BobDashAutoMode", AutoModeCheckedListBox.SelectedItem.ToString());
-                AutoModeCheckedListBox.BackColor = Color.Green;
+                AutoModeCheckedListBox.BackColor = Color.LimeGreen;
             }
         }
 

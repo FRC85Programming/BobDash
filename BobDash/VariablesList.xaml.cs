@@ -1,5 +1,4 @@
-﻿using NetworkTables;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,11 +20,6 @@ namespace BobDash
 
         private async void ListView_Loaded(object sender, RoutedEventArgs e)
         {
-            /*_listener = NtCore.AddEntryListener($"/SmartDashboard", async (uid, key, newValue, flags) => {
-                await Task.Delay(200);
-                RefreshList(); 
-            }, NotifyFlags.NotifyNew | NotifyFlags.NotifyImmediate);*/
-
             await Task.Delay(200);
             RefreshList();
         }

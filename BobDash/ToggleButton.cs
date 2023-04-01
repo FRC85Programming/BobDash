@@ -80,7 +80,7 @@ namespace BobDashControls
                         BobDash.BobDash.LoadPosition(PositionName);
                     }
 
-                    ToggledCheckBox.BackColor = Color.Green;
+                    ToggledCheckBox.BackColor = Color.LimeGreen;
                 }
                 else
                 {
