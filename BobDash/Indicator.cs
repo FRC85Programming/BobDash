@@ -27,6 +27,7 @@ namespace BobDashControls
         public Indicator()
         {
             InitializeComponent();
+            DoubleBuffered = true;
         }
 
         private async void Indicator_Load(object sender, EventArgs e)

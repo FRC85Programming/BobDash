@@ -276,19 +276,17 @@ namespace BobDash
 
             SetupStreams();
 
-            if (CameraTabControl.SelectedTab.Name == "DriverAssistTabPage" && _driverAssistCameraStream != null)
-            {
-                DriverAssistCameraVideoSourcePlayer.VideoSource = _driverAssistCameraStream;
-                _driverAssistCameraStream.Start(); 
-            }
-            if (CameraTabControl.SelectedTab.Name == "VisionTabPage")
+            if (LeftSideTabControl.SelectedTab.Name == nameof(Camera1TabPage))
             {
                 if (_camera1Stream != null)
                 {
                     Camera1VideoSourcePlayer.VideoSource = _camera1Stream;
                     _camera1Stream.Start();
                 }
+            }
 
+            if (RightSideTabControl.SelectedTab.Name == nameof(Camera2TabPage))
+            {
                 if (_camera2Stream != null)
                 {
                     Camera2VideoSourcePlayer.VideoSource = _camera2Stream;
@@ -304,11 +302,6 @@ namespace BobDash
             if (!_camerasStarted)
             {
                 return;
-            }
-
-            if (DriverAssistCameraVideoSourcePlayer.VideoSource != null && DriverAssistCameraVideoSourcePlayer.VideoSource.IsRunning)
-            {
-                DriverAssistCameraVideoSourcePlayer.VideoSource = null;
             }
 
             if (Camera1VideoSourcePlayer.VideoSource != null && Camera1VideoSourcePlayer.VideoSource.IsRunning)
@@ -405,10 +398,16 @@ namespace BobDash
 
         private void LoadAutoModes()
         {
+            if (AutoModeCheckedListBox.InvokeRequired)
+            {
+                AutoModeCheckedListBox.Invoke(new Action(() => LoadAutoModes()));
+                return;
+            }
+
             AutoModeCheckedListBox.Items.Clear();
             try
             {
-                var fromSmartDashboard = SmartDashboard.GetStringArray("AutoModes", null);
+                var fromSmartDashboard = SmartDashboard?.GetStringArray("AutoModes", null);
                 if (fromSmartDashboard != null && fromSmartDashboard.Any())
                 {
                     foreach (var mode in fromSmartDashboard)

@@ -44,12 +44,9 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.CameraTabControl = new System.Windows.Forms.TabControl();
-            this.DriverAssistTabPage = new System.Windows.Forms.TabPage();
-            this.DriverAssistCameraVideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
-            this.VisionTabPage = new System.Windows.Forms.TabPage();
+            this.LeftSideTabControl = new System.Windows.Forms.TabControl();
+            this.Camera1TabPage = new System.Windows.Forms.TabPage();
             this.CameraTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RightSideTabControl = new System.Windows.Forms.TabControl();
             this.IndicatorsTabPage = new System.Windows.Forms.TabPage();
@@ -82,6 +79,8 @@
             this.ChutePickupPositionLabel = new System.Windows.Forms.Label();
             this.TopRightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
+            this.Camera2TabPage = new System.Windows.Forms.TabPage();
+            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.toggleButton1 = new BobDashControls.ToggleButton();
             this.toggleButton2 = new BobDashControls.ToggleButton();
             this.toggleButton3 = new BobDashControls.ToggleButton();
@@ -125,6 +124,7 @@
             this.ConeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
             this.HomeToggleButton = new BobDashControls.ToggleButton();
             this.BobDashAutoModeIndicator = new BobDashControls.Indicator();
+            this.BobDashMatchTimeIndicator = new BobDashControls.Indicator();
             this.ExtendPositionIndicator = new BobDashControls.Indicator();
             this.GoButton = new BobDashControls.PositionControlButton();
             this.TeachButton = new BobDashControls.PositionControlButton();
@@ -133,15 +133,13 @@
             this.DesiredPivotIndicator = new BobDashControls.Indicator();
             this.DesiredExtendIndicator = new BobDashControls.Indicator();
             this.DesiredWristIndicator = new BobDashControls.Indicator();
-            this.BobDashMatchTimeIndicator = new BobDashControls.Indicator();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.CameraTabControl.SuspendLayout();
-            this.DriverAssistTabPage.SuspendLayout();
-            this.VisionTabPage.SuspendLayout();
+            this.LeftSideTabControl.SuspendLayout();
+            this.Camera1TabPage.SuspendLayout();
             this.CameraTableLayoutPanel.SuspendLayout();
             this.RightSideTableLayoutPanel.SuspendLayout();
             this.RightSideTabControl.SuspendLayout();
@@ -162,6 +160,7 @@
             this.FloorPickupButtonsTableLayoutPanel.SuspendLayout();
             this.TopRightTableLayoutPanel.SuspendLayout();
             this.OtherStuffTabPage.SuspendLayout();
+            this.Camera2TabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // IndicatorTableLayoutPanel
@@ -253,7 +252,7 @@
             this.Camera1VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Camera1VideoSourcePlayer.Location = new System.Drawing.Point(3, 3);
             this.Camera1VideoSourcePlayer.Name = "Camera1VideoSourcePlayer";
-            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(865, 267);
+            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(865, 541);
             this.Camera1VideoSourcePlayer.TabIndex = 2;
             this.Camera1VideoSourcePlayer.TabStop = false;
             this.Camera1VideoSourcePlayer.VideoSource = null;
@@ -266,7 +265,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.CameraTabControl);
+            this.splitContainer1.Panel1.Controls.Add(this.LeftSideTabControl);
             // 
             // splitContainer1.Panel2
             // 
@@ -275,74 +274,41 @@
             this.splitContainer1.SplitterDistance = 885;
             this.splitContainer1.TabIndex = 4;
             // 
-            // CameraTabControl
+            // LeftSideTabControl
             // 
-            this.CameraTabControl.Controls.Add(this.DriverAssistTabPage);
-            this.CameraTabControl.Controls.Add(this.VisionTabPage);
-            this.CameraTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CameraTabControl.Location = new System.Drawing.Point(0, 0);
-            this.CameraTabControl.Name = "CameraTabControl";
-            this.CameraTabControl.SelectedIndex = 0;
-            this.CameraTabControl.Size = new System.Drawing.Size(885, 579);
-            this.CameraTabControl.TabIndex = 4;
-            this.CameraTabControl.SelectedIndexChanged += new System.EventHandler(this.CameraTabControl_SelectedIndexChanged);
+            this.LeftSideTabControl.Controls.Add(this.Camera1TabPage);
+            this.LeftSideTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LeftSideTabControl.Location = new System.Drawing.Point(0, 0);
+            this.LeftSideTabControl.Name = "LeftSideTabControl";
+            this.LeftSideTabControl.SelectedIndex = 0;
+            this.LeftSideTabControl.Size = new System.Drawing.Size(885, 579);
+            this.LeftSideTabControl.TabIndex = 4;
+            this.LeftSideTabControl.SelectedIndexChanged += new System.EventHandler(this.CameraTabControl_SelectedIndexChanged);
             // 
-            // DriverAssistTabPage
+            // Camera1TabPage
             // 
-            this.DriverAssistTabPage.Controls.Add(this.DriverAssistCameraVideoSourcePlayer);
-            this.DriverAssistTabPage.Location = new System.Drawing.Point(4, 22);
-            this.DriverAssistTabPage.Name = "DriverAssistTabPage";
-            this.DriverAssistTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.DriverAssistTabPage.Size = new System.Drawing.Size(877, 553);
-            this.DriverAssistTabPage.TabIndex = 0;
-            this.DriverAssistTabPage.Text = "Driver Assist";
-            this.DriverAssistTabPage.UseVisualStyleBackColor = true;
-            // 
-            // DriverAssistCameraVideoSourcePlayer
-            // 
-            this.DriverAssistCameraVideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DriverAssistCameraVideoSourcePlayer.Location = new System.Drawing.Point(3, 3);
-            this.DriverAssistCameraVideoSourcePlayer.Name = "DriverAssistCameraVideoSourcePlayer";
-            this.DriverAssistCameraVideoSourcePlayer.Size = new System.Drawing.Size(871, 547);
-            this.DriverAssistCameraVideoSourcePlayer.TabIndex = 0;
-            this.DriverAssistCameraVideoSourcePlayer.TabStop = false;
-            this.DriverAssistCameraVideoSourcePlayer.VideoSource = null;
-            // 
-            // VisionTabPage
-            // 
-            this.VisionTabPage.Controls.Add(this.CameraTableLayoutPanel);
-            this.VisionTabPage.Location = new System.Drawing.Point(4, 22);
-            this.VisionTabPage.Name = "VisionTabPage";
-            this.VisionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.VisionTabPage.Size = new System.Drawing.Size(877, 553);
-            this.VisionTabPage.TabIndex = 1;
-            this.VisionTabPage.Text = "Vision";
-            this.VisionTabPage.UseVisualStyleBackColor = true;
+            this.Camera1TabPage.Controls.Add(this.CameraTableLayoutPanel);
+            this.Camera1TabPage.Location = new System.Drawing.Point(4, 22);
+            this.Camera1TabPage.Name = "Camera1TabPage";
+            this.Camera1TabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.Camera1TabPage.Size = new System.Drawing.Size(877, 553);
+            this.Camera1TabPage.TabIndex = 1;
+            this.Camera1TabPage.Text = "Camera 1";
+            this.Camera1TabPage.UseVisualStyleBackColor = true;
             // 
             // CameraTableLayoutPanel
             // 
             this.CameraTableLayoutPanel.ColumnCount = 1;
-            this.CameraTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CameraTableLayoutPanel.Controls.Add(this.Camera2VideoSourcePlayer, 0, 1);
+            this.CameraTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.CameraTableLayoutPanel.Controls.Add(this.Camera1VideoSourcePlayer, 0, 0);
             this.CameraTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CameraTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.CameraTableLayoutPanel.Name = "CameraTableLayoutPanel";
-            this.CameraTableLayoutPanel.RowCount = 2;
-            this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.CameraTableLayoutPanel.RowCount = 1;
+            this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.CameraTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 547F));
             this.CameraTableLayoutPanel.Size = new System.Drawing.Size(871, 547);
             this.CameraTableLayoutPanel.TabIndex = 3;
-            // 
-            // Camera2VideoSourcePlayer
-            // 
-            this.Camera2VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(3, 276);
-            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
-            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(865, 268);
-            this.Camera2VideoSourcePlayer.TabIndex = 3;
-            this.Camera2VideoSourcePlayer.TabStop = false;
-            this.Camera2VideoSourcePlayer.VideoSource = null;
             // 
             // RightSideTableLayoutPanel
             // 
@@ -363,12 +329,14 @@
             // 
             this.RightSideTabControl.Controls.Add(this.IndicatorsTabPage);
             this.RightSideTabControl.Controls.Add(this.VariablesTabPage);
+            this.RightSideTabControl.Controls.Add(this.Camera2TabPage);
             this.RightSideTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RightSideTabControl.Location = new System.Drawing.Point(3, 3);
             this.RightSideTabControl.Name = "RightSideTabControl";
             this.RightSideTabControl.SelectedIndex = 0;
             this.RightSideTabControl.Size = new System.Drawing.Size(695, 536);
             this.RightSideTabControl.TabIndex = 2;
+            this.RightSideTabControl.SelectedIndexChanged += new System.EventHandler(this.CameraTabControl_SelectedIndexChanged);
             // 
             // IndicatorsTabPage
             // 
@@ -807,6 +775,27 @@
             this.OtherStuffTabPage.TabIndex = 1;
             this.OtherStuffTabPage.Text = "Other stuff";
             this.OtherStuffTabPage.UseVisualStyleBackColor = true;
+            // 
+            // Camera2TabPage
+            // 
+            this.Camera2TabPage.Controls.Add(this.Camera2VideoSourcePlayer);
+            this.Camera2TabPage.Location = new System.Drawing.Point(4, 22);
+            this.Camera2TabPage.Name = "Camera2TabPage";
+            this.Camera2TabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.Camera2TabPage.Size = new System.Drawing.Size(687, 510);
+            this.Camera2TabPage.TabIndex = 2;
+            this.Camera2TabPage.Text = "Camera 2";
+            this.Camera2TabPage.UseVisualStyleBackColor = true;
+            // 
+            // Camera2VideoSourcePlayer
+            // 
+            this.Camera2VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(3, 3);
+            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
+            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(681, 504);
+            this.Camera2VideoSourcePlayer.TabIndex = 4;
+            this.Camera2VideoSourcePlayer.TabStop = false;
+            this.Camera2VideoSourcePlayer.VideoSource = null;
             // 
             // toggleButton1
             // 
@@ -1397,23 +1386,41 @@
             this.HomeToggleButton.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.HomeToggleButton.Name = "HomeToggleButton";
             this.HomeToggleButton.PositionName = "Home";
-            this.HomeToggleButton.Size = new System.Drawing.Size(240, 43);
+            this.HomeToggleButton.Size = new System.Drawing.Size(241, 43);
             this.HomeToggleButton.TabIndex = 0;
             this.HomeToggleButton.Tag = "";
             // 
             // BobDashAutoModeIndicator
             // 
-            this.BobDashAutoModeIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BobDashAutoModeIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BobDashAutoModeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BobDashAutoModeIndicator.Location = new System.Drawing.Point(265, 3);
+            this.BobDashAutoModeIndicator.Location = new System.Drawing.Point(269, 6);
+            this.BobDashAutoModeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.BobDashAutoModeIndicator.Name = "BobDashAutoModeIndicator";
-            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(256, 57);
+            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(251, 51);
             this.BobDashAutoModeIndicator.TabIndex = 1;
             this.BobDashAutoModeIndicator.VariableName = "BobDashAutoMode";
             // 
+            // BobDashMatchTimeIndicator
+            // 
+            this.BobDashMatchTimeIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BobDashMatchTimeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BobDashMatchTimeIndicator.Location = new System.Drawing.Point(532, 6);
+            this.BobDashMatchTimeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.BobDashMatchTimeIndicator.Name = "BobDashMatchTimeIndicator";
+            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(251, 51);
+            this.BobDashMatchTimeIndicator.TabIndex = 2;
+            this.BobDashMatchTimeIndicator.VariableName = "BobDashMatchTime";
+            // 
             // ExtendPositionIndicator
             // 
-            this.ExtendPositionIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExtendPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ExtendPositionIndicator.Location = new System.Drawing.Point(173, 3);
             this.ExtendPositionIndicator.Name = "ExtendPositionIndicator";
             this.ExtendPositionIndicator.Size = new System.Drawing.Size(164, 120);
@@ -1438,7 +1445,9 @@
             // 
             // PivotPositionIndicator
             // 
-            this.PivotPositionIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PivotPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PivotPositionIndicator.Location = new System.Drawing.Point(3, 3);
             this.PivotPositionIndicator.Name = "PivotPositionIndicator";
             this.PivotPositionIndicator.Size = new System.Drawing.Size(164, 120);
@@ -1447,7 +1456,9 @@
             // 
             // WristPositionIndicator
             // 
-            this.WristPositionIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WristPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WristPositionIndicator.Location = new System.Drawing.Point(343, 3);
             this.WristPositionIndicator.Name = "WristPositionIndicator";
             this.WristPositionIndicator.Size = new System.Drawing.Size(164, 120);
@@ -1456,7 +1467,9 @@
             // 
             // DesiredPivotIndicator
             // 
-            this.DesiredPivotIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DesiredPivotIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DesiredPivotIndicator.Location = new System.Drawing.Point(3, 129);
             this.DesiredPivotIndicator.Name = "DesiredPivotIndicator";
             this.DesiredPivotIndicator.Size = new System.Drawing.Size(164, 120);
@@ -1465,7 +1478,9 @@
             // 
             // DesiredExtendIndicator
             // 
-            this.DesiredExtendIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DesiredExtendIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DesiredExtendIndicator.Location = new System.Drawing.Point(173, 129);
             this.DesiredExtendIndicator.Name = "DesiredExtendIndicator";
             this.DesiredExtendIndicator.Size = new System.Drawing.Size(164, 120);
@@ -1474,23 +1489,14 @@
             // 
             // DesiredWristIndicator
             // 
-            this.DesiredWristIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DesiredWristIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DesiredWristIndicator.Location = new System.Drawing.Point(343, 129);
             this.DesiredWristIndicator.Name = "DesiredWristIndicator";
             this.DesiredWristIndicator.Size = new System.Drawing.Size(164, 120);
             this.DesiredWristIndicator.TabIndex = 17;
             this.DesiredWristIndicator.VariableName = "DesiredWristPosition";
-            // 
-            // BobDashMatchTimeIndicator
-            // 
-            this.BobDashMatchTimeIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BobDashMatchTimeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BobDashMatchTimeIndicator.Location = new System.Drawing.Point(530, 6);
-            this.BobDashMatchTimeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.BobDashMatchTimeIndicator.Name = "BobDashMatchTimeIndicator";
-            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(253, 51);
-            this.BobDashMatchTimeIndicator.TabIndex = 2;
-            this.BobDashMatchTimeIndicator.VariableName = "BobDashMatchTime";
             // 
             // BobDash
             // 
@@ -1508,9 +1514,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.CameraTabControl.ResumeLayout(false);
-            this.DriverAssistTabPage.ResumeLayout(false);
-            this.VisionTabPage.ResumeLayout(false);
+            this.LeftSideTabControl.ResumeLayout(false);
+            this.Camera1TabPage.ResumeLayout(false);
             this.CameraTableLayoutPanel.ResumeLayout(false);
             this.RightSideTableLayoutPanel.ResumeLayout(false);
             this.RightSideTabControl.ResumeLayout(false);
@@ -1531,6 +1536,7 @@
             this.FloorPickupButtonsTableLayoutPanel.ResumeLayout(false);
             this.TopRightTableLayoutPanel.ResumeLayout(false);
             this.OtherStuffTabPage.ResumeLayout(false);
+            this.Camera2TabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1540,13 +1546,10 @@
         private AForge.Controls.VideoSourcePlayer Camera1VideoSourcePlayer;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel CameraTableLayoutPanel;
-        private AForge.Controls.VideoSourcePlayer Camera2VideoSourcePlayer;
         private BobDashControls.Indicator ExtendPositionIndicator;
         private System.Windows.Forms.Button SettingsButton;
-        private System.Windows.Forms.TabControl CameraTabControl;
-        private System.Windows.Forms.TabPage DriverAssistTabPage;
-        private System.Windows.Forms.TabPage VisionTabPage;
-        private AForge.Controls.VideoSourcePlayer DriverAssistCameraVideoSourcePlayer;
+        private System.Windows.Forms.TabControl LeftSideTabControl;
+        private System.Windows.Forms.TabPage Camera1TabPage;
         private BobDashControls.Indicator PivotPositionIndicator;
         private BobDashControls.Indicator WristPositionIndicator;
         private System.Windows.Forms.TableLayoutPanel RightSideTableLayoutPanel;
@@ -1634,6 +1637,8 @@
         private BobDashControls.Indicator DesiredWristIndicator;
         private BobDashControls.Indicator BobDashAutoModeIndicator;
         private BobDashControls.Indicator BobDashMatchTimeIndicator;
+        private System.Windows.Forms.TabPage Camera2TabPage;
+        private AForge.Controls.VideoSourcePlayer Camera2VideoSourcePlayer;
     }
 }
 

@@ -10,7 +10,6 @@ namespace BobDash
     /// </summary>
     public partial class VariablesList : UserControl
     {
-        private int _listener;
         private List<SmartDashboardVariable> _variables;
 
         public VariablesList()
