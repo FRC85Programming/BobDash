@@ -40,7 +40,7 @@ namespace BobDashControls
             this.SetButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SetButton.Location = new System.Drawing.Point(3, 30);
             this.SetButton.Name = "SetButton";
-            this.SetButton.Size = new System.Drawing.Size(144, 68);
+            this.SetButton.Size = new System.Drawing.Size(144, 64);
             this.SetButton.TabIndex = 0;
             this.SetButton.Text = "Set";
             this.SetButton.UseVisualStyleBackColor = true;

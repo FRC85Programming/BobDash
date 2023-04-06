@@ -25,7 +25,6 @@ namespace BobDash
         private HotKeyManager _hotKeyManager = new HotKeyManager();
         private MJPEGStream _camera1Stream;
         private MJPEGStream _camera2Stream;
-        private MJPEGStream _driverAssistCameraStream;
         private bool _camerasStarted;
         private bool _autoSelectOnly = false;
 
@@ -260,11 +259,6 @@ namespace BobDash
             {
                 _camera2Stream = new MJPEGStream(Properties.Settings.Default.Camera2Uri);
             }
-
-            if (_driverAssistCameraStream == null && !string.IsNullOrWhiteSpace(Properties.Settings.Default.DriverAssistCameraUri))
-            {
-                _driverAssistCameraStream = new MJPEGStream(Properties.Settings.Default.DriverAssistCameraUri);
-            }
         }
 
         private void StartCamera()
@@ -276,22 +270,16 @@ namespace BobDash
 
             SetupStreams();
 
-            if (LeftSideTabControl.SelectedTab.Name == nameof(Camera1TabPage))
+            if (_camera1Stream != null)
             {
-                if (_camera1Stream != null)
-                {
-                    Camera1VideoSourcePlayer.VideoSource = _camera1Stream;
-                    _camera1Stream.Start();
-                }
+                Camera1VideoSourcePlayer.VideoSource = _camera1Stream;
+                _camera1Stream.Start();
             }
 
-            if (RightSideTabControl.SelectedTab.Name == nameof(Camera2TabPage))
+            if (_camera2Stream != null)
             {
-                if (_camera2Stream != null)
-                {
-                    Camera2VideoSourcePlayer.VideoSource = _camera2Stream;
-                    _camera2Stream.Start();
-                }
+                Camera2VideoSourcePlayer.VideoSource = _camera2Stream;
+                _camera2Stream.Start();
             }
 
             _camerasStarted = true;
@@ -324,12 +312,6 @@ namespace BobDash
             {
                 _camera2Stream.Stop();
                 _camera2Stream = null;
-            }
-
-            if (_driverAssistCameraStream != null)
-            {
-                _driverAssistCameraStream.Stop();
-                _driverAssistCameraStream = null;
             }
 
             _camerasStarted = false;

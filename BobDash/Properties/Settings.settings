@@ -11,9 +11,6 @@
     <Setting Name="NetworkTablesServer" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.0.85.2</Value>
     </Setting>
-    <Setting Name="DriverAssistCameraUri" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://frcvision.local:1183/?action=stream</Value>
-    </Setting>
     <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
