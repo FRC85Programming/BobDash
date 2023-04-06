@@ -39,7 +39,7 @@
             this.ToggledCheckBox.Name = "ToggledCheckBox";
             this.ToggledCheckBox.Size = new System.Drawing.Size(150, 150);
             this.ToggledCheckBox.TabIndex = 0;
-            this.ToggledCheckBox.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ToggledCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ToggledCheckBox.UseVisualStyleBackColor = true;
             this.ToggledCheckBox.CheckedChanged += new System.EventHandler(this.ToggledCheckBox_CheckedChanged);
             // 

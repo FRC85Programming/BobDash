@@ -35,7 +35,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BobDash));
             this.IndicatorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BackupPositionsButton = new System.Windows.Forms.Button();
             this.RestorePositionsButton = new System.Windows.Forms.Button();
@@ -52,16 +51,15 @@
             this.IndicatorsTabPage = new System.Windows.Forms.TabPage();
             this.VariablesTabPage = new System.Windows.Forms.TabPage();
             this.VariablesListElementHost = new System.Windows.Forms.Integration.ElementHost();
+            this.Camera2TabPage = new System.Windows.Forms.TabPage();
+            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.BottomButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ConnectButton = new System.Windows.Forms.Button();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.PositionControlTabPage = new System.Windows.Forms.TabPage();
             this.PositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.FilledScoringLocationsGroupBox = new System.Windows.Forms.GroupBox();
+            this.TeachAndAutoSelectionGroupBox = new System.Windows.Forms.GroupBox();
             this.FilledScoringLocationsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.AutoModeSelectPanel = new System.Windows.Forms.Panel();
             this.AutoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
@@ -79,35 +77,6 @@
             this.ChutePickupPositionLabel = new System.Windows.Forms.Label();
             this.TopRightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
-            this.Camera2TabPage = new System.Windows.Forms.TabPage();
-            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
-            this.toggleButton1 = new BobDashControls.ToggleButton();
-            this.toggleButton2 = new BobDashControls.ToggleButton();
-            this.toggleButton3 = new BobDashControls.ToggleButton();
-            this.toggleButton5 = new BobDashControls.ToggleButton();
-            this.toggleButton6 = new BobDashControls.ToggleButton();
-            this.toggleButton7 = new BobDashControls.ToggleButton();
-            this.toggleButton8 = new BobDashControls.ToggleButton();
-            this.toggleButton9 = new BobDashControls.ToggleButton();
-            this.toggleButton11 = new BobDashControls.ToggleButton();
-            this.toggleButton12 = new BobDashControls.ToggleButton();
-            this.toggleButton13 = new BobDashControls.ToggleButton();
-            this.toggleButton14 = new BobDashControls.ToggleButton();
-            this.toggleButton15 = new BobDashControls.ToggleButton();
-            this.toggleButton10 = new BobDashControls.ToggleButton();
-            this.toggleButton4 = new BobDashControls.ToggleButton();
-            this.toggleButton19 = new BobDashControls.ToggleButton();
-            this.toggleButton18 = new BobDashControls.ToggleButton();
-            this.toggleButton17 = new BobDashControls.ToggleButton();
-            this.toggleButton21 = new BobDashControls.ToggleButton();
-            this.toggleButton16 = new BobDashControls.ToggleButton();
-            this.toggleButton20 = new BobDashControls.ToggleButton();
-            this.toggleButton24 = new BobDashControls.ToggleButton();
-            this.toggleButton26 = new BobDashControls.ToggleButton();
-            this.toggleButton23 = new BobDashControls.ToggleButton();
-            this.toggleButton25 = new BobDashControls.ToggleButton();
-            this.toggleButton22 = new BobDashControls.ToggleButton();
-            this.toggleButton27 = new BobDashControls.ToggleButton();
             this.positionControlButton1 = new BobDashControls.PositionControlButton();
             this.BottomCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
             this.BottomConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
@@ -145,11 +114,12 @@
             this.RightSideTabControl.SuspendLayout();
             this.IndicatorsTabPage.SuspendLayout();
             this.VariablesTabPage.SuspendLayout();
+            this.Camera2TabPage.SuspendLayout();
             this.BottomButtonsTableLayoutPanel.SuspendLayout();
             this.MainTabControl.SuspendLayout();
             this.PositionControlTabPage.SuspendLayout();
             this.PositionsTableLayoutPanel.SuspendLayout();
-            this.FilledScoringLocationsGroupBox.SuspendLayout();
+            this.TeachAndAutoSelectionGroupBox.SuspendLayout();
             this.FilledScoringLocationsTableLayoutPanel.SuspendLayout();
             this.AutoModeSelectPanel.SuspendLayout();
             this.AutoTableLayoutPanel.SuspendLayout();
@@ -160,7 +130,6 @@
             this.FloorPickupButtonsTableLayoutPanel.SuspendLayout();
             this.TopRightTableLayoutPanel.SuspendLayout();
             this.OtherStuffTabPage.SuspendLayout();
-            this.Camera2TabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // IndicatorTableLayoutPanel
@@ -369,6 +338,27 @@
             this.VariablesListElementHost.TabIndex = 0;
             this.VariablesListElementHost.Child = null;
             // 
+            // Camera2TabPage
+            // 
+            this.Camera2TabPage.Controls.Add(this.Camera2VideoSourcePlayer);
+            this.Camera2TabPage.Location = new System.Drawing.Point(4, 22);
+            this.Camera2TabPage.Name = "Camera2TabPage";
+            this.Camera2TabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.Camera2TabPage.Size = new System.Drawing.Size(687, 510);
+            this.Camera2TabPage.TabIndex = 2;
+            this.Camera2TabPage.Text = "Camera 2";
+            this.Camera2TabPage.UseVisualStyleBackColor = true;
+            // 
+            // Camera2VideoSourcePlayer
+            // 
+            this.Camera2VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(3, 3);
+            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
+            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(681, 504);
+            this.Camera2VideoSourcePlayer.TabIndex = 4;
+            this.Camera2VideoSourcePlayer.TabStop = false;
+            this.Camera2VideoSourcePlayer.VideoSource = null;
+            // 
             // BottomButtonsTableLayoutPanel
             // 
             this.BottomButtonsTableLayoutPanel.ColumnCount = 2;
@@ -423,7 +413,7 @@
             this.PositionsTableLayoutPanel.ColumnCount = 2;
             this.PositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.PositionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.PositionsTableLayoutPanel.Controls.Add(this.FilledScoringLocationsGroupBox, 0, 2);
+            this.PositionsTableLayoutPanel.Controls.Add(this.TeachAndAutoSelectionGroupBox, 0, 2);
             this.PositionsTableLayoutPanel.Controls.Add(this.ScoringPositionsGroupBox, 0, 0);
             this.PositionsTableLayoutPanel.Controls.Add(this.PickupPositionsGroupBox, 1, 1);
             this.PositionsTableLayoutPanel.Controls.Add(this.TopRightTableLayoutPanel, 1, 0);
@@ -431,74 +421,37 @@
             this.PositionsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.PositionsTableLayoutPanel.Name = "PositionsTableLayoutPanel";
             this.PositionsTableLayoutPanel.RowCount = 3;
-            this.PositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.PositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38F));
-            this.PositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.PositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.PositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.22222F));
+            this.PositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
             this.PositionsTableLayoutPanel.Size = new System.Drawing.Size(1590, 579);
             this.PositionsTableLayoutPanel.TabIndex = 1;
             // 
-            // FilledScoringLocationsGroupBox
+            // TeachAndAutoSelectionGroupBox
             // 
-            this.PositionsTableLayoutPanel.SetColumnSpan(this.FilledScoringLocationsGroupBox, 2);
-            this.FilledScoringLocationsGroupBox.Controls.Add(this.FilledScoringLocationsTableLayoutPanel);
-            this.FilledScoringLocationsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FilledScoringLocationsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FilledScoringLocationsGroupBox.Location = new System.Drawing.Point(3, 292);
-            this.FilledScoringLocationsGroupBox.Name = "FilledScoringLocationsGroupBox";
-            this.FilledScoringLocationsGroupBox.Size = new System.Drawing.Size(1584, 284);
-            this.FilledScoringLocationsGroupBox.TabIndex = 1;
-            this.FilledScoringLocationsGroupBox.TabStop = false;
-            this.FilledScoringLocationsGroupBox.Text = "Filled Scoring Locations";
+            this.PositionsTableLayoutPanel.SetColumnSpan(this.TeachAndAutoSelectionGroupBox, 2);
+            this.TeachAndAutoSelectionGroupBox.Controls.Add(this.FilledScoringLocationsTableLayoutPanel);
+            this.TeachAndAutoSelectionGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TeachAndAutoSelectionGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TeachAndAutoSelectionGroupBox.Location = new System.Drawing.Point(3, 324);
+            this.TeachAndAutoSelectionGroupBox.Name = "TeachAndAutoSelectionGroupBox";
+            this.TeachAndAutoSelectionGroupBox.Size = new System.Drawing.Size(1584, 252);
+            this.TeachAndAutoSelectionGroupBox.TabIndex = 1;
+            this.TeachAndAutoSelectionGroupBox.TabStop = false;
+            this.TeachAndAutoSelectionGroupBox.Text = "Teach and auto selection";
             // 
             // FilledScoringLocationsTableLayoutPanel
             // 
-            this.FilledScoringLocationsTableLayoutPanel.ColumnCount = 14;
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.label3, 0, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.label1, 0, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.label2, 0, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton1, 1, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton2, 1, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton3, 2, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton5, 2, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton6, 3, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton7, 3, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton8, 5, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton9, 6, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton11, 5, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton12, 5, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton13, 6, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton14, 7, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton15, 7, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton10, 6, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton4, 7, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton19, 9, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton18, 10, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton17, 11, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton21, 10, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton16, 9, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton20, 11, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton24, 9, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton26, 10, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton23, 11, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton25, 3, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton22, 2, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.toggleButton27, 1, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.positionControlButton1, 13, 2);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.AutoModeSelectPanel, 13, 0);
+            this.FilledScoringLocationsTableLayoutPanel.ColumnCount = 3;
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.AutoModeSelectPanel, 2, 0);
+            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.positionControlButton1, 0, 1);
             this.FilledScoringLocationsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FilledScoringLocationsTableLayoutPanel.Location = new System.Drawing.Point(3, 25);
             this.FilledScoringLocationsTableLayoutPanel.Name = "FilledScoringLocationsTableLayoutPanel";
@@ -506,50 +459,17 @@
             this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.FilledScoringLocationsTableLayoutPanel.Size = new System.Drawing.Size(1578, 256);
+            this.FilledScoringLocationsTableLayoutPanel.Size = new System.Drawing.Size(1578, 224);
             this.FilledScoringLocationsTableLayoutPanel.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(182, 86);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Bottom";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 85);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Top";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 85);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Middle";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AutoModeSelectPanel
             // 
             this.AutoModeSelectPanel.Controls.Add(this.AutoTableLayoutPanel);
             this.AutoModeSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoModeSelectPanel.Location = new System.Drawing.Point(1485, 3);
+            this.AutoModeSelectPanel.Location = new System.Drawing.Point(1264, 3);
             this.AutoModeSelectPanel.Name = "AutoModeSelectPanel";
-            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.AutoModeSelectPanel, 2);
-            this.AutoModeSelectPanel.Size = new System.Drawing.Size(96, 164);
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.AutoModeSelectPanel, 3);
+            this.AutoModeSelectPanel.Size = new System.Drawing.Size(311, 218);
             this.AutoModeSelectPanel.TabIndex = 37;
             // 
             // AutoTableLayoutPanel
@@ -564,7 +484,7 @@
             this.AutoTableLayoutPanel.RowCount = 2;
             this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.AutoTableLayoutPanel.Size = new System.Drawing.Size(96, 164);
+            this.AutoTableLayoutPanel.Size = new System.Drawing.Size(311, 218);
             this.AutoTableLayoutPanel.TabIndex = 37;
             // 
             // AutoModeCheckedListBox
@@ -575,16 +495,16 @@
             this.AutoModeCheckedListBox.FormattingEnabled = true;
             this.AutoModeCheckedListBox.Location = new System.Drawing.Point(3, 3);
             this.AutoModeCheckedListBox.Name = "AutoModeCheckedListBox";
-            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(90, 118);
+            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(305, 172);
             this.AutoModeCheckedListBox.TabIndex = 36;
             this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
             // 
             // AddAutoButton
             // 
             this.AddAutoButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddAutoButton.Location = new System.Drawing.Point(3, 127);
+            this.AddAutoButton.Location = new System.Drawing.Point(3, 181);
             this.AddAutoButton.Name = "AddAutoButton";
-            this.AddAutoButton.Size = new System.Drawing.Size(90, 34);
+            this.AddAutoButton.Size = new System.Drawing.Size(305, 34);
             this.AddAutoButton.TabIndex = 37;
             this.AddAutoButton.Text = "Add Auto";
             this.AddAutoButton.UseVisualStyleBackColor = true;
@@ -598,7 +518,7 @@
             this.ScoringPositionsGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ScoringPositionsGroupBox.Name = "ScoringPositionsGroupBox";
             this.PositionsTableLayoutPanel.SetRowSpan(this.ScoringPositionsGroupBox, 2);
-            this.ScoringPositionsGroupBox.Size = new System.Drawing.Size(789, 283);
+            this.ScoringPositionsGroupBox.Size = new System.Drawing.Size(789, 315);
             this.ScoringPositionsGroupBox.TabIndex = 0;
             this.ScoringPositionsGroupBox.TabStop = false;
             this.ScoringPositionsGroupBox.Text = "Scoring Positions";
@@ -625,7 +545,7 @@
             this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ScoringPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 255);
+            this.ScoringPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 287);
             this.ScoringPositionsTableLayoutPanel.TabIndex = 0;
             // 
             // TopScoringPositionLabel
@@ -634,7 +554,7 @@
             this.TopScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TopScoringPositionLabel.Location = new System.Drawing.Point(3, 0);
             this.TopScoringPositionLabel.Name = "TopScoringPositionLabel";
-            this.TopScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
+            this.TopScoringPositionLabel.Size = new System.Drawing.Size(255, 95);
             this.TopScoringPositionLabel.TabIndex = 1;
             this.TopScoringPositionLabel.Text = "Top";
             this.TopScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -643,9 +563,9 @@
             // 
             this.MiddleScoringPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MiddleScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MiddleScoringPositionLabel.Location = new System.Drawing.Point(3, 85);
+            this.MiddleScoringPositionLabel.Location = new System.Drawing.Point(3, 95);
             this.MiddleScoringPositionLabel.Name = "MiddleScoringPositionLabel";
-            this.MiddleScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
+            this.MiddleScoringPositionLabel.Size = new System.Drawing.Size(255, 95);
             this.MiddleScoringPositionLabel.TabIndex = 2;
             this.MiddleScoringPositionLabel.Text = "Middle";
             this.MiddleScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -654,9 +574,9 @@
             // 
             this.BottomScoringPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomScoringPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BottomScoringPositionLabel.Location = new System.Drawing.Point(3, 170);
+            this.BottomScoringPositionLabel.Location = new System.Drawing.Point(3, 190);
             this.BottomScoringPositionLabel.Name = "BottomScoringPositionLabel";
-            this.BottomScoringPositionLabel.Size = new System.Drawing.Size(255, 85);
+            this.BottomScoringPositionLabel.Size = new System.Drawing.Size(255, 97);
             this.BottomScoringPositionLabel.TabIndex = 3;
             this.BottomScoringPositionLabel.Text = "Bottom";
             this.BottomScoringPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -666,9 +586,9 @@
             this.PickupPositionsGroupBox.Controls.Add(this.PickupPositionsTableLayoutPanel);
             this.PickupPositionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PickupPositionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PickupPositionsGroupBox.Location = new System.Drawing.Point(798, 72);
+            this.PickupPositionsGroupBox.Location = new System.Drawing.Point(798, 80);
             this.PickupPositionsGroupBox.Name = "PickupPositionsGroupBox";
-            this.PickupPositionsGroupBox.Size = new System.Drawing.Size(789, 214);
+            this.PickupPositionsGroupBox.Size = new System.Drawing.Size(789, 238);
             this.PickupPositionsGroupBox.TabIndex = 2;
             this.PickupPositionsGroupBox.TabStop = false;
             this.PickupPositionsGroupBox.Text = "Pickup Positions";
@@ -694,16 +614,16 @@
             this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.PickupPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.PickupPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 186);
+            this.PickupPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 210);
             this.PickupPositionsTableLayoutPanel.TabIndex = 0;
             // 
             // FloorPickupPositionLabel
             // 
             this.FloorPickupPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FloorPickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FloorPickupPositionLabel.Location = new System.Drawing.Point(3, 124);
+            this.FloorPickupPositionLabel.Location = new System.Drawing.Point(3, 140);
             this.FloorPickupPositionLabel.Name = "FloorPickupPositionLabel";
-            this.FloorPickupPositionLabel.Size = new System.Drawing.Size(255, 62);
+            this.FloorPickupPositionLabel.Size = new System.Drawing.Size(255, 70);
             this.FloorPickupPositionLabel.TabIndex = 10;
             this.FloorPickupPositionLabel.Text = "Floor";
             this.FloorPickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -714,7 +634,7 @@
             this.PlatterPickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlatterPickupPositionLabel.Location = new System.Drawing.Point(3, 0);
             this.PlatterPickupPositionLabel.Name = "PlatterPickupPositionLabel";
-            this.PlatterPickupPositionLabel.Size = new System.Drawing.Size(255, 62);
+            this.PlatterPickupPositionLabel.Size = new System.Drawing.Size(255, 70);
             this.PlatterPickupPositionLabel.TabIndex = 3;
             this.PlatterPickupPositionLabel.Text = "Platter";
             this.PlatterPickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -730,20 +650,20 @@
             this.FloorPickupButtonsTableLayoutPanel.Controls.Add(this.ConePickupFloorPositionTippedToggleButton, 0, 0);
             this.FloorPickupButtonsTableLayoutPanel.Controls.Add(this.ConePickupFloorPositionToggleButton, 0, 0);
             this.FloorPickupButtonsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FloorPickupButtonsTableLayoutPanel.Location = new System.Drawing.Point(264, 127);
+            this.FloorPickupButtonsTableLayoutPanel.Location = new System.Drawing.Point(264, 143);
             this.FloorPickupButtonsTableLayoutPanel.Name = "FloorPickupButtonsTableLayoutPanel";
             this.FloorPickupButtonsTableLayoutPanel.RowCount = 1;
             this.FloorPickupButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.FloorPickupButtonsTableLayoutPanel.Size = new System.Drawing.Size(516, 56);
+            this.FloorPickupButtonsTableLayoutPanel.Size = new System.Drawing.Size(516, 64);
             this.FloorPickupButtonsTableLayoutPanel.TabIndex = 9;
             // 
             // ChutePickupPositionLabel
             // 
             this.ChutePickupPositionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChutePickupPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChutePickupPositionLabel.Location = new System.Drawing.Point(3, 62);
+            this.ChutePickupPositionLabel.Location = new System.Drawing.Point(3, 70);
             this.ChutePickupPositionLabel.Name = "ChutePickupPositionLabel";
-            this.ChutePickupPositionLabel.Size = new System.Drawing.Size(255, 62);
+            this.ChutePickupPositionLabel.Size = new System.Drawing.Size(255, 70);
             this.ChutePickupPositionLabel.TabIndex = 4;
             this.ChutePickupPositionLabel.Text = "Chute";
             this.ChutePickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -762,7 +682,7 @@
             this.TopRightTableLayoutPanel.Name = "TopRightTableLayoutPanel";
             this.TopRightTableLayoutPanel.RowCount = 1;
             this.TopRightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TopRightTableLayoutPanel.Size = new System.Drawing.Size(789, 63);
+            this.TopRightTableLayoutPanel.Size = new System.Drawing.Size(789, 71);
             this.TopRightTableLayoutPanel.TabIndex = 3;
             // 
             // OtherStuffTabPage
@@ -776,412 +696,14 @@
             this.OtherStuffTabPage.Text = "Other stuff";
             this.OtherStuffTabPage.UseVisualStyleBackColor = true;
             // 
-            // Camera2TabPage
-            // 
-            this.Camera2TabPage.Controls.Add(this.Camera2VideoSourcePlayer);
-            this.Camera2TabPage.Location = new System.Drawing.Point(4, 22);
-            this.Camera2TabPage.Name = "Camera2TabPage";
-            this.Camera2TabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.Camera2TabPage.Size = new System.Drawing.Size(687, 510);
-            this.Camera2TabPage.TabIndex = 2;
-            this.Camera2TabPage.Text = "Camera 2";
-            this.Camera2TabPage.UseVisualStyleBackColor = true;
-            // 
-            // Camera2VideoSourcePlayer
-            // 
-            this.Camera2VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(3, 3);
-            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
-            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(681, 504);
-            this.Camera2VideoSourcePlayer.TabIndex = 4;
-            this.Camera2VideoSourcePlayer.TabStop = false;
-            this.Camera2VideoSourcePlayer.VideoSource = null;
-            // 
-            // toggleButton1
-            // 
-            this.toggleButton1.ButtonText = "";
-            this.toggleButton1.Checked = false;
-            this.toggleButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton1.GroupName = null;
-            this.toggleButton1.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton1.Image")));
-            this.toggleButton1.Location = new System.Drawing.Point(192, 4);
-            this.toggleButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.PositionName = null;
-            this.toggleButton1.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton1.TabIndex = 8;
-            // 
-            // toggleButton2
-            // 
-            this.toggleButton2.ButtonText = "";
-            this.toggleButton2.Checked = false;
-            this.toggleButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton2.GroupName = null;
-            this.toggleButton2.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton2.Image")));
-            this.toggleButton2.Location = new System.Drawing.Point(192, 89);
-            this.toggleButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton2.Name = "toggleButton2";
-            this.toggleButton2.PositionName = null;
-            this.toggleButton2.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton2.TabIndex = 9;
-            // 
-            // toggleButton3
-            // 
-            this.toggleButton3.ButtonText = "";
-            this.toggleButton3.Checked = false;
-            this.toggleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton3.GroupName = null;
-            this.toggleButton3.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton3.Image")));
-            this.toggleButton3.Location = new System.Drawing.Point(301, 4);
-            this.toggleButton3.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton3.Name = "toggleButton3";
-            this.toggleButton3.PositionName = null;
-            this.toggleButton3.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton3.TabIndex = 10;
-            // 
-            // toggleButton5
-            // 
-            this.toggleButton5.ButtonText = "";
-            this.toggleButton5.Checked = false;
-            this.toggleButton5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton5.GroupName = null;
-            this.toggleButton5.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton5.Image")));
-            this.toggleButton5.Location = new System.Drawing.Point(301, 89);
-            this.toggleButton5.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton5.Name = "toggleButton5";
-            this.toggleButton5.PositionName = null;
-            this.toggleButton5.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton5.TabIndex = 12;
-            // 
-            // toggleButton6
-            // 
-            this.toggleButton6.ButtonText = "";
-            this.toggleButton6.Checked = false;
-            this.toggleButton6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton6.GroupName = null;
-            this.toggleButton6.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton6.Image")));
-            this.toggleButton6.Location = new System.Drawing.Point(410, 4);
-            this.toggleButton6.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton6.Name = "toggleButton6";
-            this.toggleButton6.PositionName = null;
-            this.toggleButton6.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton6.TabIndex = 13;
-            // 
-            // toggleButton7
-            // 
-            this.toggleButton7.ButtonText = "";
-            this.toggleButton7.Checked = false;
-            this.toggleButton7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton7.GroupName = null;
-            this.toggleButton7.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton7.Image")));
-            this.toggleButton7.Location = new System.Drawing.Point(410, 89);
-            this.toggleButton7.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton7.Name = "toggleButton7";
-            this.toggleButton7.PositionName = null;
-            this.toggleButton7.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton7.TabIndex = 14;
-            // 
-            // toggleButton8
-            // 
-            this.toggleButton8.ButtonText = "";
-            this.toggleButton8.Checked = false;
-            this.toggleButton8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton8.GroupName = null;
-            this.toggleButton8.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton8.Image")));
-            this.toggleButton8.Location = new System.Drawing.Point(640, 4);
-            this.toggleButton8.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton8.Name = "toggleButton8";
-            this.toggleButton8.PositionName = null;
-            this.toggleButton8.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton8.TabIndex = 15;
-            // 
-            // toggleButton9
-            // 
-            this.toggleButton9.ButtonText = "";
-            this.toggleButton9.Checked = false;
-            this.toggleButton9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton9.GroupName = null;
-            this.toggleButton9.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton9.Image")));
-            this.toggleButton9.Location = new System.Drawing.Point(749, 4);
-            this.toggleButton9.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton9.Name = "toggleButton9";
-            this.toggleButton9.PositionName = null;
-            this.toggleButton9.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton9.TabIndex = 16;
-            // 
-            // toggleButton11
-            // 
-            this.toggleButton11.ButtonText = "";
-            this.toggleButton11.Checked = false;
-            this.toggleButton11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton11.GroupName = null;
-            this.toggleButton11.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton11.Image")));
-            this.toggleButton11.Location = new System.Drawing.Point(640, 89);
-            this.toggleButton11.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton11.Name = "toggleButton11";
-            this.toggleButton11.PositionName = null;
-            this.toggleButton11.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton11.TabIndex = 18;
-            // 
-            // toggleButton12
-            // 
-            this.toggleButton12.ButtonText = "";
-            this.toggleButton12.Checked = false;
-            this.toggleButton12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton12.GroupName = null;
-            this.toggleButton12.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton12.Image")));
-            this.toggleButton12.Location = new System.Drawing.Point(640, 174);
-            this.toggleButton12.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton12.Name = "toggleButton12";
-            this.toggleButton12.PositionName = null;
-            this.toggleButton12.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton12.TabIndex = 19;
-            // 
-            // toggleButton13
-            // 
-            this.toggleButton13.ButtonText = "";
-            this.toggleButton13.Checked = false;
-            this.toggleButton13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton13.GroupName = null;
-            this.toggleButton13.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton13.Image")));
-            this.toggleButton13.Location = new System.Drawing.Point(749, 89);
-            this.toggleButton13.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton13.Name = "toggleButton13";
-            this.toggleButton13.PositionName = null;
-            this.toggleButton13.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton13.TabIndex = 20;
-            // 
-            // toggleButton14
-            // 
-            this.toggleButton14.ButtonText = "";
-            this.toggleButton14.Checked = false;
-            this.toggleButton14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton14.GroupName = null;
-            this.toggleButton14.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton14.Image")));
-            this.toggleButton14.Location = new System.Drawing.Point(858, 4);
-            this.toggleButton14.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton14.Name = "toggleButton14";
-            this.toggleButton14.PositionName = null;
-            this.toggleButton14.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton14.TabIndex = 21;
-            // 
-            // toggleButton15
-            // 
-            this.toggleButton15.ButtonText = "";
-            this.toggleButton15.Checked = false;
-            this.toggleButton15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton15.GroupName = null;
-            this.toggleButton15.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton15.Image")));
-            this.toggleButton15.Location = new System.Drawing.Point(858, 89);
-            this.toggleButton15.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton15.Name = "toggleButton15";
-            this.toggleButton15.PositionName = null;
-            this.toggleButton15.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton15.TabIndex = 22;
-            // 
-            // toggleButton10
-            // 
-            this.toggleButton10.ButtonText = "";
-            this.toggleButton10.Checked = false;
-            this.toggleButton10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton10.GroupName = null;
-            this.toggleButton10.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton10.Image")));
-            this.toggleButton10.Location = new System.Drawing.Point(749, 174);
-            this.toggleButton10.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton10.Name = "toggleButton10";
-            this.toggleButton10.PositionName = null;
-            this.toggleButton10.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton10.TabIndex = 17;
-            // 
-            // toggleButton4
-            // 
-            this.toggleButton4.ButtonText = "";
-            this.toggleButton4.Checked = false;
-            this.toggleButton4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton4.GroupName = null;
-            this.toggleButton4.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton4.Image")));
-            this.toggleButton4.Location = new System.Drawing.Point(858, 174);
-            this.toggleButton4.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton4.Name = "toggleButton4";
-            this.toggleButton4.PositionName = null;
-            this.toggleButton4.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton4.TabIndex = 11;
-            // 
-            // toggleButton19
-            // 
-            this.toggleButton19.ButtonText = "";
-            this.toggleButton19.Checked = false;
-            this.toggleButton19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton19.GroupName = null;
-            this.toggleButton19.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton19.Image")));
-            this.toggleButton19.Location = new System.Drawing.Point(1077, 4);
-            this.toggleButton19.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton19.Name = "toggleButton19";
-            this.toggleButton19.PositionName = null;
-            this.toggleButton19.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton19.TabIndex = 26;
-            // 
-            // toggleButton18
-            // 
-            this.toggleButton18.ButtonText = "";
-            this.toggleButton18.Checked = false;
-            this.toggleButton18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton18.GroupName = null;
-            this.toggleButton18.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton18.Image")));
-            this.toggleButton18.Location = new System.Drawing.Point(1186, 4);
-            this.toggleButton18.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton18.Name = "toggleButton18";
-            this.toggleButton18.PositionName = null;
-            this.toggleButton18.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton18.TabIndex = 25;
-            // 
-            // toggleButton17
-            // 
-            this.toggleButton17.ButtonText = "";
-            this.toggleButton17.Checked = false;
-            this.toggleButton17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton17.GroupName = null;
-            this.toggleButton17.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton17.Image")));
-            this.toggleButton17.Location = new System.Drawing.Point(1295, 4);
-            this.toggleButton17.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton17.Name = "toggleButton17";
-            this.toggleButton17.PositionName = null;
-            this.toggleButton17.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton17.TabIndex = 24;
-            // 
-            // toggleButton21
-            // 
-            this.toggleButton21.ButtonText = "";
-            this.toggleButton21.Checked = false;
-            this.toggleButton21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton21.GroupName = null;
-            this.toggleButton21.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton21.Image")));
-            this.toggleButton21.Location = new System.Drawing.Point(1186, 89);
-            this.toggleButton21.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton21.Name = "toggleButton21";
-            this.toggleButton21.PositionName = null;
-            this.toggleButton21.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton21.TabIndex = 28;
-            // 
-            // toggleButton16
-            // 
-            this.toggleButton16.ButtonText = "";
-            this.toggleButton16.Checked = false;
-            this.toggleButton16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton16.GroupName = null;
-            this.toggleButton16.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton16.Image")));
-            this.toggleButton16.Location = new System.Drawing.Point(1077, 89);
-            this.toggleButton16.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton16.Name = "toggleButton16";
-            this.toggleButton16.PositionName = null;
-            this.toggleButton16.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton16.TabIndex = 23;
-            // 
-            // toggleButton20
-            // 
-            this.toggleButton20.ButtonText = "";
-            this.toggleButton20.Checked = false;
-            this.toggleButton20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton20.GroupName = null;
-            this.toggleButton20.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton20.Image")));
-            this.toggleButton20.Location = new System.Drawing.Point(1295, 89);
-            this.toggleButton20.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton20.Name = "toggleButton20";
-            this.toggleButton20.PositionName = null;
-            this.toggleButton20.Size = new System.Drawing.Size(101, 77);
-            this.toggleButton20.TabIndex = 27;
-            // 
-            // toggleButton24
-            // 
-            this.toggleButton24.ButtonText = "";
-            this.toggleButton24.Checked = false;
-            this.toggleButton24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton24.GroupName = null;
-            this.toggleButton24.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton24.Image")));
-            this.toggleButton24.Location = new System.Drawing.Point(1077, 174);
-            this.toggleButton24.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton24.Name = "toggleButton24";
-            this.toggleButton24.PositionName = null;
-            this.toggleButton24.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton24.TabIndex = 31;
-            // 
-            // toggleButton26
-            // 
-            this.toggleButton26.ButtonText = "";
-            this.toggleButton26.Checked = false;
-            this.toggleButton26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton26.GroupName = null;
-            this.toggleButton26.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton26.Image")));
-            this.toggleButton26.Location = new System.Drawing.Point(1186, 174);
-            this.toggleButton26.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton26.Name = "toggleButton26";
-            this.toggleButton26.PositionName = null;
-            this.toggleButton26.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton26.TabIndex = 33;
-            // 
-            // toggleButton23
-            // 
-            this.toggleButton23.ButtonText = "";
-            this.toggleButton23.Checked = false;
-            this.toggleButton23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton23.GroupName = null;
-            this.toggleButton23.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton23.Image")));
-            this.toggleButton23.Location = new System.Drawing.Point(1295, 174);
-            this.toggleButton23.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton23.Name = "toggleButton23";
-            this.toggleButton23.PositionName = null;
-            this.toggleButton23.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton23.TabIndex = 30;
-            // 
-            // toggleButton25
-            // 
-            this.toggleButton25.ButtonText = "";
-            this.toggleButton25.Checked = false;
-            this.toggleButton25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton25.GroupName = null;
-            this.toggleButton25.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton25.Image")));
-            this.toggleButton25.Location = new System.Drawing.Point(410, 174);
-            this.toggleButton25.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton25.Name = "toggleButton25";
-            this.toggleButton25.PositionName = null;
-            this.toggleButton25.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton25.TabIndex = 32;
-            // 
-            // toggleButton22
-            // 
-            this.toggleButton22.ButtonText = "";
-            this.toggleButton22.Checked = false;
-            this.toggleButton22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton22.GroupName = null;
-            this.toggleButton22.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton22.Image")));
-            this.toggleButton22.Location = new System.Drawing.Point(301, 174);
-            this.toggleButton22.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton22.Name = "toggleButton22";
-            this.toggleButton22.PositionName = null;
-            this.toggleButton22.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton22.TabIndex = 29;
-            // 
-            // toggleButton27
-            // 
-            this.toggleButton27.ButtonText = "";
-            this.toggleButton27.Checked = false;
-            this.toggleButton27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toggleButton27.GroupName = null;
-            this.toggleButton27.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton27.Image")));
-            this.toggleButton27.Location = new System.Drawing.Point(192, 174);
-            this.toggleButton27.Margin = new System.Windows.Forms.Padding(4);
-            this.toggleButton27.Name = "toggleButton27";
-            this.toggleButton27.PositionName = null;
-            this.toggleButton27.Size = new System.Drawing.Size(101, 78);
-            this.toggleButton27.TabIndex = 34;
-            // 
             // positionControlButton1
             // 
             this.positionControlButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.positionControlButton1.Location = new System.Drawing.Point(1488, 176);
-            this.positionControlButton1.Margin = new System.Windows.Forms.Padding(6);
+            this.positionControlButton1.Location = new System.Drawing.Point(6, 80);
+            this.positionControlButton1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.positionControlButton1.Name = "positionControlButton1";
-            this.positionControlButton1.Size = new System.Drawing.Size(90, 74);
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.positionControlButton1, 2);
+            this.positionControlButton1.Size = new System.Drawing.Size(224, 138);
             this.positionControlButton1.TabIndex = 35;
             this.positionControlButton1.TeachMode = true;
             // 
@@ -1192,10 +714,10 @@
             this.BottomCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomCubeScoringPositionToggleButton.GroupName = "Positions";
             this.BottomCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.BottomCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 173);
+            this.BottomCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 193);
             this.BottomCubeScoringPositionToggleButton.Name = "BottomCubeScoringPositionToggleButton";
             this.BottomCubeScoringPositionToggleButton.PositionName = "Cube_Hybrid";
-            this.BottomCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
+            this.BottomCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 91);
             this.BottomCubeScoringPositionToggleButton.TabIndex = 8;
             this.BottomCubeScoringPositionToggleButton.Tag = "";
             // 
@@ -1206,10 +728,10 @@
             this.BottomConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomConeScoringPositionToggleButton.GroupName = "Positions";
             this.BottomConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.BottomConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 173);
+            this.BottomConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 193);
             this.BottomConeScoringPositionToggleButton.Name = "BottomConeScoringPositionToggleButton";
             this.BottomConeScoringPositionToggleButton.PositionName = "Cone_Hybrid";
-            this.BottomConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
+            this.BottomConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 91);
             this.BottomConeScoringPositionToggleButton.TabIndex = 7;
             this.BottomConeScoringPositionToggleButton.Tag = "";
             // 
@@ -1220,10 +742,10 @@
             this.MiddleCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MiddleCubeScoringPositionToggleButton.GroupName = "Positions";
             this.MiddleCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.MiddleCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 88);
+            this.MiddleCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 98);
             this.MiddleCubeScoringPositionToggleButton.Name = "MiddleCubeScoringPositionToggleButton";
             this.MiddleCubeScoringPositionToggleButton.PositionName = "Cube_Mid";
-            this.MiddleCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
+            this.MiddleCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
             this.MiddleCubeScoringPositionToggleButton.TabIndex = 6;
             this.MiddleCubeScoringPositionToggleButton.Tag = "";
             // 
@@ -1234,10 +756,10 @@
             this.MiddleConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MiddleConeScoringPositionToggleButton.GroupName = "Positions";
             this.MiddleConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.MiddleConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 88);
+            this.MiddleConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 98);
             this.MiddleConeScoringPositionToggleButton.Name = "MiddleConeScoringPositionToggleButton";
             this.MiddleConeScoringPositionToggleButton.PositionName = "Cone_Mid";
-            this.MiddleConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
+            this.MiddleConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
             this.MiddleConeScoringPositionToggleButton.TabIndex = 5;
             this.MiddleConeScoringPositionToggleButton.Tag = "";
             // 
@@ -1251,7 +773,7 @@
             this.TopCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 3);
             this.TopCubeScoringPositionToggleButton.Name = "TopCubeScoringPositionToggleButton";
             this.TopCubeScoringPositionToggleButton.PositionName = "Cube_Top";
-            this.TopCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
+            this.TopCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
             this.TopCubeScoringPositionToggleButton.TabIndex = 4;
             this.TopCubeScoringPositionToggleButton.Tag = "";
             // 
@@ -1265,7 +787,7 @@
             this.TopConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 3);
             this.TopConeScoringPositionToggleButton.Name = "TopConeScoringPositionToggleButton";
             this.TopConeScoringPositionToggleButton.PositionName = "Cone_Top";
-            this.TopConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 79);
+            this.TopConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
             this.TopConeScoringPositionToggleButton.TabIndex = 0;
             this.TopConeScoringPositionToggleButton.Tag = "";
             // 
@@ -1280,7 +802,7 @@
             this.ConePlatterPickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConePlatterPickupPositionToggleButton.Name = "ConePlatterPickupPositionToggleButton";
             this.ConePlatterPickupPositionToggleButton.PositionName = "Cone_Pickup_Platter";
-            this.ConePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(253, 54);
+            this.ConePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
             this.ConePlatterPickupPositionToggleButton.TabIndex = 5;
             this.ConePlatterPickupPositionToggleButton.Tag = "";
             // 
@@ -1295,7 +817,7 @@
             this.CubePlatterPickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
             this.CubePlatterPickupPositionToggleButton.Name = "CubePlatterPickupPositionToggleButton";
             this.CubePlatterPickupPositionToggleButton.PositionName = "Cube_Pickup_Platter";
-            this.CubePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(253, 54);
+            this.CubePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
             this.CubePlatterPickupPositionToggleButton.TabIndex = 6;
             this.CubePlatterPickupPositionToggleButton.Tag = "";
             // 
@@ -1306,11 +828,11 @@
             this.CubeChutePickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CubeChutePickupPositionToggleButton.GroupName = "Positions";
             this.CubeChutePickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.CubeChutePickupPositionToggleButton.Location = new System.Drawing.Point(526, 66);
+            this.CubeChutePickupPositionToggleButton.Location = new System.Drawing.Point(526, 74);
             this.CubeChutePickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
             this.CubeChutePickupPositionToggleButton.Name = "CubeChutePickupPositionToggleButton";
             this.CubeChutePickupPositionToggleButton.PositionName = "Cube_Pickup_Chute";
-            this.CubeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 54);
+            this.CubeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
             this.CubeChutePickupPositionToggleButton.TabIndex = 7;
             this.CubeChutePickupPositionToggleButton.Tag = "";
             // 
@@ -1325,7 +847,7 @@
             this.CubePickupFloorPositionToggleButton.Margin = new System.Windows.Forms.Padding(0);
             this.CubePickupFloorPositionToggleButton.Name = "CubePickupFloorPositionToggleButton";
             this.CubePickupFloorPositionToggleButton.PositionName = "Cube_Pickup_Floor";
-            this.CubePickupFloorPositionToggleButton.Size = new System.Drawing.Size(172, 56);
+            this.CubePickupFloorPositionToggleButton.Size = new System.Drawing.Size(172, 64);
             this.CubePickupFloorPositionToggleButton.TabIndex = 11;
             this.CubePickupFloorPositionToggleButton.Tag = "";
             // 
@@ -1340,7 +862,7 @@
             this.ConePickupFloorPositionTippedToggleButton.Margin = new System.Windows.Forms.Padding(0);
             this.ConePickupFloorPositionTippedToggleButton.Name = "ConePickupFloorPositionTippedToggleButton";
             this.ConePickupFloorPositionTippedToggleButton.PositionName = "Cone_Pickup_Floor_Tipped";
-            this.ConePickupFloorPositionTippedToggleButton.Size = new System.Drawing.Size(172, 56);
+            this.ConePickupFloorPositionTippedToggleButton.Size = new System.Drawing.Size(172, 64);
             this.ConePickupFloorPositionTippedToggleButton.TabIndex = 10;
             this.ConePickupFloorPositionTippedToggleButton.Tag = "";
             // 
@@ -1355,7 +877,7 @@
             this.ConePickupFloorPositionToggleButton.Margin = new System.Windows.Forms.Padding(0);
             this.ConePickupFloorPositionToggleButton.Name = "ConePickupFloorPositionToggleButton";
             this.ConePickupFloorPositionToggleButton.PositionName = "Cone_Pickup_Floor";
-            this.ConePickupFloorPositionToggleButton.Size = new System.Drawing.Size(172, 56);
+            this.ConePickupFloorPositionToggleButton.Size = new System.Drawing.Size(172, 64);
             this.ConePickupFloorPositionToggleButton.TabIndex = 9;
             this.ConePickupFloorPositionToggleButton.Tag = "";
             // 
@@ -1366,11 +888,11 @@
             this.ConeChutePickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConeChutePickupPositionToggleButton.GroupName = "Positions";
             this.ConeChutePickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.ConeChutePickupPositionToggleButton.Location = new System.Drawing.Point(265, 66);
+            this.ConeChutePickupPositionToggleButton.Location = new System.Drawing.Point(265, 74);
             this.ConeChutePickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConeChutePickupPositionToggleButton.Name = "ConeChutePickupPositionToggleButton";
             this.ConeChutePickupPositionToggleButton.PositionName = "Cone_Pickup_Chute";
-            this.ConeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 54);
+            this.ConeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
             this.ConeChutePickupPositionToggleButton.TabIndex = 8;
             this.ConeChutePickupPositionToggleButton.Tag = "";
             // 
@@ -1386,7 +908,7 @@
             this.HomeToggleButton.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.HomeToggleButton.Name = "HomeToggleButton";
             this.HomeToggleButton.PositionName = "Home";
-            this.HomeToggleButton.Size = new System.Drawing.Size(241, 43);
+            this.HomeToggleButton.Size = new System.Drawing.Size(241, 51);
             this.HomeToggleButton.TabIndex = 0;
             this.HomeToggleButton.Tag = "";
             // 
@@ -1399,7 +921,7 @@
             this.BobDashAutoModeIndicator.Location = new System.Drawing.Point(269, 6);
             this.BobDashAutoModeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.BobDashAutoModeIndicator.Name = "BobDashAutoModeIndicator";
-            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(251, 51);
+            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(251, 59);
             this.BobDashAutoModeIndicator.TabIndex = 1;
             this.BobDashAutoModeIndicator.VariableName = "BobDashAutoMode";
             // 
@@ -1412,7 +934,7 @@
             this.BobDashMatchTimeIndicator.Location = new System.Drawing.Point(532, 6);
             this.BobDashMatchTimeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.BobDashMatchTimeIndicator.Name = "BobDashMatchTimeIndicator";
-            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(251, 51);
+            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(251, 59);
             this.BobDashMatchTimeIndicator.TabIndex = 2;
             this.BobDashMatchTimeIndicator.VariableName = "BobDashMatchTime";
             // 
@@ -1521,11 +1043,12 @@
             this.RightSideTabControl.ResumeLayout(false);
             this.IndicatorsTabPage.ResumeLayout(false);
             this.VariablesTabPage.ResumeLayout(false);
+            this.Camera2TabPage.ResumeLayout(false);
             this.BottomButtonsTableLayoutPanel.ResumeLayout(false);
             this.MainTabControl.ResumeLayout(false);
             this.PositionControlTabPage.ResumeLayout(false);
             this.PositionsTableLayoutPanel.ResumeLayout(false);
-            this.FilledScoringLocationsGroupBox.ResumeLayout(false);
+            this.TeachAndAutoSelectionGroupBox.ResumeLayout(false);
             this.FilledScoringLocationsTableLayoutPanel.ResumeLayout(false);
             this.AutoModeSelectPanel.ResumeLayout(false);
             this.AutoTableLayoutPanel.ResumeLayout(false);
@@ -1536,7 +1059,6 @@
             this.FloorPickupButtonsTableLayoutPanel.ResumeLayout(false);
             this.TopRightTableLayoutPanel.ResumeLayout(false);
             this.OtherStuffTabPage.ResumeLayout(false);
-            this.Camera2TabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1566,7 +1088,7 @@
         private System.Windows.Forms.TabPage OtherStuffTabPage;
         private System.Windows.Forms.TableLayoutPanel PositionsTableLayoutPanel;
         private System.Windows.Forms.GroupBox ScoringPositionsGroupBox;
-        private System.Windows.Forms.GroupBox FilledScoringLocationsGroupBox;
+        private System.Windows.Forms.GroupBox TeachAndAutoSelectionGroupBox;
         private System.Windows.Forms.TableLayoutPanel ScoringPositionsTableLayoutPanel;
         private BobDashControls.ToggleButton TopConeScoringPositionToggleButton;
         private BobDashControls.ToggleButton BottomCubeScoringPositionToggleButton;
@@ -1578,36 +1100,6 @@
         private System.Windows.Forms.Label MiddleScoringPositionLabel;
         private System.Windows.Forms.Label BottomScoringPositionLabel;
         private System.Windows.Forms.TableLayoutPanel FilledScoringLocationsTableLayoutPanel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private BobDashControls.ToggleButton toggleButton1;
-        private BobDashControls.ToggleButton toggleButton2;
-        private BobDashControls.ToggleButton toggleButton3;
-        private BobDashControls.ToggleButton toggleButton5;
-        private BobDashControls.ToggleButton toggleButton6;
-        private BobDashControls.ToggleButton toggleButton7;
-        private BobDashControls.ToggleButton toggleButton8;
-        private BobDashControls.ToggleButton toggleButton9;
-        private BobDashControls.ToggleButton toggleButton11;
-        private BobDashControls.ToggleButton toggleButton12;
-        private BobDashControls.ToggleButton toggleButton13;
-        private BobDashControls.ToggleButton toggleButton14;
-        private BobDashControls.ToggleButton toggleButton15;
-        private BobDashControls.ToggleButton toggleButton10;
-        private BobDashControls.ToggleButton toggleButton4;
-        private BobDashControls.ToggleButton toggleButton19;
-        private BobDashControls.ToggleButton toggleButton18;
-        private BobDashControls.ToggleButton toggleButton17;
-        private BobDashControls.ToggleButton toggleButton21;
-        private BobDashControls.ToggleButton toggleButton16;
-        private BobDashControls.ToggleButton toggleButton20;
-        private BobDashControls.ToggleButton toggleButton24;
-        private BobDashControls.ToggleButton toggleButton26;
-        private BobDashControls.ToggleButton toggleButton23;
-        private BobDashControls.ToggleButton toggleButton25;
-        private BobDashControls.ToggleButton toggleButton22;
-        private BobDashControls.ToggleButton toggleButton27;
         private System.Windows.Forms.GroupBox PickupPositionsGroupBox;
         private System.Windows.Forms.TableLayoutPanel PickupPositionsTableLayoutPanel;
         private System.Windows.Forms.Label ChutePickupPositionLabel;
