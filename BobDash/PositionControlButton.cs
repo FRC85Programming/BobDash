@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using BobDash;
+﻿using BobDash;
 using NetworkTables;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace BobDashControls
 {
@@ -14,6 +13,9 @@ namespace BobDashControls
         private bool _teachMode;
 
         private static event EventHandler PositionListUpdated;
+        public event EventHandler<PositionSelectedEventArgs> PositionSelected;
+
+        public string SelectedPositionName { get => PositionNameComboBox.Text; }
 
         public PositionControlButton()
         {
@@ -103,7 +105,7 @@ namespace BobDashControls
                 try
                 {
                     var previous = BobDash.BobDash.GetSavedPosition(PositionNameComboBox.Text);
-                    var pos = new SavedPosition(BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentPivotPositionVariableName), BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentExtendPositionVariableName), BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentWristPositionVariableName));
+                    var pos = new SavedPosition(BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentPivotPositionVariableName), BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentExtendPositionVariableName), BobDash.BobDash.SmartDashboard.GetNumber(BobDash.Properties.Settings.Default.CurrentWristPositionVariableName), previous.RollerSpeed);
                     BobDash.BobDash.SavedPositions.PutNumberArray(PositionNameComboBox.Text, pos.ToDoubleArray());
                     BobDash.BobDash.SavedPositions.SetPersistent(PositionNameComboBox.Text);
                     PositionListUpdated?.Invoke(this, new EventArgs());
@@ -129,6 +131,11 @@ namespace BobDashControls
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void PositionNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PositionSelected?.Invoke(this, new PositionSelectedEventArgs { PositionName = PositionNameComboBox.Text });
         }
     }
 }

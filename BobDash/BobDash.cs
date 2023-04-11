@@ -56,12 +56,35 @@ namespace BobDash
 
             InitializeComponent();
 
+            HoldPositionControlButton.PositionSelected += HoldPositionControlButton_PositionSelected;
+
             VariablesListElementHost.Child = VariablesList;
             DoubleBuffered = true;
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 ConnectButton.Visible = true;
+            }
+        }
+
+        private void HoldPositionControlButton_PositionSelected(object sender, PositionSelectedEventArgs e)
+        {
+            try
+            {
+                var pos = GetSavedPosition(e.PositionName);
+                if (pos != null)
+                {
+                    PivotPositionNumericUpDown.Value = Convert.ToDecimal(pos.PivotPosition);
+                    ExtendPositionNumericUpDown.Value = Convert.ToDecimal(pos.ExtendPosition);
+                    WristPositionNumericUpDown.Value = Convert.ToDecimal(pos.WristPosition);
+                    RollerSpeedNumericUpDown.Value = Convert.ToDecimal(pos.RollerSpeed);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error loading position '{e.PositionName}': {ex}";
+                logger.Error(ex, message);
+                MessageBox.Show(message);
             }
         }
 
@@ -166,6 +189,7 @@ namespace BobDash
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredPivotPositionVariableName, pos.PivotPosition);
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredExtendPositionVariableName, pos.ExtendPosition);
             SmartDashboard.PutNumber(Properties.Settings.Default.DesiredWristPositionVariableName, pos.WristPosition);
+            SmartDashboard.PutNumber(Properties.Settings.Default.DesiredRollerSpeed, pos.RollerSpeed);
         }
 
         private void SetBackColor(Color color)
@@ -392,7 +416,7 @@ namespace BobDash
                 var fromSmartDashboard = SmartDashboard?.GetStringArray("AutoModes", null);
                 if (fromSmartDashboard != null && fromSmartDashboard.Any())
                 {
-                    foreach (var mode in fromSmartDashboard)
+                    foreach (var mode in fromSmartDashboard.OrderBy(m => m))
                     {
                         AutoModeCheckedListBox.Items.Add(mode);
                     }
@@ -601,6 +625,99 @@ namespace BobDash
             catch (Exception ex)
             {
                 var message = $"Error adding auto mode: {ex}";
+                logger.Error(ex, message);
+                MessageBox.Show(message);
+            }
+        }
+
+        private void PivotPositionNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SmartDashboard.PutNumber(Properties.Settings.Default.DesiredPivotPositionVariableName, Convert.ToDouble(PivotPositionNumericUpDown.Value));
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error updating pivot position: {ex}";
+                logger.Error(ex, message);
+                MessageBox.Show(message);
+            }
+        }
+
+        private void ExtendPositionNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SmartDashboard.PutNumber(Properties.Settings.Default.DesiredExtendPositionVariableName, Convert.ToDouble(ExtendPositionNumericUpDown.Value));
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error updating extend position: {ex}";
+                logger.Error(ex, message);
+                MessageBox.Show(message);
+            }
+        }
+
+        private void WristPositionNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SmartDashboard.PutNumber(Properties.Settings.Default.DesiredWristPositionVariableName, Convert.ToDouble(WristPositionNumericUpDown.Value));
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error updating wrist position: {ex}";
+                logger.Error(ex, message);
+                MessageBox.Show(message);
+            }
+        }
+
+        private void RollerSpeedNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SmartDashboard.PutNumber(Properties.Settings.Default.DesiredRollerSpeed, Convert.ToDouble(RollerSpeedNumericUpDown.Value));
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error updating roller speed: {ex}";
+                logger.Error(ex, message);
+                MessageBox.Show(message);
+            }
+        }
+
+        private bool _positionHeld = false;
+
+        private void HoldPositionButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _positionHeld = !_positionHeld;
+                SmartDashboard.PutBoolean("BobDashHoldPosition", _positionHeld);
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error writing variable to hold position: {ex}";
+                logger.Error(ex, message);
+                MessageBox.Show(message);
+            }
+        }
+
+        private void SavePositionButton_Click(object sender, EventArgs e)
+        {
+            var positionName = HoldPositionControlButton.SelectedPositionName;
+            try
+            {
+                var previous = GetSavedPosition(positionName);
+                var pos = new SavedPosition(Convert.ToDouble(PivotPositionNumericUpDown.Value), Convert.ToDouble(ExtendPositionNumericUpDown.Value), Convert.ToDouble(WristPositionNumericUpDown.Value), Convert.ToDouble(RollerSpeedNumericUpDown.Value));
+                SavedPositions.PutNumberArray(positionName, pos.ToDoubleArray());
+                SavedPositions.SetPersistent(positionName);
+                logger.Info($"Position '{positionName} updated from {previous} to {pos}.");
+                LoadPosition(positionName);
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error updating position '{positionName}': {ex}";
                 logger.Error(ex, message);
                 MessageBox.Show(message);
             }

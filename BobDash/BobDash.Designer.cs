@@ -61,6 +61,14 @@
             this.PositionControlTabPage = new System.Windows.Forms.TabPage();
             this.PositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.TeachAndAutoSelectionGroupBox = new System.Windows.Forms.GroupBox();
+            this.FilledScoringLocationsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.AutoModeSelectPanel = new System.Windows.Forms.Panel();
+            this.AutoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.AddAutoButton = new System.Windows.Forms.Button();
+            this.positionControlButton1 = new BobDashControls.PositionControlButton();
+            this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
+            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.ScoringPositionsGroupBox = new System.Windows.Forms.GroupBox();
             this.ScoringPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BottomCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
@@ -90,14 +98,19 @@
             this.BobDashAutoModeIndicator = new BobDashControls.Indicator();
             this.BobDashMatchTimeIndicator = new BobDashControls.Indicator();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
-            this.positionControlButton1 = new BobDashControls.PositionControlButton();
-            this.AutoModeSelectPanel = new System.Windows.Forms.Panel();
-            this.AutoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.AddAutoButton = new System.Windows.Forms.Button();
-            this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.FilledScoringLocationsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
-            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
+            this.TeachTabPage = new System.Windows.Forms.TabPage();
+            this.TeachTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.HoldPositionControlButton = new BobDashControls.PositionControlButton();
+            this.PivotPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ExtendPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.WristPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.RollerSpeedNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.PivotLabel = new System.Windows.Forms.Label();
+            this.ExtendLabel = new System.Windows.Forms.Label();
+            this.WristLabel = new System.Windows.Forms.Label();
+            this.RollerSpeedLabel = new System.Windows.Forms.Label();
+            this.HoldPositionButton = new System.Windows.Forms.Button();
+            this.SavePositionButton = new System.Windows.Forms.Button();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +124,9 @@
             this.PositionControlTabPage.SuspendLayout();
             this.PositionsTableLayoutPanel.SuspendLayout();
             this.TeachAndAutoSelectionGroupBox.SuspendLayout();
+            this.FilledScoringLocationsTableLayoutPanel.SuspendLayout();
+            this.AutoModeSelectPanel.SuspendLayout();
+            this.AutoTableLayoutPanel.SuspendLayout();
             this.ScoringPositionsGroupBox.SuspendLayout();
             this.ScoringPositionsTableLayoutPanel.SuspendLayout();
             this.PickupPositionsGroupBox.SuspendLayout();
@@ -118,9 +134,12 @@
             this.FloorPickupButtonsTableLayoutPanel.SuspendLayout();
             this.TopRightTableLayoutPanel.SuspendLayout();
             this.OtherStuffTabPage.SuspendLayout();
-            this.AutoModeSelectPanel.SuspendLayout();
-            this.AutoTableLayoutPanel.SuspendLayout();
-            this.FilledScoringLocationsTableLayoutPanel.SuspendLayout();
+            this.TeachTabPage.SuspendLayout();
+            this.TeachTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PivotPositionNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtendPositionNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WristPositionNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollerSpeedNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // IndicatorTableLayoutPanel
@@ -346,7 +365,7 @@
             this.VariablesTabPage.Location = new System.Drawing.Point(4, 22);
             this.VariablesTabPage.Name = "VariablesTabPage";
             this.VariablesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.VariablesTabPage.Size = new System.Drawing.Size(687, 510);
+            this.VariablesTabPage.Size = new System.Drawing.Size(1030, 510);
             this.VariablesTabPage.TabIndex = 1;
             this.VariablesTabPage.Text = "Variables";
             this.VariablesTabPage.UseVisualStyleBackColor = true;
@@ -356,7 +375,7 @@
             this.VariablesListElementHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.VariablesListElementHost.Location = new System.Drawing.Point(3, 3);
             this.VariablesListElementHost.Name = "VariablesListElementHost";
-            this.VariablesListElementHost.Size = new System.Drawing.Size(681, 504);
+            this.VariablesListElementHost.Size = new System.Drawing.Size(1024, 504);
             this.VariablesListElementHost.TabIndex = 0;
             this.VariablesListElementHost.Child = null;
             // 
@@ -391,6 +410,7 @@
             // 
             this.MainTabControl.Controls.Add(this.PositionControlTabPage);
             this.MainTabControl.Controls.Add(this.OtherStuffTabPage);
+            this.MainTabControl.Controls.Add(this.TeachTabPage);
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTabControl.Location = new System.Drawing.Point(0, 0);
             this.MainTabControl.Name = "MainTabControl";
@@ -440,6 +460,108 @@
             this.TeachAndAutoSelectionGroupBox.TabIndex = 1;
             this.TeachAndAutoSelectionGroupBox.TabStop = false;
             this.TeachAndAutoSelectionGroupBox.Text = "Teach and auto selection";
+            // 
+            // FilledScoringLocationsTableLayoutPanel
+            // 
+            this.FilledScoringLocationsTableLayoutPanel.ColumnCount = 4;
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.5F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.5F));
+            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.AutoModeSelectPanel, 3, 0);
+            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.positionControlButton1, 0, 1);
+            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.Camera1VideoSourcePlayer, 1, 0);
+            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.Camera2VideoSourcePlayer, 2, 0);
+            this.FilledScoringLocationsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FilledScoringLocationsTableLayoutPanel.Location = new System.Drawing.Point(3, 25);
+            this.FilledScoringLocationsTableLayoutPanel.Name = "FilledScoringLocationsTableLayoutPanel";
+            this.FilledScoringLocationsTableLayoutPanel.RowCount = 3;
+            this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.FilledScoringLocationsTableLayoutPanel.Size = new System.Drawing.Size(1578, 224);
+            this.FilledScoringLocationsTableLayoutPanel.TabIndex = 0;
+            // 
+            // AutoModeSelectPanel
+            // 
+            this.AutoModeSelectPanel.Controls.Add(this.AutoTableLayoutPanel);
+            this.AutoModeSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoModeSelectPanel.Location = new System.Drawing.Point(1263, 3);
+            this.AutoModeSelectPanel.Name = "AutoModeSelectPanel";
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.AutoModeSelectPanel, 3);
+            this.AutoModeSelectPanel.Size = new System.Drawing.Size(312, 218);
+            this.AutoModeSelectPanel.TabIndex = 37;
+            // 
+            // AutoTableLayoutPanel
+            // 
+            this.AutoTableLayoutPanel.ColumnCount = 1;
+            this.AutoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AutoTableLayoutPanel.Controls.Add(this.AutoModeCheckedListBox, 0, 0);
+            this.AutoTableLayoutPanel.Controls.Add(this.AddAutoButton, 0, 1);
+            this.AutoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.AutoTableLayoutPanel.Name = "AutoTableLayoutPanel";
+            this.AutoTableLayoutPanel.RowCount = 2;
+            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.AutoTableLayoutPanel.Size = new System.Drawing.Size(312, 218);
+            this.AutoTableLayoutPanel.TabIndex = 37;
+            // 
+            // AutoModeCheckedListBox
+            // 
+            this.AutoModeCheckedListBox.CheckOnClick = true;
+            this.AutoModeCheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoModeCheckedListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoModeCheckedListBox.FormattingEnabled = true;
+            this.AutoModeCheckedListBox.Location = new System.Drawing.Point(3, 3);
+            this.AutoModeCheckedListBox.Name = "AutoModeCheckedListBox";
+            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(306, 172);
+            this.AutoModeCheckedListBox.TabIndex = 36;
+            this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
+            // 
+            // AddAutoButton
+            // 
+            this.AddAutoButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddAutoButton.Location = new System.Drawing.Point(3, 181);
+            this.AddAutoButton.Name = "AddAutoButton";
+            this.AddAutoButton.Size = new System.Drawing.Size(306, 34);
+            this.AddAutoButton.TabIndex = 37;
+            this.AddAutoButton.Text = "Add Auto";
+            this.AddAutoButton.UseVisualStyleBackColor = true;
+            this.AddAutoButton.Click += new System.EventHandler(this.AddAutoButton_Click);
+            // 
+            // positionControlButton1
+            // 
+            this.positionControlButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.positionControlButton1.Location = new System.Drawing.Point(6, 80);
+            this.positionControlButton1.Margin = new System.Windows.Forms.Padding(6);
+            this.positionControlButton1.Name = "positionControlButton1";
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.positionControlButton1, 2);
+            this.positionControlButton1.Size = new System.Drawing.Size(224, 138);
+            this.positionControlButton1.TabIndex = 35;
+            this.positionControlButton1.TeachMode = true;
+            // 
+            // Camera1VideoSourcePlayer
+            // 
+            this.Camera1VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Camera1VideoSourcePlayer.Location = new System.Drawing.Point(239, 3);
+            this.Camera1VideoSourcePlayer.Name = "Camera1VideoSourcePlayer";
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.Camera1VideoSourcePlayer, 3);
+            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(506, 218);
+            this.Camera1VideoSourcePlayer.TabIndex = 38;
+            this.Camera1VideoSourcePlayer.TabStop = false;
+            this.Camera1VideoSourcePlayer.VideoSource = null;
+            // 
+            // Camera2VideoSourcePlayer
+            // 
+            this.Camera2VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(751, 3);
+            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.Camera2VideoSourcePlayer, 3);
+            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(506, 218);
+            this.Camera2VideoSourcePlayer.TabIndex = 39;
+            this.Camera2VideoSourcePlayer.TabStop = false;
+            this.Camera2VideoSourcePlayer.VideoSource = null;
             // 
             // ScoringPositionsGroupBox
             // 
@@ -858,107 +980,209 @@
             this.OtherStuffTabPage.Text = "Other stuff";
             this.OtherStuffTabPage.UseVisualStyleBackColor = true;
             // 
-            // positionControlButton1
+            // TeachTabPage
             // 
-            this.positionControlButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.positionControlButton1.Location = new System.Drawing.Point(6, 80);
-            this.positionControlButton1.Margin = new System.Windows.Forms.Padding(6);
-            this.positionControlButton1.Name = "positionControlButton1";
-            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.positionControlButton1, 2);
-            this.positionControlButton1.Size = new System.Drawing.Size(224, 138);
-            this.positionControlButton1.TabIndex = 35;
-            this.positionControlButton1.TeachMode = true;
+            this.TeachTabPage.Controls.Add(this.TeachTableLayoutPanel);
+            this.TeachTabPage.Location = new System.Drawing.Point(4, 22);
+            this.TeachTabPage.Name = "TeachTabPage";
+            this.TeachTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.TeachTabPage.Size = new System.Drawing.Size(1596, 585);
+            this.TeachTabPage.TabIndex = 2;
+            this.TeachTabPage.Text = "Teach";
+            this.TeachTabPage.UseVisualStyleBackColor = true;
             // 
-            // AutoModeSelectPanel
+            // TeachTableLayoutPanel
             // 
-            this.AutoModeSelectPanel.Controls.Add(this.AutoTableLayoutPanel);
-            this.AutoModeSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoModeSelectPanel.Location = new System.Drawing.Point(1263, 3);
-            this.AutoModeSelectPanel.Name = "AutoModeSelectPanel";
-            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.AutoModeSelectPanel, 3);
-            this.AutoModeSelectPanel.Size = new System.Drawing.Size(312, 218);
-            this.AutoModeSelectPanel.TabIndex = 37;
+            this.TeachTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.TeachTableLayoutPanel.ColumnCount = 4;
+            this.TeachTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TeachTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TeachTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TeachTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TeachTableLayoutPanel.Controls.Add(this.RollerSpeedLabel, 1, 3);
+            this.TeachTableLayoutPanel.Controls.Add(this.WristLabel, 1, 2);
+            this.TeachTableLayoutPanel.Controls.Add(this.ExtendLabel, 1, 1);
+            this.TeachTableLayoutPanel.Controls.Add(this.HoldPositionControlButton, 0, 0);
+            this.TeachTableLayoutPanel.Controls.Add(this.PivotPositionNumericUpDown, 2, 0);
+            this.TeachTableLayoutPanel.Controls.Add(this.ExtendPositionNumericUpDown, 2, 1);
+            this.TeachTableLayoutPanel.Controls.Add(this.WristPositionNumericUpDown, 2, 2);
+            this.TeachTableLayoutPanel.Controls.Add(this.RollerSpeedNumericUpDown, 2, 3);
+            this.TeachTableLayoutPanel.Controls.Add(this.PivotLabel, 1, 0);
+            this.TeachTableLayoutPanel.Controls.Add(this.HoldPositionButton, 3, 0);
+            this.TeachTableLayoutPanel.Controls.Add(this.SavePositionButton, 3, 2);
+            this.TeachTableLayoutPanel.Location = new System.Drawing.Point(8, 6);
+            this.TeachTableLayoutPanel.Name = "TeachTableLayoutPanel";
+            this.TeachTableLayoutPanel.RowCount = 4;
+            this.TeachTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TeachTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TeachTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TeachTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TeachTableLayoutPanel.Size = new System.Drawing.Size(1012, 310);
+            this.TeachTableLayoutPanel.TabIndex = 2;
             // 
-            // AutoTableLayoutPanel
+            // HoldPositionControlButton
             // 
-            this.AutoTableLayoutPanel.ColumnCount = 1;
-            this.AutoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AutoTableLayoutPanel.Controls.Add(this.AutoModeCheckedListBox, 0, 0);
-            this.AutoTableLayoutPanel.Controls.Add(this.AddAutoButton, 0, 1);
-            this.AutoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.AutoTableLayoutPanel.Name = "AutoTableLayoutPanel";
-            this.AutoTableLayoutPanel.RowCount = 2;
-            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AutoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.AutoTableLayoutPanel.Size = new System.Drawing.Size(312, 218);
-            this.AutoTableLayoutPanel.TabIndex = 37;
+            this.HoldPositionControlButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HoldPositionControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HoldPositionControlButton.Location = new System.Drawing.Point(4, 4);
+            this.HoldPositionControlButton.Name = "HoldPositionControlButton";
+            this.TeachTableLayoutPanel.SetRowSpan(this.HoldPositionControlButton, 4);
+            this.HoldPositionControlButton.Size = new System.Drawing.Size(245, 302);
+            this.HoldPositionControlButton.TabIndex = 0;
+            this.HoldPositionControlButton.TeachMode = false;
             // 
-            // AddAutoButton
+            // PivotPositionNumericUpDown
             // 
-            this.AddAutoButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddAutoButton.Location = new System.Drawing.Point(3, 181);
-            this.AddAutoButton.Name = "AddAutoButton";
-            this.AddAutoButton.Size = new System.Drawing.Size(306, 34);
-            this.AddAutoButton.TabIndex = 37;
-            this.AddAutoButton.Text = "Add Auto";
-            this.AddAutoButton.UseVisualStyleBackColor = true;
-            this.AddAutoButton.Click += new System.EventHandler(this.AddAutoButton_Click);
+            this.PivotPositionNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PivotPositionNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PivotPositionNumericUpDown.Location = new System.Drawing.Point(508, 4);
+            this.PivotPositionNumericUpDown.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.PivotPositionNumericUpDown.Name = "PivotPositionNumericUpDown";
+            this.PivotPositionNumericUpDown.Size = new System.Drawing.Size(245, 49);
+            this.PivotPositionNumericUpDown.TabIndex = 1;
+            this.PivotPositionNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.PivotPositionNumericUpDown.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.PivotPositionNumericUpDown.ValueChanged += new System.EventHandler(this.PivotPositionNumericUpDown_ValueChanged);
             // 
-            // AutoModeCheckedListBox
+            // ExtendPositionNumericUpDown
             // 
-            this.AutoModeCheckedListBox.CheckOnClick = true;
-            this.AutoModeCheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoModeCheckedListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoModeCheckedListBox.FormattingEnabled = true;
-            this.AutoModeCheckedListBox.Location = new System.Drawing.Point(3, 3);
-            this.AutoModeCheckedListBox.Name = "AutoModeCheckedListBox";
-            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(306, 172);
-            this.AutoModeCheckedListBox.TabIndex = 36;
-            this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
+            this.ExtendPositionNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExtendPositionNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtendPositionNumericUpDown.Location = new System.Drawing.Point(508, 81);
+            this.ExtendPositionNumericUpDown.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.ExtendPositionNumericUpDown.Name = "ExtendPositionNumericUpDown";
+            this.ExtendPositionNumericUpDown.Size = new System.Drawing.Size(245, 49);
+            this.ExtendPositionNumericUpDown.TabIndex = 2;
+            this.ExtendPositionNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExtendPositionNumericUpDown.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.ExtendPositionNumericUpDown.ValueChanged += new System.EventHandler(this.ExtendPositionNumericUpDown_ValueChanged);
             // 
-            // FilledScoringLocationsTableLayoutPanel
+            // WristPositionNumericUpDown
             // 
-            this.FilledScoringLocationsTableLayoutPanel.ColumnCount = 4;
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.5F));
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.5F));
-            this.FilledScoringLocationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.AutoModeSelectPanel, 3, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.positionControlButton1, 0, 1);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.Camera1VideoSourcePlayer, 1, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Controls.Add(this.Camera2VideoSourcePlayer, 2, 0);
-            this.FilledScoringLocationsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FilledScoringLocationsTableLayoutPanel.Location = new System.Drawing.Point(3, 25);
-            this.FilledScoringLocationsTableLayoutPanel.Name = "FilledScoringLocationsTableLayoutPanel";
-            this.FilledScoringLocationsTableLayoutPanel.RowCount = 3;
-            this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.FilledScoringLocationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.FilledScoringLocationsTableLayoutPanel.Size = new System.Drawing.Size(1578, 224);
-            this.FilledScoringLocationsTableLayoutPanel.TabIndex = 0;
+            this.WristPositionNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WristPositionNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WristPositionNumericUpDown.Location = new System.Drawing.Point(508, 158);
+            this.WristPositionNumericUpDown.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.WristPositionNumericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.WristPositionNumericUpDown.Name = "WristPositionNumericUpDown";
+            this.WristPositionNumericUpDown.Size = new System.Drawing.Size(245, 49);
+            this.WristPositionNumericUpDown.TabIndex = 3;
+            this.WristPositionNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.WristPositionNumericUpDown.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.WristPositionNumericUpDown.ValueChanged += new System.EventHandler(this.WristPositionNumericUpDown_ValueChanged);
             // 
-            // Camera1VideoSourcePlayer
+            // RollerSpeedNumericUpDown
             // 
-            this.Camera1VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Camera1VideoSourcePlayer.Location = new System.Drawing.Point(239, 3);
-            this.Camera1VideoSourcePlayer.Name = "Camera1VideoSourcePlayer";
-            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.Camera1VideoSourcePlayer, 3);
-            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(506, 218);
-            this.Camera1VideoSourcePlayer.TabIndex = 38;
-            this.Camera1VideoSourcePlayer.TabStop = false;
-            this.Camera1VideoSourcePlayer.VideoSource = null;
+            this.RollerSpeedNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RollerSpeedNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RollerSpeedNumericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.RollerSpeedNumericUpDown.Location = new System.Drawing.Point(508, 235);
+            this.RollerSpeedNumericUpDown.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RollerSpeedNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.RollerSpeedNumericUpDown.Name = "RollerSpeedNumericUpDown";
+            this.RollerSpeedNumericUpDown.Size = new System.Drawing.Size(245, 49);
+            this.RollerSpeedNumericUpDown.TabIndex = 4;
+            this.RollerSpeedNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.RollerSpeedNumericUpDown.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.RollerSpeedNumericUpDown.ValueChanged += new System.EventHandler(this.RollerSpeedNumericUpDown_ValueChanged);
             // 
-            // Camera2VideoSourcePlayer
+            // PivotLabel
             // 
-            this.Camera2VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(751, 3);
-            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
-            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.Camera2VideoSourcePlayer, 3);
-            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(506, 218);
-            this.Camera2VideoSourcePlayer.TabIndex = 39;
-            this.Camera2VideoSourcePlayer.TabStop = false;
-            this.Camera2VideoSourcePlayer.VideoSource = null;
+            this.PivotLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PivotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PivotLabel.Location = new System.Drawing.Point(256, 1);
+            this.PivotLabel.Name = "PivotLabel";
+            this.PivotLabel.Size = new System.Drawing.Size(245, 76);
+            this.PivotLabel.TabIndex = 5;
+            this.PivotLabel.Text = "Pivot";
+            this.PivotLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // ExtendLabel
+            // 
+            this.ExtendLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExtendLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtendLabel.Location = new System.Drawing.Point(256, 78);
+            this.ExtendLabel.Name = "ExtendLabel";
+            this.ExtendLabel.Size = new System.Drawing.Size(245, 76);
+            this.ExtendLabel.TabIndex = 6;
+            this.ExtendLabel.Text = "Extend";
+            this.ExtendLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // WristLabel
+            // 
+            this.WristLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WristLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WristLabel.Location = new System.Drawing.Point(256, 155);
+            this.WristLabel.Name = "WristLabel";
+            this.WristLabel.Size = new System.Drawing.Size(245, 76);
+            this.WristLabel.TabIndex = 7;
+            this.WristLabel.Text = "Wrist";
+            this.WristLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // RollerSpeedLabel
+            // 
+            this.RollerSpeedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RollerSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RollerSpeedLabel.Location = new System.Drawing.Point(256, 232);
+            this.RollerSpeedLabel.Name = "RollerSpeedLabel";
+            this.RollerSpeedLabel.Size = new System.Drawing.Size(245, 77);
+            this.RollerSpeedLabel.TabIndex = 8;
+            this.RollerSpeedLabel.Text = "Roller Speed";
+            this.RollerSpeedLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // HoldPositionButton
+            // 
+            this.HoldPositionButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HoldPositionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HoldPositionButton.Location = new System.Drawing.Point(760, 4);
+            this.HoldPositionButton.Name = "HoldPositionButton";
+            this.TeachTableLayoutPanel.SetRowSpan(this.HoldPositionButton, 2);
+            this.HoldPositionButton.Size = new System.Drawing.Size(248, 147);
+            this.HoldPositionButton.TabIndex = 9;
+            this.HoldPositionButton.Text = "Hold Position";
+            this.HoldPositionButton.UseVisualStyleBackColor = true;
+            this.HoldPositionButton.Click += new System.EventHandler(this.HoldPositionButton_Click);
+            // 
+            // SavePositionButton
+            // 
+            this.SavePositionButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SavePositionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SavePositionButton.Location = new System.Drawing.Point(760, 158);
+            this.SavePositionButton.Name = "SavePositionButton";
+            this.TeachTableLayoutPanel.SetRowSpan(this.SavePositionButton, 2);
+            this.SavePositionButton.Size = new System.Drawing.Size(248, 148);
+            this.SavePositionButton.TabIndex = 10;
+            this.SavePositionButton.Text = "Save Position";
+            this.SavePositionButton.UseVisualStyleBackColor = true;
+            this.SavePositionButton.Click += new System.EventHandler(this.SavePositionButton_Click);
             // 
             // BobDash
             // 
@@ -984,6 +1208,9 @@
             this.PositionControlTabPage.ResumeLayout(false);
             this.PositionsTableLayoutPanel.ResumeLayout(false);
             this.TeachAndAutoSelectionGroupBox.ResumeLayout(false);
+            this.FilledScoringLocationsTableLayoutPanel.ResumeLayout(false);
+            this.AutoModeSelectPanel.ResumeLayout(false);
+            this.AutoTableLayoutPanel.ResumeLayout(false);
             this.ScoringPositionsGroupBox.ResumeLayout(false);
             this.ScoringPositionsTableLayoutPanel.ResumeLayout(false);
             this.PickupPositionsGroupBox.ResumeLayout(false);
@@ -991,9 +1218,12 @@
             this.FloorPickupButtonsTableLayoutPanel.ResumeLayout(false);
             this.TopRightTableLayoutPanel.ResumeLayout(false);
             this.OtherStuffTabPage.ResumeLayout(false);
-            this.AutoModeSelectPanel.ResumeLayout(false);
-            this.AutoTableLayoutPanel.ResumeLayout(false);
-            this.FilledScoringLocationsTableLayoutPanel.ResumeLayout(false);
+            this.TeachTabPage.ResumeLayout(false);
+            this.TeachTableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PivotPositionNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtendPositionNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WristPositionNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RollerSpeedNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1062,6 +1292,19 @@
         private BobDashControls.PositionControlButton positionControlButton1;
         private AForge.Controls.VideoSourcePlayer Camera1VideoSourcePlayer;
         private AForge.Controls.VideoSourcePlayer Camera2VideoSourcePlayer;
+        private System.Windows.Forms.TabPage TeachTabPage;
+        private BobDashControls.PositionControlButton HoldPositionControlButton;
+        private System.Windows.Forms.NumericUpDown PivotPositionNumericUpDown;
+        private System.Windows.Forms.TableLayoutPanel TeachTableLayoutPanel;
+        private System.Windows.Forms.NumericUpDown ExtendPositionNumericUpDown;
+        private System.Windows.Forms.NumericUpDown WristPositionNumericUpDown;
+        private System.Windows.Forms.NumericUpDown RollerSpeedNumericUpDown;
+        private System.Windows.Forms.Label RollerSpeedLabel;
+        private System.Windows.Forms.Label WristLabel;
+        private System.Windows.Forms.Label ExtendLabel;
+        private System.Windows.Forms.Label PivotLabel;
+        private System.Windows.Forms.Button HoldPositionButton;
+        private System.Windows.Forms.Button SavePositionButton;
     }
 }
 

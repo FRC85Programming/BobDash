@@ -163,5 +163,17 @@ namespace BobDash.Properties {
                 this["AutoModes"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DesiredRollerSpeed")]
+        public string DesiredRollerSpeed {
+            get {
+                return ((string)(this["DesiredRollerSpeed"]));
+            }
+            set {
+                this["DesiredRollerSpeed"] = value;
+            }
+        }
     }
 }

@@ -44,5 +44,8 @@
   &lt;string&gt;Normal Follow&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
+    <Setting Name="DesiredRollerSpeed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DesiredRollerSpeed</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

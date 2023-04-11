@@ -37,7 +37,10 @@ namespace BobDashControls
             // 
             // SetButton
             // 
-            this.SetButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SetButton.Location = new System.Drawing.Point(3, 30);
             this.SetButton.Name = "SetButton";
             this.SetButton.Size = new System.Drawing.Size(144, 64);
@@ -54,6 +57,7 @@ namespace BobDashControls
             this.PositionNameComboBox.Name = "PositionNameComboBox";
             this.PositionNameComboBox.Size = new System.Drawing.Size(144, 21);
             this.PositionNameComboBox.TabIndex = 1;
+            this.PositionNameComboBox.SelectedIndexChanged += new System.EventHandler(this.PositionNameComboBox_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
             // 
