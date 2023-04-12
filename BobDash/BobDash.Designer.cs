@@ -1033,6 +1033,7 @@
             // 
             // PivotPositionNumericUpDown
             // 
+            this.PivotPositionNumericUpDown.DecimalPlaces = 2;
             this.PivotPositionNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PivotPositionNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PivotPositionNumericUpDown.Location = new System.Drawing.Point(508, 4);
@@ -1050,6 +1051,7 @@
             // 
             // ExtendPositionNumericUpDown
             // 
+            this.ExtendPositionNumericUpDown.DecimalPlaces = 2;
             this.ExtendPositionNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ExtendPositionNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExtendPositionNumericUpDown.Location = new System.Drawing.Point(508, 81);
@@ -1067,6 +1069,7 @@
             // 
             // WristPositionNumericUpDown
             // 
+            this.WristPositionNumericUpDown.DecimalPlaces = 2;
             this.WristPositionNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WristPositionNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WristPositionNumericUpDown.Location = new System.Drawing.Point(508, 158);
@@ -1089,6 +1092,7 @@
             // 
             // RollerSpeedNumericUpDown
             // 
+            this.RollerSpeedNumericUpDown.DecimalPlaces = 2;
             this.RollerSpeedNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RollerSpeedNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RollerSpeedNumericUpDown.Increment = new decimal(new int[] {
