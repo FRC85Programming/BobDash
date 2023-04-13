@@ -94,23 +94,24 @@
             this.ConeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
             this.ChutePickupPositionLabel = new System.Windows.Forms.Label();
             this.TopRightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.HomeToggleButton = new BobDashControls.ToggleButton();
             this.BobDashAutoModeIndicator = new BobDashControls.Indicator();
             this.BobDashMatchTimeIndicator = new BobDashControls.Indicator();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
             this.TeachTabPage = new System.Windows.Forms.TabPage();
             this.TeachTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.RollerSpeedLabel = new System.Windows.Forms.Label();
+            this.WristLabel = new System.Windows.Forms.Label();
+            this.ExtendLabel = new System.Windows.Forms.Label();
             this.HoldPositionControlButton = new BobDashControls.PositionControlButton();
             this.PivotPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ExtendPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.WristPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollerSpeedNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.PivotLabel = new System.Windows.Forms.Label();
-            this.ExtendLabel = new System.Windows.Forms.Label();
-            this.WristLabel = new System.Windows.Forms.Label();
-            this.RollerSpeedLabel = new System.Windows.Forms.Label();
             this.HoldPositionButton = new System.Windows.Forms.Button();
             this.SavePositionButton = new System.Windows.Forms.Button();
+            this.indicator1 = new BobDashControls.Indicator();
+            this.indicator2 = new BobDashControls.Indicator();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -912,13 +913,15 @@
             // 
             // TopRightTableLayoutPanel
             // 
-            this.TopRightTableLayoutPanel.ColumnCount = 3;
-            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TopRightTableLayoutPanel.Controls.Add(this.HomeToggleButton, 0, 0);
-            this.TopRightTableLayoutPanel.Controls.Add(this.BobDashAutoModeIndicator, 1, 0);
-            this.TopRightTableLayoutPanel.Controls.Add(this.BobDashMatchTimeIndicator, 2, 0);
+            this.TopRightTableLayoutPanel.ColumnCount = 4;
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.51724F));
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.51724F));
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.48276F));
+            this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.48276F));
+            this.TopRightTableLayoutPanel.Controls.Add(this.BobDashAutoModeIndicator, 2, 0);
+            this.TopRightTableLayoutPanel.Controls.Add(this.BobDashMatchTimeIndicator, 3, 0);
+            this.TopRightTableLayoutPanel.Controls.Add(this.indicator1, 0, 0);
+            this.TopRightTableLayoutPanel.Controls.Add(this.indicator2, 1, 0);
             this.TopRightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TopRightTableLayoutPanel.Location = new System.Drawing.Point(798, 3);
             this.TopRightTableLayoutPanel.Name = "TopRightTableLayoutPanel";
@@ -927,32 +930,16 @@
             this.TopRightTableLayoutPanel.Size = new System.Drawing.Size(789, 71);
             this.TopRightTableLayoutPanel.TabIndex = 3;
             // 
-            // HomeToggleButton
-            // 
-            this.HomeToggleButton.ButtonText = "Home";
-            this.HomeToggleButton.Checked = false;
-            this.HomeToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HomeToggleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HomeToggleButton.GroupName = "Positions";
-            this.HomeToggleButton.Image = null;
-            this.HomeToggleButton.Location = new System.Drawing.Point(11, 10);
-            this.HomeToggleButton.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
-            this.HomeToggleButton.Name = "HomeToggleButton";
-            this.HomeToggleButton.PositionName = "Home";
-            this.HomeToggleButton.Size = new System.Drawing.Size(241, 51);
-            this.HomeToggleButton.TabIndex = 0;
-            this.HomeToggleButton.Tag = "";
-            // 
             // BobDashAutoModeIndicator
             // 
             this.BobDashAutoModeIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BobDashAutoModeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BobDashAutoModeIndicator.Location = new System.Drawing.Point(269, 6);
+            this.BobDashAutoModeIndicator.Location = new System.Drawing.Point(250, 6);
             this.BobDashAutoModeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.BobDashAutoModeIndicator.Name = "BobDashAutoModeIndicator";
-            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(251, 59);
+            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(260, 59);
             this.BobDashAutoModeIndicator.TabIndex = 1;
             this.BobDashAutoModeIndicator.VariableName = "BobDashAutoMode";
             // 
@@ -962,10 +949,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BobDashMatchTimeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BobDashMatchTimeIndicator.Location = new System.Drawing.Point(532, 6);
+            this.BobDashMatchTimeIndicator.Location = new System.Drawing.Point(522, 6);
             this.BobDashMatchTimeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.BobDashMatchTimeIndicator.Name = "BobDashMatchTimeIndicator";
-            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(251, 59);
+            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(261, 59);
             this.BobDashMatchTimeIndicator.TabIndex = 2;
             this.BobDashMatchTimeIndicator.VariableName = "BobDashMatchTime";
             // 
@@ -1020,14 +1007,48 @@
             this.TeachTableLayoutPanel.Size = new System.Drawing.Size(1012, 310);
             this.TeachTableLayoutPanel.TabIndex = 2;
             // 
+            // RollerSpeedLabel
+            // 
+            this.RollerSpeedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RollerSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RollerSpeedLabel.Location = new System.Drawing.Point(256, 232);
+            this.RollerSpeedLabel.Name = "RollerSpeedLabel";
+            this.RollerSpeedLabel.Size = new System.Drawing.Size(245, 77);
+            this.RollerSpeedLabel.TabIndex = 8;
+            this.RollerSpeedLabel.Text = "Roller Speed";
+            this.RollerSpeedLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // WristLabel
+            // 
+            this.WristLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WristLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WristLabel.Location = new System.Drawing.Point(256, 155);
+            this.WristLabel.Name = "WristLabel";
+            this.WristLabel.Size = new System.Drawing.Size(245, 76);
+            this.WristLabel.TabIndex = 7;
+            this.WristLabel.Text = "Wrist";
+            this.WristLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // ExtendLabel
+            // 
+            this.ExtendLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExtendLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtendLabel.Location = new System.Drawing.Point(256, 78);
+            this.ExtendLabel.Name = "ExtendLabel";
+            this.ExtendLabel.Size = new System.Drawing.Size(245, 76);
+            this.ExtendLabel.TabIndex = 6;
+            this.ExtendLabel.Text = "Extend";
+            this.ExtendLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // HoldPositionControlButton
             // 
             this.HoldPositionControlButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HoldPositionControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HoldPositionControlButton.Location = new System.Drawing.Point(4, 4);
+            this.HoldPositionControlButton.Location = new System.Drawing.Point(8, 8);
+            this.HoldPositionControlButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.HoldPositionControlButton.Name = "HoldPositionControlButton";
             this.TeachTableLayoutPanel.SetRowSpan(this.HoldPositionControlButton, 4);
-            this.HoldPositionControlButton.Size = new System.Drawing.Size(245, 302);
+            this.HoldPositionControlButton.Size = new System.Drawing.Size(237, 294);
             this.HoldPositionControlButton.TabIndex = 0;
             this.HoldPositionControlButton.TeachMode = false;
             // 
@@ -1129,39 +1150,6 @@
             this.PivotLabel.Text = "Pivot";
             this.PivotLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // ExtendLabel
-            // 
-            this.ExtendLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExtendLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExtendLabel.Location = new System.Drawing.Point(256, 78);
-            this.ExtendLabel.Name = "ExtendLabel";
-            this.ExtendLabel.Size = new System.Drawing.Size(245, 76);
-            this.ExtendLabel.TabIndex = 6;
-            this.ExtendLabel.Text = "Extend";
-            this.ExtendLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // WristLabel
-            // 
-            this.WristLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WristLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WristLabel.Location = new System.Drawing.Point(256, 155);
-            this.WristLabel.Name = "WristLabel";
-            this.WristLabel.Size = new System.Drawing.Size(245, 76);
-            this.WristLabel.TabIndex = 7;
-            this.WristLabel.Text = "Wrist";
-            this.WristLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // RollerSpeedLabel
-            // 
-            this.RollerSpeedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RollerSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RollerSpeedLabel.Location = new System.Drawing.Point(256, 232);
-            this.RollerSpeedLabel.Name = "RollerSpeedLabel";
-            this.RollerSpeedLabel.Size = new System.Drawing.Size(245, 77);
-            this.RollerSpeedLabel.TabIndex = 8;
-            this.RollerSpeedLabel.Text = "Roller Speed";
-            this.RollerSpeedLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // HoldPositionButton
             // 
             this.HoldPositionButton.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1187,6 +1175,25 @@
             this.SavePositionButton.Text = "Save Position";
             this.SavePositionButton.UseVisualStyleBackColor = true;
             this.SavePositionButton.Click += new System.EventHandler(this.SavePositionButton_Click);
+            // 
+            // indicator1
+            // 
+            this.indicator1.BackColor = System.Drawing.Color.IndianRed;
+            this.indicator1.Location = new System.Drawing.Point(3, 3);
+            this.indicator1.Name = "indicator1";
+            this.indicator1.Size = new System.Drawing.Size(116, 65);
+            this.indicator1.TabIndex = 3;
+            this.indicator1.VariableName = "Operator";
+            // 
+            // indicator2
+            // 
+            this.indicator2.BackColor = System.Drawing.Color.IndianRed;
+            this.indicator2.Location = new System.Drawing.Point(125, 3);
+            this.indicator2.Name = "indicator2";
+            this.indicator2.Size = new System.Drawing.Size(116, 65);
+            this.indicator2.TabIndex = 4;
+            this.indicator2.VariableName = "Drive";
+            this.indicator2.Visible = false;
             // 
             // BobDash
             // 
@@ -1273,7 +1280,6 @@
         private BobDashControls.ToggleButton CubePlatterPickupPositionToggleButton;
         private BobDashControls.ToggleButton CubeChutePickupPositionToggleButton;
         private System.Windows.Forms.TableLayoutPanel TopRightTableLayoutPanel;
-        private BobDashControls.ToggleButton HomeToggleButton;
         private System.Windows.Forms.Button BackupPositionsButton;
         private System.Windows.Forms.Label FloorPickupPositionLabel;
         private System.Windows.Forms.TableLayoutPanel FloorPickupButtonsTableLayoutPanel;
@@ -1309,6 +1315,8 @@
         private System.Windows.Forms.Label PivotLabel;
         private System.Windows.Forms.Button HoldPositionButton;
         private System.Windows.Forms.Button SavePositionButton;
+        private BobDashControls.Indicator indicator1;
+        private BobDashControls.Indicator indicator2;
     }
 }
 
