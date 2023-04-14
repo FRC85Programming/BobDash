@@ -96,6 +96,7 @@
             this.TopRightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BobDashAutoModeIndicator = new BobDashControls.Indicator();
             this.BobDashMatchTimeIndicator = new BobDashControls.Indicator();
+            this.indicator1 = new BobDashControls.Indicator();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
             this.TeachTabPage = new System.Windows.Forms.TabPage();
             this.TeachTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -110,7 +111,6 @@
             this.PivotLabel = new System.Windows.Forms.Label();
             this.HoldPositionButton = new System.Windows.Forms.Button();
             this.SavePositionButton = new System.Windows.Forms.Button();
-            this.indicator1 = new BobDashControls.Indicator();
             this.indicator2 = new BobDashControls.Indicator();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -920,8 +920,8 @@
             this.TopRightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.48276F));
             this.TopRightTableLayoutPanel.Controls.Add(this.BobDashAutoModeIndicator, 2, 0);
             this.TopRightTableLayoutPanel.Controls.Add(this.BobDashMatchTimeIndicator, 3, 0);
-            this.TopRightTableLayoutPanel.Controls.Add(this.indicator1, 0, 0);
-            this.TopRightTableLayoutPanel.Controls.Add(this.indicator2, 1, 0);
+            this.TopRightTableLayoutPanel.Controls.Add(this.indicator1, 1, 0);
+            this.TopRightTableLayoutPanel.Controls.Add(this.indicator2, 0, 0);
             this.TopRightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TopRightTableLayoutPanel.Location = new System.Drawing.Point(798, 3);
             this.TopRightTableLayoutPanel.Name = "TopRightTableLayoutPanel";
@@ -955,6 +955,15 @@
             this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(261, 59);
             this.BobDashMatchTimeIndicator.TabIndex = 2;
             this.BobDashMatchTimeIndicator.VariableName = "BobDashMatchTime";
+            // 
+            // indicator1
+            // 
+            this.indicator1.BackColor = System.Drawing.Color.IndianRed;
+            this.indicator1.Location = new System.Drawing.Point(125, 3);
+            this.indicator1.Name = "indicator1";
+            this.indicator1.Size = new System.Drawing.Size(116, 65);
+            this.indicator1.TabIndex = 3;
+            this.indicator1.VariableName = "Operator";
             // 
             // OtherStuffTabPage
             // 
@@ -1176,24 +1185,14 @@
             this.SavePositionButton.UseVisualStyleBackColor = true;
             this.SavePositionButton.Click += new System.EventHandler(this.SavePositionButton_Click);
             // 
-            // indicator1
-            // 
-            this.indicator1.BackColor = System.Drawing.Color.IndianRed;
-            this.indicator1.Location = new System.Drawing.Point(3, 3);
-            this.indicator1.Name = "indicator1";
-            this.indicator1.Size = new System.Drawing.Size(116, 65);
-            this.indicator1.TabIndex = 3;
-            this.indicator1.VariableName = "Operator";
-            // 
             // indicator2
             // 
             this.indicator2.BackColor = System.Drawing.Color.IndianRed;
-            this.indicator2.Location = new System.Drawing.Point(125, 3);
+            this.indicator2.Location = new System.Drawing.Point(3, 3);
             this.indicator2.Name = "indicator2";
             this.indicator2.Size = new System.Drawing.Size(116, 65);
             this.indicator2.TabIndex = 4;
-            this.indicator2.VariableName = "Drive";
-            this.indicator2.Visible = false;
+            this.indicator2.VariableName = "Driver";
             // 
             // BobDash
             // 
