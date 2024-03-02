@@ -263,8 +263,9 @@ namespace BobDash
             ShotLogGraph.GraphPane.CurveList.Clear();
 
             var lowList = new PointPairList();
-            var goodList = new PointPairList();
             var highList = new PointPairList();
+            var goodX = new List<double>();
+            var goodY = new List<double>();
 
             foreach (var record in _shotLogRecords)
             {
@@ -275,7 +276,8 @@ namespace BobDash
                 }
                 else if (record.Classification == ShotClassification.Good)
                 {
-                    goodList.Add(pointPair);
+                    goodX.Add(record.Height);
+                    goodY.Add(record.Angle);
                 }
                 else if (record.Classification == ShotClassification.High)
                 {
@@ -288,13 +290,22 @@ namespace BobDash
             lowCurve.Line.IsAntiAlias = true;
             lowCurve.Line.IsVisible = false;
 
-            var goodCurve = ShotLogGraph.GraphPane.AddCurve("Good", goodList, GoalButton.BackColor);
+            var goodCurve = ShotLogGraph.GraphPane.AddCurve("Good", goodX.ToArray(), goodY.ToArray(), GoalButton.BackColor);
             goodCurve.Line.IsAntiAlias = true;
             goodCurve.Line.IsVisible = false;
 
             var highCurve = ShotLogGraph.GraphPane.AddCurve("High", highList, HighButton.BackColor);
             goodCurve.Line.IsAntiAlias = true;
             goodCurve.Line.IsVisible = false;
+
+            var fit = MathNet.Numerics.Fit.Line(goodX.ToArray(), goodY.ToArray());
+            var fitList = new PointPairList();
+            fitList.Add(goodX.Min(), fit.A + fit.B * goodX.Min());
+            fitList.Add(goodX.Max(), fit.A + fit.B * goodX.Max());
+            var fitCurve = ShotLogGraph.GraphPane.AddCurve("Fit", fitList, GoalButton.BackColor);
+            fitCurve.Line.IsAntiAlias = true;
+            fitCurve.Line.IsVisible = true;
+            fitCurve.Symbol.IsVisible = false;
 
             // style the plot
             ShotLogGraph.GraphPane.Title.Text = $"Scatter Plot ({_shotLogRecords.Count} points)";

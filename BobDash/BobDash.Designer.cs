@@ -51,8 +51,6 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.ShotLogTabPage = new System.Windows.Forms.TabPage();
             this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
-            this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.LowButton = new System.Windows.Forms.Button();
             this.GoalButton = new System.Windows.Forms.Button();
             this.HighButton = new System.Windows.Forms.Button();
@@ -66,8 +64,11 @@
             this.DesiredExtendIndicator = new BobDashControls.Indicator();
             this.DesiredWristIndicator = new BobDashControls.Indicator();
             this.ShotLogGraph = new ZedGraph.ZedGraphControl();
+            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
+            this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.OtherStuffTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.RightSideTableLayoutPanel.SuspendLayout();
@@ -96,6 +97,11 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(3, 3);
             this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.Camera2VideoSourcePlayer);
+            this.splitContainer1.Panel1.Controls.Add(this.Camera1VideoSourcePlayer);
             // 
             // splitContainer1.Panel2
             // 
@@ -252,8 +258,6 @@
             // 
             this.ShotLogTabPage.Controls.Add(this.ShotLogGraph);
             this.ShotLogTabPage.Controls.Add(this.AutoModeCheckedListBox);
-            this.ShotLogTabPage.Controls.Add(this.Camera2VideoSourcePlayer);
-            this.ShotLogTabPage.Controls.Add(this.Camera1VideoSourcePlayer);
             this.ShotLogTabPage.Controls.Add(this.LowButton);
             this.ShotLogTabPage.Controls.Add(this.GoalButton);
             this.ShotLogTabPage.Controls.Add(this.HighButton);
@@ -277,24 +281,6 @@
             this.AutoModeCheckedListBox.Size = new System.Drawing.Size(306, 160);
             this.AutoModeCheckedListBox.TabIndex = 41;
             this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
-            // 
-            // Camera2VideoSourcePlayer
-            // 
-            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(500, 311);
-            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
-            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(506, 266);
-            this.Camera2VideoSourcePlayer.TabIndex = 40;
-            this.Camera2VideoSourcePlayer.TabStop = false;
-            this.Camera2VideoSourcePlayer.VideoSource = null;
-            // 
-            // Camera1VideoSourcePlayer
-            // 
-            this.Camera1VideoSourcePlayer.Location = new System.Drawing.Point(500, 41);
-            this.Camera1VideoSourcePlayer.Name = "Camera1VideoSourcePlayer";
-            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(506, 264);
-            this.Camera1VideoSourcePlayer.TabIndex = 39;
-            this.Camera1VideoSourcePlayer.TabStop = false;
-            this.Camera1VideoSourcePlayer.VideoSource = null;
             // 
             // LowButton
             // 
@@ -424,7 +410,10 @@
             // 
             // ShotLogGraph
             // 
-            this.ShotLogGraph.Location = new System.Drawing.Point(1058, 90);
+            this.ShotLogGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShotLogGraph.Location = new System.Drawing.Point(445, 15);
             this.ShotLogGraph.Name = "ShotLogGraph";
             this.ShotLogGraph.ScrollGrace = 0D;
             this.ShotLogGraph.ScrollMaxX = 0D;
@@ -433,9 +422,27 @@
             this.ShotLogGraph.ScrollMinX = 0D;
             this.ShotLogGraph.ScrollMinY = 0D;
             this.ShotLogGraph.ScrollMinY2 = 0D;
-            this.ShotLogGraph.Size = new System.Drawing.Size(502, 375);
+            this.ShotLogGraph.Size = new System.Drawing.Size(1143, 562);
             this.ShotLogGraph.TabIndex = 42;
             this.ShotLogGraph.UseExtendedPrintDialog = true;
+            // 
+            // Camera2VideoSourcePlayer
+            // 
+            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(18, 291);
+            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
+            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(506, 266);
+            this.Camera2VideoSourcePlayer.TabIndex = 42;
+            this.Camera2VideoSourcePlayer.TabStop = false;
+            this.Camera2VideoSourcePlayer.VideoSource = null;
+            // 
+            // Camera1VideoSourcePlayer
+            // 
+            this.Camera1VideoSourcePlayer.Location = new System.Drawing.Point(18, 21);
+            this.Camera1VideoSourcePlayer.Name = "Camera1VideoSourcePlayer";
+            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(506, 264);
+            this.Camera1VideoSourcePlayer.TabIndex = 41;
+            this.Camera1VideoSourcePlayer.TabStop = false;
+            this.Camera1VideoSourcePlayer.VideoSource = null;
             // 
             // BobDash
             // 
@@ -449,6 +456,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BobDash_FormClosing);
             this.Load += new System.EventHandler(this.BobDash_Load);
             this.OtherStuffTabPage.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -486,8 +494,6 @@
         private System.Windows.Forms.Button ConnectButton;
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.TabPage ShotLogTabPage;
-        private AForge.Controls.VideoSourcePlayer Camera2VideoSourcePlayer;
-        private AForge.Controls.VideoSourcePlayer Camera1VideoSourcePlayer;
         private System.Windows.Forms.Button LowButton;
         private System.Windows.Forms.Button GoalButton;
         private System.Windows.Forms.Button HighButton;
@@ -496,6 +502,8 @@
         private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.CheckedListBox AutoModeCheckedListBox;
         private ZedGraph.ZedGraphControl ShotLogGraph;
+        private AForge.Controls.VideoSourcePlayer Camera2VideoSourcePlayer;
+        private AForge.Controls.VideoSourcePlayer Camera1VideoSourcePlayer;
     }
 }
 
