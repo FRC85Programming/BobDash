@@ -63,35 +63,12 @@ namespace BobDash
 
             InitializeComponent();
 
-            HoldPositionControlButton.PositionSelected += HoldPositionControlButton_PositionSelected;
-
             VariablesListElementHost.Child = VariablesList;
             DoubleBuffered = true;
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 ConnectButton.Visible = true;
-            }
-        }
-
-        private void HoldPositionControlButton_PositionSelected(object sender, PositionSelectedEventArgs e)
-        {
-            try
-            {
-                var pos = GetSavedPosition(e.PositionName);
-                if (pos != null)
-                {
-                    PivotPositionNumericUpDown.Value = Convert.ToDecimal(pos.PivotPosition);
-                    ExtendPositionNumericUpDown.Value = Convert.ToDecimal(pos.ExtendPosition);
-                    WristPositionNumericUpDown.Value = Convert.ToDecimal(pos.WristPosition);
-                    RollerSpeedNumericUpDown.Value = Convert.ToDecimal(pos.RollerSpeed);
-                }
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error loading position '{e.PositionName}': {ex}";
-                logger.Error(ex, message);
-                MessageBox.Show(message);
             }
         }
 
@@ -113,7 +90,6 @@ namespace BobDash
                 }
                 else
                 {
-                    AutoModeCheckedListBox.Parent = AutoModeSelectPanel;
                     MainTabControl.Visible = true;
                     WindowState = FormWindowState.Maximized;
                 }
@@ -431,8 +407,6 @@ namespace BobDash
                         AutoModeCheckedListBox.Items.Add(mode);
                     }
 
-                    AddAutoButton.Enabled = false;
-
                     return;
                 }
             }
@@ -441,7 +415,6 @@ namespace BobDash
                 logger.Warn(ex, $"Error getting auto modes from SmartDashboard: {ex}");
             }
 
-            AddAutoButton.Enabled = true;
             foreach (var mode in Properties.Settings.Default.AutoModes)
             {
                 AutoModeCheckedListBox.Items.Add(mode);
@@ -464,30 +437,6 @@ namespace BobDash
             else
             {
                 NetworkTable.Initialize();
-            }
-        }
-
-        private void BackupPositionsButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var d = new SaveFileDialog())
-                {
-                    if (d.ShowDialog() == DialogResult.OK)
-                    {
-                        var positions = new Dictionary<string, SavedPosition>();
-                        foreach (var key in SavedPositions.GetKeys())
-                        {
-                            positions.Add(key, new SavedPosition(SavedPositions.GetNumberArray(key)));
-                        }
-
-                        System.IO.File.WriteAllText(d.FileName, Newtonsoft.Json.JsonConvert.SerializeObject(positions, Newtonsoft.Json.Formatting.Indented));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error backing up positions to file: {ex}");
             }
         }
 
@@ -527,38 +476,6 @@ namespace BobDash
             {
                 SmartDashboard.PutString("BobDashAutoMode", AutoModeCheckedListBox.SelectedItem.ToString());
                 AutoModeCheckedListBox.BackColor = Color.LimeGreen;
-            }
-        }
-
-        private void RestorePositionsButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (MessageBox.Show("This will overwrite saved positions! Are you sure?", "Restore positions", MessageBoxButtons.YesNo) != DialogResult.Yes)
-                {
-                    return;
-                }
-
-                using (var d = new OpenFileDialog())
-                {
-                    if (d.ShowDialog() == DialogResult.OK)
-                    {
-                        var text = System.IO.File.ReadAllText(d.FileName);
-                        if (!string.IsNullOrWhiteSpace(text))
-                        {
-                            var positions = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, SavedPosition>>(text);
-                            foreach (var position in positions)
-                            {
-                                SavedPositions.PutNumberArray(position.Key, position.Value.ToDoubleArray());
-                                SavedPositions.SetPersistent(position.Key);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error restoring positions from file: {ex}");
             }
         }
 
@@ -640,99 +557,7 @@ namespace BobDash
             }
         }
 
-        private void PivotPositionNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SmartDashboard.PutNumber(Properties.Settings.Default.DesiredPivotPositionVariableName, Convert.ToDouble(PivotPositionNumericUpDown.Value));
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error updating pivot position: {ex}";
-                logger.Error(ex, message);
-                MessageBox.Show(message);
-            }
-        }
-
-        private void ExtendPositionNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SmartDashboard.PutNumber(Properties.Settings.Default.DesiredExtendPositionVariableName, Convert.ToDouble(ExtendPositionNumericUpDown.Value));
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error updating extend position: {ex}";
-                logger.Error(ex, message);
-                MessageBox.Show(message);
-            }
-        }
-
-        private void WristPositionNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SmartDashboard.PutNumber(Properties.Settings.Default.DesiredWristPositionVariableName, Convert.ToDouble(WristPositionNumericUpDown.Value));
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error updating wrist position: {ex}";
-                logger.Error(ex, message);
-                MessageBox.Show(message);
-            }
-        }
-
-        private void RollerSpeedNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SmartDashboard.PutNumber(Properties.Settings.Default.DesiredRollerSpeed, Convert.ToDouble(RollerSpeedNumericUpDown.Value));
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error updating roller speed: {ex}";
-                logger.Error(ex, message);
-                MessageBox.Show(message);
-            }
-        }
-
-        private bool _positionHeld = false;
-
-        private void HoldPositionButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _positionHeld = !_positionHeld;
-                SmartDashboard.PutBoolean("BobDashHoldPosition", _positionHeld);
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error writing variable to hold position: {ex}";
-                logger.Error(ex, message);
-                MessageBox.Show(message);
-            }
-        }
-
-        private void SavePositionButton_Click(object sender, EventArgs e)
-        {
-            var positionName = HoldPositionControlButton.SelectedPositionName;
-            try
-            {
-                var previous = GetSavedPosition(positionName);
-                var pos = new SavedPosition(Convert.ToDouble(PivotPositionNumericUpDown.Value), Convert.ToDouble(ExtendPositionNumericUpDown.Value), Convert.ToDouble(WristPositionNumericUpDown.Value), Convert.ToDouble(RollerSpeedNumericUpDown.Value));
-                SavedPositions.PutNumberArray(positionName, pos.ToDoubleArray());
-                SavedPositions.SetPersistent(positionName);
-                logger.Info($"Position '{positionName} updated from {previous} to {pos}.");
-                LoadPosition(positionName);
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error updating position '{positionName}': {ex}";
-                logger.Error(ex, message);
-                MessageBox.Show(message);
-            }
-        }
-
+        
         private void LogShotClassification(ShotClassification classification)
         {
             var angle = SmartDashboard.GetNumber(Properties.Settings.Default.ShotAngleVariableName);
