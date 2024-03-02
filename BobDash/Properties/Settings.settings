@@ -47,5 +47,11 @@
     <Setting Name="DesiredRollerSpeed" Type="System.String" Scope="User">
       <Value Profile="(Default)">DesiredRollerSpeed</Value>
     </Setting>
+    <Setting Name="ShotHeightVariableName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Limelight Height</Value>
+    </Setting>
+    <Setting Name="ShotAngleVariableName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Shooter Angle</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

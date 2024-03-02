@@ -130,6 +130,7 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShotClassification.cs" />
     <Compile Include="SmartDashboardVariable.cs" />
     <Compile Include="ToggleButton.cs">
       <SubType>UserControl</SubType>

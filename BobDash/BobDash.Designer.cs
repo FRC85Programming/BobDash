@@ -36,18 +36,10 @@
         private void InitializeComponent()
         {
             this.IndicatorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.ExtendPositionIndicator = new BobDashControls.Indicator();
-            this.GoButton = new BobDashControls.PositionControlButton();
-            this.TeachButton = new BobDashControls.PositionControlButton();
-            this.PivotPositionIndicator = new BobDashControls.Indicator();
-            this.WristPositionIndicator = new BobDashControls.Indicator();
             this.BackupPositionsButton = new System.Windows.Forms.Button();
             this.RestorePositionsButton = new System.Windows.Forms.Button();
             this.BackupSwerveCalibrationButton = new System.Windows.Forms.Button();
             this.RestoreSwerveCalibrationButton = new System.Windows.Forms.Button();
-            this.DesiredPivotIndicator = new BobDashControls.Indicator();
-            this.DesiredExtendIndicator = new BobDashControls.Indicator();
-            this.DesiredWristIndicator = new BobDashControls.Indicator();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -58,6 +50,10 @@
             this.BottomButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ConnectButton = new System.Windows.Forms.Button();
             this.MainTabControl = new System.Windows.Forms.TabControl();
+            this.ShotLogTabPage = new System.Windows.Forms.TabPage();
+            this.LowButton = new System.Windows.Forms.Button();
+            this.GoalButton = new System.Windows.Forms.Button();
+            this.HighButton = new System.Windows.Forms.Button();
             this.PositionControlTabPage = new System.Windows.Forms.TabPage();
             this.PositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.TeachAndAutoSelectionGroupBox = new System.Windows.Forms.GroupBox();
@@ -66,17 +62,10 @@
             this.AutoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.AddAutoButton = new System.Windows.Forms.Button();
-            this.positionControlButton1 = new BobDashControls.PositionControlButton();
             this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.ScoringPositionsGroupBox = new System.Windows.Forms.GroupBox();
             this.ScoringPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.BottomCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
-            this.BottomConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
-            this.MiddleCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
-            this.MiddleConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
-            this.TopCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
-            this.TopConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
             this.TopScoringPositionLabel = new System.Windows.Forms.Label();
             this.MiddleScoringPositionLabel = new System.Windows.Forms.Label();
             this.BottomScoringPositionLabel = new System.Windows.Forms.Label();
@@ -84,26 +73,15 @@
             this.PickupPositionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.FloorPickupPositionLabel = new System.Windows.Forms.Label();
             this.PlatterPickupPositionLabel = new System.Windows.Forms.Label();
-            this.ConePlatterPickupPositionToggleButton = new BobDashControls.ToggleButton();
-            this.CubePlatterPickupPositionToggleButton = new BobDashControls.ToggleButton();
-            this.CubeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
             this.FloorPickupButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.CubePickupFloorPositionToggleButton = new BobDashControls.ToggleButton();
-            this.ConePickupFloorPositionTippedToggleButton = new BobDashControls.ToggleButton();
-            this.ConePickupFloorPositionToggleButton = new BobDashControls.ToggleButton();
-            this.ConeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
             this.ChutePickupPositionLabel = new System.Windows.Forms.Label();
             this.TopRightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.BobDashAutoModeIndicator = new BobDashControls.Indicator();
-            this.BobDashMatchTimeIndicator = new BobDashControls.Indicator();
-            this.indicator1 = new BobDashControls.Indicator();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
             this.TeachTabPage = new System.Windows.Forms.TabPage();
             this.TeachTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RollerSpeedLabel = new System.Windows.Forms.Label();
             this.WristLabel = new System.Windows.Forms.Label();
             this.ExtendLabel = new System.Windows.Forms.Label();
-            this.HoldPositionControlButton = new BobDashControls.PositionControlButton();
             this.PivotPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ExtendPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.WristPositionNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -111,7 +89,35 @@
             this.PivotLabel = new System.Windows.Forms.Label();
             this.HoldPositionButton = new System.Windows.Forms.Button();
             this.SavePositionButton = new System.Windows.Forms.Button();
+            this.ShotAngleIndicator = new BobDashControls.Indicator();
+            this.ShotHeightIndicator = new BobDashControls.Indicator();
+            this.positionControlButton1 = new BobDashControls.PositionControlButton();
+            this.BottomCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
+            this.BottomConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
+            this.MiddleCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
+            this.MiddleConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
+            this.TopCubeScoringPositionToggleButton = new BobDashControls.ToggleButton();
+            this.TopConeScoringPositionToggleButton = new BobDashControls.ToggleButton();
+            this.ConePlatterPickupPositionToggleButton = new BobDashControls.ToggleButton();
+            this.CubePlatterPickupPositionToggleButton = new BobDashControls.ToggleButton();
+            this.CubeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
+            this.CubePickupFloorPositionToggleButton = new BobDashControls.ToggleButton();
+            this.ConePickupFloorPositionTippedToggleButton = new BobDashControls.ToggleButton();
+            this.ConePickupFloorPositionToggleButton = new BobDashControls.ToggleButton();
+            this.ConeChutePickupPositionToggleButton = new BobDashControls.ToggleButton();
+            this.BobDashAutoModeIndicator = new BobDashControls.Indicator();
+            this.BobDashMatchTimeIndicator = new BobDashControls.Indicator();
+            this.indicator1 = new BobDashControls.Indicator();
             this.indicator2 = new BobDashControls.Indicator();
+            this.ExtendPositionIndicator = new BobDashControls.Indicator();
+            this.GoButton = new BobDashControls.PositionControlButton();
+            this.TeachButton = new BobDashControls.PositionControlButton();
+            this.PivotPositionIndicator = new BobDashControls.Indicator();
+            this.WristPositionIndicator = new BobDashControls.Indicator();
+            this.DesiredPivotIndicator = new BobDashControls.Indicator();
+            this.DesiredExtendIndicator = new BobDashControls.Indicator();
+            this.DesiredWristIndicator = new BobDashControls.Indicator();
+            this.HoldPositionControlButton = new BobDashControls.PositionControlButton();
             this.IndicatorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -122,6 +128,7 @@
             this.VariablesTabPage.SuspendLayout();
             this.BottomButtonsTableLayoutPanel.SuspendLayout();
             this.MainTabControl.SuspendLayout();
+            this.ShotLogTabPage.SuspendLayout();
             this.PositionControlTabPage.SuspendLayout();
             this.PositionsTableLayoutPanel.SuspendLayout();
             this.TeachAndAutoSelectionGroupBox.SuspendLayout();
@@ -174,55 +181,6 @@
             this.IndicatorTableLayoutPanel.Size = new System.Drawing.Size(1024, 504);
             this.IndicatorTableLayoutPanel.TabIndex = 1;
             // 
-            // ExtendPositionIndicator
-            // 
-            this.ExtendPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExtendPositionIndicator.Location = new System.Drawing.Point(259, 3);
-            this.ExtendPositionIndicator.Name = "ExtendPositionIndicator";
-            this.ExtendPositionIndicator.Size = new System.Drawing.Size(250, 120);
-            this.ExtendPositionIndicator.TabIndex = 0;
-            this.ExtendPositionIndicator.VariableName = "Extend position";
-            // 
-            // GoButton
-            // 
-            this.GoButton.Location = new System.Drawing.Point(771, 255);
-            this.GoButton.Name = "GoButton";
-            this.GoButton.Size = new System.Drawing.Size(138, 120);
-            this.GoButton.TabIndex = 9;
-            this.GoButton.TeachMode = false;
-            // 
-            // TeachButton
-            // 
-            this.TeachButton.Location = new System.Drawing.Point(771, 129);
-            this.TeachButton.Name = "TeachButton";
-            this.TeachButton.Size = new System.Drawing.Size(138, 120);
-            this.TeachButton.TabIndex = 10;
-            this.TeachButton.TeachMode = true;
-            // 
-            // PivotPositionIndicator
-            // 
-            this.PivotPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PivotPositionIndicator.Location = new System.Drawing.Point(3, 3);
-            this.PivotPositionIndicator.Name = "PivotPositionIndicator";
-            this.PivotPositionIndicator.Size = new System.Drawing.Size(250, 120);
-            this.PivotPositionIndicator.TabIndex = 3;
-            this.PivotPositionIndicator.VariableName = "Pivot position";
-            // 
-            // WristPositionIndicator
-            // 
-            this.WristPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WristPositionIndicator.Location = new System.Drawing.Point(515, 3);
-            this.WristPositionIndicator.Name = "WristPositionIndicator";
-            this.WristPositionIndicator.Size = new System.Drawing.Size(250, 120);
-            this.WristPositionIndicator.TabIndex = 4;
-            this.WristPositionIndicator.VariableName = "Wrist position";
-            // 
             // BackupPositionsButton
             // 
             this.BackupPositionsButton.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -264,39 +222,6 @@
             this.RestoreSwerveCalibrationButton.Text = "Restore Swerve Calibration";
             this.RestoreSwerveCalibrationButton.UseVisualStyleBackColor = true;
             this.RestoreSwerveCalibrationButton.Click += new System.EventHandler(this.RestoreSwerveCalibrationButton_Click);
-            // 
-            // DesiredPivotIndicator
-            // 
-            this.DesiredPivotIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DesiredPivotIndicator.Location = new System.Drawing.Point(3, 129);
-            this.DesiredPivotIndicator.Name = "DesiredPivotIndicator";
-            this.DesiredPivotIndicator.Size = new System.Drawing.Size(250, 120);
-            this.DesiredPivotIndicator.TabIndex = 15;
-            this.DesiredPivotIndicator.VariableName = "DesiredPivotPosition";
-            // 
-            // DesiredExtendIndicator
-            // 
-            this.DesiredExtendIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DesiredExtendIndicator.Location = new System.Drawing.Point(259, 129);
-            this.DesiredExtendIndicator.Name = "DesiredExtendIndicator";
-            this.DesiredExtendIndicator.Size = new System.Drawing.Size(250, 120);
-            this.DesiredExtendIndicator.TabIndex = 16;
-            this.DesiredExtendIndicator.VariableName = "DesiredExtendPosition";
-            // 
-            // DesiredWristIndicator
-            // 
-            this.DesiredWristIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DesiredWristIndicator.Location = new System.Drawing.Point(515, 129);
-            this.DesiredWristIndicator.Name = "DesiredWristIndicator";
-            this.DesiredWristIndicator.Size = new System.Drawing.Size(250, 120);
-            this.DesiredWristIndicator.TabIndex = 17;
-            this.DesiredWristIndicator.VariableName = "DesiredWristPosition";
             // 
             // SettingsButton
             // 
@@ -409,6 +334,7 @@
             // 
             // MainTabControl
             // 
+            this.MainTabControl.Controls.Add(this.ShotLogTabPage);
             this.MainTabControl.Controls.Add(this.PositionControlTabPage);
             this.MainTabControl.Controls.Add(this.OtherStuffTabPage);
             this.MainTabControl.Controls.Add(this.TeachTabPage);
@@ -418,6 +344,54 @@
             this.MainTabControl.SelectedIndex = 0;
             this.MainTabControl.Size = new System.Drawing.Size(1604, 611);
             this.MainTabControl.TabIndex = 5;
+            // 
+            // ShotLogTabPage
+            // 
+            this.ShotLogTabPage.Controls.Add(this.LowButton);
+            this.ShotLogTabPage.Controls.Add(this.GoalButton);
+            this.ShotLogTabPage.Controls.Add(this.HighButton);
+            this.ShotLogTabPage.Controls.Add(this.ShotAngleIndicator);
+            this.ShotLogTabPage.Controls.Add(this.ShotHeightIndicator);
+            this.ShotLogTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ShotLogTabPage.Name = "ShotLogTabPage";
+            this.ShotLogTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ShotLogTabPage.Size = new System.Drawing.Size(1596, 585);
+            this.ShotLogTabPage.TabIndex = 3;
+            this.ShotLogTabPage.Text = "Shot log";
+            this.ShotLogTabPage.UseVisualStyleBackColor = true;
+            // 
+            // LowButton
+            // 
+            this.LowButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.LowButton.Location = new System.Drawing.Point(276, 272);
+            this.LowButton.Name = "LowButton";
+            this.LowButton.Size = new System.Drawing.Size(138, 83);
+            this.LowButton.TabIndex = 4;
+            this.LowButton.Text = "Too low";
+            this.LowButton.UseVisualStyleBackColor = false;
+            this.LowButton.Click += new System.EventHandler(this.LowButton_Click);
+            // 
+            // GoalButton
+            // 
+            this.GoalButton.BackColor = System.Drawing.Color.LawnGreen;
+            this.GoalButton.Location = new System.Drawing.Point(276, 161);
+            this.GoalButton.Name = "GoalButton";
+            this.GoalButton.Size = new System.Drawing.Size(138, 83);
+            this.GoalButton.TabIndex = 3;
+            this.GoalButton.Text = "GOAL!!!";
+            this.GoalButton.UseVisualStyleBackColor = false;
+            this.GoalButton.Click += new System.EventHandler(this.GoalButton_Click);
+            // 
+            // HighButton
+            // 
+            this.HighButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.HighButton.Location = new System.Drawing.Point(276, 52);
+            this.HighButton.Name = "HighButton";
+            this.HighButton.Size = new System.Drawing.Size(138, 83);
+            this.HighButton.TabIndex = 2;
+            this.HighButton.Text = "Too high";
+            this.HighButton.UseVisualStyleBackColor = false;
+            this.HighButton.Click += new System.EventHandler(this.HighButton_Click);
             // 
             // PositionControlTabPage
             // 
@@ -531,17 +505,6 @@
             this.AddAutoButton.UseVisualStyleBackColor = true;
             this.AddAutoButton.Click += new System.EventHandler(this.AddAutoButton_Click);
             // 
-            // positionControlButton1
-            // 
-            this.positionControlButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.positionControlButton1.Location = new System.Drawing.Point(6, 80);
-            this.positionControlButton1.Margin = new System.Windows.Forms.Padding(6);
-            this.positionControlButton1.Name = "positionControlButton1";
-            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.positionControlButton1, 2);
-            this.positionControlButton1.Size = new System.Drawing.Size(224, 138);
-            this.positionControlButton1.TabIndex = 35;
-            this.positionControlButton1.TeachMode = true;
-            // 
             // Camera1VideoSourcePlayer
             // 
             this.Camera1VideoSourcePlayer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -601,90 +564,6 @@
             this.ScoringPositionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ScoringPositionsTableLayoutPanel.Size = new System.Drawing.Size(783, 287);
             this.ScoringPositionsTableLayoutPanel.TabIndex = 0;
-            // 
-            // BottomCubeScoringPositionToggleButton
-            // 
-            this.BottomCubeScoringPositionToggleButton.ButtonText = "";
-            this.BottomCubeScoringPositionToggleButton.Checked = false;
-            this.BottomCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomCubeScoringPositionToggleButton.GroupName = "Positions";
-            this.BottomCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.BottomCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 193);
-            this.BottomCubeScoringPositionToggleButton.Name = "BottomCubeScoringPositionToggleButton";
-            this.BottomCubeScoringPositionToggleButton.PositionName = "Cube_Hybrid";
-            this.BottomCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 91);
-            this.BottomCubeScoringPositionToggleButton.TabIndex = 8;
-            this.BottomCubeScoringPositionToggleButton.Tag = "";
-            // 
-            // BottomConeScoringPositionToggleButton
-            // 
-            this.BottomConeScoringPositionToggleButton.ButtonText = "";
-            this.BottomConeScoringPositionToggleButton.Checked = false;
-            this.BottomConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomConeScoringPositionToggleButton.GroupName = "Positions";
-            this.BottomConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.BottomConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 193);
-            this.BottomConeScoringPositionToggleButton.Name = "BottomConeScoringPositionToggleButton";
-            this.BottomConeScoringPositionToggleButton.PositionName = "Cone_Hybrid";
-            this.BottomConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 91);
-            this.BottomConeScoringPositionToggleButton.TabIndex = 7;
-            this.BottomConeScoringPositionToggleButton.Tag = "";
-            // 
-            // MiddleCubeScoringPositionToggleButton
-            // 
-            this.MiddleCubeScoringPositionToggleButton.ButtonText = "";
-            this.MiddleCubeScoringPositionToggleButton.Checked = false;
-            this.MiddleCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MiddleCubeScoringPositionToggleButton.GroupName = "Positions";
-            this.MiddleCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.MiddleCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 98);
-            this.MiddleCubeScoringPositionToggleButton.Name = "MiddleCubeScoringPositionToggleButton";
-            this.MiddleCubeScoringPositionToggleButton.PositionName = "Cube_Mid";
-            this.MiddleCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
-            this.MiddleCubeScoringPositionToggleButton.TabIndex = 6;
-            this.MiddleCubeScoringPositionToggleButton.Tag = "";
-            // 
-            // MiddleConeScoringPositionToggleButton
-            // 
-            this.MiddleConeScoringPositionToggleButton.ButtonText = "";
-            this.MiddleConeScoringPositionToggleButton.Checked = false;
-            this.MiddleConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MiddleConeScoringPositionToggleButton.GroupName = "Positions";
-            this.MiddleConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.MiddleConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 98);
-            this.MiddleConeScoringPositionToggleButton.Name = "MiddleConeScoringPositionToggleButton";
-            this.MiddleConeScoringPositionToggleButton.PositionName = "Cone_Mid";
-            this.MiddleConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
-            this.MiddleConeScoringPositionToggleButton.TabIndex = 5;
-            this.MiddleConeScoringPositionToggleButton.Tag = "";
-            // 
-            // TopCubeScoringPositionToggleButton
-            // 
-            this.TopCubeScoringPositionToggleButton.ButtonText = "";
-            this.TopCubeScoringPositionToggleButton.Checked = false;
-            this.TopCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TopCubeScoringPositionToggleButton.GroupName = "Positions";
-            this.TopCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.TopCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 3);
-            this.TopCubeScoringPositionToggleButton.Name = "TopCubeScoringPositionToggleButton";
-            this.TopCubeScoringPositionToggleButton.PositionName = "Cube_Top";
-            this.TopCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
-            this.TopCubeScoringPositionToggleButton.TabIndex = 4;
-            this.TopCubeScoringPositionToggleButton.Tag = "";
-            // 
-            // TopConeScoringPositionToggleButton
-            // 
-            this.TopConeScoringPositionToggleButton.ButtonText = "";
-            this.TopConeScoringPositionToggleButton.Checked = false;
-            this.TopConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TopConeScoringPositionToggleButton.GroupName = "Positions";
-            this.TopConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.TopConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 3);
-            this.TopConeScoringPositionToggleButton.Name = "TopConeScoringPositionToggleButton";
-            this.TopConeScoringPositionToggleButton.PositionName = "Cone_Top";
-            this.TopConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
-            this.TopConeScoringPositionToggleButton.TabIndex = 0;
-            this.TopConeScoringPositionToggleButton.Tag = "";
             // 
             // TopScoringPositionLabel
             // 
@@ -777,51 +656,6 @@
             this.PlatterPickupPositionLabel.Text = "Platter";
             this.PlatterPickupPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ConePlatterPickupPositionToggleButton
-            // 
-            this.ConePlatterPickupPositionToggleButton.ButtonText = "";
-            this.ConePlatterPickupPositionToggleButton.Checked = false;
-            this.ConePlatterPickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConePlatterPickupPositionToggleButton.GroupName = "Positions";
-            this.ConePlatterPickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.ConePlatterPickupPositionToggleButton.Location = new System.Drawing.Point(265, 4);
-            this.ConePlatterPickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
-            this.ConePlatterPickupPositionToggleButton.Name = "ConePlatterPickupPositionToggleButton";
-            this.ConePlatterPickupPositionToggleButton.PositionName = "Cone_Pickup_Platter";
-            this.ConePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
-            this.ConePlatterPickupPositionToggleButton.TabIndex = 5;
-            this.ConePlatterPickupPositionToggleButton.Tag = "";
-            // 
-            // CubePlatterPickupPositionToggleButton
-            // 
-            this.CubePlatterPickupPositionToggleButton.ButtonText = "";
-            this.CubePlatterPickupPositionToggleButton.Checked = false;
-            this.CubePlatterPickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CubePlatterPickupPositionToggleButton.GroupName = "Positions";
-            this.CubePlatterPickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.CubePlatterPickupPositionToggleButton.Location = new System.Drawing.Point(526, 4);
-            this.CubePlatterPickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
-            this.CubePlatterPickupPositionToggleButton.Name = "CubePlatterPickupPositionToggleButton";
-            this.CubePlatterPickupPositionToggleButton.PositionName = "Cube_Pickup_Platter";
-            this.CubePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
-            this.CubePlatterPickupPositionToggleButton.TabIndex = 6;
-            this.CubePlatterPickupPositionToggleButton.Tag = "";
-            // 
-            // CubeChutePickupPositionToggleButton
-            // 
-            this.CubeChutePickupPositionToggleButton.ButtonText = "";
-            this.CubeChutePickupPositionToggleButton.Checked = false;
-            this.CubeChutePickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CubeChutePickupPositionToggleButton.GroupName = "Positions";
-            this.CubeChutePickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.CubeChutePickupPositionToggleButton.Location = new System.Drawing.Point(526, 74);
-            this.CubeChutePickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
-            this.CubeChutePickupPositionToggleButton.Name = "CubeChutePickupPositionToggleButton";
-            this.CubeChutePickupPositionToggleButton.PositionName = "Cube_Pickup_Chute";
-            this.CubeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
-            this.CubeChutePickupPositionToggleButton.TabIndex = 7;
-            this.CubeChutePickupPositionToggleButton.Tag = "";
-            // 
             // FloorPickupButtonsTableLayoutPanel
             // 
             this.FloorPickupButtonsTableLayoutPanel.ColumnCount = 3;
@@ -839,66 +673,6 @@
             this.FloorPickupButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.FloorPickupButtonsTableLayoutPanel.Size = new System.Drawing.Size(516, 64);
             this.FloorPickupButtonsTableLayoutPanel.TabIndex = 9;
-            // 
-            // CubePickupFloorPositionToggleButton
-            // 
-            this.CubePickupFloorPositionToggleButton.ButtonText = "";
-            this.CubePickupFloorPositionToggleButton.Checked = false;
-            this.CubePickupFloorPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CubePickupFloorPositionToggleButton.GroupName = "Positions";
-            this.CubePickupFloorPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
-            this.CubePickupFloorPositionToggleButton.Location = new System.Drawing.Point(344, 0);
-            this.CubePickupFloorPositionToggleButton.Margin = new System.Windows.Forms.Padding(0);
-            this.CubePickupFloorPositionToggleButton.Name = "CubePickupFloorPositionToggleButton";
-            this.CubePickupFloorPositionToggleButton.PositionName = "Cube_Pickup_Floor";
-            this.CubePickupFloorPositionToggleButton.Size = new System.Drawing.Size(172, 64);
-            this.CubePickupFloorPositionToggleButton.TabIndex = 11;
-            this.CubePickupFloorPositionToggleButton.Tag = "";
-            // 
-            // ConePickupFloorPositionTippedToggleButton
-            // 
-            this.ConePickupFloorPositionTippedToggleButton.ButtonText = "";
-            this.ConePickupFloorPositionTippedToggleButton.Checked = false;
-            this.ConePickupFloorPositionTippedToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConePickupFloorPositionTippedToggleButton.GroupName = "Positions";
-            this.ConePickupFloorPositionTippedToggleButton.Image = global::BobDash.Properties.Resources.ConeTipped;
-            this.ConePickupFloorPositionTippedToggleButton.Location = new System.Drawing.Point(172, 0);
-            this.ConePickupFloorPositionTippedToggleButton.Margin = new System.Windows.Forms.Padding(0);
-            this.ConePickupFloorPositionTippedToggleButton.Name = "ConePickupFloorPositionTippedToggleButton";
-            this.ConePickupFloorPositionTippedToggleButton.PositionName = "Cone_Pickup_Floor_Tipped";
-            this.ConePickupFloorPositionTippedToggleButton.Size = new System.Drawing.Size(172, 64);
-            this.ConePickupFloorPositionTippedToggleButton.TabIndex = 10;
-            this.ConePickupFloorPositionTippedToggleButton.Tag = "";
-            // 
-            // ConePickupFloorPositionToggleButton
-            // 
-            this.ConePickupFloorPositionToggleButton.ButtonText = "";
-            this.ConePickupFloorPositionToggleButton.Checked = false;
-            this.ConePickupFloorPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConePickupFloorPositionToggleButton.GroupName = "Positions";
-            this.ConePickupFloorPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.ConePickupFloorPositionToggleButton.Location = new System.Drawing.Point(0, 0);
-            this.ConePickupFloorPositionToggleButton.Margin = new System.Windows.Forms.Padding(0);
-            this.ConePickupFloorPositionToggleButton.Name = "ConePickupFloorPositionToggleButton";
-            this.ConePickupFloorPositionToggleButton.PositionName = "Cone_Pickup_Floor";
-            this.ConePickupFloorPositionToggleButton.Size = new System.Drawing.Size(172, 64);
-            this.ConePickupFloorPositionToggleButton.TabIndex = 9;
-            this.ConePickupFloorPositionToggleButton.Tag = "";
-            // 
-            // ConeChutePickupPositionToggleButton
-            // 
-            this.ConeChutePickupPositionToggleButton.ButtonText = "";
-            this.ConeChutePickupPositionToggleButton.Checked = false;
-            this.ConeChutePickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ConeChutePickupPositionToggleButton.GroupName = "Positions";
-            this.ConeChutePickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
-            this.ConeChutePickupPositionToggleButton.Location = new System.Drawing.Point(265, 74);
-            this.ConeChutePickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
-            this.ConeChutePickupPositionToggleButton.Name = "ConeChutePickupPositionToggleButton";
-            this.ConeChutePickupPositionToggleButton.PositionName = "Cone_Pickup_Chute";
-            this.ConeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
-            this.ConeChutePickupPositionToggleButton.TabIndex = 8;
-            this.ConeChutePickupPositionToggleButton.Tag = "";
             // 
             // ChutePickupPositionLabel
             // 
@@ -929,41 +703,6 @@
             this.TopRightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TopRightTableLayoutPanel.Size = new System.Drawing.Size(789, 71);
             this.TopRightTableLayoutPanel.TabIndex = 3;
-            // 
-            // BobDashAutoModeIndicator
-            // 
-            this.BobDashAutoModeIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BobDashAutoModeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BobDashAutoModeIndicator.Location = new System.Drawing.Point(250, 6);
-            this.BobDashAutoModeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.BobDashAutoModeIndicator.Name = "BobDashAutoModeIndicator";
-            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(260, 59);
-            this.BobDashAutoModeIndicator.TabIndex = 1;
-            this.BobDashAutoModeIndicator.VariableName = "BobDashAutoMode";
-            // 
-            // BobDashMatchTimeIndicator
-            // 
-            this.BobDashMatchTimeIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BobDashMatchTimeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BobDashMatchTimeIndicator.Location = new System.Drawing.Point(522, 6);
-            this.BobDashMatchTimeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.BobDashMatchTimeIndicator.Name = "BobDashMatchTimeIndicator";
-            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(261, 59);
-            this.BobDashMatchTimeIndicator.TabIndex = 2;
-            this.BobDashMatchTimeIndicator.VariableName = "BobDashMatchTime";
-            // 
-            // indicator1
-            // 
-            this.indicator1.BackColor = System.Drawing.Color.IndianRed;
-            this.indicator1.Location = new System.Drawing.Point(125, 3);
-            this.indicator1.Name = "indicator1";
-            this.indicator1.Size = new System.Drawing.Size(116, 65);
-            this.indicator1.TabIndex = 3;
-            this.indicator1.VariableName = "Operator";
             // 
             // OtherStuffTabPage
             // 
@@ -1048,18 +787,6 @@
             this.ExtendLabel.TabIndex = 6;
             this.ExtendLabel.Text = "Extend";
             this.ExtendLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // HoldPositionControlButton
-            // 
-            this.HoldPositionControlButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HoldPositionControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HoldPositionControlButton.Location = new System.Drawing.Point(8, 8);
-            this.HoldPositionControlButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.HoldPositionControlButton.Name = "HoldPositionControlButton";
-            this.TeachTableLayoutPanel.SetRowSpan(this.HoldPositionControlButton, 4);
-            this.HoldPositionControlButton.Size = new System.Drawing.Size(237, 294);
-            this.HoldPositionControlButton.TabIndex = 0;
-            this.HoldPositionControlButton.TeachMode = false;
             // 
             // PivotPositionNumericUpDown
             // 
@@ -1185,6 +912,257 @@
             this.SavePositionButton.UseVisualStyleBackColor = true;
             this.SavePositionButton.Click += new System.EventHandler(this.SavePositionButton_Click);
             // 
+            // ShotAngleIndicator
+            // 
+            this.ShotAngleIndicator.Location = new System.Drawing.Point(72, 217);
+            this.ShotAngleIndicator.Name = "ShotAngleIndicator";
+            this.ShotAngleIndicator.Size = new System.Drawing.Size(150, 138);
+            this.ShotAngleIndicator.TabIndex = 1;
+            this.ShotAngleIndicator.VariableName = null;
+            // 
+            // ShotHeightIndicator
+            // 
+            this.ShotHeightIndicator.Location = new System.Drawing.Point(72, 52);
+            this.ShotHeightIndicator.Name = "ShotHeightIndicator";
+            this.ShotHeightIndicator.Size = new System.Drawing.Size(150, 137);
+            this.ShotHeightIndicator.TabIndex = 0;
+            this.ShotHeightIndicator.VariableName = null;
+            // 
+            // positionControlButton1
+            // 
+            this.positionControlButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.positionControlButton1.Location = new System.Drawing.Point(6, 80);
+            this.positionControlButton1.Margin = new System.Windows.Forms.Padding(6);
+            this.positionControlButton1.Name = "positionControlButton1";
+            this.FilledScoringLocationsTableLayoutPanel.SetRowSpan(this.positionControlButton1, 2);
+            this.positionControlButton1.Size = new System.Drawing.Size(224, 138);
+            this.positionControlButton1.TabIndex = 35;
+            this.positionControlButton1.TeachMode = true;
+            // 
+            // BottomCubeScoringPositionToggleButton
+            // 
+            this.BottomCubeScoringPositionToggleButton.ButtonText = "";
+            this.BottomCubeScoringPositionToggleButton.Checked = false;
+            this.BottomCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BottomCubeScoringPositionToggleButton.GroupName = "Positions";
+            this.BottomCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
+            this.BottomCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 193);
+            this.BottomCubeScoringPositionToggleButton.Name = "BottomCubeScoringPositionToggleButton";
+            this.BottomCubeScoringPositionToggleButton.PositionName = "Cube_Hybrid";
+            this.BottomCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 91);
+            this.BottomCubeScoringPositionToggleButton.TabIndex = 8;
+            this.BottomCubeScoringPositionToggleButton.Tag = "";
+            // 
+            // BottomConeScoringPositionToggleButton
+            // 
+            this.BottomConeScoringPositionToggleButton.ButtonText = "";
+            this.BottomConeScoringPositionToggleButton.Checked = false;
+            this.BottomConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BottomConeScoringPositionToggleButton.GroupName = "Positions";
+            this.BottomConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
+            this.BottomConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 193);
+            this.BottomConeScoringPositionToggleButton.Name = "BottomConeScoringPositionToggleButton";
+            this.BottomConeScoringPositionToggleButton.PositionName = "Cone_Hybrid";
+            this.BottomConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 91);
+            this.BottomConeScoringPositionToggleButton.TabIndex = 7;
+            this.BottomConeScoringPositionToggleButton.Tag = "";
+            // 
+            // MiddleCubeScoringPositionToggleButton
+            // 
+            this.MiddleCubeScoringPositionToggleButton.ButtonText = "";
+            this.MiddleCubeScoringPositionToggleButton.Checked = false;
+            this.MiddleCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MiddleCubeScoringPositionToggleButton.GroupName = "Positions";
+            this.MiddleCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
+            this.MiddleCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 98);
+            this.MiddleCubeScoringPositionToggleButton.Name = "MiddleCubeScoringPositionToggleButton";
+            this.MiddleCubeScoringPositionToggleButton.PositionName = "Cube_Mid";
+            this.MiddleCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
+            this.MiddleCubeScoringPositionToggleButton.TabIndex = 6;
+            this.MiddleCubeScoringPositionToggleButton.Tag = "";
+            // 
+            // MiddleConeScoringPositionToggleButton
+            // 
+            this.MiddleConeScoringPositionToggleButton.ButtonText = "";
+            this.MiddleConeScoringPositionToggleButton.Checked = false;
+            this.MiddleConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MiddleConeScoringPositionToggleButton.GroupName = "Positions";
+            this.MiddleConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
+            this.MiddleConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 98);
+            this.MiddleConeScoringPositionToggleButton.Name = "MiddleConeScoringPositionToggleButton";
+            this.MiddleConeScoringPositionToggleButton.PositionName = "Cone_Mid";
+            this.MiddleConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
+            this.MiddleConeScoringPositionToggleButton.TabIndex = 5;
+            this.MiddleConeScoringPositionToggleButton.Tag = "";
+            // 
+            // TopCubeScoringPositionToggleButton
+            // 
+            this.TopCubeScoringPositionToggleButton.ButtonText = "";
+            this.TopCubeScoringPositionToggleButton.Checked = false;
+            this.TopCubeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopCubeScoringPositionToggleButton.GroupName = "Positions";
+            this.TopCubeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
+            this.TopCubeScoringPositionToggleButton.Location = new System.Drawing.Point(525, 3);
+            this.TopCubeScoringPositionToggleButton.Name = "TopCubeScoringPositionToggleButton";
+            this.TopCubeScoringPositionToggleButton.PositionName = "Cube_Top";
+            this.TopCubeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
+            this.TopCubeScoringPositionToggleButton.TabIndex = 4;
+            this.TopCubeScoringPositionToggleButton.Tag = "";
+            // 
+            // TopConeScoringPositionToggleButton
+            // 
+            this.TopConeScoringPositionToggleButton.ButtonText = "";
+            this.TopConeScoringPositionToggleButton.Checked = false;
+            this.TopConeScoringPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopConeScoringPositionToggleButton.GroupName = "Positions";
+            this.TopConeScoringPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
+            this.TopConeScoringPositionToggleButton.Location = new System.Drawing.Point(264, 3);
+            this.TopConeScoringPositionToggleButton.Name = "TopConeScoringPositionToggleButton";
+            this.TopConeScoringPositionToggleButton.PositionName = "Cone_Top";
+            this.TopConeScoringPositionToggleButton.Size = new System.Drawing.Size(255, 89);
+            this.TopConeScoringPositionToggleButton.TabIndex = 0;
+            this.TopConeScoringPositionToggleButton.Tag = "";
+            // 
+            // ConePlatterPickupPositionToggleButton
+            // 
+            this.ConePlatterPickupPositionToggleButton.ButtonText = "";
+            this.ConePlatterPickupPositionToggleButton.Checked = false;
+            this.ConePlatterPickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConePlatterPickupPositionToggleButton.GroupName = "Positions";
+            this.ConePlatterPickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
+            this.ConePlatterPickupPositionToggleButton.Location = new System.Drawing.Point(265, 4);
+            this.ConePlatterPickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ConePlatterPickupPositionToggleButton.Name = "ConePlatterPickupPositionToggleButton";
+            this.ConePlatterPickupPositionToggleButton.PositionName = "Cone_Pickup_Platter";
+            this.ConePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
+            this.ConePlatterPickupPositionToggleButton.TabIndex = 5;
+            this.ConePlatterPickupPositionToggleButton.Tag = "";
+            // 
+            // CubePlatterPickupPositionToggleButton
+            // 
+            this.CubePlatterPickupPositionToggleButton.ButtonText = "";
+            this.CubePlatterPickupPositionToggleButton.Checked = false;
+            this.CubePlatterPickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CubePlatterPickupPositionToggleButton.GroupName = "Positions";
+            this.CubePlatterPickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
+            this.CubePlatterPickupPositionToggleButton.Location = new System.Drawing.Point(526, 4);
+            this.CubePlatterPickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
+            this.CubePlatterPickupPositionToggleButton.Name = "CubePlatterPickupPositionToggleButton";
+            this.CubePlatterPickupPositionToggleButton.PositionName = "Cube_Pickup_Platter";
+            this.CubePlatterPickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
+            this.CubePlatterPickupPositionToggleButton.TabIndex = 6;
+            this.CubePlatterPickupPositionToggleButton.Tag = "";
+            // 
+            // CubeChutePickupPositionToggleButton
+            // 
+            this.CubeChutePickupPositionToggleButton.ButtonText = "";
+            this.CubeChutePickupPositionToggleButton.Checked = false;
+            this.CubeChutePickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CubeChutePickupPositionToggleButton.GroupName = "Positions";
+            this.CubeChutePickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
+            this.CubeChutePickupPositionToggleButton.Location = new System.Drawing.Point(526, 74);
+            this.CubeChutePickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
+            this.CubeChutePickupPositionToggleButton.Name = "CubeChutePickupPositionToggleButton";
+            this.CubeChutePickupPositionToggleButton.PositionName = "Cube_Pickup_Chute";
+            this.CubeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
+            this.CubeChutePickupPositionToggleButton.TabIndex = 7;
+            this.CubeChutePickupPositionToggleButton.Tag = "";
+            // 
+            // CubePickupFloorPositionToggleButton
+            // 
+            this.CubePickupFloorPositionToggleButton.ButtonText = "";
+            this.CubePickupFloorPositionToggleButton.Checked = false;
+            this.CubePickupFloorPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CubePickupFloorPositionToggleButton.GroupName = "Positions";
+            this.CubePickupFloorPositionToggleButton.Image = global::BobDash.Properties.Resources.Cube;
+            this.CubePickupFloorPositionToggleButton.Location = new System.Drawing.Point(344, 0);
+            this.CubePickupFloorPositionToggleButton.Margin = new System.Windows.Forms.Padding(0);
+            this.CubePickupFloorPositionToggleButton.Name = "CubePickupFloorPositionToggleButton";
+            this.CubePickupFloorPositionToggleButton.PositionName = "Cube_Pickup_Floor";
+            this.CubePickupFloorPositionToggleButton.Size = new System.Drawing.Size(172, 64);
+            this.CubePickupFloorPositionToggleButton.TabIndex = 11;
+            this.CubePickupFloorPositionToggleButton.Tag = "";
+            // 
+            // ConePickupFloorPositionTippedToggleButton
+            // 
+            this.ConePickupFloorPositionTippedToggleButton.ButtonText = "";
+            this.ConePickupFloorPositionTippedToggleButton.Checked = false;
+            this.ConePickupFloorPositionTippedToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConePickupFloorPositionTippedToggleButton.GroupName = "Positions";
+            this.ConePickupFloorPositionTippedToggleButton.Image = global::BobDash.Properties.Resources.ConeTipped;
+            this.ConePickupFloorPositionTippedToggleButton.Location = new System.Drawing.Point(172, 0);
+            this.ConePickupFloorPositionTippedToggleButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ConePickupFloorPositionTippedToggleButton.Name = "ConePickupFloorPositionTippedToggleButton";
+            this.ConePickupFloorPositionTippedToggleButton.PositionName = "Cone_Pickup_Floor_Tipped";
+            this.ConePickupFloorPositionTippedToggleButton.Size = new System.Drawing.Size(172, 64);
+            this.ConePickupFloorPositionTippedToggleButton.TabIndex = 10;
+            this.ConePickupFloorPositionTippedToggleButton.Tag = "";
+            // 
+            // ConePickupFloorPositionToggleButton
+            // 
+            this.ConePickupFloorPositionToggleButton.ButtonText = "";
+            this.ConePickupFloorPositionToggleButton.Checked = false;
+            this.ConePickupFloorPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConePickupFloorPositionToggleButton.GroupName = "Positions";
+            this.ConePickupFloorPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
+            this.ConePickupFloorPositionToggleButton.Location = new System.Drawing.Point(0, 0);
+            this.ConePickupFloorPositionToggleButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ConePickupFloorPositionToggleButton.Name = "ConePickupFloorPositionToggleButton";
+            this.ConePickupFloorPositionToggleButton.PositionName = "Cone_Pickup_Floor";
+            this.ConePickupFloorPositionToggleButton.Size = new System.Drawing.Size(172, 64);
+            this.ConePickupFloorPositionToggleButton.TabIndex = 9;
+            this.ConePickupFloorPositionToggleButton.Tag = "";
+            // 
+            // ConeChutePickupPositionToggleButton
+            // 
+            this.ConeChutePickupPositionToggleButton.ButtonText = "";
+            this.ConeChutePickupPositionToggleButton.Checked = false;
+            this.ConeChutePickupPositionToggleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConeChutePickupPositionToggleButton.GroupName = "Positions";
+            this.ConeChutePickupPositionToggleButton.Image = global::BobDash.Properties.Resources.Cone;
+            this.ConeChutePickupPositionToggleButton.Location = new System.Drawing.Point(265, 74);
+            this.ConeChutePickupPositionToggleButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ConeChutePickupPositionToggleButton.Name = "ConeChutePickupPositionToggleButton";
+            this.ConeChutePickupPositionToggleButton.PositionName = "Cone_Pickup_Chute";
+            this.ConeChutePickupPositionToggleButton.Size = new System.Drawing.Size(253, 62);
+            this.ConeChutePickupPositionToggleButton.TabIndex = 8;
+            this.ConeChutePickupPositionToggleButton.Tag = "";
+            // 
+            // BobDashAutoModeIndicator
+            // 
+            this.BobDashAutoModeIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BobDashAutoModeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BobDashAutoModeIndicator.Location = new System.Drawing.Point(250, 6);
+            this.BobDashAutoModeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.BobDashAutoModeIndicator.Name = "BobDashAutoModeIndicator";
+            this.BobDashAutoModeIndicator.Size = new System.Drawing.Size(260, 59);
+            this.BobDashAutoModeIndicator.TabIndex = 1;
+            this.BobDashAutoModeIndicator.VariableName = "BobDashAutoMode";
+            // 
+            // BobDashMatchTimeIndicator
+            // 
+            this.BobDashMatchTimeIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BobDashMatchTimeIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BobDashMatchTimeIndicator.Location = new System.Drawing.Point(522, 6);
+            this.BobDashMatchTimeIndicator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.BobDashMatchTimeIndicator.Name = "BobDashMatchTimeIndicator";
+            this.BobDashMatchTimeIndicator.Size = new System.Drawing.Size(261, 59);
+            this.BobDashMatchTimeIndicator.TabIndex = 2;
+            this.BobDashMatchTimeIndicator.VariableName = "BobDashMatchTime";
+            // 
+            // indicator1
+            // 
+            this.indicator1.BackColor = System.Drawing.Color.IndianRed;
+            this.indicator1.Location = new System.Drawing.Point(125, 3);
+            this.indicator1.Name = "indicator1";
+            this.indicator1.Size = new System.Drawing.Size(116, 65);
+            this.indicator1.TabIndex = 3;
+            this.indicator1.VariableName = "Operator";
+            // 
             // indicator2
             // 
             this.indicator2.BackColor = System.Drawing.Color.IndianRed;
@@ -1193,6 +1171,100 @@
             this.indicator2.Size = new System.Drawing.Size(116, 65);
             this.indicator2.TabIndex = 4;
             this.indicator2.VariableName = "Driver";
+            // 
+            // ExtendPositionIndicator
+            // 
+            this.ExtendPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExtendPositionIndicator.Location = new System.Drawing.Point(259, 3);
+            this.ExtendPositionIndicator.Name = "ExtendPositionIndicator";
+            this.ExtendPositionIndicator.Size = new System.Drawing.Size(250, 120);
+            this.ExtendPositionIndicator.TabIndex = 0;
+            this.ExtendPositionIndicator.VariableName = "Extend position";
+            // 
+            // GoButton
+            // 
+            this.GoButton.Location = new System.Drawing.Point(771, 255);
+            this.GoButton.Name = "GoButton";
+            this.GoButton.Size = new System.Drawing.Size(138, 120);
+            this.GoButton.TabIndex = 9;
+            this.GoButton.TeachMode = false;
+            // 
+            // TeachButton
+            // 
+            this.TeachButton.Location = new System.Drawing.Point(771, 129);
+            this.TeachButton.Name = "TeachButton";
+            this.TeachButton.Size = new System.Drawing.Size(138, 120);
+            this.TeachButton.TabIndex = 10;
+            this.TeachButton.TeachMode = true;
+            // 
+            // PivotPositionIndicator
+            // 
+            this.PivotPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PivotPositionIndicator.Location = new System.Drawing.Point(3, 3);
+            this.PivotPositionIndicator.Name = "PivotPositionIndicator";
+            this.PivotPositionIndicator.Size = new System.Drawing.Size(250, 120);
+            this.PivotPositionIndicator.TabIndex = 3;
+            this.PivotPositionIndicator.VariableName = "Pivot position";
+            // 
+            // WristPositionIndicator
+            // 
+            this.WristPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WristPositionIndicator.Location = new System.Drawing.Point(515, 3);
+            this.WristPositionIndicator.Name = "WristPositionIndicator";
+            this.WristPositionIndicator.Size = new System.Drawing.Size(250, 120);
+            this.WristPositionIndicator.TabIndex = 4;
+            this.WristPositionIndicator.VariableName = "Wrist position";
+            // 
+            // DesiredPivotIndicator
+            // 
+            this.DesiredPivotIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DesiredPivotIndicator.Location = new System.Drawing.Point(3, 129);
+            this.DesiredPivotIndicator.Name = "DesiredPivotIndicator";
+            this.DesiredPivotIndicator.Size = new System.Drawing.Size(250, 120);
+            this.DesiredPivotIndicator.TabIndex = 15;
+            this.DesiredPivotIndicator.VariableName = "DesiredPivotPosition";
+            // 
+            // DesiredExtendIndicator
+            // 
+            this.DesiredExtendIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DesiredExtendIndicator.Location = new System.Drawing.Point(259, 129);
+            this.DesiredExtendIndicator.Name = "DesiredExtendIndicator";
+            this.DesiredExtendIndicator.Size = new System.Drawing.Size(250, 120);
+            this.DesiredExtendIndicator.TabIndex = 16;
+            this.DesiredExtendIndicator.VariableName = "DesiredExtendPosition";
+            // 
+            // DesiredWristIndicator
+            // 
+            this.DesiredWristIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DesiredWristIndicator.Location = new System.Drawing.Point(515, 129);
+            this.DesiredWristIndicator.Name = "DesiredWristIndicator";
+            this.DesiredWristIndicator.Size = new System.Drawing.Size(250, 120);
+            this.DesiredWristIndicator.TabIndex = 17;
+            this.DesiredWristIndicator.VariableName = "DesiredWristPosition";
+            // 
+            // HoldPositionControlButton
+            // 
+            this.HoldPositionControlButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HoldPositionControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HoldPositionControlButton.Location = new System.Drawing.Point(8, 8);
+            this.HoldPositionControlButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.HoldPositionControlButton.Name = "HoldPositionControlButton";
+            this.TeachTableLayoutPanel.SetRowSpan(this.HoldPositionControlButton, 4);
+            this.HoldPositionControlButton.Size = new System.Drawing.Size(237, 294);
+            this.HoldPositionControlButton.TabIndex = 0;
+            this.HoldPositionControlButton.TeachMode = false;
             // 
             // BobDash
             // 
@@ -1215,6 +1287,7 @@
             this.VariablesTabPage.ResumeLayout(false);
             this.BottomButtonsTableLayoutPanel.ResumeLayout(false);
             this.MainTabControl.ResumeLayout(false);
+            this.ShotLogTabPage.ResumeLayout(false);
             this.PositionControlTabPage.ResumeLayout(false);
             this.PositionsTableLayoutPanel.ResumeLayout(false);
             this.TeachAndAutoSelectionGroupBox.ResumeLayout(false);
@@ -1316,6 +1389,12 @@
         private System.Windows.Forms.Button SavePositionButton;
         private BobDashControls.Indicator indicator1;
         private BobDashControls.Indicator indicator2;
+        private System.Windows.Forms.TabPage ShotLogTabPage;
+        private System.Windows.Forms.Button HighButton;
+        private BobDashControls.Indicator ShotAngleIndicator;
+        private BobDashControls.Indicator ShotHeightIndicator;
+        private System.Windows.Forms.Button LowButton;
+        private System.Windows.Forms.Button GoalButton;
     }
 }
 

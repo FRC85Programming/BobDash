@@ -18,6 +18,7 @@ namespace BobDash
     public partial class BobDash : Form
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private static Logger shotClassificationLogger = LogManager.GetLogger("ShotClassification");
         internal static System.Timers.Timer GlobalTimer = new System.Timers.Timer(200);
         private static bool NetworkTablesConnected = false;
 
@@ -52,6 +53,12 @@ namespace BobDash
             fileTarget.Layout = "${longdate} ${uppercase:${level}} ${message}";
             var rule = new LoggingRule("*", NLog.LogLevel.Trace, fileTarget);
             config.LoggingRules.Add(rule);
+            var shotLogTarget = new FileTarget("shotLogTarget");
+            shotLogTarget.FileName = "${basedir}/BobDashLogs/ShotLog-${shortdate}.log";
+            shotLogTarget.Layout = "${longdate},${message}";
+            var shotLogRule = new LoggingRule("ShotClassification", NLog.LogLevel.Trace, shotLogTarget);
+            config.AddTarget(shotLogTarget);
+            config.AddRule(shotLogRule);
             LogManager.Configuration = config;
 
             InitializeComponent();
@@ -224,6 +231,9 @@ namespace BobDash
             _hotKeyManager.KeyPressed += _hotKeyManager_KeyPressed;
 
             NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
+
+            ShotHeightIndicator.VariableName = Properties.Settings.Default.ShotHeightVariableName;
+            ShotAngleIndicator.VariableName = Properties.Settings.Default.ShotAngleVariableName;
 
             LoadAutoModes();
 
@@ -721,6 +731,28 @@ namespace BobDash
                 logger.Error(ex, message);
                 MessageBox.Show(message);
             }
+        }
+
+        private void LogShotClassification(ShotClassification classification)
+        {
+            var angle = SmartDashboard.GetNumber(Properties.Settings.Default.ShotAngleVariableName);
+            var height = SmartDashboard.GetNumber(Properties.Settings.Default.ShotHeightVariableName);
+            shotClassificationLogger.Trace($"{height},{angle},{classification}");
+        }
+
+        private void HighButton_Click(object sender, EventArgs e)
+        {
+            LogShotClassification(ShotClassification.High);
+        }
+
+        private void GoalButton_Click(object sender, EventArgs e)
+        {
+            LogShotClassification(ShotClassification.Good);
+        }
+
+        private void LowButton_Click(object sender, EventArgs e)
+        {
+            LogShotClassification(ShotClassification.Low);
         }
     }
 }
