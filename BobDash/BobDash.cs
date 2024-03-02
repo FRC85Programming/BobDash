@@ -659,6 +659,11 @@ namespace BobDash
         
         private void LogShotClassification(ShotClassification classification)
         {
+            if (!NetworkTablesConnected)
+            {
+                return;
+            }
+
             var angle = SmartDashboard.GetNumber(Properties.Settings.Default.ShotAngleVariableName);
             var height = SmartDashboard.GetNumber(Properties.Settings.Default.ShotHeightVariableName);
             shotClassificationLogger.Trace($"{height},{angle},{classification}");
