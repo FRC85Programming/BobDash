@@ -270,6 +270,11 @@ namespace BobDash
             foreach (var record in _shotLogRecords)
             {
                 var pointPair = new PointPair(record.Height, record.Angle);
+                if (record.Height == 0 || record.Angle == 0)
+                {
+                    continue;
+                }
+
                 if (record.Classification == ShotClassification.Low)
                 {
                     lowList.Add(pointPair);
@@ -295,10 +300,11 @@ namespace BobDash
             goodCurve.Line.IsVisible = false;
 
             var highCurve = ShotLogGraph.GraphPane.AddCurve("High", highList, HighButton.BackColor);
-            goodCurve.Line.IsAntiAlias = true;
-            goodCurve.Line.IsVisible = false;
+            highCurve.Line.IsAntiAlias = true;
+            highCurve.Line.IsVisible = false;
 
             var fit = MathNet.Numerics.Fit.Line(goodX.ToArray(), goodY.ToArray());
+            ShotBestFitVariablesLabel.Text = $"Slope: {fit.B}{Environment.NewLine}Intercept: {fit.A}";
             var fitList = new PointPairList();
             fitList.Add(goodX.Min(), fit.A + fit.B * goodX.Min());
             fitList.Add(goodX.Max(), fit.A + fit.B * goodX.Max());
@@ -666,6 +672,18 @@ namespace BobDash
 
             var angle = SmartDashboard.GetNumber(Properties.Settings.Default.ShotAngleVariableName);
             var height = SmartDashboard.GetNumber(Properties.Settings.Default.ShotHeightVariableName);
+
+            if (angle == 0)
+            {
+                logger.Warn("Angle is zero.");
+                return;
+            }
+            else if (height == 0)
+            {
+                logger.Warn("Height is zero.");
+                return;
+            }
+
             shotClassificationLogger.Trace($"{height},{angle},{classification}");
             _shotLogRecords.Add(new ShotLogRecord { Height = height, Angle = angle, Classification = classification });
             GraphShotLog();

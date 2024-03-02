@@ -38,34 +38,35 @@
             this.components = new System.ComponentModel.Container();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
+            this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RightSideTabControl = new System.Windows.Forms.TabControl();
             this.IndicatorsTabPage = new System.Windows.Forms.TabPage();
             this.IndicatorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ExtendPositionIndicator = new BobDashControls.Indicator();
+            this.PivotPositionIndicator = new BobDashControls.Indicator();
+            this.WristPositionIndicator = new BobDashControls.Indicator();
             this.BackupSwerveCalibrationButton = new System.Windows.Forms.Button();
             this.RestoreSwerveCalibrationButton = new System.Windows.Forms.Button();
+            this.DesiredPivotIndicator = new BobDashControls.Indicator();
+            this.DesiredExtendIndicator = new BobDashControls.Indicator();
+            this.DesiredWristIndicator = new BobDashControls.Indicator();
             this.VariablesTabPage = new System.Windows.Forms.TabPage();
             this.VariablesListElementHost = new System.Windows.Forms.Integration.ElementHost();
             this.BottomButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ConnectButton = new System.Windows.Forms.Button();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.ShotLogTabPage = new System.Windows.Forms.TabPage();
+            this.ShotLogGraph = new ZedGraph.ZedGraphControl();
             this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.LowButton = new System.Windows.Forms.Button();
             this.GoalButton = new System.Windows.Forms.Button();
             this.HighButton = new System.Windows.Forms.Button();
-            this.MainTabControl = new System.Windows.Forms.TabControl();
             this.ShotAngleIndicator = new BobDashControls.Indicator();
             this.ShotHeightIndicator = new BobDashControls.Indicator();
-            this.ExtendPositionIndicator = new BobDashControls.Indicator();
-            this.PivotPositionIndicator = new BobDashControls.Indicator();
-            this.WristPositionIndicator = new BobDashControls.Indicator();
-            this.DesiredPivotIndicator = new BobDashControls.Indicator();
-            this.DesiredExtendIndicator = new BobDashControls.Indicator();
-            this.DesiredWristIndicator = new BobDashControls.Indicator();
-            this.ShotLogGraph = new ZedGraph.ZedGraphControl();
-            this.Camera2VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
-            this.Camera1VideoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
+            this.MainTabControl = new System.Windows.Forms.TabControl();
+            this.ShotBestFitVariablesLabel = new System.Windows.Forms.Label();
             this.OtherStuffTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -109,6 +110,24 @@
             this.splitContainer1.Size = new System.Drawing.Size(1590, 579);
             this.splitContainer1.SplitterDistance = 542;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // Camera2VideoSourcePlayer
+            // 
+            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(18, 291);
+            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
+            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(506, 266);
+            this.Camera2VideoSourcePlayer.TabIndex = 42;
+            this.Camera2VideoSourcePlayer.TabStop = false;
+            this.Camera2VideoSourcePlayer.VideoSource = null;
+            // 
+            // Camera1VideoSourcePlayer
+            // 
+            this.Camera1VideoSourcePlayer.Location = new System.Drawing.Point(18, 21);
+            this.Camera1VideoSourcePlayer.Name = "Camera1VideoSourcePlayer";
+            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(506, 264);
+            this.Camera1VideoSourcePlayer.TabIndex = 41;
+            this.Camera1VideoSourcePlayer.TabStop = false;
+            this.Camera1VideoSourcePlayer.VideoSource = null;
             // 
             // RightSideTableLayoutPanel
             // 
@@ -175,6 +194,39 @@
             this.IndicatorTableLayoutPanel.Size = new System.Drawing.Size(1024, 504);
             this.IndicatorTableLayoutPanel.TabIndex = 1;
             // 
+            // ExtendPositionIndicator
+            // 
+            this.ExtendPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExtendPositionIndicator.Location = new System.Drawing.Point(259, 3);
+            this.ExtendPositionIndicator.Name = "ExtendPositionIndicator";
+            this.ExtendPositionIndicator.Size = new System.Drawing.Size(250, 120);
+            this.ExtendPositionIndicator.TabIndex = 0;
+            this.ExtendPositionIndicator.VariableName = "Extend position";
+            // 
+            // PivotPositionIndicator
+            // 
+            this.PivotPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PivotPositionIndicator.Location = new System.Drawing.Point(3, 3);
+            this.PivotPositionIndicator.Name = "PivotPositionIndicator";
+            this.PivotPositionIndicator.Size = new System.Drawing.Size(250, 120);
+            this.PivotPositionIndicator.TabIndex = 3;
+            this.PivotPositionIndicator.VariableName = "Pivot position";
+            // 
+            // WristPositionIndicator
+            // 
+            this.WristPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WristPositionIndicator.Location = new System.Drawing.Point(515, 3);
+            this.WristPositionIndicator.Name = "WristPositionIndicator";
+            this.WristPositionIndicator.Size = new System.Drawing.Size(250, 120);
+            this.WristPositionIndicator.TabIndex = 4;
+            this.WristPositionIndicator.VariableName = "Wrist position";
+            // 
             // BackupSwerveCalibrationButton
             // 
             this.BackupSwerveCalibrationButton.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -195,6 +247,39 @@
             this.RestoreSwerveCalibrationButton.Text = "Restore Swerve Calibration";
             this.RestoreSwerveCalibrationButton.UseVisualStyleBackColor = true;
             this.RestoreSwerveCalibrationButton.Click += new System.EventHandler(this.RestoreSwerveCalibrationButton_Click);
+            // 
+            // DesiredPivotIndicator
+            // 
+            this.DesiredPivotIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DesiredPivotIndicator.Location = new System.Drawing.Point(3, 129);
+            this.DesiredPivotIndicator.Name = "DesiredPivotIndicator";
+            this.DesiredPivotIndicator.Size = new System.Drawing.Size(250, 120);
+            this.DesiredPivotIndicator.TabIndex = 15;
+            this.DesiredPivotIndicator.VariableName = "DesiredPivotPosition";
+            // 
+            // DesiredExtendIndicator
+            // 
+            this.DesiredExtendIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DesiredExtendIndicator.Location = new System.Drawing.Point(259, 129);
+            this.DesiredExtendIndicator.Name = "DesiredExtendIndicator";
+            this.DesiredExtendIndicator.Size = new System.Drawing.Size(250, 120);
+            this.DesiredExtendIndicator.TabIndex = 16;
+            this.DesiredExtendIndicator.VariableName = "DesiredExtendPosition";
+            // 
+            // DesiredWristIndicator
+            // 
+            this.DesiredWristIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DesiredWristIndicator.Location = new System.Drawing.Point(515, 129);
+            this.DesiredWristIndicator.Name = "DesiredWristIndicator";
+            this.DesiredWristIndicator.Size = new System.Drawing.Size(250, 120);
+            this.DesiredWristIndicator.TabIndex = 17;
+            this.DesiredWristIndicator.VariableName = "DesiredWristPosition";
             // 
             // VariablesTabPage
             // 
@@ -256,6 +341,7 @@
             // 
             // ShotLogTabPage
             // 
+            this.ShotLogTabPage.Controls.Add(this.ShotBestFitVariablesLabel);
             this.ShotLogTabPage.Controls.Add(this.ShotLogGraph);
             this.ShotLogTabPage.Controls.Add(this.AutoModeCheckedListBox);
             this.ShotLogTabPage.Controls.Add(this.LowButton);
@@ -271,6 +357,24 @@
             this.ShotLogTabPage.Text = "Shot log";
             this.ShotLogTabPage.UseVisualStyleBackColor = true;
             // 
+            // ShotLogGraph
+            // 
+            this.ShotLogGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShotLogGraph.Location = new System.Drawing.Point(445, 15);
+            this.ShotLogGraph.Name = "ShotLogGraph";
+            this.ShotLogGraph.ScrollGrace = 0D;
+            this.ShotLogGraph.ScrollMaxX = 0D;
+            this.ShotLogGraph.ScrollMaxY = 0D;
+            this.ShotLogGraph.ScrollMaxY2 = 0D;
+            this.ShotLogGraph.ScrollMinX = 0D;
+            this.ShotLogGraph.ScrollMinY = 0D;
+            this.ShotLogGraph.ScrollMinY2 = 0D;
+            this.ShotLogGraph.Size = new System.Drawing.Size(1143, 562);
+            this.ShotLogGraph.TabIndex = 42;
+            this.ShotLogGraph.UseExtendedPrintDialog = true;
+            // 
             // AutoModeCheckedListBox
             // 
             this.AutoModeCheckedListBox.CheckOnClick = true;
@@ -278,7 +382,7 @@
             this.AutoModeCheckedListBox.FormattingEnabled = true;
             this.AutoModeCheckedListBox.Location = new System.Drawing.Point(72, 392);
             this.AutoModeCheckedListBox.Name = "AutoModeCheckedListBox";
-            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(306, 160);
+            this.AutoModeCheckedListBox.Size = new System.Drawing.Size(306, 82);
             this.AutoModeCheckedListBox.TabIndex = 41;
             this.AutoModeCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AutoModeCheckedListBox_SelectedIndexChanged);
             // 
@@ -315,17 +419,6 @@
             this.HighButton.UseVisualStyleBackColor = false;
             this.HighButton.Click += new System.EventHandler(this.HighButton_Click);
             // 
-            // MainTabControl
-            // 
-            this.MainTabControl.Controls.Add(this.ShotLogTabPage);
-            this.MainTabControl.Controls.Add(this.OtherStuffTabPage);
-            this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTabControl.Location = new System.Drawing.Point(0, 0);
-            this.MainTabControl.Name = "MainTabControl";
-            this.MainTabControl.SelectedIndex = 0;
-            this.MainTabControl.Size = new System.Drawing.Size(1604, 611);
-            this.MainTabControl.TabIndex = 5;
-            // 
             // ShotAngleIndicator
             // 
             this.ShotAngleIndicator.Location = new System.Drawing.Point(72, 217);
@@ -342,107 +435,24 @@
             this.ShotHeightIndicator.TabIndex = 0;
             this.ShotHeightIndicator.VariableName = null;
             // 
-            // ExtendPositionIndicator
+            // MainTabControl
             // 
-            this.ExtendPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExtendPositionIndicator.Location = new System.Drawing.Point(259, 3);
-            this.ExtendPositionIndicator.Name = "ExtendPositionIndicator";
-            this.ExtendPositionIndicator.Size = new System.Drawing.Size(250, 120);
-            this.ExtendPositionIndicator.TabIndex = 0;
-            this.ExtendPositionIndicator.VariableName = "Extend position";
+            this.MainTabControl.Controls.Add(this.ShotLogTabPage);
+            this.MainTabControl.Controls.Add(this.OtherStuffTabPage);
+            this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTabControl.Location = new System.Drawing.Point(0, 0);
+            this.MainTabControl.Name = "MainTabControl";
+            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.Size = new System.Drawing.Size(1604, 611);
+            this.MainTabControl.TabIndex = 5;
             // 
-            // PivotPositionIndicator
+            // ShotBestFitVariablesLabel
             // 
-            this.PivotPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PivotPositionIndicator.Location = new System.Drawing.Point(3, 3);
-            this.PivotPositionIndicator.Name = "PivotPositionIndicator";
-            this.PivotPositionIndicator.Size = new System.Drawing.Size(250, 120);
-            this.PivotPositionIndicator.TabIndex = 3;
-            this.PivotPositionIndicator.VariableName = "Pivot position";
-            // 
-            // WristPositionIndicator
-            // 
-            this.WristPositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WristPositionIndicator.Location = new System.Drawing.Point(515, 3);
-            this.WristPositionIndicator.Name = "WristPositionIndicator";
-            this.WristPositionIndicator.Size = new System.Drawing.Size(250, 120);
-            this.WristPositionIndicator.TabIndex = 4;
-            this.WristPositionIndicator.VariableName = "Wrist position";
-            // 
-            // DesiredPivotIndicator
-            // 
-            this.DesiredPivotIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DesiredPivotIndicator.Location = new System.Drawing.Point(3, 129);
-            this.DesiredPivotIndicator.Name = "DesiredPivotIndicator";
-            this.DesiredPivotIndicator.Size = new System.Drawing.Size(250, 120);
-            this.DesiredPivotIndicator.TabIndex = 15;
-            this.DesiredPivotIndicator.VariableName = "DesiredPivotPosition";
-            // 
-            // DesiredExtendIndicator
-            // 
-            this.DesiredExtendIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DesiredExtendIndicator.Location = new System.Drawing.Point(259, 129);
-            this.DesiredExtendIndicator.Name = "DesiredExtendIndicator";
-            this.DesiredExtendIndicator.Size = new System.Drawing.Size(250, 120);
-            this.DesiredExtendIndicator.TabIndex = 16;
-            this.DesiredExtendIndicator.VariableName = "DesiredExtendPosition";
-            // 
-            // DesiredWristIndicator
-            // 
-            this.DesiredWristIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DesiredWristIndicator.Location = new System.Drawing.Point(515, 129);
-            this.DesiredWristIndicator.Name = "DesiredWristIndicator";
-            this.DesiredWristIndicator.Size = new System.Drawing.Size(250, 120);
-            this.DesiredWristIndicator.TabIndex = 17;
-            this.DesiredWristIndicator.VariableName = "DesiredWristPosition";
-            // 
-            // ShotLogGraph
-            // 
-            this.ShotLogGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ShotLogGraph.Location = new System.Drawing.Point(445, 15);
-            this.ShotLogGraph.Name = "ShotLogGraph";
-            this.ShotLogGraph.ScrollGrace = 0D;
-            this.ShotLogGraph.ScrollMaxX = 0D;
-            this.ShotLogGraph.ScrollMaxY = 0D;
-            this.ShotLogGraph.ScrollMaxY2 = 0D;
-            this.ShotLogGraph.ScrollMinX = 0D;
-            this.ShotLogGraph.ScrollMinY = 0D;
-            this.ShotLogGraph.ScrollMinY2 = 0D;
-            this.ShotLogGraph.Size = new System.Drawing.Size(1143, 562);
-            this.ShotLogGraph.TabIndex = 42;
-            this.ShotLogGraph.UseExtendedPrintDialog = true;
-            // 
-            // Camera2VideoSourcePlayer
-            // 
-            this.Camera2VideoSourcePlayer.Location = new System.Drawing.Point(18, 291);
-            this.Camera2VideoSourcePlayer.Name = "Camera2VideoSourcePlayer";
-            this.Camera2VideoSourcePlayer.Size = new System.Drawing.Size(506, 266);
-            this.Camera2VideoSourcePlayer.TabIndex = 42;
-            this.Camera2VideoSourcePlayer.TabStop = false;
-            this.Camera2VideoSourcePlayer.VideoSource = null;
-            // 
-            // Camera1VideoSourcePlayer
-            // 
-            this.Camera1VideoSourcePlayer.Location = new System.Drawing.Point(18, 21);
-            this.Camera1VideoSourcePlayer.Name = "Camera1VideoSourcePlayer";
-            this.Camera1VideoSourcePlayer.Size = new System.Drawing.Size(506, 264);
-            this.Camera1VideoSourcePlayer.TabIndex = 41;
-            this.Camera1VideoSourcePlayer.TabStop = false;
-            this.Camera1VideoSourcePlayer.VideoSource = null;
+            this.ShotBestFitVariablesLabel.AutoSize = true;
+            this.ShotBestFitVariablesLabel.Location = new System.Drawing.Point(54, 502);
+            this.ShotBestFitVariablesLabel.Name = "ShotBestFitVariablesLabel";
+            this.ShotBestFitVariablesLabel.Size = new System.Drawing.Size(0, 13);
+            this.ShotBestFitVariablesLabel.TabIndex = 43;
             // 
             // BobDash
             // 
@@ -467,6 +477,7 @@
             this.VariablesTabPage.ResumeLayout(false);
             this.BottomButtonsTableLayoutPanel.ResumeLayout(false);
             this.ShotLogTabPage.ResumeLayout(false);
+            this.ShotLogTabPage.PerformLayout();
             this.MainTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -504,6 +515,7 @@
         private ZedGraph.ZedGraphControl ShotLogGraph;
         private AForge.Controls.VideoSourcePlayer Camera2VideoSourcePlayer;
         private AForge.Controls.VideoSourcePlayer Camera1VideoSourcePlayer;
+        private System.Windows.Forms.Label ShotBestFitVariablesLabel;
     }
 }
 
