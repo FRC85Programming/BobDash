@@ -1,4 +1,5 @@
 ﻿using AForge.Video;
+using CsvHelper;
 using GlobalHotKey;
 using NetworkTables;
 using NetworkTables.Tables;
@@ -8,10 +9,13 @@ using NLog.Targets;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
+using ZedGraph;
 
 namespace BobDash
 {
@@ -28,6 +32,8 @@ namespace BobDash
         private MJPEGStream _camera2Stream;
         private bool _camerasStarted;
         private bool _autoSelectOnly = false;
+
+        private List<ShotLogRecord> _shotLogRecords;
 
         public BobDash()
         {
@@ -54,7 +60,7 @@ namespace BobDash
             var rule = new LoggingRule("*", NLog.LogLevel.Trace, fileTarget);
             config.LoggingRules.Add(rule);
             var shotLogTarget = new FileTarget("shotLogTarget");
-            shotLogTarget.FileName = "${basedir}/BobDashLogs/ShotLog-${shortdate}.log";
+            shotLogTarget.FileName = ShotLogPath;
             shotLogTarget.Layout = "${longdate},${message}";
             var shotLogRule = new LoggingRule("ShotClassification", NLog.LogLevel.Trace, shotLogTarget);
             config.AddTarget(shotLogTarget);
@@ -69,6 +75,14 @@ namespace BobDash
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 ConnectButton.Visible = true;
+            }
+        }
+
+        private string ShotLogPath
+        {
+            get
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BobDash", "ShotLog.csv");
             }
         }
 
@@ -211,12 +225,86 @@ namespace BobDash
             ShotHeightIndicator.VariableName = Properties.Settings.Default.ShotHeightVariableName;
             ShotAngleIndicator.VariableName = Properties.Settings.Default.ShotAngleVariableName;
 
+            LoadShotLog();
+            GraphShotLog();
+
             LoadAutoModes();
 
             GlobalTimer.Elapsed += _timer_Elapsed;
             GlobalTimer.Start();
 
             StartCamera();
+        }
+
+        private void LoadShotLog()
+        {
+            if (File.Exists(ShotLogPath))
+            {
+                using (var reader = new StreamReader(ShotLogPath))
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    _shotLogRecords = csv.GetRecords<ShotLogRecord>().ToList();
+                }
+            }
+            else
+            {
+                _shotLogRecords = new List<ShotLogRecord>();
+                File.WriteAllText(ShotLogPath, "Timestamp,Height,Angle,Classification");
+            }
+        }
+
+        private void GraphShotLog()
+        {
+            if (_shotLogRecords == null)
+            {
+                return;
+            }
+
+            ShotLogGraph.GraphPane.CurveList.Clear();
+
+            var lowList = new PointPairList();
+            var goodList = new PointPairList();
+            var highList = new PointPairList();
+
+            foreach (var record in _shotLogRecords)
+            {
+                var pointPair = new PointPair(record.Height, record.Angle);
+                if (record.Classification == ShotClassification.Low)
+                {
+                    lowList.Add(pointPair);
+                }
+                else if (record.Classification == ShotClassification.Good)
+                {
+                    goodList.Add(pointPair);
+                }
+                else if (record.Classification == ShotClassification.High)
+                {
+                    highList.Add(pointPair);
+                }
+            }
+
+            // plot the data as curves
+            var lowCurve = ShotLogGraph.GraphPane.AddCurve("Low", lowList, LowButton.BackColor);
+            lowCurve.Line.IsAntiAlias = true;
+            lowCurve.Line.IsVisible = false;
+
+            var goodCurve = ShotLogGraph.GraphPane.AddCurve("Good", goodList, GoalButton.BackColor);
+            goodCurve.Line.IsAntiAlias = true;
+            goodCurve.Line.IsVisible = false;
+
+            var highCurve = ShotLogGraph.GraphPane.AddCurve("High", highList, HighButton.BackColor);
+            goodCurve.Line.IsAntiAlias = true;
+            goodCurve.Line.IsVisible = false;
+
+            // style the plot
+            ShotLogGraph.GraphPane.Title.Text = $"Scatter Plot ({_shotLogRecords.Count} points)";
+            ShotLogGraph.GraphPane.XAxis.Title.Text = Properties.Settings.Default.ShotHeightVariableName;
+            ShotLogGraph.GraphPane.YAxis.Title.Text = Properties.Settings.Default.ShotAngleVariableName;
+
+            // auto-axis and update the display
+            ShotLogGraph.GraphPane.XAxis.ResetAutoScale(ShotLogGraph.GraphPane, CreateGraphics());
+            ShotLogGraph.GraphPane.YAxis.ResetAutoScale(ShotLogGraph.GraphPane, CreateGraphics());
+            ShotLogGraph.Refresh();
         }
 
         private void OnConnectionChanged(bool connected)
@@ -563,6 +651,8 @@ namespace BobDash
             var angle = SmartDashboard.GetNumber(Properties.Settings.Default.ShotAngleVariableName);
             var height = SmartDashboard.GetNumber(Properties.Settings.Default.ShotHeightVariableName);
             shotClassificationLogger.Trace($"{height},{angle},{classification}");
+            _shotLogRecords.Add(new ShotLogRecord { Height = height, Angle = angle, Classification = classification });
+            GraphShotLog();
         }
 
         private void HighButton_Click(object sender, EventArgs e)

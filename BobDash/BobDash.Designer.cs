@@ -35,6 +35,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.OtherStuffTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.RightSideTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -64,6 +65,7 @@
             this.DesiredPivotIndicator = new BobDashControls.Indicator();
             this.DesiredExtendIndicator = new BobDashControls.Indicator();
             this.DesiredWristIndicator = new BobDashControls.Indicator();
+            this.ShotLogGraph = new ZedGraph.ZedGraphControl();
             this.OtherStuffTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -248,6 +250,7 @@
             // 
             // ShotLogTabPage
             // 
+            this.ShotLogTabPage.Controls.Add(this.ShotLogGraph);
             this.ShotLogTabPage.Controls.Add(this.AutoModeCheckedListBox);
             this.ShotLogTabPage.Controls.Add(this.Camera2VideoSourcePlayer);
             this.ShotLogTabPage.Controls.Add(this.Camera1VideoSourcePlayer);
@@ -317,7 +320,7 @@
             // 
             // HighButton
             // 
-            this.HighButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.HighButton.BackColor = System.Drawing.Color.DarkOrange;
             this.HighButton.Location = new System.Drawing.Point(276, 52);
             this.HighButton.Name = "HighButton";
             this.HighButton.Size = new System.Drawing.Size(138, 83);
@@ -419,6 +422,21 @@
             this.DesiredWristIndicator.TabIndex = 17;
             this.DesiredWristIndicator.VariableName = "DesiredWristPosition";
             // 
+            // ShotLogGraph
+            // 
+            this.ShotLogGraph.Location = new System.Drawing.Point(1058, 90);
+            this.ShotLogGraph.Name = "ShotLogGraph";
+            this.ShotLogGraph.ScrollGrace = 0D;
+            this.ShotLogGraph.ScrollMaxX = 0D;
+            this.ShotLogGraph.ScrollMaxY = 0D;
+            this.ShotLogGraph.ScrollMaxY2 = 0D;
+            this.ShotLogGraph.ScrollMinX = 0D;
+            this.ShotLogGraph.ScrollMinY = 0D;
+            this.ShotLogGraph.ScrollMinY2 = 0D;
+            this.ShotLogGraph.Size = new System.Drawing.Size(502, 375);
+            this.ShotLogGraph.TabIndex = 42;
+            this.ShotLogGraph.UseExtendedPrintDialog = true;
+            // 
             // BobDash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,6 +495,7 @@
         private BobDashControls.Indicator ShotHeightIndicator;
         private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.CheckedListBox AutoModeCheckedListBox;
+        private ZedGraph.ZedGraphControl ShotLogGraph;
     }
 }
 
