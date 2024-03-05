@@ -248,6 +248,12 @@ namespace BobDash
             }
             else
             {
+                var directory = Path.GetDirectoryName(ShotLogPath);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
                 _shotLogRecords = new List<ShotLogRecord>();
                 File.WriteAllText(ShotLogPath, "Timestamp,Height,Angle,Classification");
             }
@@ -303,15 +309,21 @@ namespace BobDash
             highCurve.Line.IsAntiAlias = true;
             highCurve.Line.IsVisible = false;
 
-            var fit = MathNet.Numerics.Fit.Line(goodX.ToArray(), goodY.ToArray());
-            ShotBestFitVariablesLabel.Text = $"Slope: {fit.B}{Environment.NewLine}Intercept: {fit.A}";
-            var fitList = new PointPairList();
-            fitList.Add(goodX.Min(), fit.A + fit.B * goodX.Min());
-            fitList.Add(goodX.Max(), fit.A + fit.B * goodX.Max());
-            var fitCurve = ShotLogGraph.GraphPane.AddCurve("Fit", fitList, GoalButton.BackColor);
-            fitCurve.Line.IsAntiAlias = true;
-            fitCurve.Line.IsVisible = true;
-            fitCurve.Symbol.IsVisible = false;
+            if (goodX.Count > 2 && goodY.Count > 2)
+            {
+                var fit = MathNet.Numerics.Fit.Line(goodX.ToArray(), goodY.ToArray());
+                ShotBestFitVariablesLabel.Text = $"Slope: {fit.B}{Environment.NewLine}Intercept: {fit.A}";
+                var fitList = new PointPairList();
+                fitList.Add(goodX.Min(), fit.A + fit.B * goodX.Min());
+                fitList.Add(goodX.Max(), fit.A + fit.B * goodX.Max());
+                var fitCurve = ShotLogGraph.GraphPane.AddCurve("Fit", fitList, GoalButton.BackColor);
+                fitCurve.Line.IsAntiAlias = true;
+                fitCurve.Line.IsVisible = true;
+                fitCurve.Symbol.IsVisible = false;
+
+                SmartDashboard.PutNumber("BobDashSlope", fit.B);
+                SmartDashboard.PutNumber("BobDashIntercept", fit.A);
+            }
 
             // style the plot
             ShotLogGraph.GraphPane.Title.Text = $"Scatter Plot ({_shotLogRecords.Count} points)";
