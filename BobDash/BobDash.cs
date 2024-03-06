@@ -27,7 +27,7 @@ namespace BobDash
         private static bool NetworkTablesConnected = false;
 
         private VariablesList VariablesList = new VariablesList();
-        private HotKeyManager _hotKeyManager = new HotKeyManager();
+        private HotKeyManager _hotKeyManager;
         private MJPEGStream _camera1Stream;
         private MJPEGStream _camera2Stream;
         private bool _camerasStarted;
@@ -208,17 +208,21 @@ namespace BobDash
 
         private void BobDash_Load(object sender, EventArgs e)
         {
-            _hotKeyManager.Register(Key.D0, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D1, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D2, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D3, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D4, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D5, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D6, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D7, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D8, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.Register(Key.D9, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
-            _hotKeyManager.KeyPressed += _hotKeyManager_KeyPressed;
+            if (Properties.Settings.Default.EnableHotKeys)
+            {
+                _hotKeyManager = new HotKeyManager();
+                _hotKeyManager.Register(Key.D0, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D1, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D2, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D3, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D4, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D5, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D6, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D7, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D8, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.Register(Key.D9, System.Windows.Input.ModifierKeys.Control | System.Windows.Input.ModifierKeys.Alt);
+                _hotKeyManager.KeyPressed += _hotKeyManager_KeyPressed;
+            }
 
             NetworkTable.SetIPAddress(Properties.Settings.Default.NetworkTablesServer);
 
@@ -255,7 +259,7 @@ namespace BobDash
                 }
 
                 _shotLogRecords = new List<ShotLogRecord>();
-                File.WriteAllText(ShotLogPath, "Timestamp,Height,Angle,Classification");
+                File.WriteAllText(ShotLogPath, $"Timestamp,Height,Angle,Classification{Environment.NewLine}");
             }
         }
 
@@ -321,8 +325,11 @@ namespace BobDash
                 fitCurve.Line.IsVisible = true;
                 fitCurve.Symbol.IsVisible = false;
 
-                SmartDashboard.PutNumber("BobDashSlope", fit.B);
-                SmartDashboard.PutNumber("BobDashIntercept", fit.A);
+                if (SmartDashboard != null && Properties.Settings.Default.PublishLineOfBestFit)
+                {
+                    SmartDashboard.PutNumber("BobDashSlope", fit.B);
+                    SmartDashboard.PutNumber("BobDashIntercept", fit.A);
+                }
             }
 
             // style the plot

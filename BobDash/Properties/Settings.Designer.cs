@@ -199,5 +199,29 @@ namespace BobDash.Properties {
                 this["ShotAngleVariableName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableHotKeys {
+            get {
+                return ((bool)(this["EnableHotKeys"]));
+            }
+            set {
+                this["EnableHotKeys"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PublishLineOfBestFit {
+            get {
+                return ((bool)(this["PublishLineOfBestFit"]));
+            }
+            set {
+                this["PublishLineOfBestFit"] = value;
+            }
+        }
     }
 }

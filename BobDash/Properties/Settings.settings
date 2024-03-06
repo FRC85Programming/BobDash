@@ -53,5 +53,11 @@
     <Setting Name="ShotAngleVariableName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Shooter Angle</Value>
     </Setting>
+    <Setting Name="EnableHotKeys" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PublishLineOfBestFit" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
