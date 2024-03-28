@@ -320,7 +320,7 @@ namespace BobDash
                 var fitList = new PointPairList();
                 fitList.Add(goodX.Min(), fit.A + fit.B * goodX.Min());
                 fitList.Add(goodX.Max(), fit.A + fit.B * goodX.Max());
-                var fitCurve = ShotLogGraph.GraphPane.AddCurve("Fit", fitList, GoalButton.BackColor);
+                var fitCurve = ShotLogGraph.GraphPane.AddCurve("Linear Fit", fitList, GoalButton.BackColor);
                 fitCurve.Line.IsAntiAlias = true;
                 fitCurve.Line.IsVisible = true;
                 fitCurve.Symbol.IsVisible = false;
@@ -329,6 +329,28 @@ namespace BobDash
                 {
                     SmartDashboard.PutNumber("BobDashSlope", fit.B);
                     SmartDashboard.PutNumber("BobDashIntercept", fit.A);
+                }
+
+                var quad = MathNet.Numerics.Fit.Polynomial(goodX.ToArray(), goodY.ToArray(), 2);
+                if (quad.Length == 3)
+                {
+                    ShotBestFitVariablesLabel.Text = $"{ShotBestFitVariablesLabel.Text}{Environment.NewLine}f(x) = {quad[2]:0.000000}x^2 + {quad[1]:0.000000}x + {quad[0]:0.000000}";
+                    var polyList = new PointPairList();
+                    var range = goodX.Max() - goodX.Min();
+                    var interval = range / 100;
+                    for (double i = goodX.Min(); i <= goodX.Max(); i += interval)
+                    {
+                        polyList.Add(i, quad[2] * Math.Pow(i, 2) + quad[1] * i + quad[0]);
+                    }
+                    var polyCurve = ShotLogGraph.GraphPane.AddCurve("Polynomial Fit", polyList, Color.LimeGreen);
+                    polyCurve.Line.IsAntiAlias = true;
+                    polyCurve.Line.IsVisible = true;
+                    polyCurve.Symbol.IsVisible = false;
+
+                    if (SmartDashboard != null && Properties.Settings.Default.PublishLineOfBestFit)
+                    {
+                        SmartDashboard.PutNumberArray("BobDashPolynomial", quad);
+                    }
                 }
             }
 
@@ -711,16 +733,34 @@ namespace BobDash
         private void HighButton_Click(object sender, EventArgs e)
         {
             LogShotClassification(ShotClassification.High);
+            if (SmartDashboard != null)
+            {
+                SmartDashboard.PutBoolean("BobDashShotHigh", true);
+                SmartDashboard.PutBoolean("BobDashShotGood", false);
+                SmartDashboard.PutBoolean("BobDashShotLow", false);
+            }
         }
 
         private void GoalButton_Click(object sender, EventArgs e)
         {
             LogShotClassification(ShotClassification.Good);
+            if (SmartDashboard != null)
+            {
+                SmartDashboard.PutBoolean("BobDashShotHigh", false);
+                SmartDashboard.PutBoolean("BobDashShotGood", true);
+                SmartDashboard.PutBoolean("BobDashShotLow", false);
+            }
         }
 
         private void LowButton_Click(object sender, EventArgs e)
         {
             LogShotClassification(ShotClassification.Low);
+            if (SmartDashboard != null)
+            {
+                SmartDashboard.PutBoolean("BobDashShotHigh", false);
+                SmartDashboard.PutBoolean("BobDashShotGood", false);
+                SmartDashboard.PutBoolean("BobDashShotLow", true);
+            }
         }
     }
 }

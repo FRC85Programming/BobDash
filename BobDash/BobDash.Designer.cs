@@ -58,6 +58,7 @@
             this.ConnectButton = new System.Windows.Forms.Button();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.ShotLogTabPage = new System.Windows.Forms.TabPage();
+            this.ShotBestFitVariablesLabel = new System.Windows.Forms.Label();
             this.ShotLogGraph = new ZedGraph.ZedGraphControl();
             this.AutoModeCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.LowButton = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.ShotAngleIndicator = new BobDashControls.Indicator();
             this.ShotHeightIndicator = new BobDashControls.Indicator();
             this.MainTabControl = new System.Windows.Forms.TabControl();
-            this.ShotBestFitVariablesLabel = new System.Windows.Forms.Label();
             this.OtherStuffTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -357,6 +357,14 @@
             this.ShotLogTabPage.Text = "Shot log";
             this.ShotLogTabPage.UseVisualStyleBackColor = true;
             // 
+            // ShotBestFitVariablesLabel
+            // 
+            this.ShotBestFitVariablesLabel.AutoSize = true;
+            this.ShotBestFitVariablesLabel.Location = new System.Drawing.Point(32, 493);
+            this.ShotBestFitVariablesLabel.Name = "ShotBestFitVariablesLabel";
+            this.ShotBestFitVariablesLabel.Size = new System.Drawing.Size(0, 13);
+            this.ShotBestFitVariablesLabel.TabIndex = 43;
+            // 
             // ShotLogGraph
             // 
             this.ShotLogGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -410,7 +418,7 @@
             // 
             // HighButton
             // 
-            this.HighButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.HighButton.BackColor = System.Drawing.Color.Gold;
             this.HighButton.Location = new System.Drawing.Point(276, 52);
             this.HighButton.Name = "HighButton";
             this.HighButton.Size = new System.Drawing.Size(138, 83);
@@ -445,14 +453,6 @@
             this.MainTabControl.SelectedIndex = 0;
             this.MainTabControl.Size = new System.Drawing.Size(1604, 611);
             this.MainTabControl.TabIndex = 5;
-            // 
-            // ShotBestFitVariablesLabel
-            // 
-            this.ShotBestFitVariablesLabel.AutoSize = true;
-            this.ShotBestFitVariablesLabel.Location = new System.Drawing.Point(54, 502);
-            this.ShotBestFitVariablesLabel.Name = "ShotBestFitVariablesLabel";
-            this.ShotBestFitVariablesLabel.Size = new System.Drawing.Size(0, 13);
-            this.ShotBestFitVariablesLabel.TabIndex = 43;
             // 
             // BobDash
             // 
