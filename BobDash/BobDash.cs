@@ -244,10 +244,13 @@ namespace BobDash
         {
             if (File.Exists(ShotLogPath))
             {
+                var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture) { };
                 using (var reader = new StreamReader(ShotLogPath))
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    _shotLogRecords = csv.GetRecords<ShotLogRecord>().ToList();
+                    using (var csv = new CsvReader(reader, config))
+                    {
+                        _shotLogRecords = csv.GetRecords<ShotLogRecord>().ToList();
+                    }
                 }
             }
             else
@@ -259,7 +262,7 @@ namespace BobDash
                 }
 
                 _shotLogRecords = new List<ShotLogRecord>();
-                File.WriteAllText(ShotLogPath, $"Timestamp,Height,Angle,Classification{Environment.NewLine}");
+                File.WriteAllText(ShotLogPath, $"Timestamp,Height,Angle,Classification,Timestamp{Environment.NewLine}");
             }
         }
 
@@ -329,6 +332,8 @@ namespace BobDash
                 {
                     SmartDashboard.PutNumber("BobDashSlope", fit.B);
                     SmartDashboard.PutNumber("BobDashIntercept", fit.A);
+                    SmartDashboard.SetPersistent("BobDashSlope");
+                    SmartDashboard.SetPersistent("BobDashIntercept");
                 }
 
                 var quad = MathNet.Numerics.Fit.Polynomial(goodX.ToArray(), goodY.ToArray(), 2);
@@ -350,6 +355,7 @@ namespace BobDash
                     if (SmartDashboard != null && Properties.Settings.Default.PublishLineOfBestFit)
                     {
                         SmartDashboard.PutNumberArray("BobDashPolynomial", quad);
+                        SmartDashboard.SetPersistent("BobDashPolynomial");
                     }
                 }
             }
@@ -725,8 +731,9 @@ namespace BobDash
                 return;
             }
 
-            shotClassificationLogger.Trace($"{height},{angle},{classification}");
-            _shotLogRecords.Add(new ShotLogRecord { Height = height, Angle = angle, Classification = classification });
+            var record = new ShotLogRecord { Height = height, Angle = angle, Classification = classification, Timestamp = DateTime.Now };
+            shotClassificationLogger.Trace($"{record.Height},{record.Angle},{record.Classification},{record.Timestamp}");
+            _shotLogRecords.Add(record);
             GraphShotLog();
         }
 
