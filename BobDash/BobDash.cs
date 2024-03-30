@@ -32,6 +32,7 @@ namespace BobDash
         private MJPEGStream _camera2Stream;
         private bool _camerasStarted;
         private bool _autoSelectOnly = false;
+        private double _lastHeight = -1;
 
         private List<ShotLogRecord> _shotLogRecords;
 
@@ -710,31 +711,38 @@ namespace BobDash
         }
 
         
-        private void LogShotClassification(ShotClassification classification)
+        private bool LogShotClassification(ShotClassification classification)
         {
             if (!NetworkTablesConnected)
             {
-                return;
+                return false;
             }
 
             var angle = SmartDashboard.GetNumber(Properties.Settings.Default.ShotAngleVariableName);
             var height = SmartDashboard.GetNumber(Properties.Settings.Default.ShotHeightVariableName);
+            if (height == _lastHeight)
+            {
+                logger.Warn($"Height '{height}' is the same as last height.");
+                return false;
+            }
 
             if (angle == 0)
             {
                 logger.Warn("Angle is zero.");
-                return;
+                return false;
             }
             else if (height == 0)
             {
                 logger.Warn("Height is zero.");
-                return;
+                return false;
             }
 
             var record = new ShotLogRecord { Height = height, Angle = angle, Classification = classification, Timestamp = DateTime.Now };
             shotClassificationLogger.Trace($"{record.Height},{record.Angle},{record.Classification},{record.Timestamp}");
             _shotLogRecords.Add(record);
+            _lastHeight = height;
             GraphShotLog();
+            return true;
         }
 
         private void HighButton_Click(object sender, EventArgs e)
