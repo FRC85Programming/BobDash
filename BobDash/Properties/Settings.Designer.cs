@@ -223,5 +223,41 @@ namespace BobDash.Properties {
                 this["PublishLineOfBestFit"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BobDashSlope")]
+        public string OutputSlopeVariableName {
+            get {
+                return ((string)(this["OutputSlopeVariableName"]));
+            }
+            set {
+                this["OutputSlopeVariableName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BobDashIntercept")]
+        public string OutputInterceptVariableName {
+            get {
+                return ((string)(this["OutputInterceptVariableName"]));
+            }
+            set {
+                this["OutputInterceptVariableName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BobDashPolynomial")]
+        public string OutputPolynomialVariableName {
+            get {
+                return ((string)(this["OutputPolynomialVariableName"]));
+            }
+            set {
+                this["OutputPolynomialVariableName"] = value;
+            }
+        }
     }
 }

@@ -331,10 +331,10 @@ namespace BobDash
 
                 if (SmartDashboard != null && Properties.Settings.Default.PublishLineOfBestFit)
                 {
-                    SmartDashboard.PutNumber("BobDashSlope", fit.B);
-                    SmartDashboard.PutNumber("BobDashIntercept", fit.A);
-                    SmartDashboard.SetPersistent("BobDashSlope");
-                    SmartDashboard.SetPersistent("BobDashIntercept");
+                    SmartDashboard.PutNumber(Properties.Settings.Default.OutputSlopeVariableName, fit.B);
+                    SmartDashboard.PutNumber(Properties.Settings.Default.OutputInterceptVariableName, fit.A);
+                    SmartDashboard.SetPersistent(Properties.Settings.Default.OutputSlopeVariableName);
+                    SmartDashboard.SetPersistent(Properties.Settings.Default.OutputInterceptVariableName);
                 }
 
                 var quad = MathNet.Numerics.Fit.Polynomial(goodX.ToArray(), goodY.ToArray(), 2);
@@ -355,8 +355,8 @@ namespace BobDash
 
                     if (SmartDashboard != null && Properties.Settings.Default.PublishLineOfBestFit)
                     {
-                        SmartDashboard.PutNumberArray("BobDashPolynomial", quad);
-                        SmartDashboard.SetPersistent("BobDashPolynomial");
+                        SmartDashboard.PutNumberArray(Properties.Settings.Default.OutputPolynomialVariableName, quad);
+                        SmartDashboard.SetPersistent(Properties.Settings.Default.OutputPolynomialVariableName);
                     }
                 }
             }

@@ -59,5 +59,14 @@
     <Setting Name="PublishLineOfBestFit" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="OutputSlopeVariableName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BobDashSlope</Value>
+    </Setting>
+    <Setting Name="OutputInterceptVariableName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BobDashIntercept</Value>
+    </Setting>
+    <Setting Name="OutputPolynomialVariableName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BobDashPolynomial</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
